@@ -410,15 +410,16 @@ form, fieldset{
 }
 *+html .switcher li{display:inline;}
 .switcher li a{
-	background:url(../images/bullet.png) no-repeat 100% 0;
+	background:url(../images/bullet.png) no-repeat 0 3px;
 	width:16px;
 	height:17px;
 	display:block;
 	text-indent:-9999px;
 	overflow:hidden;
 }
-.switcher .active a,
-.switcher li a:hover{background-position:0 0;}
+.switcher .active a{background-position:0 -37px;}
+.switcher .active a:hover{background-position:0 -37px;}
+.switcher li a:hover{background-position:0 -17px;}
 .info-box{
 	overflow:hidden;
 	width:100%;

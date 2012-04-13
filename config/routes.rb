@@ -1,4 +1,8 @@
 Mvp2::Application.routes.draw do
+
+	match 'different' => 'dashboard#different'
+
+	root :to => 'dashboard#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
