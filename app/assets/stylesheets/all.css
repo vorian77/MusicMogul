@@ -153,12 +153,14 @@ form, fieldset{
 	margin:0 0 0 4px;
 }
 .social-networks li a{
-	width:16px;
-	height:16px;
-	display:block;
-	overflow:hidden;
-	background:url(../images/social-networks.gif) no-repeat;
-	text-indent:-9999px;
+	display: block;
+	height: 16px;
+	/* width:16px;
+	/height:16px;
+	// display:block;
+	// overflow:hidden;
+	// background:url(../images/social-networks.gif) no-repeat;
+	/ text-indent:-9999px; */
 }
 .social-networks li:first-child{margin:0;}
 .social-networks .twitter{background-position:-20px 0;}
@@ -184,7 +186,6 @@ form, fieldset{
 	position:relative;
 	padding:4px 0 13px 12px;
 	font:12px/14px 'IstokRegular', Arial, Helvetica, sans-serif;
-	display:none;
 }
 .account-box:after{
 	display:block;

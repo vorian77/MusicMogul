@@ -18,34 +18,49 @@
 				<div class="panel">
 					<div class="block">
 						<div class="block-holder">
-							<ul class="social-networks">
+							<ul class="social-networks addthis_toolbox" addthis:url="http://fanhelp.us" addthis:title="Fans Helping Artists" addthis:description="description stuff" >
+								<script type="text/javascript">var addthis_config = { data_track_clickback: false }</script>
+								<!-- AddThis Button BEGIN -->
+								<li><a class="addthis_button_preferred_1"></a></li>
+								<li><a class="addthis_button_preferred_2"></a></li>
+								<li><a class="addthis_button_preferred_4"></a></li>
+								<li><a class="addthis_button_google_plusone" g:plusone:count="false" g:plusone:size="small"></a></li>
+								<li><a class="addthis_button_preferred_3"></a></li>
+								<li><a class="addthis_button_compact"></a></li>
+								<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f8a11bd2fe94136"></script>
+								<!-- AddThis Button END -->
+								<!--
 								<li><a href="#">facebook</a></li>
 								<li><a href="#" class="twitter">twitter</a></li>
 								<li><a href="#" class="email">email</a></li>
 								<li><a href="#" class="shareyhis">ShareThis</a></li>
+								-->
 							</ul>
 							<div class="box">
-								<ul class="log-in-nav">
-									<li><a href="#">Login</a></li>
-									<li><a href="#">Signup</a></li>
-								</ul>
-								<div class="account-box">
-									<a href="#" class="user"> <img src="images/ico-01.gif" width="15" height="15" alt="image description" /><span>usernamefha</span></a>
-									<div class="drop">
-										<div class="holder">
-											<div class="frame">
-												<div class="foto">
-													<img src="images/ico-02.gif" width="77" height="77" alt="image description" />
-													<span>John Smith</span>
+								<%- if user_signed_in? %>
+									<div class="account-box">
+										<a href="#" class="user"> <img src="images/ico-01.gif" width="15" height="15" alt="image description" /><span><%= current_user.email %></span></a>
+										<div class="drop">
+											<div class="holder">
+												<div class="frame">
+													<div class="foto">
+														<img src="images/ico-02.gif" width="77" height="77" alt="image description" />
+														<span><%= current_user.email %></span>
+													</div>
+													<ul class="list">
+														<li><a href="#">My Account</a></li>
+														<li><a href="<%= destroy_user_session_path %>" data-method="delete">Logout</a></li>
+													</ul>
 												</div>
-												<ul class="list">
-													<li><a href="#">My Account</a></li>
-													<li><a href="#">Logout</a></li>
-												</ul>
 											</div>
 										</div>
 									</div>
-								</div>
+								<%- else %>
+									<ul class="log-in-nav">
+										<li><a href="<%= new_user_session_path %>">Log in</a></li>
+										<li><a href="<%= new_user_registration_path %>">Sign up</a></li>
+									</ul>
+								<%- end %>
 							</div>
 						</div>
 					</div>

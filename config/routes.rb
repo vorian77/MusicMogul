@@ -1,8 +1,9 @@
 Mvp2::Application.routes.draw do
 
-	match 'different' => 'dashboard#different'
+  devise_for :users
 
-	root :to => 'dashboard#index'
+	root :to => 'home#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
