@@ -57,6 +57,25 @@ body{
 	font:18px/20px 'IstokRegular', Arial, Helvetica, sans-serif;
 	min-width:1003px;
 }
+.flash div {
+	background-color: #fff;
+	height: 40px;
+	line-height: 40px;
+	font-weight: bold;
+	text-align: center;
+	background-color: #e5e5e5;
+}
+.flash .notice {
+	color: #000;
+}
+.flash .alert {
+	color: #000;
+}
+.flash .close:hover {
+	cursor: pointer;
+	text-decoration: none;
+	color: #369;
+}
 img{border-style:none;} 
 a{
 	text-decoration:none;
@@ -549,3 +568,9 @@ form, fieldset{
 }
 .add-nav li:first-child{margin:0;}
 .add-nav li a{color:#0577b8;}
+
+.social-media-buttons {
+	float: right;
+	width: 144px;
+	margin-top: 10px;
+}

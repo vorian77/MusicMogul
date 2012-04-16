@@ -334,3 +334,9 @@ function clearFormFields(o){
 		if(el2) el2.style.display = "inline";
 	}
 }
+
+$(document).ready(function() {
+	$('.flash a.close').click(function() {
+		$('.flash').slideUp();
+	});
+})
