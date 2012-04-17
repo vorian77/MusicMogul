@@ -1,0 +1,42 @@
+<h1>My Account</h1>
+
+<%= semantic_form_for current_user, :url => account_path, :method => :post do |f| %>
+	<%= f.inputs do %>
+		<%= f.input :first_name %>
+		<%= f.input :last_name %>
+		<%= f.input :zip %>
+		<li class="select input optional" id="user_country_input">
+			<label class="label" for="user_country"><%= User.human_attribute_name(:country) %></label>
+			<%= country_select('user','country', ['United States','Canada','Mexico','United Kingdom']) %>
+		</li>
+		<%= f.input :birthdate, :start_year => 1901, :order => [:month, :day, :year] %>
+		<%= f.input :interview_status, :input_html => { 'data-shows' => '#user_phone'} %>
+		<%= f.input :phone, :input_html => { 'data-hidden-by' => '#user_interview_status' } %>
+		<%= f.input :profile_name %>
+		<%= f.input :hometown %>
+		<%= f.input :bio, :as => :text, :input_html => { :rows => 10 } %>
+		<% if current_user.profile_photo_square.present? %>
+			<li class="input">
+				<label class="label"><%= User.human_attribute_name(:profile_photo_square) %></label>
+				<%= image_tag current_user.profile_photo_square, :width => '100' %>
+			</li>
+			<%= f.input :remove_profile_photo_square, :as => :boolean %>
+		<% else%>
+			<%= f.input :profile_photo_square, :as => :file %>
+		<% end %>
+		<% if current_user.profile_photo_rectangle.present? %>
+			<li class="input">
+				<label class="label"><%= User.human_attribute_name(:profile_photo_rectangle) %></label>
+				<%= image_tag current_user.profile_photo_rectangle, :width => '100' %>
+			</li>
+			<%= f.input :remove_profile_photo_rectangle, :as => :boolean %>
+		<% else%>
+			<%= f.input :profile_photo_rectangle, :as => :file %>
+		<% end %>		
+		<%= f.input :facebook %>
+		<%= f.input :twitter %>
+		<%= f.actions do %>
+			<%= f.submit 'Save' %>
+		<% end %>
+	<% end %>
+<% end %>

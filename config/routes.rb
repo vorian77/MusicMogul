@@ -2,6 +2,11 @@ Mvp2::Application.routes.draw do
 
   devise_for :users
 
+  get '/account' => 'users#show', :as => :account
+  post '/account' => 'users#update'
+ 
+  match 'video' => 'home#video', :as => :home_video
+ 
 	root :to => 'home#index'
 
   # The priority is based upon order of creation:

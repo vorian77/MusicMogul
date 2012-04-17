@@ -23,6 +23,11 @@ gem 'jquery-rails'
 
 gem 'devise'
 gem 'sendgrid'
+gem 'formtastic'
+gem 'country-select', '~> 1.1.1'
+gem 'carrierwave'
+gem 'fog'
+gem 'fancybox-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

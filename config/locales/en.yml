@@ -2,4 +2,16 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+    formtastic:
+        labels:
+            user:
+                first_name: 'First Name'
+                last_name: 'Last Name'
+                zip: 'Zip'
+                country: 'Country'
+                Birthdate: 'Birthdate'
+                interview_status: 'Would you be willing to be interviewed about your band?'
+                profile_name: 'User or Band Name'
+                genre: 'Favorite or Performance Genre'
+                facebook: 'Facebook www.facebook.com/'
+                twitter: 'Twitter @'               

@@ -6,4 +6,8 @@ class HomeController < ApplicationController
 	def different
 	end
 	
+	def video
+	  render 'video', :layout => 'basic'
+  end
+	  
 end

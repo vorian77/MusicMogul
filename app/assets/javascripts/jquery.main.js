@@ -253,7 +253,30 @@ jQuery.fn.scrollGallery = function(_options){
 }
 
 $(document).ready(function() {
+	$(document).ready(function() {
+	  $("a.fancybox").fancybox();
+	});
+	
 	$('.flash a.close').click(function() {
 		$('.flash').slideUp();
 	});
+	$('input[data-shows]').each(function(index,toggle) {
+		$toggle = $(toggle)
+		$toggled = $($toggle.data('shows'));
+		if($toggle.is(':checked')) {
+			$toggled.parent('li').show();
+		} else {
+			$toggled.parent('li').hide();
+		}
+	})
+	$('input[data-hidden-by]')
+	$('input[data-shows]').click(function() {
+		var $toggle = $(this);
+		var $toggled = $($(this).data('shows'));
+		if($toggle.is(':checked')) {
+			$toggled.parent('li').show();
+		} else {
+			$toggled.parent('li').hide();
+		}
+	})
 })

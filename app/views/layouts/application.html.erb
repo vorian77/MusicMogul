@@ -1,11 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>FansHelpingArtists</title>
-  	<%= stylesheet_link_tag    "application", :media => "all" %>
-  	<%= javascript_include_tag "application" %>
-  	<%= csrf_meta_tags %>	
+	<%= render 'layouts/head' %>
 </head>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -34,7 +30,7 @@
 		<div class="w1">
 			<div id="header">
 				<div class="header-holder">
-					<h1 class="logo"><a href="#">FansHelpingArtists</a></h1>
+					<h1 class="logo"><a href="<%= root_path %>">FansHelpingArtists</a></h1>
 					<span class="slogan">A world class music talent contest<span>judged by fans!</span></span>
 				</div>
 				<div class="panel">
@@ -61,16 +57,16 @@
 							<div class="box">
 								<%- if user_signed_in? %>
 									<div class="account-box">
-										<a href="#" class="user"> <img src="images/ico-01.gif" width="15" height="15" alt="image description" /><span><%= current_user.email %></span></a>
+										<a href="#" class="user"> <img src="images/ico-01.gif" width="15" height="15" alt="image description" /><span><%= current_user.display_name %></span></a>
 										<div class="drop">
 											<div class="holder">
 												<div class="frame">
 													<div class="foto">
-														<img src="images/ico-02.gif" width="77" height="77" alt="image description" />
-														<span><%= current_user.email %></span>
+														<%= image_tag current_user.profile_photo_square, :style => 'width: 77px; height: 77px; overflow: hidden;' %>
+														<span><%= current_user.display_name %></span>
 													</div>
 													<ul class="list">
-														<li><a href="#">My Account</a></li>
+														<li><a href="<%= account_path %>">My Account</a></li>
 														<li><a href="<%= destroy_user_session_path %>" data-method="delete">Logout</a></li>
 													</ul>
 												</div>
@@ -87,7 +83,7 @@
 						</div>
 					</div>
 					<ul id="nav">
-						<li class="active"><a href="#">Home <span class="arrow">arrow</span></a></li><li>
+						<li class="active"><a href="<%= root_path %>">Home <span class="arrow">arrow</span></a></li><li>
 						<a href="#">Preview Contestants <span class="arrow">arrow</span></a></li>
 					</ul>
 				</div>
