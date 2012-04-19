@@ -26,6 +26,7 @@ gem 'sendgrid'
 gem 'formtastic'
 gem 'country-select', '~> 1.1.1'
 gem 'carrierwave'
+gem 'rmagick'
 gem 'fog'
 gem 'fancybox-rails'
 

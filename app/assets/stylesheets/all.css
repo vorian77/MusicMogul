@@ -584,3 +584,14 @@ form, fieldset{
 .formtastic .photo {
 	width: 72%;
 }
+
+.formtastic.user .thumbnail-wrapper {
+	width: 77px;
+	height: 77px;
+	overflow: hidden;
+}
+
+.formtastic.user .original-wrapper {
+	float: right; width: 75%;
+	position: relative;
+}

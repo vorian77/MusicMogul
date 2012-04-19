@@ -27,7 +27,15 @@
 		<% if current_user.profile_photo_rectangle.present? %>
 			<li class="input">
 				<label class="label"><%= User.human_attribute_name(:profile_photo_rectangle) %></label>
-				<%= image_tag current_user.profile_photo_rectangle, :width => '100' %>
+				<div class="original-wrapper">
+					<%= image_tag current_user.profile_photo_rectangle, :width => '400', :class => 'original' %>
+				</div>
+				<div class="thumbnail-wrapper">
+					<%= image_tag current_user.profile_photo_rectangle, :class => 'thumbnail' %>
+				</div>
+				<%= f.input :thumb_x %>
+				<%= f.input :thumb_y %>
+				<%= f.input :thumb_w %>
 			</li>
 			<%= f.input :remove_profile_photo_rectangle, :as => :boolean %>
 		<% else%>

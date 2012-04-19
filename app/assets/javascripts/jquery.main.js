@@ -252,10 +252,24 @@ jQuery.fn.scrollGallery = function(_options){
 	});
 }
 
-$(document).ready(function() {
-	$(document).ready(function() {
-	  $("a.fancybox").fancybox();
+function showPreview(coords) {
+	var rx = 77 / coords.w;
+	var ry = 77 / coords.h;
+	$thumb = $('.thumbnail')
+	console.log($thumb.data('original-width'));
+	$thumb.css({
+		width: Math.round(rx * $(thumb).data('original-width')) + 'px',
+		height: Math.round(ry * $(thumb).data('original-height')) + 'px',
+		marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+		marginTop: '-' + Math.round(ry * coords.y) + 'px'
 	});
+	$('.thumb_x').val(coords.x);
+	$('.thumb_y').val(coords.y);
+	$('.thumb_w').val(coords.w);
+}
+
+$(document).ready(function() {
+	$("a.fancybox").fancybox();
 	
 	$('.flash a.close').click(function() {
 		$('.flash').slideUp();
@@ -278,5 +292,17 @@ $(document).ready(function() {
 		} else {
 			$toggled.parent('li').hide();
 		}
-	})
+	});
+	
+	$thumb = $('.thumbnail');
+	
+	$thumb.data('original-width',$thumb.width());
+	$thumb.data('original-height',$thumb.height())
+	
+	$('.original').Jcrop({
+		onChange: showPreview,
+		onSelect: showPreview,
+		aspectRatio: 1,
+		minSize: [ 77, 77 ]
+	});
 })

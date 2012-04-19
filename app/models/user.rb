@@ -11,8 +11,13 @@ class User < ActiveRecord::Base
     :twitter, :phone, :profile_photo_square, :profile_photo_rectangle,
     :remove_profile_photo_square, :remove_profile_photo_rectangle
   
-  validates_presence_of :first_name, :message => "First name is required"
-  validates_presence_of :last_name
+  attr_accessor :thumb_x, :thumb_y, :thumb_w
+  
+  validates_presence_of :first_name, :message => "First Name is required."
+  validates_presence_of :last_name, :message => "Last Name is required."
+  validates_presence_of :birthdate, :message => "Birthdate is required. Must be at least 13 years old."
+  validates_presence_of :profile_name, :message => "User or Band Name is required."
+  validates_presence_of :hometown, :message => "Hometown is required."
   
   mount_uploader :profile_photo_square, ProfilePhotoUploader
   mount_uploader :profile_photo_rectangle, ProfilePhotoUploader
