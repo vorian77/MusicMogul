@@ -13,11 +13,13 @@ class User < ActiveRecord::Base
   
   attr_accessor :thumb_x, :thumb_y, :thumb_w
   
-  validates_presence_of :first_name, :message => "First Name is required."
-  validates_presence_of :last_name, :message => "Last Name is required."
-  validates_presence_of :birthdate, :message => "Birthdate is required. Must be at least 13 years old."
-  validates_presence_of :profile_name, :message => "User or Band Name is required."
-  validates_presence_of :hometown, :message => "Hometown is required."
+  with_options :on => :update do |u|
+    u.validates_presence_of :first_name, :message => "First Name is required."
+    u.validates_presence_of :last_name, :message => "Last Name is required."
+    u.validates_presence_of :birthdate, :message => "Birthdate is required. Must be at least 13 years old."
+    u.validates_presence_of :profile_name, :message => "User or Band Name is required."
+    u.validates_presence_of :hometown, :message => "Hometown is required."
+  end
   
   mount_uploader :profile_photo_square, ProfilePhotoUploader
   mount_uploader :profile_photo_rectangle, ProfilePhotoUploader
