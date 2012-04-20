@@ -8,7 +8,11 @@ Mvp2::Application.routes.draw do
   match 'video' => 'home#video', :as => :home_video
  
 	root :to => 'home#index'
-
+	
+  # get '/Fans' => 'home#fans', :as => :home_fans
+	
+	get '/page/:name' => 'pages#show', :as => :page
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

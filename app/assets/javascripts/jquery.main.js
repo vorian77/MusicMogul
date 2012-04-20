@@ -1,7 +1,18 @@
 jQuery(function(){
+	initClear();
 	initCarusel();
 });
 
+// initClear
+function initClear(){
+	clearFormFields({
+		clearInputs: true,
+		clearTextareas: true,
+		passwordFieldText: true,
+		addClassFocus: "focus",
+		filterClass: "default"
+	});
+}
 //initCarusel
 function initCarusel(){
 	jQuery('div.carousel').scrollGallery({
@@ -14,6 +25,16 @@ function initCarusel(){
 		circleSlide:true,
 		pauseOnHover:true,
 		switchTime:3000
+	});
+	jQuery('div.carousel-2').scrollGallery({
+		btnPrev:'a.btn-prev',
+		btnNext:'a.btn-next',
+		sliderHolder: '.frame',
+		slider:'.slide-list',
+		slides:'li',
+		autoRotation:false,
+		circleSlide:true,
+		step:1
 	});
 }
 // scrolling gallery plugin
@@ -251,58 +272,75 @@ jQuery.fn.scrollGallery = function(_options){
 		if(_afterInit && typeof _afterInit === 'function') _afterInit(_this, _slides);
 	});
 }
-
-function showPreview(coords) {
-	var rx = 77 / coords.w;
-	var ry = 77 / coords.h;
-	$thumb = $('.thumbnail')
-	console.log($thumb.data('original-width'));
-	$thumb.css({
-		width: Math.round(rx * $(thumb).data('original-width')) + 'px',
-		height: Math.round(ry * $(thumb).data('original-height')) + 'px',
-		marginLeft: '-' + Math.round(rx * coords.x) + 'px',
-		marginTop: '-' + Math.round(ry * coords.y) + 'px'
-	});
-	$('.thumb_x').val(coords.x);
-	$('.thumb_y').val(coords.y);
-	$('.thumb_w').val(coords.w);
+// clearFormFields
+function clearFormFields(o){
+	if (o.clearInputs == null) o.clearInputs = true;
+	if (o.clearTextareas == null) o.clearTextareas = true;
+	if (o.passwordFieldText == null) o.passwordFieldText = false;
+	if (o.addClassFocus == null) o.addClassFocus = false;
+	if (!o.filter) o.filter = "default";
+	if(o.clearInputs) {
+		var inputs = document.getElementsByTagName("input");
+		for (var i = 0; i < inputs.length; i++ ) {
+			if((inputs[i].type == "text" || inputs[i].type == "password") && inputs[i].className.indexOf(o.filterClass)) {
+				inputs[i].valueHtml = inputs[i].value;
+				inputs[i].onfocus = function ()	{
+					if(this.valueHtml == this.value) this.value = "";
+					if(this.fake) {
+						inputsSwap(this, this.previousSibling);
+						this.previousSibling.focus();
+					}
+					if(o.addClassFocus && !this.fake) {
+						this.className += " " + o.addClassFocus;
+						this.parentNode.className += " parent-" + o.addClassFocus;
+					}
+				}
+				inputs[i].onblur = function () {
+					if(this.value == "") {
+						this.value = this.valueHtml;
+						if(o.passwordFieldText && this.type == "password") inputsSwap(this, this.nextSibling);
+					}
+					if(o.addClassFocus) {
+						this.className = this.className.replace(o.addClassFocus, "");
+						this.parentNode.className = this.parentNode.className.replace("parent-"+o.addClassFocus, "");
+					}
+				}
+				if(o.passwordFieldText && inputs[i].type == "password") {
+					var fakeInput = document.createElement("input");
+					fakeInput.type = "text";
+					fakeInput.value = inputs[i].value;
+					fakeInput.className = inputs[i].className;
+					fakeInput.fake = true;
+					inputs[i].parentNode.insertBefore(fakeInput, inputs[i].nextSibling);
+					inputsSwap(inputs[i], null);
+				}
+			}
+		}
+	}
+	if(o.clearTextareas) {
+		var textareas = document.getElementsByTagName("textarea");
+		for(var i=0; i<textareas.length; i++) {
+			if(textareas[i].className.indexOf(o.filterClass)) {
+				textareas[i].valueHtml = textareas[i].value;
+				textareas[i].onfocus = function() {
+					if(this.value == this.valueHtml) this.value = "";
+					if(o.addClassFocus) {
+						this.className += " " + o.addClassFocus;
+						this.parentNode.className += " parent-" + o.addClassFocus;
+					}
+				}
+				textareas[i].onblur = function() {
+					if(this.value == "") this.value = this.valueHtml;
+					if(o.addClassFocus) {
+						this.className = this.className.replace(o.addClassFocus, "");
+						this.parentNode.className = this.parentNode.className.replace("parent-"+o.addClassFocus, "");
+					}
+				}
+			}
+		}
+	}
+	function inputsSwap(el, el2) {
+		if(el) el.style.display = "none";
+		if(el2) el2.style.display = "inline";
+	}
 }
-
-$(document).ready(function() {
-	$("a.fancybox").fancybox();
-	
-	$('.flash a.close').click(function() {
-		$('.flash').slideUp();
-	});
-	$('input[data-shows]').each(function(index,toggle) {
-		$toggle = $(toggle)
-		$toggled = $($toggle.data('shows'));
-		if($toggle.is(':checked')) {
-			$toggled.parent('li').show();
-		} else {
-			$toggled.parent('li').hide();
-		}
-	})
-	$('input[data-hidden-by]')
-	$('input[data-shows]').click(function() {
-		var $toggle = $(this);
-		var $toggled = $($(this).data('shows'));
-		if($toggle.is(':checked')) {
-			$toggled.parent('li').show();
-		} else {
-			$toggled.parent('li').hide();
-		}
-	});
-	
-	$thumb = $('.thumbnail');
-	
-	$thumb.data('original-width',$thumb.width());
-	$thumb.data('original-height',$thumb.height())
-	
-	$('.original').Jcrop({
-		onChange: showPreview,
-		onSelect: showPreview,
-		aspectRatio: 1,
-		minSize: [ 77, 77 ]
-	});
-})
