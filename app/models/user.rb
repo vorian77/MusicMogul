@@ -28,5 +28,9 @@ class User < ActiveRecord::Base
   def display_name
     self.profile_name.presence || self.email
   end
-  
+ 
+  def name
+    [first_name, last_name].join(' ')
+  end
+
 end
