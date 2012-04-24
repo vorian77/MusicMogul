@@ -57,14 +57,19 @@
 							<div class="box">
 								<%- if user_signed_in? %>
 									<div class="account-box">
-										<a href="#" class="user"> <img src="images/ico-01.gif" width="15" height="15" alt="image description" /><span><%= current_user.display_name %></span></a>
+                    <a href="#" class="user">
+                      <% if current_user.profile_photo_square? %>
+                        <%= image_tag current_user.profile_photo_square.tiny, :alt => 'Profile photo' %>
+                      <% end %>
+                      <span><%= current_user.display_name %></span>
+                    </a>
 										<div class="drop">
 											<div class="holder">
 												<div class="frame">
                           <div class="foto">
                             <div class="profile-photo">
                               <% if current_user.profile_photo_square? %>
-  														  <%= image_tag current_user.profile_photo_square.small %>
+                                <%= image_tag current_user.profile_photo_square.small, :width => '77', :height => '77' %>
                               <% end %>
                             </div>
 														<span><%= current_user.display_name %></span>
