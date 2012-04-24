@@ -1,3 +1,25 @@
+.flash {
+  div {
+    background-color: #fff;
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #e5e5e5;
+  }
+  .notice {
+    color: #000;
+  }
+  .alert {
+    color: #000;
+  }
+  .close:hover {
+    cursor: pointer;
+    text-decoration: none;
+    color: #369;
+  }
+}
+
 .profile-photo {
   width: 77px;
   height: 77px;
@@ -5,4 +27,54 @@
 	margin: 0 0 10px;
 	border: 1px solid #d7d7d7;
   background: image-url('default-profile-photo.png') no-repeat;
+}
+
+.social-networks li a{
+   display: block;
+   height: 16px;
+   min-width: 16px;
+   width: auto;
+   height: auto;
+   overflow: auto;
+   background: none;
+   text-indent: 0;
+}
+
+.account-box{
+	display: block;
+}
+
+.drop .frame .foto img{
+  display: none;
+  margin: 0;
+  border: none;
+}
+
+.social-media-buttons {
+  height: 40px;
+  line-height: 26px;
+  margin-top: 15px;
+  div {
+    float: left;
+    margin-right: 10px;
+  }
+}
+
+.formtastic {
+  .photo {
+    width: 72%;
+  }
+
+  &.user {
+    .thumbnail-wrapper {
+      width: 77px;
+      height: 77px;
+      overflow: hidden;
+    }
+    .original-wrapper {
+      float: right;
+      width: 75%;
+      position: relative;
+    }
+  }
 }
