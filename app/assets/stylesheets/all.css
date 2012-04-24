@@ -256,11 +256,6 @@ form, fieldset{
 	float:left;
 	margin:2px 20px 0 0;
 }
-.drop .frame .foto img{
-	display:block;
-	margin:0 0 10px;
-	border:1px solid #d7d7d7;
-}
 .drop .frame .list{
 	overflow:hidden;
 	margin:0;
