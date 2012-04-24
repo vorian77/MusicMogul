@@ -61,8 +61,12 @@
 										<div class="drop">
 											<div class="holder">
 												<div class="frame">
-													<div class="foto">
-														<%= image_tag current_user.profile_photo_square, :style => 'width: 77px; height: 77px; overflow: hidden;' %>
+                          <div class="foto">
+                            <div class="profile-photo">
+                              <% if current_user.profile_photo_square? %>
+  														  <%= image_tag current_user.profile_photo_square.small %>
+                              <% end %>
+                            </div>
 														<span><%= current_user.display_name %></span>
 													</div>
 													<ul class="list">

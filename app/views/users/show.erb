@@ -10,8 +10,8 @@
 			<%= country_select('user','country', ['United States','Canada','Mexico','United Kingdom']) %>
 		</li>
 		<%= f.input :birthdate, :start_year => 1901, :order => [:month, :day, :year] %>
-		<%= f.input :interview_status, :input_html => { 'data-shows' => '#user_phone'} %>
-		<%= f.input :phone, :input_html => { 'data-hidden-by' => '#user_interview_status' } %>
+		<%= f.input :interview_status, :input_html => { 'data-shows' => '#user_phone_input'} %>
+		<%= f.input :phone %>
 		<%= f.input :profile_name %>
 		<%= f.input :hometown %>
 		<%= f.input :bio, :as => :text, :input_html => { :rows => 10 } %>
