@@ -11,7 +11,34 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120417155920) do
+ActiveRecord::Schema.define(:version => 20120425041503) do
+
+  create_table "contests", :force => true do |t|
+    t.string   "name"
+    t.time     "date"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "entries", :force => true do |t|
+    t.integer  "contest_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "entries", ["contest_id"], :name => "index_entries_on_contest_id"
+  add_index "entries", ["user_id"], :name => "index_entries_on_user_id"
+
+  create_table "judgings", :force => true do |t|
+    t.integer  "contest_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "judgings", ["contest_id"], :name => "index_judgings_on_contest_id"
+  add_index "judgings", ["user_id"], :name => "index_judgings_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
