@@ -10,10 +10,11 @@ class User < ActiveRecord::Base
     :interview_status, :profile_name, :hometown, :genre, :bio, :facebook,
     :twitter, :phone, :profile_photo_square, :profile_photo_rectangle,
     :remove_profile_photo_square, :remove_profile_photo_rectangle, :thumb_x,
-    :thumb_y, :thumb_w
+    :thumb_y, :thumb_w, :account_type
   
   attr_accessor :thumb_x, :thumb_y, :thumb_w
-  
+  attr_accessor :account_type
+
   with_options :on => :update do |u|
     u.validates_presence_of :first_name, :message => "First Name is required."
     u.validates_presence_of :last_name, :message => "Last Name is required."
@@ -24,13 +25,21 @@ class User < ActiveRecord::Base
   
   mount_uploader :profile_photo_square, SquareProfilePhotoUploader
   mount_uploader :profile_photo_rectangle, ProfilePhotoUploader
-  
+
+  has_many :entries
+  has_many :judgings
+
+  before_save :parse_account_type, :if => :account_type
+
   def display_name
     self.profile_name.presence || self.email
   end
  
   def name
     [first_name, last_name].join(' ')
+  end
+
+  def parse_account_type
   end
 
 end

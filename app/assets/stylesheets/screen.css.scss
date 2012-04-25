@@ -34,17 +34,27 @@
   background: image-url('default-profile-photo.png') no-repeat;
 }
 
+.display-name {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+}
+
+.drop .frame .foto img{
+  margin: 0;
+  border: none;
+}
+
+.account-box .user span {
+  padding-right: 5px;
+}
+
 #header .panel .block-holder {
   width: 300px;
 }
 
 .account-box{
 	display: block;
-}
-
-.drop .frame .foto img{
-  margin: 0;
-  border: none;
 }
 
 .social-media-buttons {
@@ -61,6 +71,11 @@
 }
 
 .formtastic {
+  ol, ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
   &.user {
     .thumbnail-wrapper {
       width: 77px;

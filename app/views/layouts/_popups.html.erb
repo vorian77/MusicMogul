@@ -6,24 +6,24 @@
         <div class="text-holder">
           <p>Please select which of these best describes how you will participate in contests...</p>
         </div>
-        <form action="#" class="signup-form">
+        <%= form_for (User.new), :url => registration_path('user'), :html => { :class => 'signup-form' } do |f| %>
           <fieldset>
             <div class="row">
-              <label for="judge" class="checkbox-label">
-                <img src="<%= asset_path('img-29.jpg') %>" alt="image description" width="174" height="90" />
+              <%= f.label :account_type, :class => 'checkbox-label', :for => 'account_type_judge' do %>
+                <%= image_tag 'img-29.jpg', :alt => 'Judge', :width => '174', :height => '90' %>
                 <span>I will judge</span>
-                <input class="radio" type="radio" name="account_type" id="judge" value="judge" />
-              </label>
-              <label for="compete" class="checkbox-label">
-                <img src="<%= asset_path('img-30.jpg') %>" alt="image description" width="174" height="90" />
+                <%= f.radio_button :account_type, 'judge', :class => 'radio', :id => 'account_type_judge' %>
+              <% end %>
+              <%= f.label :account_type, :class => 'checkbox-label', :for => 'account_type_compete' do %>
+                <%= image_tag 'img-30.jpg', :alt => 'Compete', :width => '174', :height => '90' %>
                 <span>I will compete</span>
-                <input type="radio" name="account_type" id="compete" value="compete" />
-              </label>
-              <label for="judge-compete" class="checkbox-label checkbox-label-2">
-                <img src="<%= asset_path('img-31.jpg') %>" alt="image description" width="174" height="90" />
+                <%= f.radio_button :account_type, 'compete', :class => 'radio', :id => 'account_type_compete' %>
+              <% end %>
+              <%= f.label :account_type, :class => 'checkbox-label', :for => 'account_type_judge_compete' do %>
+                <%= image_tag 'img-31.jpg', :alt => 'Compete', :width => '174', :height => '90' %>
                 <span>I will judge &amp; compete</span>
-                <input type="radio" name="account_type" id="judge-compete" value="judge-compete" />
-              </label>
+                <%= f.radio_button :account_type, 'judge,compete', :class => 'radio', :id => 'account_type_judge_compete' %>
+              <% end %>
             </div>
             <div class="columns">
               <div class="col-1">
@@ -36,27 +36,33 @@
               <div class="col-2">
                 <h4>Or Email</h4>
                 <div class="text-row">
-                  <label for="name">Name<span class="required">*</span></label>
-                  <div class="text"><input type="text" id="name" value="Stef" /></div>
+                  <%= f.label :name do %>
+                    Name<span class="required">*</span>
+                  <% end %>
+                  <div class="text"><%= f.text_field :name, :placeholder => 'Stef' %></div>
                 </div>
                 <div class="text-row">
-                  <label for="email">Email<span class="required">*</span></label>
-                  <div class="text"><input type="text" id="email" value="&#115;&#116;&#101;&#112;&#104;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;" /></div>
+                  <%= f.label :email do %>
+                    Email<span class="required">*</span>
+                  <% end %>
+                  <div class="text"><%= f.text_field :email, :placeholder => 'steph@gmail.com' %></div>
                 </div>
                 <div class="text-row">
-                  <label for="pass">Password<span class="required">*</span></label>
-                  <div class="text"><input type="password" id="pass" /></div>
+                  <%= f.label :password do %>
+                    Password<span class="required">*</span>
+                  <% end %>
+                  <div class="text"><%= f.password_field :password %></div>
                 </div>
               </div>
             </div>
             <div class="submit-row">
               <div class="submit-holder">
-                <input type="submit" value="Signup" class="button-signup" />
+                <%= f.submit 'Sign Up', :class => 'button-signup' %>
               </div>
               <p>Are you already a member of Fans Helping Artists? <a class="lightbox" href="#popup-2">Login</a></p>
             </div>
           </fieldset>
-        </form>
+        <% end %>
       </div>
     </div>
     <a href="#" class="btn-close">Close</a>

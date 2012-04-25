@@ -60,15 +60,15 @@
                       <% if current_user.profile_photo_square? %>
                         <%= image_tag current_user.profile_photo_square.tiny, :alt => 'Profile photo' %>
                       <% end %>
-                      <span><%= current_user.display_name %></span>
+                      <span><div class="display-name"><%= current_user.display_name %></div></span>
                     </a>
                     <div class="drop">
                       <div class="holder">
                         <div class="frame">
                           <div class="foto">
-                            <% if current_user.profile_photo_square? %>
+                            <div class="profile-photo"><% if current_user.profile_photo_square? %>
                               <%= image_tag current_user.profile_photo_square.small, :width => '77', :height => '77' %>
-                            <% end %>
+                            <% end %></div>
                             <span><%= current_user.display_name %></span>
                           </div>
                           <ul class="list">
@@ -89,8 +89,8 @@
 						</div>
 					</div>
 					<ul id="nav">
-						<li class="active"><a href="<%= root_path %>">Home <span class="arrow">arrow</span></a></li><li>
-            <a href="<%= page_path('contestants'); %>">Preview Contestants <span class="arrow">arrow</span></a></li>
+            <li class="<%= 'active' if current_page?(root_path) %>"><a href="<%= root_path %>">Home <span class="arrow">arrow</span></a></li>
+            <li class="<%= 'active' if current_page?(page_path('contestants')) %>"><a href="<%= page_path('contestants'); %>">Preview Contestants <span class="arrow">arrow</span></a></li>
 					</ul>
 				</div>
 			</div>
