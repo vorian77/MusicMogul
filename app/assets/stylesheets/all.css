@@ -57,6 +57,25 @@ body{
 	font:18px/20px 'IstokRegular', Arial, Helvetica, sans-serif;
 	min-width:1003px;
 }
+.flash div {
+	background-color: #fff;
+	height: 40px;
+	line-height: 40px;
+	font-weight: bold;
+	text-align: center;
+	background-color: #e5e5e5;
+}
+.flash .notice {
+	color: #000;
+}
+.flash .alert {
+	color: #000;
+}
+.flash .close:hover {
+	cursor: pointer;
+	text-decoration: none;
+	color: #369;
+}
 img{border-style:none;} 
 a{
 	text-decoration:none;
@@ -153,12 +172,15 @@ form, fieldset{
 	margin:0 0 0 4px;
 }
 .social-networks li a{
-	width:16px;
-	height:16px;
-	display:block;
-	overflow:hidden;
-	background:url(../images/social-networks.gif) no-repeat;
-	text-indent:-9999px;
+	display: block;
+	height: 16px;
+	min-width: 16px;
+	/* width:16px;
+	/height:16px;
+	// display:block;
+	// overflow:hidden;
+	// background:url(../images/social-networks.gif) no-repeat;
+	/ text-indent:-9999px; */
 }
 .social-networks li:first-child{margin:0;}
 .social-networks .twitter{background-position:-20px 0;}
@@ -184,7 +206,6 @@ form, fieldset{
 	position:relative;
 	padding:4px 0 13px 12px;
 	font:12px/14px 'IstokRegular', Arial, Helvetica, sans-serif;
-	display:none;
 }
 .account-box:after{
 	display:block;
@@ -548,3 +569,29 @@ form, fieldset{
 }
 .add-nav li:first-child{margin:0;}
 .add-nav li a{color:#0577b8;}
+
+.social-media-buttons {
+	height: 40px;
+	line-height: 26px;
+	margin-top: 15px;
+}
+
+.social-media-buttons div {
+	float: left;
+	margin-right: 10px;
+}
+
+.formtastic .photo {
+	width: 72%;
+}
+
+.formtastic.user .thumbnail-wrapper {
+	width: 77px;
+	height: 77px;
+	overflow: hidden;
+}
+
+.formtastic.user .original-wrapper {
+	float: right; width: 75%;
+	position: relative;
+}
