@@ -27,73 +27,70 @@
 		<%- end %>
 	</div>
 	<div id="wrapper">
-		<div class="w1">
+    <div class="w1">
 			<div id="header">
 				<div class="header-holder">
-					<h1 class="logo"><a href="<%= root_path %>">FansHelpingArtists</a></h1>
+          <h1 class="logo"><%= link_to 'Fans Helping Artists', root_path %></h1>
 					<span class="slogan">A world class music talent contest<span>judged by fans!</span></span>
 				</div>
 				<div class="panel">
 					<div class="block">
 						<div class="block-holder">
-							<ul class="social-networks addthis_toolbox" addthis:url="http://fanhelp.us" addthis:title="Fans Helping Artists" addthis:description="description stuff" >
-								<script type="text/javascript">var addthis_config = { data_track_clickback: false }</script>
-								<!-- AddThis Button BEGIN -->
-								<li><a class="addthis_button_preferred_1"></a></li>
+              <ul class="social-networks">
+                <li><a href="#">facebook</a></li>
+                <li><a href="#" class="twitter">twitter</a></li>
+                <li><a href="#" class="googleplus">google plus</a></li>
+								<li><a href="#" class="email">email</a></li>
+								<li><a href="#" class="shareyhis">ShareThis</a></li>
+                <!--
+                <script type="text/javascript">var addthis_config = { data_track_clickback: false }</script>
+                <li><a class="addthis_button_preferred_1"></a></li>
 								<li><a class="addthis_button_preferred_2"></a></li>
 								<li><a class="addthis_button_preferred_4"></a></li>
 								<li><a class="addthis_button_google_plusone" g:plusone:count="false" g:plusone:size="small"></a></li>
 								<li><a class="addthis_button_preferred_3"></a></li>
 								<li><a class="addthis_button_compact"></a></li>
-								<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f8a11bd2fe94136"></script>
-								<!-- AddThis Button END -->
-								<!--
-								<li><a href="#">facebook</a></li>
-								<li><a href="#" class="twitter">twitter</a></li>
-								<li><a href="#" class="email">email</a></li>
-								<li><a href="#" class="shareyhis">ShareThis</a></li>
-								-->
+                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f8a11bd2fe94136"></script>
+                -->
 							</ul>
 							<div class="box">
-								<%- if user_signed_in? %>
-									<div class="account-box">
-                    <a href="#" class="user">
+                <% if user_signed_in? %>
+                  <div class="account-box">
+                    <a href="<%= account_path %>" class="user">
                       <% if current_user.profile_photo_square? %>
                         <%= image_tag current_user.profile_photo_square.tiny, :alt => 'Profile photo' %>
                       <% end %>
                       <span><%= current_user.display_name %></span>
                     </a>
-										<div class="drop">
-											<div class="holder">
-												<div class="frame">
+                    <div class="drop">
+                      <div class="holder">
+                        <div class="frame">
                           <div class="foto">
-                            <div class="profile-photo">
-                              <% if current_user.profile_photo_square? %>
-                                <%= image_tag current_user.profile_photo_square.small, :width => '77', :height => '77' %>
-                              <% end %>
-                            </div>
-														<span><%= current_user.display_name %></span>
-													</div>
-													<ul class="list">
-														<li><a href="<%= account_path %>">My Account</a></li>
-														<li><a href="<%= destroy_user_session_path %>" data-method="delete">Logout</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-								<%- else %>
-									<ul class="log-in-nav">
-										<li><a href="<%= new_user_session_path %>">Log in</a></li>
-										<li><a href="<%= new_user_registration_path %>">Sign up</a></li>
-									</ul>
-								<%- end %>
+                            <% if current_user.profile_photo_square? %>
+                              <%= image_tag current_user.profile_photo_square.small, :width => '77', :height => '77' %>
+                            <% end %>
+                            <span><%= current_user.display_name %></span>
+                          </div>
+                          <ul class="list">
+                            <li><a href="<%= account_path %>">My Account</a></li>
+                            <li><a href="<%= destroy_user_session_path %>" data-method="delete">Logout</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% else %>
+								  <ul class="log-in-nav">
+									  <li><a class="lightbox" href="#popup-2"><span>Login</span></a></li>
+									  <li><a class="lightbox" href="#popup"><span>Signup</span></a></li>
+                  </ul><D-d>
+                <% end %>
 							</div>
 						</div>
 					</div>
 					<ul id="nav">
 						<li class="active"><a href="<%= root_path %>">Home <span class="arrow">arrow</span></a></li><li>
-						<a href="#">Preview Contestants <span class="arrow">arrow</span></a></li>
+            <a href="<%= page_path('contestants'); %>">Preview Contestants <span class="arrow">arrow</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -101,7 +98,8 @@
 				<%= yield %>	
 			</div>
 		</div>
-	</div>
+  </div>
+  <%= render 'layouts/popups' %>
 	<div id="footer">
 		<div class="panel">
 			<div class="holder">
@@ -116,17 +114,18 @@
 				<ul class="add-nav">
 					<li><a href="<%= page_path('notices') %>">About </a></li>
 					<li><a href="<%= page_path('notices') %>">Contact </a></li>
-					<li><a href="<%= page_path('notices') %>">Terms</a></li>
+          <li><a href="<%= page_path('notices') %>">Terms</a></li>
+          <li><a href="<%= page_path('sponsors') %>">Sponsors</a></li>
 					<li><a href="<%= page_path('notices') %>">Privacy</a></li>
 				</ul>
 			</div>
-			<p>&copy; 2012 Bright Lights Music Group, LLC  All Rights Reserved</p>
-		</div>
-		<div class="social-media-buttons">
-			<div class="twitter-follow"><a href="https://twitter.com/FanHelp" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @FanHelp</a></div>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-			<div class="fb-like" data-href="http://fanhelp.us" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
-		</div>
+		  <div class="social-media-buttons">
+			  <div class="twitter-follow"><a href="https://twitter.com/FanHelp" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @FanHelp</a></div>
+			  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			  <div class="fb-like" data-href="http://fanhelp.us" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+      </div>
+    </div>
+    <div class="copyright">&copy; 2012 Bright Lights Music Group, LLC  All Rights Reserved</div>
 	</div>
 </body>
 </html>

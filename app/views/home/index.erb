@@ -1,49 +1,50 @@
 <div class="carousel">
-					<div class="frame">
-						<ul class="slide-list">
-							<li class="slide slide-1">
-								<div class="text-box">
-									<h2>introduction</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet nisi lorem, nec molestie tortor.</p>
-									<a href="#" class="signup">signup</a>
-								</div>
-								<a href="<%= home_video_path %>" class="fancybox"><img src="/assets/img-video.gif" width="460" height="282" alt="image description" /></a>
-							</li>
-							<li class="slide slide-2">
-								<div class="text-box">
-									<h2>contestants</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet nisi lorem, nec molestie tortor.</p>
-                  <%= link_to 'preview', page_path(:name => 'contestants'), :class => 'preview' %>
-								</div>
-								<img src="/assets/img-04.png" width="510" height="323" alt="image description" />
-							</li>
-							<li class="slide slide-3">
-								<div class="text-box">
-									<h2>prize pool promise</h2>
-									<p>Morbi hendrerit varius lectus eget scelerisque. Donec nibh nisl, tempus eu imperdiet stibulum.</p>
-                  <%= link_to 'learn more', page_path(:name => 'prize_pool'), :class => 'learn-more' %>
-								</div>
-								<img src="/assets/img-05.png" width="345" height="253" alt="image description" />
-							</li>
-						</ul>
-					</div>
-					<div class="switcher"><!--bullets--></div>
-				</div>
-				<div class="info-box">
-					<div class="holder">
-						<div class="frame">
-							<div class="box">
-								<h3><span>BECOME A JUDGE or spectator</span></h3>
-								<img src="/assets/img-01.gif" width="194" height="118" alt="image description" />
-								<p>Evaluate performances from great musicians. Meet and support tomorrow’s headliners!</p>
-								<a href="<%= page_path("more_info_fans") %>" class="link-1">fans</a>
-							</div>
-							<div class="box">
-								<h3><span>BECOME A CONTESTANT</span></h3>
-								<img src="/assets/img-02.gif" width="203" height="118" alt="image description" />
-								<p>Get valuable feedback from judges,<br /> meet new fans, and win cash prizes!</p>
-								<a href="<%= page_path("more_info_contestants") %>" class="link-2">singers and bands</a>
-							</div>
-						</div>
-					</div>
-				</div>
+    <div class="frame">
+      <ul class="slide-list">
+        <li class="slide slide-1">
+          <div class="text-box">
+            <h2>introduction</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet nisi lorem, nec molestie tortor.</p>
+            <a href="#" class="signup">signup</a>
+          </div>
+          <a href="<%= home_video_path %>" class="fancybox"><img src="/assets/img-video.gif" width="460" height="282" alt="image description" /></a>
+        </li>
+        <li class="slide slide-2">
+          <div class="text-box">
+            <h2>contestants</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet nisi lorem, nec molestie tortor.</p>
+            <%= link_to 'preview', page_path('contestants'), :class => 'preview' %>
+          </div>
+          <img src="/assets/img-04.png" width="510" height="323" alt="image description" />
+        </li>
+        <li class="slide slide-3">
+          <div class="text-box">
+            <h2>prize pool promise</h2>
+            <p>Morbi hendrerit varius lectus eget scelerisque. Donec nibh nisl, tempus eu imperdiet stibulum.</p>
+            <%= link_to 'learn more', page_path('prize_pool'), :class => 'learn-more' %>
+          </div>
+          <img src="/assets/img-05.png" width="345" height="253" alt="image description" />
+        </li>
+      </ul>
+    </div>
+    <div class="switcher"><!--bullets--></div>
+  </div>
+  <div class="info-box">
+    <div class="holder">
+      <div class="frame">
+        <div class="box">
+          <h3><span>BECOME A JUDGE or spectator</span></h3>
+          <img src="/assets/img-01.gif" width="194" height="118" alt="image description" />
+          <p>Evaluate performances from great musicians. Meet and support tomorrow’s headliners!</p>
+          <a href="<%= page_path("more_info_fans") %>" class="link-1">fans</a>
+        </div>
+        <div class="box">
+          <h3><span>BECOME A CONTESTANT</span></h3>
+          <img src="/assets/img-02.gif" width="203" height="118" alt="image description" />
+          <p>Get valuable feedback from judges,<br /> meet new fans, and win cash prizes!</p>
+          <a href="<%= page_path("more_info_contestants") %>" class="link-2">singers and bands</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

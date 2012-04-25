@@ -1,0 +1,104 @@
+<div class="popup-holder">
+  <div class="lightbox popup" id="popup">
+    <div class="holder">
+      <div class="frame">
+        <h3>Signup</h3>
+        <div class="text-holder">
+          <p>Please select which of these best describes how you will participate in contests...</p>
+        </div>
+        <form action="#" class="signup-form">
+          <fieldset>
+            <div class="row">
+              <label for="judge" class="checkbox-label">
+                <img src="<%= asset_path('img-29.jpg') %>" alt="image description" width="174" height="90" />
+                <span>I will judge</span>
+                <input class="radio" type="radio" name="checkbox-3" id="judge" />
+              </label>
+              <label for="compete" class="checkbox-label">
+                <img src="<%= asset_path('img-30.jpg') %>" alt="image description" width="174" height="90" />
+                <span>I will compete</span>
+                <input type="radio" name="checkbox-3" id="compete" />
+              </label>
+              <label for="judge-compete" class="checkbox-label checkbox-label-2">
+                <img src="<%= asset_path('img-31.jpg') %>" alt="image description" width="174" height="90" />
+                <span>I will judge &amp; compete</span>
+                <input type="radio" name="checkbox-3" id="judge-compete" />
+              </label>
+            </div>
+            <div class="columns">
+              <div class="col-1">
+                <h4>Signup via Facebook <em>(recommended)</em></h4>
+                <div class="btn-holder">
+                  <a href="#" class="btn-facebook">Connect with facebook</a>
+                </div>
+                <p>Sign up terms, lorem ipsum consectetur adipiscing elit. Suspendisse condimentum faucibus justo tempus gravida. Cras fringilla velit sed arcu gravida quis tincidunt dui porta.</p>
+              </div>
+              <div class="col-2">
+                <h4>Or Email</h4>
+                <div class="text-row">
+                  <label for="name">Name<span class="required">*</span></label>
+                  <div class="text"><input type="text" id="name" value="Stef" /></div>
+                </div>
+                <div class="text-row">
+                  <label for="email">Email<span class="required">*</span></label>
+                  <div class="text"><input type="text" id="email" value="&#115;&#116;&#101;&#112;&#104;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;" /></div>
+                </div>
+                <div class="text-row">
+                  <label for="pass">Password<span class="required">*</span></label>
+                  <div class="text"><input type="password" id="pass" /></div>
+                </div>
+              </div>
+            </div>
+            <div class="submit-row">
+              <div class="submit-holder">
+                <input type="submit" value="Signup" class="button-signup" />
+              </div>
+              <p>Are you already a member of Fans Helping Artists? <a class="lightbox" href="#popup-2">Login</a></p>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <a href="#" class="btn-close">Close</a>
+  </div>
+</div>
+<div class="popup-holder">
+  <div class="lightbox popup popup-login" id="popup-2">
+    <div class="holder">
+      <div class="frame">
+        <h3>Login</h3>
+        <form action="#" class="login-form">
+          <fieldset>
+            <div class="columns">
+              <div class="col-1">
+                <h4>Login with <strong>Facebook</strong></h4>
+                <div class="btn-holder">
+                  <a href="#" class="btn-facebook">Connect with facebook</a>
+                </div>
+                <p>Users who have not connected to facebook before will not be able to login this way. Please sign in and connect to facebook on your My Account page.</p>
+              </div>
+              <div class="col-2">
+                <h4>Or your <strong>FHA</strong> account details</h4>
+                <div class="text-row">
+                  <label for="mail">Email<span class="required">*</span></label>
+                  <div class="text"><input type="text" id="mail" value="&#115;&#116;&#101;&#112;&#104;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;" /></div>
+                </div>
+                <div class="text-row">
+                  <label for="password">Password<span class="required">*</span></label>
+                  <div class="text"><input type="password" id="password" /></div>
+                </div>
+              </div>
+            </div>
+            <div class="submit-row">
+              <div class="submit-holder">
+                <input type="submit" value="Login" class="button-signup" />
+              </div>
+              <p>Not a member of Fans Helping Artists yet? <a class="lightbox" href="#popup">Signup now!</a></p>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <a href="#" class="btn-close">Close</a>
+  </div>
+</div>
