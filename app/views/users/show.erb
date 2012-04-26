@@ -1,3 +1,316 @@
+<div class="breadcrumbs-holder">
+  <ul id="breadcrumbs">
+    <li><a class="home" href="<%= root_path %>"><span>Home</span></a></li>
+    <li><span>My Account</span></li>
+  </ul>
+</div>
+<div class="profile-box">
+  <h2>My account</h2>
+  <div class="tabs-holder">
+    <ul class="tabset">
+      <li><a href="#tab-1" class="tab active"><span class="tab-details">Account Details</span></a></li>
+      <li><a href="#tab-2" class="tab"><span class="tab-profile">Public Profile</span></a></li>
+      <li><a href="#tab-3" class="tab"><span class="tab-judge">Judge</span></a></li>
+      <li><a href="#tab-4" class="tab"><span class="tab-contestant">Contestant</span></a></li>
+    </ul>
+    <div class="tab-content" id="tab-1">
+      <div class="tab-holder">
+        <div class="tab-frame">
+          <%= semantic_form_for current_user, :url => account_path, :html => { :class => 'profile-form' } do |f| %>
+          <div class="title-row">
+            <h3>General account details</h3>
+            <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save'  %></div>
+          </div>
+          <div class="text-box">
+            <p>The information on this page is not shown on the site.</p>
+          </div>
+            <%= f.inputs do %>
+              <%= f.input :first_name %>
+              <%= f.input :last_name %>
+              <%= f.input :email %>
+              <%= f.input :zip %>
+              <li class="select input optional" id="user_country_input">
+                <label class="label" for="user_country"><%= User.human_attribute_name(:country) %></label>
+                <%= country_select('user','country', ['United States','Canada','Mexico','United Kingdom']) %>
+              </li>
+              <%= f.input :birthdate, :start_year => 1901, :order => [:month, :day, :year] %>
+              <%= f.input :interview_status %>
+              <div class="submit-row">
+                <%= f.actions :class => 'submit-holder' do %>
+                  <%= f.submit 'Save', :class => 'button-save' %>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="tab-content" id="tab-2">
+      <div class="tab-holder">
+        <div class="tab-frame">
+          <div class="title-row">
+            <h3>Your public profile</h3>
+            <div class="btn-holder"><a href="#" class="btn-save button">Save</a></div>
+          </div>
+          <div class="text-box">
+            <p>This is your public profile shown throughout the site.</p>
+          </div>
+          <form action="#" class="profile-form">
+            <fieldset>
+              <div class="row">
+                <label class="user-name" for="user">User/Band <br /> Name<span class="required">*</span></label>
+                <div class="text"><input type="text" id="user" value="Fluxphonic" /></div>
+              </div>
+              <div class="row">
+                <label for="hometown">Hometown<span class="required">*</span></label>
+                <div class="text"><input type="text" id="hometown" value="Detroit" /></div>
+              </div>
+              <div class="picture-box">
+                <h4>Profile Picture</h4>
+                <div class="holder">
+                  <div class="picture-holder">
+                    <img src="images/img-11.jpg" alt="image description" width="240" height="197" />
+                    <a href="#" class="btn-delete">Delete current image</a>
+                  </div>
+                  <div class="file-box">
+                    <p>Click ‘browse to select a new profile picture, then ‘upload’ to add the image to your profile.</p>
+                    <div class="file-row">
+                      <input type="file" />
+                    </div>
+                    <div class="button-row">
+                      <input type="button" value="Upload" class="btn-upload" />
+                      <span class="formats">jpeg, png or gif, max 4mb</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="biography">
+                <h4>Biography</h4>
+                <div class="biography-box">
+                  <div class="biography-holder">
+                    <div class="biography-frame">
+                      <p>Steffanie Christian and Russ Dobson have been collaborating together musicaly since 2005. Upon his discharge from the Army, Russ moved to Ann Arbor where he met Danny de la Croix and Kris Wilson. Shortly thereafter, FluxPhonic was formed. With the recent addition of Josh Badura on drums, FluxPhonic is a force to be reckoned with. Musically innovative, FluxPhonic is committed to writing, creating, and delivering a fresh new sound that appeals to all who love the sound of music. Fusing the musical styles of Red Hot Chili Peppers, Bob Marley, Stevie Wonder, Janis Joplin, and Incubus just to name a few.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="video-box">
+                <h4>Profile Video</h4>
+                <div class="holder">
+                  <div class="picture-holder">
+                    <div class="video-holder">
+                      <img src="images/img-12.jpg" alt="image description" width="242" height="148" />
+                    </div>
+                    <a href="#" class="btn-delete">Delete current video</a>
+                  </div>
+                  <div class="file-box">
+                    <p>Click ‘browse to select a new video, then ‘upload’ to add the video to your profile.</p>
+                    <div class="file-row">
+                      <input type="file" />
+                    </div>
+                    <div class="button-row">
+                      <input type="button" value="Upload" class="btn-upload" />
+                      <span class="formats">.mpeg .flv or .mov, max 20mb</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="social-box">
+                <h4>Social Accounts</h4>
+                <div class="row">
+                  <label for="facebook"><span class="facebook">Facebook</span></label>
+                  <div class="text"><input type="text" id="facebook" value="www.facebook.com/fluxphonic" /></div>
+                </div>
+                <div class="row">
+                  <label for="twitter"><span class="twitter">Twitter</span></label>
+                  <div class="text"><input type="text" id="twitter" value="@fluxphonic" /></div>
+                </div>
+              </div>
+              <div class="submit-row">
+                <div class="submit-holder">
+                  <input type="submit" value="Save" class="button-save" />
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="tab-content" id="tab-3">
+      <div class="tab-holder">
+        <div class="tab-frame">
+          <div class="title-row title-row-2">
+            <h3>Judge</h3>
+            <div class="btn-holder"><a href="#" class="btn-save button">Save</a></div>
+          </div>
+          <form action="#" class="judge-form">
+            <fieldset>
+              <div class="radio-row">
+                <span class="title">I will judge...</span>
+                <label class="yes" for="yes"><input type="radio" name="radio-1" id="yes" checked="checked" />Yes</label>
+                <label class="no" for="no"><input type="radio" name="radio-1" id="no" />No</label>
+              </div>
+              <div class="checkbox-row">
+                <p>Select genres you would like to judge</p>
+                <div class="checkbox-holder">
+                  <label for="country">
+                    <input type="checkbox" name="checkbox-1" id="country" checked="checked" />Country</label><label for="electronic">
+                    <input type="checkbox" name="checkbox-1" id="electronic" />Electronic</label><label for="hiphop">
+                    <input type="checkbox" name="checkbox-1" id="hiphop" checked="checked" />Hip Hop</label><label for="pop">
+                    <input type="checkbox" name="checkbox-1" id="pop" />Pop</label><label for="rnb">
+                    <input type="checkbox" name="checkbox-1" id="rnb" />R&amp;B</label><label for="rock">
+                    <input type="checkbox" name="checkbox-1" id="rock" />Rock</label>
+                </div>
+              </div>
+              <div class="submit-row">
+                <div class="submit-holder">
+                  <input type="submit" value="Save" class="button-save" />
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="tab-content" id="tab-4">
+      <div class="tab-holder">
+        <div class="tab-frame">
+          <div class="title-row title-row-2">
+            <h3>Contestant</h3>
+            <div class="btn-holder"><a href="#" class="btn-save button">Save</a></div>
+          </div>
+          <form action="#" class="contestant-form">
+            <fieldset>
+              <div class="radio-row">
+                <span class="title">I will compete...</span>
+                <label class="yes" for="yes-2"><input type="radio" name="radio-2" id="yes-2" checked="checked" />Yes</label>
+                <label class="no" for="no-2"><input type="radio" name="radio-2" id="no-2" />No</label>
+              </div>
+              <div class="text-row">
+                <p>Fill out the fields to complete your artist profile.</p>
+              </div>
+              <div class="form-box">
+                <div class="row">
+                  <label for="artist">Type of Artist<span class="required">*</span></label>
+                  <select id="artist" class="select-2">
+                    <option value="Group">Group</option>
+                    <option value="option 1">option 1</option>
+                    <option value="option 2">option 2</option>
+                  </select>
+                </div>
+                <div class="row">
+                  <label for="genre">Genre<span class="required">*</span></label>
+                  <select id="genre" class="select-3">
+                    <option value="Rock">Rock</option>
+                    <option value="option 1">option 1</option>
+                    <option value="option 2">option 2</option>
+                  </select>
+                </div>
+                <div class="row">
+                  <label for="community" class="community">Community <br />Name<span class="required">*</span></label>
+                  <div class="text"><input type="text" id="community" value="The Flux Phonic System" /></div>
+                </div>
+              </div>
+              <div class="audition-box">
+                <h4>Audition Performance</h4>
+                <div class="row">
+                  <label for="type">Type<span class="required">*</span></label>
+                  <select id="type" class="select-2">
+                    <option value="Original">Original</option>
+                    <option value="option 1">option 1</option>
+                    <option value="option 2">option 2</option>
+                  </select>
+                </div>
+                <div class="row">
+                  <label for="song">Song Title<span class="required">*</span></label>
+                  <div class="text"><input type="text" id="song" value="Out Of Time" /></div>
+                </div>
+                <div class="row">
+                  <label for="author">Written By<span class="required">*</span></label>
+                  <div class="text"><input type="text" id="author" value="Russ Smith" /></div>
+                </div>
+                <div class="video-box">
+                  <div class="picture-holder">
+                    <div class="video-holder">
+                      <img src="images/img-12.jpg" alt="image description" width="242" height="148" />
+                    </div>
+                    <a href="#" class="btn-delete">Delete current video</a>
+                  </div>
+                  <div class="file-box">
+                    <p>Click ‘browse to select a new video, then ‘upload’ to add the video to your profile.</p>
+                    <div class="file-row">
+                      <input type="file" />
+                    </div>
+                    <div class="button-row">
+                      <input type="button" value="Upload" class="btn-upload" />
+                      <span class="formats">.mpeg .flv or .mov, max 20mb</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="gift-box">
+                <h4>Career Gift</h4>
+                <div class="text-block">
+                  <p>What equipment (or amount of cash) would advance your musical career 
+and why?</p>
+                </div>
+                <div class="row">
+                  <label for="name">Name</label>
+                  <div class="text"><input type="text" id="name" value="Lorem ipsum" /></div>
+                </div>
+                <div class="row">
+                  <label for="description">Description</label>
+                  <div class="textarea-box">
+                    <div class="textarea-holder">
+                      <div class="textarea-frame">
+                        <div class="textarea">
+                          <textarea id="description" cols="30" rows="10" >Lorem ipsum dolor sit amet consectetur adipiscine verbatim.</textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row value-row">
+                  <label for="value">Value<span class="sign">$</span></label>
+                  <div class="text"><input type="text" id="value" value="1,000" /></div>
+                </div>
+                <div class="row">
+                  <label for="starter">KickStarter URL</label>
+                  <div class="text"><input type="text" id="starter" value="http://www.loremipsum.com/7889660" /></div>
+                </div>
+                <div class="row">
+                  <label for="pledge">PledgeMusic URL</label>
+                  <div class="text"><input type="text" id="pledge" value="http://www.loremipsum.com/7889660" /></div>
+                </div>
+              </div>
+              <div class="submit-row">
+                <div class="submit-holder">
+                  <input type="submit" value="Save" class="button-save" />
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h1>My Account</h1>
 
 <%= semantic_form_for current_user, :url => account_path, :method => :post do |f| %>

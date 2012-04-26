@@ -57,7 +57,7 @@
                 <% if user_signed_in? %>
                   <div class="account-box">
                     <a href="<%= account_path %>" class="user">
-                      <% if current_user.profile_photo_square? %>
+                      <% if current_user.profile_photo_square.try(:tiny).present? %>
                         <%= image_tag current_user.profile_photo_square.tiny, :alt => 'Profile photo' %>
                       <% end %>
                       <span><div class="display-name"><%= current_user.display_name %></div></span>

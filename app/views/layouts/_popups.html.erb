@@ -73,7 +73,7 @@
     <div class="holder">
       <div class="frame">
         <h3>Login</h3>
-        <form action="#" class="login-form">
+        <%= form_for User.new, :url => session_path('user'), :html => { :class => 'login-form' } do |f| %>
           <fieldset>
             <div class="columns">
               <div class="col-1">
@@ -86,12 +86,16 @@
               <div class="col-2">
                 <h4>Or your <strong>FHA</strong> account details</h4>
                 <div class="text-row">
-                  <label for="mail">Email<span class="required">*</span></label>
-                  <div class="text"><input type="text" id="mail" value="&#115;&#116;&#101;&#112;&#104;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;" /></div>
+                  <%= f.label :email do %>
+                    Email<span class="required">*</span>
+                  <% end %>
+                  <div class="text"><%= f.text_field :email, :placeholder => 'steph@gmail.com' %></div>
                 </div>
                 <div class="text-row">
-                  <label for="password">Password<span class="required">*</span></label>
-                  <div class="text"><input type="password" id="password" /></div>
+                  <%= f.label :password do %>
+                    Password<span class="required">*</span>
+                  <% end %>
+                  <div class="text"><%= f.password_field :password %></div>
                 </div>
               </div>
             </div>
@@ -102,7 +106,7 @@
               <p>Not a member of Fans Helping Artists yet? <a class="lightbox" href="#popup">Signup now!</a></p>
             </div>
           </fieldset>
-        </form>
+        <% end %>
       </div>
     </div>
     <a href="#" class="btn-close">Close</a>

@@ -1,0 +1,78 @@
+.formtastic {
+  ol, ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li.input {
+    overflow: hidden;
+    padding-bottom: 15px;
+  }
+  &.user {
+    .thumbnail-wrapper {
+      width: 77px;
+      height: 77px;
+      overflow: hidden;
+    }
+    .original-wrapper {
+      float: right;
+      width: 75%;
+      position: relative;
+    }
+  }
+  .photo {
+    width: 72%;
+  }
+  input[type="text"], input[type="email"] {
+    background: image-url('sprites.png') no-repeat 0 -500px;
+    float: left;
+  }
+  input[type="email"] {
+    border: 0;
+    margin: 0;
+    color: #999;
+    font: 14px/18px 'IstokBold', Arial, Helvetica, sans-serif;
+    padding: 15px 13px;
+    width: 406px;
+    height: 15px;
+  }
+  li.date_select {
+    border: solid #CCC;
+    padding: 22px 0 26px;
+    margin-top: 12px;
+    border-width: 1px 0;
+  }
+  .fragments {
+    position:relative;
+    .label label {
+      position: absolute;
+      padding: 0;
+    }
+  }
+  .fragments-group {
+    float:left;
+    width:74%;
+    margin:0;
+    padding:0 0 0 140px;
+    .fragment {
+      float:left;
+      width:auto;
+      margin:0 .3em 0 0;
+      padding:0;
+      border:0;
+      label {
+        display: none;
+        input {
+          display: inline;
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+  }
+  .boolean label {
+    width: auto;
+    padding-left: 140px;
+    display: block;
+  }
+}

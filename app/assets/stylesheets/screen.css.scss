@@ -70,25 +70,4 @@
   }
 }
 
-.formtastic {
-  ol, ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  &.user {
-    .thumbnail-wrapper {
-      width: 77px;
-      height: 77px;
-      overflow: hidden;
-    }
-    .original-wrapper {
-      float: right;
-      width: 75%;
-      position: relative;
-    }
-  }
-  .photo {
-    width: 72%;
-  }
-}
+@import 'partials/formtastic'
