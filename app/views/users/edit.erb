@@ -57,19 +57,19 @@
             <%= f.inputs :class => 'profile-form' do %>
               <%= f.input :profile_name %>
               <%= f.input :hometown %>
-              <li class="picture-box">
+              <div class="picture-box">
                 <h4>Profile Picture</h4>
                 <div class="holder">
                   <div class="picture-holder">
                     <% if current_user.profile_photo_square? %>
-                      <%= image_tag current_user.profile_photo_square, :width => '240', :height => '197' %>
+                      <a href="<%= edit_thumbnail_path %>" class="lightbox"><%= image_tag current_user.profile_photo_square, :width => '240', :height => '197' %></a>
                       <a href="#" class="btn-delete">Delete current image</a>
                     <% end %>
                   </div>
                   <div class="file-box">
-                    <p>Click ‘browse to select a new profile picture, then ‘upload’ to add the image to your profile.</p>
+                    <p>Click ‘browse to select a new profile picture.</p>
                     <div class="file-row">
-                      <input type="file" />
+                      <%= f.input :profile_photo_square, :as => :file %>
                     </div>
                     <div class="button-row">
                       <!-- <input type="button" value="Upload" class="btn-upload" /> -->
@@ -77,9 +77,9 @@
                     </div>
                   </div>
                 </div>
-              </li>
+              </div>
               <%= f.input :bio, :as => :text %>
-              <li class="video-box">
+              <div class="video-box">
                 <h4>Profile Video</h4>
                 <div class="holder">
                   <div class="picture-holder">
@@ -99,7 +99,7 @@
                     </div>
                   </div>
                 </div>
-                </li>
+              </div>
               <div class="social-box">
                 <h4>Social Accounts</h4>
                 <%= f.input :facebook %>
@@ -155,22 +155,9 @@
                 </div>
                 <div class="audition-box">
                   <h4>Audition Performance</h4>
-                  <div class="row">
-                    <label for="type">Type<span class="required">*</span></label>
-                    <select id="type" class="select-2">
-                      <option value="Original">Original</option>
-                      <option value="option 1">option 1</option>
-                      <option value="option 2">option 2</option>
-                    </select>
-                  </div>
-                  <div class="row">
-                    <label for="song">Song Title<span class="required">*</span></label>
-                    <div class="text"><input type="text" id="song" value="Out Of Time" /></div>
-                  </div>
-                  <div class="row">
-                    <label for="author">Written By<span class="required">*</span></label>
-                    <div class="text"><input type="text" id="author" value="Russ Smith" /></div>
-                  </div>
+                  <%= entry.input :audition_type, :as => :select, :collection => Entry::ENTRY_TYPES, :include_blank => false %>
+                  <%= entry.input :song_title %>
+                  <%= entry.input :written_by %>
                   <div class="video-box">
                     <div class="picture-holder">
                       <div class="video-holder">
@@ -193,37 +180,13 @@
                 <div class="gift-box">
                   <h4>Career Gift</h4>
                   <div class="text-block">
-                    <p>What equipment (or amount of cash) would advance your musical career 
-  and why?</p>
+                    <p>What equipment (or amount of cash) would advance your musical career and why?</p>
                   </div>
-                  <div class="row">
-                    <label for="name">Name</label>
-                    <div class="text"><input type="text" id="name" value="Lorem ipsum" /></div>
-                  </div>
-                  <div class="row">
-                    <label for="description">Description</label>
-                    <div class="textarea-box">
-                      <div class="textarea-holder">
-                        <div class="textarea-frame">
-                          <div class="textarea">
-                            <textarea id="description" cols="30" rows="10" >Lorem ipsum dolor sit amet consectetur adipiscine verbatim.</textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row value-row">
-                    <label for="value">Value<span class="sign">$</span></label>
-                    <div class="text"><input type="text" id="value" value="1,000" /></div>
-                  </div>
-                  <div class="row">
-                    <label for="starter">KickStarter URL</label>
-                    <div class="text"><input type="text" id="starter" value="http://www.loremipsum.com/7889660" /></div>
-                  </div>
-                  <div class="row">
-                    <label for="pledge">PledgeMusic URL</label>
-                    <div class="text"><input type="text" id="pledge" value="http://www.loremipsum.com/7889660" /></div>
-                  </div>
+                  <%= entry.input :gift_name %>
+                  <%= entry.input :gift_description, :as => :text %>
+                  <%= entry.input :gift_value %>
+                  <%= entry.input :kickstarter %>
+                  <%= entry.input :pledgemusic %>
                 </div>
                 <div class="submit-row">
                   <%= f.actions :class => 'submit-holder' do %>

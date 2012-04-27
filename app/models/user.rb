@@ -55,4 +55,8 @@ class User < ActiveRecord::Base
     self.entries.first || self.entries.new
   end
 
+  def cropping?
+    [thumb_x,thumb_y,thumb_w].all?(&:present?)
+  end
+
 end

@@ -16,4 +16,18 @@ class UsersController < ApplicationController
     end
   end
   
+  def edit_thumbnail
+    render 'edit_thumbnail', :layout => 'basic'
+  end
+
+  def update_thumbnail
+    current_user.tap do |u|
+      u.thumb_x = params[:user][:thumb_x]
+      u.thumb_y = params[:user][:thumb_y]
+      u.thumb_w = params[:user][:thumb_w]
+    end
+    current_user.profile_photo_square.recreate_versions!
+    render :nothing => true
+  end
+
 end

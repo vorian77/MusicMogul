@@ -4,7 +4,9 @@ Mvp2::Application.routes.draw do
 
   get '/account' => 'users#edit', :as => :account
   put '/account' => 'users#update'
- 
+  get '/account/thumbnail' => 'users#edit_thumbnail', :as => :edit_thumbnail
+  put '/account/thumbnail' => 'users#update_thumbnail', :as => :update_thumbnail
+
   match 'video' => 'home#video', :as => :home_video
  
 	root :to => 'home#index'

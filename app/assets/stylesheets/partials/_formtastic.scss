@@ -10,10 +10,12 @@
       padding-bottom: 15px;
     }
     &.text {
+      float: none;
       border-top: 1px solid #CCC;
       padding: 25px 0;
       background: none;
       textarea {
+        background-color: #f9f9f9;
         width: 406px;
         height: 215px;
         border: solid #D4D4D4;
@@ -151,6 +153,9 @@
   }
   #user_entries_attributes_0_genre {
     width: 240px;
+  }
+  #user_entries_attributes_0_audition_type {
+    width: 120px;
   }
   #user_birthdate_2i {
     width: 140px;

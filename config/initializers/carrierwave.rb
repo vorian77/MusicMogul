@@ -1,7 +1,3 @@
-ENV['AWS_SECRET_ACCESS_KEY'] = "AorwybwpmYAK2N2TOZ1RjINQugICitXPzMC2q+a/"
-ENV['AWS_ACCESS_KEY_ID'] = "AKIAIAZHJIZGTW6R55AQ"
-ENV['AWS_BUCKET'] = "FanHelpMVP"
-
 CarrierWave.configure do |config|
   config.fog_credentials = {
     :provider               => 'AWS',
@@ -10,8 +6,7 @@ CarrierWave.configure do |config|
   }
   config.fog_directory  = ENV['AWS_BUCKET']
   if Rails.env.development?
-    # config.storage = :file
-    config.storage = :fog
+    config.storage = :file
   elsif Rails.env.test?
     config.storage = :file
     config.enable_processing = false

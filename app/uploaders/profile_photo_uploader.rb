@@ -1,7 +1,6 @@
 # encoding: utf-8
 
 class ProfilePhotoUploader < CarrierWave::Uploader::Base
-  include CarrierWaveDirect::Uploader
   include CarrierWave::RMagick
 
   def store_dir

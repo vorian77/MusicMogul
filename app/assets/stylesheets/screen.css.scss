@@ -65,7 +65,7 @@
   float: right;
   width: 330px;
   height: 35px;
-  margin-top: 0;
+  margin-top: -5px;
   .facebook-button {
     float: left;
     background: image-url('Spritesheet.png') no-repeat -640px -92px;
@@ -146,5 +146,47 @@
     .title {
       color: #999;
     }
+  }
+}
+
+.button-save {
+  font: 22px/26px 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+  color: white;
+  background: image-url('sprites.png') no-repeat -200px -350px;
+  display: block;
+  width: 66px;
+  height: 36px;
+  padding: 0 0 4px;
+  text-align: center;
+  cursor: pointer;
+  border: 0;
+}
+
+.edit-thumbnail {
+  width: 497px;
+  overflow: auto;
+  padding: 40px;
+  .original {
+    float: left;
+    width: 400px;
+    height: 400px;
+    background-color: #fff;
+    border: solid 1px #eee;
+    line-height: 400px;
+    text-align: center;
+    img {
+      max-width: 400px;
+      max-height: 400px;
+    }
+  }
+  .thumbnail {
+    float: right;
+    width: 77px;
+    height: 77px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .button-save {
+    float: right;
   }
 }

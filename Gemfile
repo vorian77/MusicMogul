@@ -8,10 +8,10 @@ gem 'sendgrid'
 gem 'formtastic'
 gem 'country-select', '~> 1.1.1'
 gem 'carrierwave'
-gem 'carrierwave_direct'
 gem 'rmagick'
 gem 'fog'
 gem 'fancybox-rails'
+gem 'haml-rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
