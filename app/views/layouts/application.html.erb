@@ -90,7 +90,7 @@
 					</div>
 					<ul id="nav">
             <li class="<%= 'active' if current_page?(root_path) %>"><a href="<%= root_path %>">Home <span class="arrow">arrow</span></a></li>
-            <li class="<%= 'active' if current_page?(page_path('contestants')) %>"><a href="<%= page_path('contestants'); %>">Preview Contestants <span class="arrow">arrow</span></a></li>
+            <li class="<%= 'active' if current_page?(page_path('more_info_contestants')) %>"><a href="<%= page_path('more_info_contestants'); %>">Preview Contestants <span class="arrow">arrow</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -115,7 +115,7 @@
           <li><a href="<%= page_path('notices', :anchor => 'tab-5') %>">About </a></li>
           <li><a href="<%= page_path('notices', :anchor => 'tab-6') %>">Contact </a></li>
           <li><a href="<%= page_path('notices', :anchor => 'tab-7') %>">Terms</a></li>
-          <li><a href="<%= page_path('sponsors', :anchor => 'tab-9') %>">Sponsors</a></li>
+          <li><a href="<%= sponsors_path %>">Sponsors</a></li>
           <li><a href="<%= page_path('notices', :anchor => 'tab-8') %>">Privacy</a></li>
 				</ul>
 			</div>

@@ -11,6 +11,7 @@ Mvp2::Application.routes.draw do
 	
   # get '/Fans' => 'home#fans', :as => :home_fans
 	
+  get '/page/sponsors' => 'pages#sponsors', :as => :sponsors
 	get '/page/:name' => 'pages#show', :as => :page
   
   # The priority is based upon order of creation:

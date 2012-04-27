@@ -6,4 +6,8 @@ class PagesController < ApplicationController
   def show
     render(params[:name])
   end
+
+  def sponsors
+    # Eventually load sponsors from database
+  end
 end
