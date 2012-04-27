@@ -2,7 +2,7 @@ Mvp2::Application.routes.draw do
 
   devise_for :users
 
-  get '/account' => 'users#show', :as => :account
+  get '/account' => 'users#edit', :as => :account
   put '/account' => 'users#update'
  
   match 'video' => 'home#video', :as => :home_video

@@ -2,16 +2,25 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-    formtastic:
-        labels:
-            user:
-                first_name: 'First Name'
-                last_name: 'Last Name'
-                zip: 'Zip'
-                country: 'Country'
-                Birthdate: 'Birthdate'
-                interview_status: 'Would you be willing to be interviewed about your band?'
-                profile_name: 'User or Band Name'
-                genre: 'Favorite or Performance Genre'
-                facebook: 'Facebook www.facebook.com/'
-                twitter: 'Twitter @'               
+  formtastic:
+    labels:
+      user:
+        first_name: 'First Name'
+        last_name: 'Last Name'
+        zip: 'Zip'
+        country: 'Country'
+        Birthdate: 'Birthdate'
+        interview_status: 'Would you be willing to be interviewed about your band?'
+        profile_name: 'User or Band Name'
+        facebook: 'Facebook'
+        twitter: 'Twitter'
+      entry:
+        active: 'I will compete...'
+        artist_type: 'Type of Artist'
+        community_name: 'Community Name'
+    form_hints:
+      user:
+        twitter: 'Without the @'
+    placeholders:
+      entry:
+        community_name: 'The Flux Phonic System'

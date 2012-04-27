@@ -11,5 +11,6 @@
  *= require_self
  *= require jquery.Jcrop
  *= require fancybox
- *= require_tree .
+ *= require all
+ *= require screen
 */

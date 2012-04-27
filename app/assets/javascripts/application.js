@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require jquery.Jcrop
 //= require jquery.fancybox
+//= require jcf
 //= require_tree .

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120425041503) do
+ActiveRecord::Schema.define(:version => 20120427025528) do
 
   create_table "contests", :force => true do |t|
     t.string   "name"
@@ -23,8 +23,21 @@ ActiveRecord::Schema.define(:version => 20120425041503) do
   create_table "entries", :force => true do |t|
     t.integer  "contest_id"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.boolean  "active",            :default => false, :null => false
+    t.string   "artist_type"
+    t.string   "genre"
+    t.string   "community_name"
+    t.string   "audition_type"
+    t.string   "song_title"
+    t.string   "written_by"
+    t.string   "performance_video"
+    t.string   "gift_name"
+    t.string   "gift_description"
+    t.string   "gift_value"
+    t.string   "kickstarter"
+    t.string   "pledgemusic"
   end
 
   add_index "entries", ["contest_id"], :name => "index_entries_on_contest_id"
@@ -33,8 +46,10 @@ ActiveRecord::Schema.define(:version => 20120425041503) do
   create_table "judgings", :force => true do |t|
     t.integer  "contest_id"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "active",     :default => false, :null => false
+    t.string   "genres"
   end
 
   add_index "judgings", ["contest_id"], :name => "index_judgings_on_contest_id"

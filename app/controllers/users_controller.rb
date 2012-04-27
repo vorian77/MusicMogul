@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   
   before_filter :authenticate_user!
   
-  def show
+  def edit
   end
   
   def update

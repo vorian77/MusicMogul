@@ -1,0 +1,291 @@
+<div class="breadcrumbs-holder">
+  <ul id="breadcrumbs">
+    <li><a class="home" href="<%= root_path %>"><span>Home</span></a></li>
+    <li><span>My Account</span></li>
+  </ul>
+</div>
+<div class="profile-box">
+  <h2>My account</h2>
+  <div class="tabs-holder">
+    <ul class="tabset">
+      <li><a href="#tab-1" class="tab active"><span class="tab-details">Account Details</span></a></li>
+      <li><a href="#tab-2" class="tab"><span class="tab-profile">Public Profile</span></a></li>
+      <li><a href="#tab-3" class="tab"><span class="tab-judge">Judge</span></a></li>
+      <li><a href="#tab-4" class="tab"><span class="tab-contestant">Contestant</span></a></li>
+    </ul>
+    <%= semantic_form_for current_user, :url => account_path do |f| %>
+      <div class="tab-content" id="tab-1">
+        <div class="tab-holder">
+          <div class="tab-frame">
+            <div class="title-row">
+              <h3>General account details</h3>
+              <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save' %></div>
+            </div>
+            <div class="text-box">
+              <p>The information on this page is not shown on the site.</p>
+            </div>
+            <%= f.inputs :class => 'profile-form' do %>
+              <%= f.input :first_name %>
+              <%= f.input :last_name %>
+              <%= f.input :email %>
+              <%= f.input :zip %>
+              <li class="select input optional" id="user_country_input">
+                <label class="label" for="user_country"><%= User.human_attribute_name(:country) %></label>
+                <%= country_select('user','country', ['United States','Canada','Mexico','United Kingdom']) %>
+              </li>
+              <%= f.input :birthdate, :start_year => 1901, :order => [:month, :day, :year] %>
+              <%= f.input :interview_status, :as => :boolean %>
+              <div class="submit-row">
+                <%= f.actions :class => 'submit-holder' do %>
+                  <%= f.submit 'Save', :class => 'button-save' %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="tab-content" id="tab-2">
+        <div class="tab-holder">
+          <div class="tab-frame">
+            <div class="title-row">
+              <h3>Your public profile</h3>
+              <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save' %></div>
+            </div>
+            <div class="text-box">
+              <p>This is your public profile shown throughout the site.</p>
+            </div>
+            <%= f.inputs :class => 'profile-form' do %>
+              <%= f.input :profile_name %>
+              <%= f.input :hometown %>
+              <li class="picture-box">
+                <h4>Profile Picture</h4>
+                <div class="holder">
+                  <div class="picture-holder">
+                    <% if current_user.profile_photo_square? %>
+                      <%= image_tag current_user.profile_photo_square, :width => '240', :height => '197' %>
+                      <a href="#" class="btn-delete">Delete current image</a>
+                    <% end %>
+                  </div>
+                  <div class="file-box">
+                    <p>Click ‘browse to select a new profile picture, then ‘upload’ to add the image to your profile.</p>
+                    <div class="file-row">
+                      <input type="file" />
+                    </div>
+                    <div class="button-row">
+                      <!-- <input type="button" value="Upload" class="btn-upload" /> -->
+                      <span class="formats">jpeg, png or gif, max 4mb</span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <%= f.input :bio, :as => :text %>
+              <li class="video-box">
+                <h4>Profile Video</h4>
+                <div class="holder">
+                  <div class="picture-holder">
+                    <div class="video-holder">
+                      <img src="images/img-12.jpg" alt="image description" width="242" height="148" />
+                    </div>
+                    <a href="#" class="btn-delete">Delete current video</a>
+                  </div>
+                  <div class="file-box">
+                    <p>Click ‘browse to select a new video, then ‘upload’ to add the video to your profile.</p>
+                    <div class="file-row">
+                      <input type="file" />
+                    </div>
+                    <div class="button-row">
+                      <input type="button" value="Upload" class="btn-upload" />
+                      <span class="formats">.mpeg .flv or .mov, max 20mb</span>
+                    </div>
+                  </div>
+                </div>
+                </li>
+              <div class="social-box">
+                <h4>Social Accounts</h4>
+                <%= f.input :facebook %>
+                <%= f.input :twitter %>
+              </div>
+              <div class="submit-row">
+                <%= f.actions :class => 'submit-holder' do %>
+                  <%= f.submit 'Save', :class => 'button-save' %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="tab-content" id="tab-3">
+        <div class="tab-holder">
+          <div class="tab-frame">
+            <div class="title-row title-row-2">
+              <h3>Judge</h3>
+              <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save' %></div>
+            </div>
+            <%= f.semantic_fields_for :judgings, current_user.judging do |judging| %>
+              <%= f.inputs :class => 'judge-form' do %>
+                <%= judging.input :active, :as => :radio, :collection => [['Yes',true],['No',false]], :wrapper_html => { :class => 'radio-row' } %>
+                <div class="checkbox-row"><%= judging.input :genres_array, :as => :check_boxes, :collection => Contest::GENRES, :wrapper_html => { :class => 'checkbox-holder' } %></div>
+                <div class="submit-row">
+                  <%= f.actions :class => 'submit-holder' do %>
+                    <%= f.submit 'Save', :class => 'button-save' %>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="tab-content" id="tab-4">
+        <div class="tab-holder">
+          <div class="tab-frame">
+            <div class="title-row title-row-2">
+              <h3>Contestant</h3>
+              <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save' %></div>
+            </div>
+            <%= f.semantic_fields_for :entries, current_user.entry do |entry| %>
+              <%= f.inputs :class => 'contestant-form' do %>
+                <%= entry.input :active, :as => :radio, :collection => [['Yes',true],['No',false]], :wrapper_html => { :class => 'radio-row' } %>
+                <div class="text-row">
+                  <p>Fill out the fields to complete your artist profile.</p>
+                </div>
+                <div class="form-box">
+                  <%= entry.input :artist_type, :as => :select, :collection => Entry::ARTIST_TYPES, :include_blank => false %>
+                  <%= entry.input :genre, :as => :select, :collection => Contest::GENRES, :include_blank => false %>
+                  <%= entry.input :community_name %>
+                </div>
+                <div class="audition-box">
+                  <h4>Audition Performance</h4>
+                  <div class="row">
+                    <label for="type">Type<span class="required">*</span></label>
+                    <select id="type" class="select-2">
+                      <option value="Original">Original</option>
+                      <option value="option 1">option 1</option>
+                      <option value="option 2">option 2</option>
+                    </select>
+                  </div>
+                  <div class="row">
+                    <label for="song">Song Title<span class="required">*</span></label>
+                    <div class="text"><input type="text" id="song" value="Out Of Time" /></div>
+                  </div>
+                  <div class="row">
+                    <label for="author">Written By<span class="required">*</span></label>
+                    <div class="text"><input type="text" id="author" value="Russ Smith" /></div>
+                  </div>
+                  <div class="video-box">
+                    <div class="picture-holder">
+                      <div class="video-holder">
+                        <img src="images/img-12.jpg" alt="image description" width="242" height="148" />
+                      </div>
+                      <a href="#" class="btn-delete">Delete current video</a>
+                    </div>
+                    <div class="file-box">
+                      <p>Click ‘browse to select a new video, then ‘upload’ to add the video to your profile.</p>
+                      <div class="file-row">
+                        <input type="file" />
+                      </div>
+                      <div class="button-row">
+                        <input type="button" value="Upload" class="btn-upload" />
+                        <span class="formats">.mpeg .flv or .mov, max 20mb</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="gift-box">
+                  <h4>Career Gift</h4>
+                  <div class="text-block">
+                    <p>What equipment (or amount of cash) would advance your musical career 
+  and why?</p>
+                  </div>
+                  <div class="row">
+                    <label for="name">Name</label>
+                    <div class="text"><input type="text" id="name" value="Lorem ipsum" /></div>
+                  </div>
+                  <div class="row">
+                    <label for="description">Description</label>
+                    <div class="textarea-box">
+                      <div class="textarea-holder">
+                        <div class="textarea-frame">
+                          <div class="textarea">
+                            <textarea id="description" cols="30" rows="10" >Lorem ipsum dolor sit amet consectetur adipiscine verbatim.</textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row value-row">
+                    <label for="value">Value<span class="sign">$</span></label>
+                    <div class="text"><input type="text" id="value" value="1,000" /></div>
+                  </div>
+                  <div class="row">
+                    <label for="starter">KickStarter URL</label>
+                    <div class="text"><input type="text" id="starter" value="http://www.loremipsum.com/7889660" /></div>
+                  </div>
+                  <div class="row">
+                    <label for="pledge">PledgeMusic URL</label>
+                    <div class="text"><input type="text" id="pledge" value="http://www.loremipsum.com/7889660" /></div>
+                  </div>
+                </div>
+                <div class="submit-row">
+                  <%= f.actions :class => 'submit-holder' do %>
+                    <%= f.submit 'Save', :class => 'button-save' %>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<%= semantic_form_for current_user, :url => account_path do |f| %>
+	<%= f.inputs do %>
+			<% if current_user.profile_photo_square.present? %>
+			<li class="input">
+				<label class="label"><%= User.human_attribute_name(:profile_photo_square) %></label>
+				<%= image_tag current_user.profile_photo_square, :width => '100' %>
+			</li>
+			<%= f.input :remove_profile_photo_square, :as => :boolean %>
+		<% else%>
+			<%= f.input :profile_photo_square, :as => :file %>
+		<% end %>
+		<% if current_user.profile_photo_rectangle.present? %>
+			<li class="input">
+				<label class="label"><%= User.human_attribute_name(:profile_photo_rectangle) %></label>
+				<div class="original-wrapper">
+					<%= image_tag current_user.profile_photo_rectangle, :width => '400', :class => 'original' %>
+				</div>
+				<div class="thumbnail-wrapper">
+					<%= image_tag current_user.profile_photo_rectangle, :class => 'thumbnail' %>
+				</div>
+				<%= f.input :thumb_x %>
+				<%= f.input :thumb_y %>
+				<%= f.input :thumb_w %>
+			</li>
+			<%= f.input :remove_profile_photo_rectangle, :as => :boolean %>
+		<% else%>
+			<%= f.input :profile_photo_rectangle, :as => :file %>
+		<% end %>		
+		<%= f.input :facebook %>
+		<%= f.input :twitter %>
+		<%= f.actions do %>
+			<%= f.submit 'Save' %>
+		<% end %>
+	<% end %>
+<% end %>
+-->

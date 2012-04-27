@@ -4,13 +4,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :name, :first_name, :last_name, :zip, :country, :birthdate,
+  # Set up accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me,
+    :name, :first_name, :last_name, :zip, :country, :birthdate,
     :interview_status, :profile_name, :hometown, :genre, :bio, :facebook,
     :twitter, :phone, :profile_photo_square, :profile_photo_rectangle,
     :remove_profile_photo_square, :remove_profile_photo_rectangle, :thumb_x,
-    :thumb_y, :thumb_w, :account_type
+    :thumb_y, :thumb_w, :account_type, :judgings_attributes,
+    :entries_attributes
   
   attr_accessor :thumb_x, :thumb_y, :thumb_w
   attr_accessor :account_type
@@ -29,6 +30,8 @@ class User < ActiveRecord::Base
   has_many :entries
   has_many :judgings
 
+  accepts_nested_attributes_for :entries, :judgings
+
   before_save :parse_account_type, :if => :account_type
 
   def display_name
@@ -40,6 +43,16 @@ class User < ActiveRecord::Base
   end
 
   def parse_account_type
+  end
+
+  # Temporary hack until we need more than one judging
+  def judging
+    self.judgings.first || self.judgings.new
+  end
+
+  # Temporary hack until we need more than one entry
+  def entry
+    self.entries.first || self.entries.new
   end
 
 end
