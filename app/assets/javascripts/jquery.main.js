@@ -13,8 +13,8 @@ function initCarusel(){
 		autoRotation:true,
 		circleSlide:true,
 		pauseOnHover:true,
-		switchTime:3000
-	});
+		switchTime: 3000
+  });
 	jQuery('div.carousel-2').scrollGallery({
 		btnPrev:'a.btn-prev',
 		btnNext:'a.btn-next',
@@ -115,6 +115,9 @@ jQuery.fn.scrollGallery = function(_options){
 		_slides.each(function(){
 			_sumWidth+=jQuery(this).outerWidth(true);
 			_sumHeight+=jQuery(this).outerHeight(true);
+      $(this).click(function() {
+        stopAutoSlide();
+      });
 		});
 		// calculate gallery offset
 		function recalcOffsets() {
