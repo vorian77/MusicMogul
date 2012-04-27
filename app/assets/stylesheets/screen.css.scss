@@ -118,3 +118,25 @@
     }
   }
 }
+
+.prize-pool-box {
+  .title-box .decor {
+    background: image-url('prize-decor.png') no-repeat 0 0;
+  }
+  #main {
+    margin-top: -23px;
+    background-color: #fff;
+    width: 820px;
+    padding: 40px 70px;
+    @include border-radius(5px);
+  }
+  .signature {
+    .name {
+      color: #333;
+	    font-family: 'IstokBold', Arial, Helvetica, sans-serif;
+    }
+    .title {
+      color: #999;
+    }
+  }
+}
