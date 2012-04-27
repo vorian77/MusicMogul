@@ -108,7 +108,7 @@ ContentTabs = {
 		}
 	},
   showCurrentTab: function() {
-    $tab = $('a[href="'+window.location.hash+'"]')
+    $tab = $('.tabset a[href="'+window.location.hash+'"]')
     if($tab) {
       $tab.click();
     }
