@@ -119,10 +119,13 @@
           <li><a href="<%= page_path('notices', :anchor => 'tab-8') %>">Privacy</a></li>
 				</ul>
 			</div>
-		  <div class="social-media-buttons">
-			  <div class="twitter-follow"><a href="https://twitter.com/FanHelp" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @FanHelp</a></div>
-			  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-			  <div class="fb-like" data-href="http://fanhelp.us" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+      <div class="social-media-buttons">
+        <%= link_to 'http://www.facebook.com/FansHelpingArtists' do %>
+          <div class="facebook-button">Join us on facebook</div>
+        <% end %>
+        <%= link_to 'https://twitter.com/#!/fanhelp' do %>
+          <div class="twitter-button">Follow @FanHelp</div>
+        <% end %>
       </div>
     </div>
     <div class="copyright">&copy; 2012 Bright Lights Music Group, LLC  All Rights Reserved</div>

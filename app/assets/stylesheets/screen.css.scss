@@ -63,14 +63,22 @@
 
 .social-media-buttons {
   float: right;
-  width: 350px;
-  height: 40px;
-  line-height: 26px;
+  width: 330px;
+  height: 35px;
   margin-top: 0;
-  div {
-    width: 150px;
+  .facebook-button {
     float: left;
-    margin-right: 10px;
+    background: image-url('Spritesheet.png') no-repeat -640px -92px;
+    width: 175px;
+    height: 35px;
+    @include hide-text;
+  }
+  .twitter-button {
+    float: left;
+    background: image-url('Spritesheet.png') no-repeat -825px -92px;
+    width: 155px;
+    height: 35px;
+    @include hide-text;
   }
 }
 
