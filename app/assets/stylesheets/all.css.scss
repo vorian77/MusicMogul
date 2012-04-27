@@ -1,60 +1,60 @@
 @font-face {
-	font-family: 'IstokItalic';
-	src: url('../fonts/istok-italic-webfont.eot');
-	src: url('../fonts/istok-italic-webfont.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/istok-italic-webfont.woff') format('woff'),
-		url('../fonts/istok-italic-webfont.ttf') format('truetype'),
-		url('../fonts/istok-italic-webfont.svg#IstokItalic') format('svg');
+	font-family: IstokItalic;
+	src: asset-url('istok-italic-webfont.eot',font);
+	src: asset-url('istok-italic-webfont.eot?#iefix',font) format('embedded-opentype'),
+		asset-url('istok-italic-webfont.woff',font) format('woff'),
+		asset-url('istok-italic-webfont.ttf',font) format('truetype'),
+		asset-url('istok-italic-webfont.svg#IstokItalic',font) format('svg');
 }
 @font-face {
-	font-family: 'IstokBoldItalic';
-	src: url('../fonts/istok-bolditalic-webfont.eot');
-	src: url('../fonts/istok-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/istok-bolditalic-webfont.woff') format('woff'),
-		url('../fonts/istok-bolditalic-webfont.ttf') format('truetype'),
-		url('../fonts/istok-bolditalic-webfont.svg#IstokBoldItalic') format('svg');
+	font-family: IstokBoldItalic;
+	src: asset-url('istok-bolditalic-webfont.eot',font);
+	src: asset-url('istok-bolditalic-webfont.eot?#iefix',font) format('embedded-opentype'),
+		asset-url('istok-bolditalic-webfont.woff',font) format('woff'),
+		asset-url('istok-bolditalic-webfont.ttf',font) format('truetype'),
+		asset-url('istok-bolditalic-webfont.svg#IstokBoldItalic',font) format('svg');
 }
 @font-face {
-	font-family: 'IstokBold';
-	src: url('../fonts/istok-bold-webfont.eot');
-	src: url('../fonts/istok-bold-webfont.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/istok-bold-webfont.woff') format('woff'),
-		url('../fonts/istok-bold-webfont.ttf') format('truetype'),
-		url('../fonts/istok-bold-webfont.svg#IstokBold') format('svg');
+	font-family: IstokBold;
+	src: asset-url('istok-bold-webfont.eot',font);
+	src: asset-url('istok-bold-webfont.eot?#iefix',font) format('embedded-opentype'),
+		asset-url('istok-bold-webfont.woff',font) format('woff'),
+		asset-url('istok-bold-webfont.ttf',font) format('truetype'),
+		asset-url('istok-bold-webfont.svg#IstokBold',font) format('svg');
 }
 @font-face {
-	font-family: 'BebasNeueRegular';
-	src: url('../fonts/bebasneue-webfont.eot');
-	src: url('../fonts/bebasneue-webfont.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/bebasneue-webfont.woff') format('woff'),
-		url('../fonts/bebasneue-webfont.ttf') format('truetype'),
-		url('../fonts/bebasneue-webfont.svg#BebasNeueRegular') format('svg');
+	font-family: BebasNeueRegular;
+	src: asset-url('bebasneue-webfont.eot',font);
+	src: asset-url('bebasneue-webfont.eot?#iefix',font) format('embedded-opentype'),
+		asset-url('bebasneue-webfont.woff',font) format('woff'),
+		asset-url('bebasneue-webfont.ttf',font) format('truetype'),
+		asset-url('bebasneue-webfont.svg#BebasNeueRegular',font) format('svg');
 }
 @font-face {
-	font-family: 'SnicklesRegular';
-	src: url('../fonts/snickles-webfont.eot');
-	src: url('../fonts/snickles-webfont.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/snickles-webfont.woff') format('woff'),
-		url('../fonts/snickles-webfont.ttf') format('truetype'),
-		url('../fonts/snickles-webfont.svg#SnicklesRegular') format('svg');
+	font-family: SnicklesRegular;
+	src: asset-url('snickles-webfont.eot',font);
+	src: asset-url('snickles-webfont.eot?#iefix',font) format('embedded-opentype'),
+		asset-url('snickles-webfont.woff',font) format('woff'),
+		asset-url('snickles-webfont.ttf',font) format('truetype'),
+		asset-url('snickles-webfont.svg#SnicklesRegular',font) format('svg');
 }
 @font-face {
-	font-family: 'IstokRegular';
-	src: url('../fonts/istok-regular-webfont.eot');
-	src: url('../fonts/istok-regular-webfont.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/istok-regular-webfont.woff') format('woff'),
-		url('../fonts/istok-regular-webfont.ttf') format('truetype'),
-		url('../fonts/istok-regular-webfont.svg#IstokRegular') format('svg');
+	font-family: IstokRegular;
+	src: asset-url('istok-regular-webfont.eot',font);
+	src: asset-url('istok-regular-webfont.eot?#iefix',font) format('embedded-opentype'),
+		asset-url('istok-regular-webfont.woff',font) format('woff'),
+		asset-url('istok-regular-webfont.ttf',font) format('truetype'),
+		asset-url('istok-regular-webfont.svg#IstokRegular',font) format('svg');
 }
 html{
-	background:url(../images/bg-page.gif);
+	background: image-url('bg-page.gif');
 	height:100%;
 }
 body{
 	margin:0;
 	color:#000;
-	background: url(../images/bg-page-1.gif) repeat-y 50% 0;
-	font:18px/20px 'IstokRegular', Arial, Helvetica, sans-serif;
+	background: image-url('bg-page-1.gif') repeat-y 50% 0;
+	font:18px/20px IstokRegular, Arial, Helvetica, sans-serif;
 	min-width:1003px;
 }
 img{border-style:none;} 
@@ -76,10 +76,10 @@ form, fieldset{
 	overflow:hidden;
 	width:100%;
 	position:relative;
-	background:#e3e6e8 url(../images/bg-w1.gif);
+	background: #e3e6e8 image-url('bg-w1.gif');
 }
 .w1{
-	background:url(../images/bg-wrapper.jpg) repeat-y 50% 0;
+	background: image-url('bg-wrapper.jpg') repeat-y 50% 0;
 	overflow:hidden;
 	width:100%;
 	position:relative;
@@ -100,7 +100,7 @@ form, fieldset{
 	margin:12px 0 0 -24px;
 }
 .logo{
-	background:url(../images/logo.png) no-repeat;
+	background:image-url('logo.png') no-repeat;
 	width:222px;
 	height:138px;
 	text-indent:-9999px;
@@ -114,7 +114,7 @@ form, fieldset{
 }
 .slogan{
 	color:#2e2e2e;
-	font:26px/31px 'SnicklesRegular', Arial, Helvetica, sans-serif;
+	font:26px/31px SnicklesRegular, Arial, Helvetica, sans-serif;
 	padding:39px 0 0;
 	display:block;
 }
@@ -127,7 +127,7 @@ form, fieldset{
 	width:439px;
 }
 #header .panel .block{
-	background:url(../images/bg-block.png) no-repeat 100% 1px;
+	background: image-url('bg-block.png') no-repeat 100% 1px;
 	margin:0 -1px 3px 0;
 	padding:0 8px 0 0;
 	height:1%;
@@ -137,11 +137,11 @@ form, fieldset{
 #header .panel .block:after{
 	display:block;
 	clear:both;
-	content:'';
+	content: "";
 }
 #header .panel .block-holder{
 	float:right;
-	background:url(../images/bg-block.png) no-repeat 0 100%;
+	background:image-url('bg-block.png') no-repeat 0 100%;
 	width:276px;
 }
 .social-networks{
@@ -160,7 +160,7 @@ form, fieldset{
 	height:16px;
 	display:block;
 	overflow:hidden;
-	background:url(../images/social-networks.gif) no-repeat;
+	background:image-url('social-networks.gif') no-repeat;
 	text-indent:-9999px;
 }
 .social-networks li:first-child{margin:0;}
@@ -175,7 +175,7 @@ form, fieldset{
 	margin:0;
 	padding:2px 0 0 15px;
 	list-style:none;
-	font:12px/15px 'IstokRegular', Arial, Helvetica, sans-serif;
+	font:12px/15px IstokRegular, Arial, Helvetica, sans-serif;
 	overflow:hidden;
 	height:1%;
 }
@@ -190,21 +190,21 @@ form, fieldset{
 	display:block;
 }
 .log-in-nav a:hover{
-	background: url(../images/sprites.png) no-repeat 0 -150px;
+	background: image-url('sprites.png') no-repeat 0 -150px;
 	text-decoration:none;
 }
-.log-in-nav a:hover span{background: url(../images/sprites.png) no-repeat 100% -100px;}
+.log-in-nav a:hover span{background: image-url('sprites.png') no-repeat 100% -100px;}
 .account-box{
 	height:1%;
 	display:none;
 	position:relative;
 	padding:4px 0 13px 12px;
-	font:12px/14px 'IstokRegular', Arial, Helvetica, sans-serif;
+	font:12px/14px IstokRegular, Arial, Helvetica, sans-serif;
 }
 .account-box:after{
 	display:block;
 	clear:both;
-	content:'';
+	content: "";
 }
 .account-box:hover .drop {display:block;}
 .account-box .user{
@@ -219,7 +219,7 @@ form, fieldset{
 }
 .account-box .user span{
 	padding:5px 34px 0 0;
-	background:url(../images/arrow-02.gif) no-repeat 100% 60%;
+	background: image-url('arrow-02.gif') no-repeat 100% 60%;
 	cursor:pointer;
 	display:block;
 	overflow:hidden;
@@ -229,21 +229,21 @@ form, fieldset{
 	position:absolute;
 	right:-10px;
 	top:36px;
-	background:url(../images/bg-drop.png) no-repeat;
+	background:image-url('bg-drop.png') no-repeat;
 	width:281px;
 	padding:11px 0 0;
 	display:none;
 	z-index:100;
 }
 .drop .holder{
-	background:url(../images/bg-drop.png) no-repeat 100% 100%;
+	background:image-url('bg-drop.png') no-repeat 100% 100%;
 	padding:0 0 11px;
 }
 .drop .frame{
-	background:url(../images/bg-drop.png) repeat-y -281px 0;
+	background:image-url('bg-drop.png') repeat-y -281px 0;
 	overflow:hidden;
 	padding:10px 20px 8px;
-	font:12px/14px 'IstokRegular', Arial, Helvetica, sans-serif;
+	font:12px/14px IstokRegular, Arial, Helvetica, sans-serif;
 }
 .drop .frame .foto{
 	width:79px;
@@ -272,8 +272,8 @@ form, fieldset{
 	padding:0 0 0 85px;
 	list-style:none;
 	overflow:hidden;
-	background:url(../images/bg-shadow.png) no-repeat 0 100%;
-	font:18px/20px 'IstokRegular', Arial, Helvetica, sans-serif;
+	background:image-url('bg-shadow.png') no-repeat 0 100%;
+	font:18px/20px IstokRegular, Arial, Helvetica, sans-serif;
 	text-align:center;
 	width:354px;
 }
@@ -300,7 +300,7 @@ form, fieldset{
 	bottom:999px;
 	left:50%;
 	text-indent:-9999px;
-	background:url(../images/arrow-01.png) no-repeat 50% 100%;
+	background:image-url('arrow-01.png') no-repeat 50% 100%;
 	width:16px;
 	overflow:hidden;
 	height:10px;
@@ -342,9 +342,9 @@ form, fieldset{
 	position:relative;
 	height:324px;
 }
-.carousel .slide-list .slide-1{background:url(../images/bg-gallery.png) no-repeat;}
-.carousel .slide-list .slide-2{background:url(../images/bg-gallery-2.png) no-repeat;}
-.carousel .slide-list .slide-3{background:url(../images/bg-gallery-3.png) no-repeat;}
+.carousel .slide-list .slide-1{background:image-url('bg-gallery.png') no-repeat;}
+.carousel .slide-list .slide-2{background:image-url('bg-gallery-2.png') no-repeat;}
+.carousel .slide-list .slide-3{background:image-url('bg-gallery-3.png') no-repeat;}
 .carousel .slide-list .slide-2 img{
 	position:absolute;
 	left:416px;
@@ -360,21 +360,21 @@ form, fieldset{
 	width:313px;
 	float:left;
 	color:#fff;
-	font:18px/22px 'IstokRegular', Arial, Helvetica, sans-serif;
+	font:18px/22px IstokRegular, Arial, Helvetica, sans-serif;
 	padding:18px 0 0;
 }
 .carousel .text-box h2{
 	margin:0 0 18px;
-	font:46px/48px 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	font:46px/48px BebasNeueRegular, Arial, Helvetica, sans-serif;
 	text-transform:uppercase;
 }
 .carousel .text-box p{margin:0 0 47px;}
 .carousel .text-box .signup{
 	display:block;
 	padding:8px 15px 10px 28px;
-	background:url(../images/sprites.png) no-repeat -400px -200px;
+	background:image-url('sprites.png') no-repeat -400px -200px;
 	color:#0577b8;
-	font:25px/27px 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	font:25px/27px BebasNeueRegular, Arial, Helvetica, sans-serif;
 	width:123px;
 }
 .carousel .text-box .signup:hover{
@@ -388,9 +388,9 @@ form, fieldset{
 .carousel .text-box .preview{
 	display:block;
 	padding:8px 15px 12px 20px;
-	background:url(../images/sprites.png) no-repeat -600px -200px;
+	background:image-url('sprites.png') no-repeat -600px -200px;
 	color:#fff;
-	font:25px/27px 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	font:25px/27px BebasNeueRegular, Arial, Helvetica, sans-serif;
 	width:133px;
 }
 .carousel .text-box .preview:hover,
@@ -403,14 +403,14 @@ form, fieldset{
 .carousel .text-box .learn-more{
 	display:block;
 	padding:8px 15px 12px 22px;
-	background:url(../images/sprites.png) no-repeat -600px -200px;
+	background:image-url('sprites.png') no-repeat -600px -200px;
 	color:#fff;
-	font:25px/27px 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	font:25px/27px BebasNeueRegular, Arial, Helvetica, sans-serif;
 	width:130px;
 }
 .carousel .player-box{
 	float:right;
-	background:url(../images/video.png) no-repeat -1px 0;
+	background:image-url('video.png') no-repeat -1px 0;
 	padding:5px 12px 33px;
 }
 .switcher{
@@ -434,7 +434,7 @@ form, fieldset{
 }
 *+html .switcher li{display:inline;}
 .switcher li a{
-	background:url(../images/bullet.png) no-repeat 0 3px;
+	background:image-url('bullet.png') no-repeat 0 3px;
 	width:16px;
 	height:17px;
 	float:left;
@@ -447,16 +447,16 @@ form, fieldset{
 .info-box{
 	overflow:hidden;
 	width:100%;
-	background:url(../images/bg-info-box.png) no-repeat 100% 100%;
+	background:image-url('bg-info-box.png') no-repeat 100% 100%;
 	padding:0 0 12px;
 }
 .info-box .holder{
-	background:url(../images/bg-info-box.png) repeat-y -960px 0;
+	background:image-url('bg-info-box.png') repeat-y -960px 0;
 	overflow:hidden;
 	width:100%;
 }
 .info-box .frame{
-	background:url(../images/bg-info-box.png) no-repeat;
+	background:image-url('bg-info-box.png') no-repeat;
 	padding:18px 0 12px 8px;
 	overflow:hidden;
 	height:1%;
@@ -466,16 +466,16 @@ form, fieldset{
 	width:388px;
 	padding:17px 42px 22px;
 	text-align:center;
-	font:18px/21px 'IstokRegular', Arial, Helvetica, sans-serif;
+	font:18px/21px IstokRegular, Arial, Helvetica, sans-serif;
 	border-left:1px solid #ccc;
 }
 .info-box .box p{margin:0 0 24px;}
 .info-box .box:first-child{border:none;}
 .info-box .box h3{
-	background:url(../images/bg-title.gif) repeat-x 0 50%;
+	background:image-url('bg-title.gif') repeat-x 0 50%;
 	text-align:center;
 	text-transform:uppercase;
-	font:25px/27px 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	font:25px/27px BebasNeueRegular, Arial, Helvetica, sans-serif;
 	margin:0 0 10px;
 }
 .info-box .box h3 span{
@@ -488,10 +488,10 @@ form, fieldset{
 }
 .info-box .box .link-1{
 	width:113px;
-	background:url(../images/sprites.png) no-repeat -800px -200px;
+	background:image-url('sprites.png') no-repeat -800px -200px;
 	display:block;
 	color:#fff;
-	font:22px/24px 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	font:22px/24px BebasNeueRegular, Arial, Helvetica, sans-serif;
 	padding:8px 15px 8px 5px;
 	margin:0 auto;
 }
@@ -502,10 +502,10 @@ form, fieldset{
 .info-box .box .link-1.pressed{background-position:-800px -300px;}
 .info-box .box .link-2{
 	width:160px;
-	background:url(../images/sprites.png) no-repeat 0 -350px;
+	background:image-url('sprites.png') no-repeat 0 -350px;
 	display:block;
 	color:#fff;
-	font:22px/24px 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	font:22px/24px BebasNeueRegular, Arial, Helvetica, sans-serif;
 	padding:8px 15px 8px 5px;
 	margin:0 auto;
 }
@@ -518,16 +518,16 @@ form, fieldset{
 	width:955px;
 	overflow:hidden;
 	padding:0 0 0 15px;
-	background: url(../images/sprites.png) no-repeat 0 -150px;
+	background: image-url('sprites.png') no-repeat 0 -150px;
 }
 #breadcrumbs{
 	list-style:none;
 	margin:0;
 	padding:0;
-	background: url(../images/sprites.png) no-repeat 100% -100px;
+	background: image-url('sprites.png') no-repeat 100% -100px;
 	float:left;
 	color:#8c8c8c;
-	font:12px/15px 'IstokBold', Arial, Helvetica, sans-serif;
+	font:12px/15px IstokBold, Arial, Helvetica, sans-serif;
 }
 #breadcrumbs li{
 	float:left;
@@ -542,10 +542,10 @@ form, fieldset{
 	display:block;
 	color:#8c8c8c;
 	padding:0 15px 0 0;
-	background: url(../images/sprites.png) no-repeat 100% 0;
+	background: image-url('sprites.png') no-repeat 100% 0;
 }
 #breadcrumbs a span{
-	background: url(../images/sprites.png) no-repeat;
+	background: image-url('sprites.png') no-repeat;
 	padding:8px 10px 7px 25px;
 }
 #breadcrumbs a:hover{
@@ -555,10 +555,10 @@ form, fieldset{
 #breadcrumbs a:hover span{background-position:0 -50px;}
 #breadcrumbs .home span{padding:8px 5px 7px 15px;}
 .heading .signup-btn{
-	background: url(../images/sprites.png) no-repeat 0 -200px;
+	background: image-url('sprites.png') no-repeat 0 -200px;
 	float:right;
 	width:168px;
-	font:25px/30px 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	font:25px/30px BebasNeueRegular, Arial, Helvetica, sans-serif;
 	color:#fff;
 	padding:7px 10px 9px 0;
 	text-align:center;
@@ -568,7 +568,7 @@ form, fieldset{
 	width:100%;
 	padding:13px 0 95px;
 	position:relative;
-	background: url(../images/bg-heading.png) no-repeat 50% 100%;
+	background: image-url('bg-heading.png') no-repeat 50% 100%;
 }
 .heading:after{
 	content:"";
@@ -582,13 +582,13 @@ form, fieldset{
 .heading .signup-btn.pressed{background-position:0 -300px;}
 .heading h2{
 	float:left;
-	font:32px/36px 'BebasNeueRegular',Arial,Helvetica,sans-serif;
+	font:32px/36px BebasNeueRegular,Arial,Helvetica,sans-serif;
 	color:#000;
 	margin:0;
 }
 .title-box{
 	position:absolute;
-	background: url(../images/bg-page-title.png) no-repeat;
+	background: image-url('bg-page-title.png') no-repeat;
 	width:367px;
 	height:159px;
 	bottom:0;
@@ -598,16 +598,16 @@ form, fieldset{
 	text-align:center;
 }
 .title-box .decor{
-	background: url(../images/bg-microphone.png) no-repeat;
+	background: image-url('bg-microphone.png') no-repeat;
 	width:192px;
 	height:106px;
 	margin:0 auto 5px;
 	display:block;
 }
-.title-box .decor-2{background: url(../images/bg-megaphone.png) no-repeat;}
+.title-box .decor-2{background: image-url('bg-megaphone.png') no-repeat;}
 .title-box .title{
 	color:#fff;
-	font:34px/38px 'SnicklesRegular',Arial,Helvetica,sans-serif;
+	font:34px/38px SnicklesRegular,Arial,Helvetica,sans-serif;
 }
 .twocolumns{
 	width:980px;
@@ -622,14 +622,14 @@ form, fieldset{
 	margin:0 19px 0 0;
 }
 .step-box{
-	background: url(../images/bg-step-box.png) no-repeat;
+	background: image-url('bg-step-box.png') no-repeat;
 	padding-top:95px;
 	width:470px;
 	color:#666;
 	margin-bottom:20px;
 }
 .step-holder{
-	background: url(../images/bg-step-box.png) no-repeat 100% 100%;
+	background: image-url('bg-step-box.png') no-repeat 100% 100%;
 	padding-bottom:95px;
 }
 .step-frame{
@@ -657,7 +657,7 @@ form, fieldset{
 	margin:-73px 0 -85px;
 }
 .step-box h3{
-	font:25px/30px 'IstokRegular', Arial, Helvetica, sans-serif;
+	font:25px/30px IstokRegular, Arial, Helvetica, sans-serif;
 	color:#333;
 	margin:0 0 10px;
 }
@@ -676,11 +676,11 @@ form, fieldset{
 	padding-bottom:35px;
 }
 .step-box .number{
-	background: url(../images/bg-number.png) no-repeat;
+	background: image-url('bg-number.png') no-repeat;
 	width:48px;
 	text-align:center;
 	color:#fff;
-	font:25px/30px 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	font:25px/30px BebasNeueRegular, Arial, Helvetica, sans-serif;
 	float:left;
 	padding:9px 0;
 	margin:0 23px;
@@ -691,17 +691,17 @@ form, fieldset{
 	overflow:hidden;
 }
 .signup-box{
-	background: url(../images/bg-signup-box.png) no-repeat;
+	background: image-url('bg-signup-box.png') no-repeat;
 	width:470px;
 	padding-top:5px;
 	color:#fff;
 }
 .signup-holder{
-	background: url(../images/bg-signup-box.png) no-repeat 100% 100%;
+	background: image-url('bg-signup-box.png') no-repeat 100% 100%;
 	padding-bottom:5px;
 }
-.signup-frame{
-	background:#0070b1 url(../images/bg-signup-frame.gif) repeat-x;
+.signup-frame {
+	background: #0070b1 image-url('bg-signup-frame.gif') repeat-x;
 	border:solid #b1b3b4;
 	border-width:0 1px;
 	padding:17px 20px 7px;
@@ -712,13 +712,13 @@ form, fieldset{
 .signup-box .btn-holder{
 	width:100%;
 	overflow:hidden;
-	background: url(../images/separator.gif) no-repeat 0 50%;
+	background: image-url('separator.gif') no-repeat 0 50%;
 }
 .signup-box .signup-btn{
-	background: url(../images/sprites.png) no-repeat -200px -200px;
+	background: image-url('sprites.png') no-repeat -200px -200px;
 	float:right;
 	width:162px;
-	font:25px/30px 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	font:25px/30px BebasNeueRegular, Arial, Helvetica, sans-serif;
 	color:#0577b8;
 	padding:7px 16px 9px 0;
 	text-align:center;
@@ -739,15 +739,15 @@ form, fieldset{
 }
 .vision-box h3{
 	color:#000;
-	font:25px/30px 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	font:25px/30px BebasNeueRegular, Arial, Helvetica, sans-serif;
 	margin:-15px 0 15px;
 	text-align:center;
 }
 .vision-box h3 .mask{
-	background: url(../images/bg-title-2.gif);
+	background: image-url('bg-title-2.gif');
 	padding:0 7px;
 }
-.vision-box h3 .mask-2{background: url(../images/bg-title-3.gif);}
+.vision-box h3 .mask-2{background: image-url('bg-title-3.gif');}
 .vision-list{
 	list-style:none;
 	margin:0 -10px 0 0;
@@ -763,7 +763,7 @@ form, fieldset{
 	vertical-align:top;
 	width:358px;
 	padding:0 65px 8px 60px;
-	background: url(../images/bullet-2.png) no-repeat;
+	background: image-url('bullet-2.png') no-repeat;
 }
 *+html .vision-list li{display:inline;}
 .vision-box p{margin:0 0 5px;}
@@ -772,12 +772,12 @@ form, fieldset{
 	line-height:20px;
 	color:#333;
 	padding:15px 0 15px 70px;
-	background: url(../images/bullet-2.png) no-repeat 10px 0;
+	background: image-url('bullet-2.png') no-repeat 10px 0;
 }
 .profile-box{padding:13px 0 0;}
 .profile-box h2,
 .notice-box h2{
-	font:32px/36px 'BebasNeueRegular',Arial,Helvetica,sans-serif;
+	font:32px/36px BebasNeueRegular,Arial,Helvetica,sans-serif;
 	color:#000;
 	margin:0 0 15px 3px;
 }
@@ -802,21 +802,21 @@ form, fieldset{
 .tabset a{
 	display:block;
 	width:245px;
-	font:14px/16px 'IstokRegular', Arial, Helvetica, sans-serif;
+	font:14px/16px IstokRegular, Arial, Helvetica, sans-serif;
 	color:#666;
 	padding:13px 0 15px 3px;
-	background: url(../images/bg-tabset.png);
+	background: image-url('bg-tabset.png');
 	outline:none;
 }
 .tabset span{
 	display:block;
 	padding:9px 0 9px 57px;
-	background: url(../images/icons.png) no-repeat;
+	background: image-url('icons.png') no-repeat;
 }
 .tabset a:hover,
 .tabset .active{
 	color:#000;
-	background: url(../images/bg-tabset-hover.png) no-repeat;
+	background: image-url('bg-tabset-hover.png') no-repeat;
 	margin:0 -10px 0 -1px;
 	position:relative;
 	padding-left:4px;
@@ -840,25 +840,25 @@ form, fieldset{
 .tab-content{
 	width:712px;
 	float:right;
-	background: url(../images/bg-tab-content.png) no-repeat;
+	background: image-url('bg-tab-content.png') no-repeat;
 	padding-top:10px;
 	font-size:16px;
 	line-height:20px;
 	color:#666;
 }
 .tab-holder{
-	background: url(../images/bg-tab-content.png) no-repeat 100% 100%;
+	background: image-url('bg-tab-content.png') no-repeat 100% 100%;
 	padding-bottom:11px;
 }
 .tab-frame{
-	background: url(../images/bg-tab-content.png) repeat-y -1144px 0;
+	background: image-url('bg-tab-content.png') repeat-y -1144px 0;
 	padding:23px 20px 15px 40px;
 	width:652px;
 	overflow:hidden;
 	min-height:435px;
 }
 .profile-box .tab-content h3{
-	font:20px/24px 'IstokRegular', Arial, Helvetica, sans-serif;
+	font:20px/24px IstokRegular, Arial, Helvetica, sans-serif;
 	color:#000;
 	margin:-13px 0 5px;
 	float:left;
@@ -872,9 +872,9 @@ form, fieldset{
 	margin:-17px 0 0;
 }
 .profile-box .btn-save{
-	font:22px/26px 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	font:22px/26px BebasNeueRegular, Arial, Helvetica, sans-serif;
 	color:#fff;
-	background: url(../images/sprites.png) no-repeat -200px -350px;
+	background: image-url('sprites.png') no-repeat -200px -350px;
 	display:block;
 	width:56px;
 	padding:5px 5px 4px;
@@ -913,10 +913,10 @@ form, fieldset{
 	padding:13px 20px 0 0;
 	text-align:right;
 	color:#333;
-	font:14px/18px 'IstokBold', Arial, Helvetica, sans-serif;
+	font:14px/18px IstokBold, Arial, Helvetica, sans-serif;
 }
 .profile-form .text{
-	background: url(../images/sprites.png) no-repeat 0 -500px;
+	background: image-url('sprites.png') no-repeat 0 -500px;
 	float:left;
 }
 .profile-form input[type="text"]{
@@ -925,7 +925,7 @@ form, fieldset{
 	border:0;
 	margin:0;
 	color:#999;
-	font:14px/18px 'IstokBold', Arial, Helvetica, sans-serif;
+	font:14px/18px IstokBold, Arial, Helvetica, sans-serif;
 	padding:15px 13px;
 	width:406px;
 	height:15px;
@@ -936,7 +936,7 @@ form, fieldset{
 	padding:22px 0 26px;
 	margin-top:12px;
 }
-.profile-form .date-row .text{background: url(../images/sprites.png) no-repeat -450px -500px;}
+.profile-form .date-row .text{background: image-url('sprites.png') no-repeat -450px -500px;}
 .profile-form .date-row input[type="text"]{width:126px;}
 .tab-content .submit-row{
 	width:100%;
@@ -954,9 +954,9 @@ form, fieldset{
 	padding:0 0 0 15px;
 }
 .tab-content .button-save{
-	font:22px/26px 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	font:22px/26px BebasNeueRegular, Arial, Helvetica, sans-serif;
 	color:#fff;
-	background: url(../images/sprites.png) no-repeat -200px -350px;
+	background: image-url('sprites.png') no-repeat -200px -350px;
 	display:block;
 	width:66px;
 	height:36px;
@@ -973,7 +973,7 @@ form, fieldset{
 .profile-form .select-row{padding:27px 0 62px;}
 .profile-form .select-row select{
 	width:262px;
-	font:14px/18px 'IstokBold',Arial,Helvetica,sans-serif;
+	font:14px/18px IstokBold,Arial,Helvetica,sans-serif;
 	color:#999;
 }
 .jcf-hidden {
@@ -986,18 +986,18 @@ form, fieldset{
 	float:left;
 	position:relative;
 	height:45px;
-	font:14px/18px 'IstokBold', Arial, Helvetica, sans-serif;
+	font:14px/18px IstokBold, Arial, Helvetica, sans-serif;
 	color:#999;
-	background: url(../images/sprites.png) no-repeat 0 -600px;
+	background: image-url('sprites.png') no-repeat 0 -600px;
 }
-.tab-content .select-area.select-select-2{background: url(../images/sprites.png) no-repeat -300px -600px;}
+.tab-content .select-area.select-select-2{background: image-url('sprites.png') no-repeat -300px -600px;}
 .tab-content .select-area .center{
 	float:left;
 	padding:14px 10px 13px;
 }
 .tab-content .select-area .select-opener{
 	position:relative;
-	background: url(../images/sprites.png) no-repeat -650px -500px;
+	background: image-url('sprites.png') no-repeat -650px -500px;
 	float:right;
 	height:45px;
 	width:43px;
@@ -1005,18 +1005,18 @@ form, fieldset{
 .tab-content .select-area .select-opener:hover{background-position:-700px -600px;}
 .select-options{
 	white-space: nowrap;
-	background: url(../images/bg-select-1.png) no-repeat;
+	background: image-url('bg-select-1.png') no-repeat;
 	padding-top:6px;
 	position:absolute;
 	overflow:hidden;
 	width:263px;
 }
 .select-options .drop-holder{
-	background: url(../images/bg-select-1.png) no-repeat 100% 100%;
+	background: image-url('bg-select-1.png') no-repeat 100% 100%;
 	padding-bottom:6px;
 }
 .select-options .drop-list{
-	background: url(../images/bg-select-1.png) repeat-y -368px 0;
+	background: image-url('bg-select-1.png') repeat-y -368px 0;
 	height:1%;
 	overflow:hidden;
 	padding:0 12px 0 10px;
@@ -1025,7 +1025,7 @@ form, fieldset{
 	list-style:none;
 	padding:0;
 	margin:0;
-	font:14px/18px 'IstokBold', Arial, Helvetica, sans-serif;
+	font:14px/18px IstokBold, Arial, Helvetica, sans-serif;
 }
 .select-options ul li{
 	width:100%;
@@ -1042,20 +1042,20 @@ form, fieldset{
 .select-options .item-selected a,
 .select-options a:hover{
 	text-decoration:none;
-	background: url(../images/ico-select-hover.gif) no-repeat 9px 50%;
+	background: image-url('ico-select-hover.gif') no-repeat 9px 50%;
 }
 .select-options.drop-select-2{
-	background: url(../images/bg-select-2.png) no-repeat;
+	background: image-url('bg-select-2.png') no-repeat;
 	width:152px;
 }
-.select-options.drop-select-2 .drop-holder{background: url(../images/bg-select-2.png) no-repeat 100% 100%;}
-.select-options.drop-select-2 .drop-list{background: url(../images/bg-select-2.png) repeat-y -224px 0;}
+.select-options.drop-select-2 .drop-holder{background: image-url('bg-select-2.png') no-repeat 100% 100%;}
+.select-options.drop-select-2 .drop-list{background: image-url('bg-select-2.png') repeat-y -224px 0;}
 .select-options.drop-select-3{
-	background: url(../images/bg-select-3.png) no-repeat;
+	background: image-url('bg-select-3.png') no-repeat;
 	width:140px;
 }
-.select-options.drop-select-3 .drop-holder{background: url(../images/bg-select-3.png) no-repeat 100% 100%;}
-.select-options.drop-select-3 .drop-list{background: url(../images/bg-select-3.png) repeat-y -330px 0;}
+.select-options.drop-select-3 .drop-holder{background: image-url('bg-select-3.png') no-repeat 100% 100%;}
+.select-options.drop-select-3 .drop-list{background: image-url('bg-select-3.png') repeat-y -330px 0;}
 .profile-form .user-name{padding:5px 20px 0 0 ;}
 .profile-form .picture-box,
 .tab-content .video-box{
@@ -1085,9 +1085,9 @@ form, fieldset{
 }
 .tab-content .btn-delete{
 	float:left;
-	background: url(../images/ico-delete.gif) no-repeat;
+	background: image-url('ico-delete.gif') no-repeat;
 	padding:2px 0 5px 20px;
-	color:#0577b8;
+	color: #0577b8;
 	font-size:12px;
 	line-height:15px;
 	margin:8px 0 0;
@@ -1110,7 +1110,7 @@ form, fieldset{
 .tab-content .file-area .jcf-input-wrapper{
 	float:left;
 	height:45px !important;
-	background: url(../images/sprites.png) no-repeat 0 -550px;
+	background: image-url('sprites.png') no-repeat 0 -550px;
 }
 .tab-content .file-area .file-input-opacity{
 	height:45px !important;
@@ -1138,11 +1138,11 @@ form, fieldset{
 	font-weight:bold;
 	color:#999;
 	text-align:center;
-	background: url(../images/sprites.png) no-repeat -350px -750px;
+	background: image-url('sprites.png') no-repeat -350px -750px;
 }
 .tab-content .file-area:hover .jcf-upload-button{
 	text-decoration:none;
-	background: url(../images/sprites.png) no-repeat 0 -750px;
+	background: image-url('sprites.png') no-repeat 0 -750px;
 }
 .tab-content .button-row{
 	width:100%;
@@ -1152,7 +1152,7 @@ form, fieldset{
 	float:left;
 	position:relative;
 	z-index:50;
-	background: url(../images/sprites.png) no-repeat -750px -500px;
+	background: image-url('sprites.png') no-repeat -750px -500px;
 	width:86px;
 	height:36px;
 	text-align:center;
@@ -1160,13 +1160,13 @@ form, fieldset{
 	padding:0;
 	margin:0;
 	border:0;
-	font:14px/18px 'IstokBold', Arial, Helvetica, sans-serif;
+	font:14px/18px IstokBold, Arial, Helvetica, sans-serif;
 	cursor:pointer;
 }
 .tab-content .btn-upload:hover{background-position:-850px -500px;}
 .tab-content .formats{
 	float:left;
-	font:12px/15px 'IstokItalic', Arial, Helvetica, sans-serif;
+	font:12px/15px IstokItalic, Arial, Helvetica, sans-serif;
 	color:#999;
 	padding:12px 0 0 20px;
 }
@@ -1187,12 +1187,12 @@ form, fieldset{
 	font-size:14px;
 	line-height:17px;
 	color:#999;
-	background: url(../images/bg-biography-box.gif) no-repeat;
+	background: image-url('bg-biography-box.gif') no-repeat;
 	padding-top:5px;
 }
 .profile-form .biography-box p{margin:0 0 10px;}
 .profile-form .biography-holder{
-	background: url(../images/bg-biography-box.gif) no-repeat 100% 100%;
+	background: image-url('bg-biography-box.gif') no-repeat 100% 100%;
 	padding-bottom:5px;
 }
 .profile-form .biography-frame{
@@ -1208,7 +1208,7 @@ form, fieldset{
 *+html .profile-form .video-holder{display:inline;}
 .profile-form .video-box h4{
 	padding:0 0 0 30px;
-	background: url(../images/ico-video.gif) no-repeat 0 2px;
+	background: image-url('ico-video.gif') no-repeat 0 2px;
 }
 .profile-form .social-box{
 	border-top:1px solid #ccc;
@@ -1216,22 +1216,22 @@ form, fieldset{
 }
 .profile-form .social-box .facebook{
 	padding-left:25px;
-	background: url(../images/ico-facebook.gif) no-repeat;
+	background: image-url('ico-facebook.gif') no-repeat;
 }
 .profile-form .social-box .twitter{
 	padding-left:30px;
-	background: url(../images/ico-twitter.gif) no-repeat 0 -1px;
+	background: image-url('ico-twitter.gif') no-repeat 0 -1px;
 }
 .profile-form .social-box h4{margin:0 0 30px;}
 .profile-box .title-row-2{padding:0 0 12px;}
 .tab-content .radio-row{
 	width:317px;
 	overflow:hidden;
-	background: url(../images/sprites.png) no-repeat -350px -550px;
+	background: image-url('sprites.png') no-repeat -350px -550px;
 	color:#8c8c8c;
 	padding:2px 0 2px 24px;
 	margin-bottom:20px;
-	font:14px/18px 'IstokBold', Arial, Helvetica, sans-serif;
+	font:14px/18px IstokBold, Arial, Helvetica, sans-serif;
 }
 .tab-content .radio-row .title{
 	float:left;
@@ -1257,12 +1257,12 @@ form, fieldset{
 	float:left;
 	width:18px;
 	height:18px;
-	background: url(../images/bg-radio.png) no-repeat;
+	background: image-url('bg-radio.png') no-repeat;
 }
-.tab-content .yes .rad-checked{background: url(../images/bg-radio.png) no-repeat 0 -41px;}
-.tab-content .no .rad-checked{background: url(../images/bg-radio.png) no-repeat 0 -82px;}
-.tab-content .radio-row .yes.jcf-label-active{background: url(../images/bg-yes-active.gif) repeat-x;}
-.tab-content .radio-row .no.jcf-label-active{background: url(../images/bg-no-active.png) no-repeat 100% 0;}
+.tab-content .yes .rad-checked{background: image-url('bg-radio.png') no-repeat 0 -41px;}
+.tab-content .no .rad-checked{background: image-url('bg-radio.png') no-repeat 0 -82px;}
+.tab-content .radio-row .yes.jcf-label-active{background: image-url('bg-yes-active.gif') repeat-x;}
+.tab-content .radio-row .no.jcf-label-active{background: image-url('bg-no-active.png') no-repeat 100% 0;}
 .judge-form .checkbox-row{
 	border:solid #ccc;
 	border-width:1px 0;
@@ -1281,7 +1281,7 @@ form, fieldset{
 	padding:9px 0 9px 10px;
 	margin:0 10px 4px 0;
 	color:#333;
-	font:14px/18px 'IstokBold', Arial, Helvetica, sans-serif;
+	font:14px/18px IstokBold, Arial, Helvetica, sans-serif;
 }
 *+html .judge-form .checkbox-holder label{display:inline;}
 .judge-form input[type="checkbox"]{
@@ -1296,11 +1296,11 @@ form, fieldset{
 	float:left;
 	width:16px;
 	height:16px;
-	background: url(../images/bg-checkbox.png) no-repeat;
+	background: image-url('bg-checkbox.png') no-repeat;
 }
 .judge-form .chk-checked{background-position:0 -34px;}
 .judge-form .checkbox-holder .chk-label-active{
-	background: url(../images/bg-checkbox-active.gif) no-repeat;
+	background: image-url('bg-checkbox-active.gif') no-repeat;
 	color:#fff;
 }
 .contestant-form .text-row{
@@ -1314,7 +1314,7 @@ form, fieldset{
 .contestant-form label{
 	color:#333;
 	float:left;
-	font:14px/18px 'IstokBold', Arial, Helvetica, sans-serif;
+	font:14px/18px IstokBold, Arial, Helvetica, sans-serif;
 	padding:13px 20px 0 0;
 	text-align:right;
 	width:121px;
@@ -1333,14 +1333,14 @@ form, fieldset{
 .contestant-form .form-box{padding:27px 0 10px;}
 .contestant-form .text{
 	float:left;
-	background: url(../images/sprites.png) no-repeat 0 -500px;
+	background: image-url('sprites.png') no-repeat 0 -500px;
 }
 .contestant-form input[type="text"] {
 	background:none;
 	border:0 none;
 	color:#999;
 	float:left;
-	font:14px/18px 'IstokBold',Arial,Helvetica,sans-serif;
+	font:14px/18px IstokBold,Arial,Helvetica,sans-serif;
 	height:15px;
 	margin:0;
 	padding:15px 13px;
@@ -1356,17 +1356,17 @@ form, fieldset{
 	font-size:14px;
 	line-height:18px;
 	margin:0 0 15px;
-	background: url("../images/ico-video.gif") no-repeat 0 2px;
+	background: image-url("ico-video.gif") no-repeat 0 2px;
 	padding-left:30px;
 }
-.contestant-form .audition-box h4{background: url("../images/ico-video.gif") no-repeat 0 2px;}
+.contestant-form .audition-box h4{background: image-url("ico-video.gif") no-repeat 0 2px;}
 .tab-content .contestant-form .video-box{border:0;}
 .contestant-form .gift-box{
 	border-top:1px solid #ccc;
 	padding:15px 0 40px;
 }
 .contestant-form .gift-box h4{
-	background: url(../images/ico-gift.gif) no-repeat;
+	background: image-url('ico-gift.gif') no-repeat;
 	padding:3px 0 0 30px;
 }
 .contestant-form .text-block{
@@ -1375,12 +1375,12 @@ form, fieldset{
 }
 .contestant-form .textarea-box{
 	float:left;
-	background: url(../images/bg-textarea.gif) no-repeat;
+	background: image-url('bg-textarea.gif') no-repeat;
 	padding-top:5px;
 	width:432px;
 }
 .contestant-form .textarea-holder{
-	background: url(../images/bg-textarea.gif) no-repeat 100% 100%;
+	background: image-url('bg-textarea.gif') no-repeat 100% 100%;
 	padding-bottom:5px;
 }
 .contestant-form .textarea-frame{
@@ -1407,11 +1407,11 @@ form, fieldset{
 	margin:0;
 	background:none;
 	border:0;
-	font:14px/18px 'IstokBold', Arial, Helvetica, sans-serif;
+	font:14px/18px IstokBold, Arial, Helvetica, sans-serif;
 	color:#999;
 }
 .contestant-form .value-row label{position:relative;}
-.contestant-form .value-row .text{background: url(../images/sprites.png) no-repeat -700px -550px;}
+.contestant-form .value-row .text{background: image-url('sprites.png') no-repeat -700px -550px;}
 .contestant-form .value-row input[type="text"]{
 	width:172px;
 	padding:15px 10px 15px 30px;
@@ -1450,7 +1450,7 @@ form, fieldset{
 }
 .notice-box h3{
 	color:#000;
-	font: 25px/30px 'BebasNeueRegular',Arial,Helvetica,sans-serif;
+	font: 25px/30px BebasNeueRegular,Arial,Helvetica,sans-serif;
 	margin: -15px 0 15px;
 	text-align: center;
 	padding-right:10px;
@@ -1462,7 +1462,7 @@ form, fieldset{
 }
 .notice-box .text-box{
 	padding:0 20px 43px 22px;
-	font:16px/19px 'IstokRegular', Arial, Helvetica, sans-serif;
+	font:16px/19px IstokRegular, Arial, Helvetica, sans-serif;
 	color:#333;
 }
 .notice-box .text-box p{margin:0 0 10px;}
@@ -1486,7 +1486,7 @@ form, fieldset{
 	overflow:hidden;
 	top:60px;
 	left:-20px;
-	background: url(../images/bg-arrows.png) no-repeat;
+	background: image-url('bg-arrows.png') no-repeat;
 }
 .notice-box .carousel-2 .btn-next{
 	left:auto;
@@ -1557,7 +1557,7 @@ form, fieldset{
 .notice-box .links-list a{
 	padding:0 0 0 28px;
 	color:#06c;
-	background: url(../images/ico-link-list.gif) no-repeat -86px 2px;
+	background: image-url('ico-link-list.gif') no-repeat -86px 2px;
 }
 .notice-box .links-list .email-link{background-position:-43px -43px;}
 .notice-box .links-list .tweet-link{background-position:0 -90px;}
@@ -1575,7 +1575,7 @@ form, fieldset{
 	vertical-align:top;
 	width:262px;
 	padding:2px 0 26px 60px;
-	background: url(../images/bullet-2.png) no-repeat;
+	background: image-url('bullet-2.png') no-repeat;
 }
 .beliefs-list p{margin:0 0 5px;}
 *+html .beliefs-list li{display:inline;}
@@ -1593,7 +1593,7 @@ form, fieldset{
 	background:#fff;
 	color:#000;
 	float:left;
-	font:20px/24px 'IstokRegular',Arial,Helvetica,sans-serif;
+	font:20px/24px IstokRegular,Arial,Helvetica,sans-serif;
 	margin:-13px 0 0;
 	padding:0 25px 0 3px;
 }
@@ -1607,13 +1607,13 @@ form, fieldset{
 .contact-form label{
 	color:#333;
 	float:left;
-	font:14px/18px 'IstokBold', Arial, Helvetica, sans-serif;
+	font:14px/18px IstokBold, Arial, Helvetica, sans-serif;
 	padding:12px 20px 0 0;
 	text-align:right;
 	width:121px;
 }
 .contact-form .text{
-	background: url("../images/sprites.png") no-repeat 0 -500px;
+	background: image-url("sprites.png") no-repeat 0 -500px;
 	float:left;
 }
 .contact-form input[type="text"]{
@@ -1621,7 +1621,7 @@ form, fieldset{
 	border:0;
 	color:#999;
 	float:left;
-	font:14px/18px 'IstokBold', Arial, Helvetica, sans-serif;
+	font:14px/18px IstokBold, Arial, Helvetica, sans-serif;
 	height:15px;
 	margin:0;
 	padding:15px 13px;
@@ -1647,12 +1647,12 @@ form, fieldset{
 }
 .contact-form .textarea-box{
 	float:left;
-	background: url(../images/bg-textarea-2.gif) no-repeat;
+	background: image-url('bg-textarea-2.gif') no-repeat;
 	padding-top:5px;
 	width:432px;
 }
 .contact-form .textarea-holder{
-	background: url(../images/bg-textarea-2.gif) no-repeat 100% 100%;
+	background: image-url('bg-textarea-2.gif') no-repeat 100% 100%;
 	padding-bottom:5px;
 }
 .contact-form .textarea-frame{
@@ -1679,18 +1679,18 @@ form, fieldset{
 	margin:0;
 	background:none;
 	border:0;
-	font:14px/17px 'IstokRegular', Arial, Helvetica, sans-serif;
+	font:14px/17px IstokRegular, Arial, Helvetica, sans-serif;
 	color:#999;
 }
 .tab-content .terms-box,
 .tab-content .privacy-box{
-	font:14px/17px 'IstokRegular', Arial, Helvetica, sans-serif;
+	font:14px/17px IstokRegular, Arial, Helvetica, sans-serif;
 	color:#666;
 }
 .terms-box h4,
 .privacy-box h4{
 	color:#333;
-	font:14px/17px 'IstokBold', Arial, Helvetica, sans-serif;
+	font:14px/17px IstokBold, Arial, Helvetica, sans-serif;
 	margin:0 0 18px;
 }
 .terms-box p,
@@ -1709,7 +1709,7 @@ form, fieldset{
 }
 .peview-heading h2{
 	color:#000;
-	font:32px/36px 'BebasNeueRegular',Arial,Helvetica,sans-serif;
+	font:32px/36px BebasNeueRegular,Arial,Helvetica,sans-serif;
 	margin:0 0 8px;
 }
 .peview-heading p{margin:0 0 5px;}
@@ -1725,16 +1725,16 @@ form, fieldset{
 .filter-form .row select{
 	width:262px;
 	color: #999;
-	font: 14px/18px 'IstokBold', Arial, Helvetica, sans-serif;
+	font: 14px/18px IstokBold, Arial, Helvetica, sans-serif;
 }
 /* custom select styles */
 .filter-form .select-area{
 	float:left;
 	position:relative;
 	height:45px;
-	font:14px/18px 'IstokBold', Arial, Helvetica, sans-serif;
+	font:14px/18px IstokBold, Arial, Helvetica, sans-serif;
 	color:#999;
-	background: url(../images/sprites.png) no-repeat 0 -600px;
+	background: image-url('sprites.png') no-repeat 0 -600px;
 }
 .filter-form .select-area .center{
 	float:left;
@@ -1742,7 +1742,7 @@ form, fieldset{
 }
 .filter-form .select-area .select-opener{
 	position:relative;
-	background: url(../images/sprites.png) no-repeat -650px -500px;
+	background: image-url('sprites.png') no-repeat -650px -500px;
 	float:right;
 	height:45px;
 	width:43px;
@@ -1774,13 +1774,13 @@ form, fieldset{
 	clear:both;
 }
 .preview-box .heading{
-	background: url(../images/bg-preview-top.png) no-repeat;
+	background: image-url('bg-preview-top.png') no-repeat;
 	overflow:hidden;
 	width:910px;
 	padding:20px 25px 12px;
 }
 .preview-box h2{
-	font:32px/36px 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	font:32px/36px BebasNeueRegular, Arial, Helvetica, sans-serif;
 	margin:0 0 5px;
 	color:#fff;
 	float:left;
@@ -1795,9 +1795,9 @@ form, fieldset{
 	padding-top:10px;
 }
 .preview-box .btn-next{
-	background: url(../images/sprites.png) no-repeat -300px -350px;
+	background: image-url('sprites.png') no-repeat -300px -350px;
 	color:#0577b8;
-	font:22px/26px 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	font:22px/26px BebasNeueRegular, Arial, Helvetica, sans-serif;
 	float:right;
 	width:122px;
 	margin:-8px 0 0;
@@ -1811,7 +1811,7 @@ form, fieldset{
 	background-position:-300px -400px;
 }
 .preview-box .video-box{
-	background: url(../images/bg-preview.png) no-repeat;
+	background: image-url('bg-preview.png') no-repeat;
 	width:940px;
 	padding:22px 10px 40px;
 	font-size:12px;
@@ -1860,13 +1860,13 @@ form, fieldset{
 }
 .preview-box .video-box p{margin:-3px 0 4px;}
 .preview-box .social-panel{
-	background: url(../images/sprites.png) no-repeat 0 -650px;
+	background: image-url('sprites.png') no-repeat 0 -650px;
 	width:220px;
 	padding:10px 10px 10px 41px;
 	color:#8c8c8c;
 	cursor:pointer;
 	position:relative;
-	font:14px/16px 'IstokBold', Arial, Helvetica, sans-serif;
+	font:14px/16px IstokBold, Arial, Helvetica, sans-serif;
 }
 .preview-box .social-panel:hover{
 	position:relative;
@@ -1879,7 +1879,7 @@ form, fieldset{
 	list-style:none;
 	margin:0;
 	padding:0;
-	background: url(../images/bg-social-drop.png) no-repeat;
+	background: image-url('bg-social-drop.png') no-repeat;
 	width:271px;
 	top:100%;
 	left:0;
@@ -1899,22 +1899,22 @@ form, fieldset{
 	color:#282828;
 	text-decoration:none;
 }
-.preview-box .social-panel .facebook{background: url(../images/ico-social.gif) no-repeat 17px 10px;}
+.preview-box .social-panel .facebook{background: image-url('ico-social.gif') no-repeat 17px 10px;}
 .preview-box .social-panel .facebook:hover{background-position:17px -90px;}
-.preview-box .social-panel .twitter{background: url(../images/ico-social.gif) no-repeat 17px -190px;}
+.preview-box .social-panel .twitter{background: image-url('ico-social.gif') no-repeat 17px -190px;}
 .preview-box .social-panel .twitter:hover{background-position:17px -290px;}
 .preview-box .social-plugin{
-	background: url(../images/bg-social-plugin.png) no-repeat;
+	background: image-url('bg-social-plugin.png') no-repeat;
 	padding-top:10px;
 	width:962px;
 	margin:0 -1px 28px;
 }
 .preview-box .social-plugin .holder{
-	background: url(../images/bg-social-plugin.png) no-repeat 100% 100%;
+	background: image-url('bg-social-plugin.png') no-repeat 100% 100%;
 	padding-bottom:10px;
 }
 .preview-box .social-plugin .frame{
-	background: url(../images/bg-social-plugin.png) repeat-y -1019px 0;
+	background: image-url('bg-social-plugin.png') repeat-y -1019px 0;
 	width:100%;
 	overflow:hidden;
 	padding:5px 0 80px;
@@ -1924,7 +1924,7 @@ form, fieldset{
 	margin:0 auto;
 }
 .preview-box .panel{
-	background: url(../images/bg-panel.png) no-repeat;
+	background: image-url('bg-panel.png') no-repeat;
 	width:918px;
 	padding:8px 28px 10px 18px;
 	overflow:hidden;
@@ -1932,9 +1932,9 @@ form, fieldset{
 }
 .preview-box .btn-done{
 	float:left;
-	font:22px/26px 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	font:22px/26px BebasNeueRegular, Arial, Helvetica, sans-serif;
 	color:#fff;
-	background: url(../images/sprites.png) no-repeat -500px -350px;
+	background: image-url('sprites.png') no-repeat -500px -350px;
 	width:79px;
 	text-align:center;
 	padding:4px 0 5px;
@@ -1952,7 +1952,7 @@ form, fieldset{
 }
 .popup{
 	width:740px;
-	background: url(../images/bg-lightbox.png) no-repeat;
+	background: image-url('bg-lightbox.png') no-repeat;
 	padding-top:5px;
 	position: relative;
 	font-size:16px;
@@ -1961,7 +1961,7 @@ form, fieldset{
 	overflow:hidden;
 }
 .popup .holder{
-	background: url(../images/bg-lightbox.png) no-repeat 100% 100%;
+	background: image-url('bg-lightbox.png') no-repeat 100% 100%;
 	padding-bottom:5px;
 }
 .popup .frame{
@@ -1974,14 +1974,14 @@ form, fieldset{
 	position:absolute;
 	top:-15px;
 	right:-15px;
-	background: url(../images/bg-btn-close.png) no-repeat;
+	background: image-url('bg-btn-close.png') no-repeat;
 	width:32px;
 	height:32px;
 	text-indent:-9999px;
 	overflow:hidden;
 }
 .popup h3{
-	font:32px/36px 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	font:32px/36px BebasNeueRegular, Arial, Helvetica, sans-serif;
 	color:#000;
 	margin:0 0 15px;
 }
@@ -2002,7 +2002,7 @@ form, fieldset{
 	padding:0 30px 0 26px;
 	text-align:center;
 	color:#444;
-	font:12px/15px 'IstokBold', Arial, Helvetica, sans-serif;
+	font:12px/15px IstokBold, Arial, Helvetica, sans-serif;
 }
 .popup .checkbox-label-2{padding:0 20px 0 38px;}
 .popup .checkbox-label span{
@@ -2015,7 +2015,7 @@ form, fieldset{
 	margin:0 auto;
 	width:16px;
 	height:16px;
-	background: url(../images/bg-checkbox.png) no-repeat 0 1px;
+	background: image-url('bg-checkbox.png') no-repeat 0 1px;
 }
 .popup .signup-form .chk-checked{background-position:0 -34px;}
 .popup .columns{
@@ -2025,7 +2025,7 @@ form, fieldset{
 	padding:20px 0 23px;
 }
 .popup h4{
-	font:16px/20px 'IstokRegular', Arial, Helvetica, sans-serif;
+	font:16px/20px IstokRegular, Arial, Helvetica, sans-serif;
 	color:#666;
 	margin:0 0 12px;
 }
@@ -2038,7 +2038,7 @@ form, fieldset{
 	padding:0 15px 0 0;
 }
 .popup .col-1 .btn-holder{
-	background: url(../images/bg-facebook-btn.gif) no-repeat;
+	background: image-url('bg-facebook-btn.gif') no-repeat;
 	padding:16px 0 15px 45px;
 	width:246px;
 	overflow:hidden;
@@ -2046,7 +2046,7 @@ form, fieldset{
 }
 .popup .btn-facebook{
 	float:left;
-	background: url(../images/sprites.png) no-repeat -300px -650px;
+	background: image-url('sprites.png') no-repeat -300px -650px;
 	text-indent:-9999px;
 	overflow:hidden;
 	width:197px;
@@ -2065,14 +2065,14 @@ form, fieldset{
 .popup label{
 	color:#333;
 	float:left;
-	font:14px/18px 'IstokBold', Arial, Helvetica, sans-serif;
+	font:14px/18px IstokBold, Arial, Helvetica, sans-serif;
 	padding:13px 18px 0 0;
 	text-align:right;
 	width:75px;
 }
 .popup .signup-form .text,
 .popup .login-form .text{
-	background: url(../images/sprites.png) no-repeat -300px -700px;
+	background: image-url('sprites.png') no-repeat -300px -700px;
 	float:left;
 }
 .popup .signup-form input[type="text"],
@@ -2083,7 +2083,7 @@ form, fieldset{
 	border:0;
 	color:#999;
 	float:left;
-	font:14px/18px 'IstokBold', Arial,Helvetica,sans-serif;
+	font:14px/18px IstokBold, Arial,Helvetica,sans-serif;
 	height:15px;
 	margin:0;
 	padding:15px 13px;
@@ -2110,9 +2110,9 @@ form, fieldset{
 .popup .submit-row p{margin:0;}
 .popup .submit-row p a{font-weight:bold;}
 .popup .button-signup{
-	font:22px/26px 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	font:22px/26px BebasNeueRegular, Arial, Helvetica, sans-serif;
 	color:#fff;
-	background: url(../images/sprites.png) no-repeat -600px -350px;
+	background: image-url('sprites.png') no-repeat -600px -350px;
 	display:block;
 	width:100px;
 	height:39px;
@@ -2137,7 +2137,7 @@ form, fieldset{
 }
 .popup-login .btn-facebook{
 	float:left;
-	background: url(../images/sprites.png) no-repeat -550px -650px;
+	background: image-url('sprites.png') no-repeat -550px -650px;
 	text-indent:-9999px;
 	overflow:hidden;
 	width:174px;
@@ -2151,19 +2151,19 @@ form, fieldset{
 }
 #footer .panel{
 	overflow:hidden;
-	background:url(../images/footer-panel.png) no-repeat;
+	background:image-url('footer-panel.png') no-repeat;
 	padding:4px 0 0;
 }
 #footer .panel .holder{
 	overflow:hidden;
-	background:url(../images/footer-panel.png) no-repeat -1924px 100%;
+	background:image-url('footer-panel.png') no-repeat -1924px 100%;
 	padding:0 0 4px;
 }
 #footer .panel .frame{
 	overflow:hidden;
-	background:url(../images/footer-panel.png) repeat-y -961px 100%;
+	background:image-url('footer-panel.png') repeat-y -961px 100%;
 	padding:7px 32px 9px;
-	font:14px/16px 'IstokRegular', Arial, Helvetica, sans-serif;
+	font:14px/16px IstokRegular, Arial, Helvetica, sans-serif;
 }
 #footer .panel span{
 	margin:17px 14px 0 0;
@@ -2178,12 +2178,12 @@ form, fieldset{
 	padding:22px 2px 1px 0;
 	text-align:right;
 	color:#333;
-	font:14px/16px 'IstokRegular', Arial, Helvetica, sans-serif;
+	font:14px/16px IstokRegular, Arial, Helvetica, sans-serif;
 }
 #footer .bar p{margin:0;}
 .add-nav-box{
 	float:left;
-	background:url(../images/bg-add-nav.png) no-repeat 100% 100%;
+	background:image-url('bg-add-nav.png') no-repeat 100% 100%;
 	padding:0 8px 0 0;
 	text-align:left;
 	margin:-5px 0 0;
@@ -2194,8 +2194,8 @@ form, fieldset{
 	list-style:none;
 	overflow:hidden;
 	height:1%;
-	font:14px/16px 'IstokRegular', Arial, Helvetica, sans-serif;
-	background:url(../images/bg-add-nav.png) no-repeat;
+	font: 14px/16px IstokRegular, Arial, Helvetica, sans-serif;
+	background: image-url('bg-add-nav.png') no-repeat;
 }
 .add-nav li{
 	float:left;
@@ -2269,7 +2269,7 @@ form, fieldset{
 	cursor:pointer;
 	z-index:1103;
 	display:none;
-	background:url(../images/bg-btn-close.png) no-repeat;
+	background:image-url('bg-btn-close.png') no-repeat;
 	width:32px;
 	height:32px;
 	text-indent:-9999px;
