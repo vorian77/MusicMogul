@@ -74,6 +74,7 @@ ContentTabs = {
 	init: function(){
 		this.createStyleSheet();
 		this.getTabsets();
+    this.showCurrentTab();
 		return this;
 	},
 	createStyleSheet: function() {
@@ -106,6 +107,12 @@ ContentTabs = {
 			}
 		}
 	},
+  showCurrentTab: function() {
+    $tab = $('a[href="'+window.location.hash+'"]')
+    if($tab) {
+      $tab.click();
+    }
+  },
 	switchTab: function(link, set) {
 		for(var i = 0; i < set.length; i++) {
 			var curLink = set[i];
