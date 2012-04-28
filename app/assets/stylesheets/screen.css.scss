@@ -3,18 +3,20 @@
 @import 'partials/formtastic';
 
 .copyright {
+  color: #333;
+  font-size: 14px;
   text-align: center;
   margin: 1em 0;
 }
 
 .flash {
+  background: #E3E6E8 image-url('bg-w1.gif');
   div {
-    background-color: #fff;
+    background: image-url('bg-wrapper.jpg') repeat-y 50% 0;
     height: 40px;
     line-height: 40px;
     font-weight: bold;
     text-align: center;
-    background-color: #e5e5e5;
   }
   .notice {
     color: #000;
