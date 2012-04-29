@@ -164,6 +164,18 @@
   }
 }
 
+.linked-slide {
+  > a {
+    margin-top: -39px;
+    padding-top: 39px;
+    margin-left: -68px;
+    padding-left: 68px;
+    display: block;
+    width: 892px;
+    height: 344px;
+  }
+}
+
 .button-save {
   font: 22px/26px 'BebasNeueRegular', Arial, Helvetica, sans-serif;
   color: white;
