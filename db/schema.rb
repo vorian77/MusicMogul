@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120427025528) do
+ActiveRecord::Schema.define(:version => 20120429012414) do
 
   create_table "contests", :force => true do |t|
     t.string   "name"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20120427025528) do
     t.datetime "updated_at",                           :null => false
     t.boolean  "active",            :default => false, :null => false
     t.string   "artist_type"
-    t.string   "genre"
+    t.string   "genres"
     t.string   "community_name"
     t.string   "audition_type"
     t.string   "song_title"
@@ -89,6 +89,8 @@ ActiveRecord::Schema.define(:version => 20120427025528) do
     t.string   "facebook"
     t.string   "twitter"
     t.string   "phone"
+    t.string   "youtube"
+    t.string   "genre"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

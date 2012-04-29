@@ -18,6 +18,10 @@ en:
         active: 'I will compete...'
         artist_type: 'Type of Artist'
         community_name: 'Community Name'
+        genres_array: "Genres"
+      judging:
+        active: 'I will judge...'
+        genres_array: 'Select genres you would like to judge'
     form_hints:
       user:
         twitter: 'Without the @'

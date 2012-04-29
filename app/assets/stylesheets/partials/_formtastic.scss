@@ -1,4 +1,16 @@
 .formtastic {
+  &.user {
+    .thumbnail-wrapper {
+      width: 77px;
+      height: 77px;
+      overflow: hidden;
+    }
+    .original-wrapper {
+      float: right;
+      width: 75%;
+      position: relative;
+    }
+  }  
   ol, ul {
     list-style: none;
     margin: 0;
@@ -17,7 +29,7 @@
       textarea {
         background-color: #f9f9f9;
         width: 406px;
-        height: 215px;
+        height: 110px;
         border: solid #D4D4D4;
         padding: 10px;
         border-width: 1px;
@@ -49,6 +61,8 @@
     &.check_boxes {
       width: 420px;
       legend label {
+        float: none;
+        text-align: left;
         font-family: inherit;
         font-size: 16px;
         color: #666;
@@ -60,20 +74,19 @@
         width: 120px;
         margin: 0 10px 4px 0;
         color: #333;
+        label {
+          width: 120px;
+          text-align: left;
+          &.chk-label-active {
+            background: image-url('bg-checkbox-active.gif') no-repeat;
+            color: white;
+          }
+        }
       }
     }
   }
-  &.user {
-    .thumbnail-wrapper {
-      width: 77px;
-      height: 77px;
-      overflow: hidden;
-    }
-    .original-wrapper {
-      float: right;
-      width: 75%;
-      position: relative;
-    }
+  .checkbox-row {
+    border-bottom: none;
   }
   .photo {
     width: 72%;
@@ -101,7 +114,7 @@
     position:relative;
     .label label {
       position: absolute;
-      padding: 0;
+      padding: 13px 20px 0 0;
     }
   }
   .fragments-group {
@@ -125,6 +138,17 @@
       }
     }
   }
+
+  .checkbox-holder label {
+    display: inline-block;
+    vertical-align: middle;
+    width: auto;
+    padding: 9px 0 9px 10px;
+    margin: 0 10px 4px 0;
+    color: #333;
+    font: 14px/18px IstokBold, Arial, Helvetica, sans-serif;
+  }
+
   .boolean label {
     width: auto;
     padding-left: 140px;
@@ -171,5 +195,11 @@
   }
   #user_twitter_input label {
     background: image-url('ico-twitter.gif') no-repeat 48px 14px;
+  }
+  #user_youtube_input label {
+    background: image-url('ico-youtube.gif') no-repeat 36px 6px;
+  }
+  #genres-confirm-text {
+    display: none;
   }
 }

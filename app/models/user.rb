@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
     :twitter, :phone, :profile_photo_square, :profile_photo_rectangle,
     :remove_profile_photo_square, :remove_profile_photo_rectangle, :thumb_x,
     :thumb_y, :thumb_w, :account_type, :judgings_attributes,
-    :entries_attributes
-  
+    :entries_attributes, :genre, :youtube
+
   attr_accessor :thumb_x, :thumb_y, :thumb_w
   attr_accessor :account_type
 
