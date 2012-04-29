@@ -9,7 +9,13 @@ class Entry < ActiveRecord::Base
   ARTIST_TYPES = %w{Group Singer}
   ENTRY_TYPES = %w{Original Cover}
 
-  validates_presence_of :artist_type, :genres, :community_name, :audition_type, :song_title, :written_by
+  with_options :if => :active? do |u|
+    u.validates_presence_of :artist_type
+    u.validates_presence_of :genres_array
+    u.validates_presence_of :audition_type
+    u.validates_presence_of :song_title
+    u.validates_presence_of :written_by
+  end
 
   def genres_array=(g)
     self.genres = g.join(', ')

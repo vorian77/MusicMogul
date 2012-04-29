@@ -31,6 +31,14 @@
   }
 }
 
+#header .panel .block {
+  height: 36px;
+}
+
+.account-box .user {
+  overflow: visible;
+}
+
 .profile-photo {
   width: 77px;
   height: 77px;
@@ -38,6 +46,23 @@
 	margin: 0 0 10px;
 	border: 1px solid #d7d7d7;
   background: image-url('default-profile-photo.png') no-repeat;
+}
+
+.account-box .user .profile-photo-tiny {
+  float: left;
+  display: block;
+  margin: 0 10px 0 0;
+  vertical-align: middle;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #d7d7d7;
+  background: image-url('default-profile-photo-tiny.png') no-repeat;
+  position: relative;
+  top: 4px;
+  img {
+    display: inline;
+    margin: 0;
+  }
 }
 
 .remove-profile-photo {

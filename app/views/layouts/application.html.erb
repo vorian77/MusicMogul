@@ -57,9 +57,9 @@
                 <% if user_signed_in? %>
                   <div class="account-box">
                     <a href="<%= account_path %>" class="user">
-                      <% if current_user.profile_photo_square? %>
+                      <div class="profile-photo-tiny"><% if current_user.profile_photo_square? %>
                         <%= image_tag current_user.profile_photo_square.cropped.tiny, :alt => 'Profile photo' %>
-                      <% end %>
+                      <% end %></div>
                       <span><div class="display-name"><%= current_user.display_name %></div></span>
                     </a>
                     <div class="drop">
@@ -119,10 +119,10 @@
 				</ul>
 			</div>
       <div class="social-media-buttons">
-        <%= link_to 'http://www.facebook.com/FansHelpingArtists' do %>
+        <%= link_to 'http://www.facebook.com/FansHelpingArtists', :target => '_blank' do %>
           <div class="facebook-button">Join us on facebook</div>
         <% end %>
-        <%= link_to 'https://twitter.com/intent/user?screen_name=fanhelp' do %>
+        <%= link_to 'https://twitter.com/intent/user?screen_name=fanhelp', :target => '_blank' do %>
           <div class="twitter-button">Follow @FanHelp</div>
         <% end %>
       </div>
