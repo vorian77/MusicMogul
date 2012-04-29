@@ -9,17 +9,17 @@
         <%= form_for (User.new), :url => registration_path('user'), :html => { :class => 'signup-form' } do |f| %>
           <fieldset>
             <div class="row">
-              <%= f.label :account_type, :class => 'checkbox-label', :for => 'account_type_judge' do %>
+              <%= f.label :account_type, :class => 'radio-label', :for => 'account_type_judge' do %>
                 <%= image_tag 'img-29.jpg', :alt => 'Judge', :width => '174', :height => '90' %>
                 <span>I will judge</span>
                 <%= f.radio_button :account_type, 'judge', :class => 'radio', :id => 'account_type_judge' %>
               <% end %>
-              <%= f.label :account_type, :class => 'checkbox-label', :for => 'account_type_compete' do %>
+              <%= f.label :account_type, :class => 'radio-label', :for => 'account_type_compete' do %>
                 <%= image_tag 'img-30.jpg', :alt => 'Compete', :width => '174', :height => '90' %>
                 <span>I will compete</span>
                 <%= f.radio_button :account_type, 'compete', :class => 'radio', :id => 'account_type_compete' %>
               <% end %>
-              <%= f.label :account_type, :class => 'checkbox-label', :for => 'account_type_judge_compete' do %>
+              <%= f.label :account_type, :class => 'radio-label', :for => 'account_type_judge_compete' do %>
                 <%= image_tag 'img-31.jpg', :alt => 'Compete', :width => '174', :height => '90' %>
                 <span>I will judge &amp; compete</span>
                 <%= f.radio_button :account_type, 'judge,compete', :class => 'radio', :id => 'account_type_judge_compete' %>

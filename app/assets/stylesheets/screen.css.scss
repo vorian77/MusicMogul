@@ -232,3 +232,29 @@ hr {
   background-color: #ccc;
   border: none;
 }
+
+.popup {
+  .radio-label {
+	  float:left;
+	  width:174px;
+	  padding:0 30px 0 26px;
+	  text-align:center;
+	  color:#444;
+	  font:12px/15px IstokBold, Arial, Helvetica, sans-serif;
+    span {
+  	  display:block;
+	    padding:0 0 10px;
+    }
+  }
+  .rad-area{
+    float:none;
+    display:block;
+    margin:0 auto;
+    width:18px;
+    height:18px;
+    background: image-url('bg-radio.png') no-repeat 0 0px;
+  }
+  .rad-checked{
+    background-position: 0 -41px;
+  }
+}

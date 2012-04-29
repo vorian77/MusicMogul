@@ -43,6 +43,9 @@ class User < ActiveRecord::Base
   end
 
   def parse_account_type
+    types = account_type.to_s.split(/,\s?/)
+    self.judging.update_attribute(:active,true) if types.include? 'judge'
+    self.entry.update_attribute(:active,true) if types.include? 'compete'
   end
 
   # Temporary hack until we need more than one judging
