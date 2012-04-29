@@ -16,27 +16,14 @@
     </div>
     <ul class="sponsors">
       <li>
-        <%= image_tag 'sponsor-placeholder.png' %>
+        <%= link_to 'http://www.mrhandyman.com/' do %>
+          <%= image_tag 'sponsor-placeholder.png' %>
+        <% end %>
         <div class="sponsor-text">
-          <h3>Sponsor 1</h3>
+          <h3><%= link_to 'Mr. Handyman', 'http://www.mrhandyman.com/' %></h3>
           Describe the sponsor here...
         </div>
         </li>
-      <li>
-        <%= image_tag 'sponsor-placeholder.png' %>
-        <div class="sponsor-text">
-          <h3>Sponsor 2</h3>
-          Describe the sponsor here...
-        </div>
-      </li>
-      <li>
-        <%= image_tag 'sponsor-placeholder.png' %>
-        <div class="sponsor-text">
-          <h3>Sponsor 3</h3>
-          Describe the sponsor here...
-        </div>
-      </li>
-      
     </ul>
   </div>
 </div>
