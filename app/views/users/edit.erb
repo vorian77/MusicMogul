@@ -66,11 +66,15 @@
                 <%= f.input :youtube %>
               </div>              
               <div class="picture-box">
-                <h4>Profile Picture</h4>
+                <h4>Profile Pictures</h4>
                 <div class="holder">
                   <div class="picture-holder">
                     <% if current_user.profile_photo_square? %>
-                      <a href="<%= edit_thumbnail_path %>" class="lightbox"><%= image_tag current_user.profile_photo_square, :width => '240', :height => '197' %></a>
+                      <div class="profile-photo-box">
+                        <%= image_tag current_user.profile_photo_square.cropped, :width => '240', :height => '240' %>
+                        <a href="#edit-thumbnail" class="lightbox crop">Click to crop photo</a>
+                      </div>
+                      <%= f.hidden_field :remove_profile_photo_square %>
                       <a href="#" class="btn-delete">Delete current image</a>
                     <% end %>
                   </div>
@@ -80,7 +84,27 @@
                       <%= f.input :profile_photo_square, :as => :file %>
                     </div>
                     <div class="button-row">
-                      <!-- <input type="button" value="Upload" class="btn-upload" /> -->
+                      <span class="formats">jpeg, png or gif, max 4mb</span>
+                    </div>
+                  </div>
+                </div>
+                <hr />
+                <div class="holder">
+                  <div class="picture-holder">
+                    <% if current_user.profile_photo_landscape? %>
+                      <div class="profile-photo-box">
+                        <%= image_tag current_user.profile_photo_landscape.small, :width => '240', :height => '200' %>
+                      </div>
+                      <%= f.hidden_field :remove_profile_photo_landscape %>
+                      <a href="#" class="btn-delete">Delete current image</a>
+                    <% end %>
+                  </div>
+                  <div class="file-box">
+                    <p>Click ‘browse to select a new profile picture.</p>
+                    <div class="file-row">
+                      <%= f.input :profile_photo_landscape, :as => :file %>
+                    </div>
+                    <div class="button-row">
                       <span class="formats">jpeg, png or gif, max 4mb</span>
                     </div>
                   </div>
@@ -209,4 +233,8 @@
       </div>
     <% end %>
   </div>
+</div>
+
+<div class="popup-holder">
+  <div class="lightbox popup" id="edit-thumbnail"><%= render 'users/edit_thumbnail' %></div>
 </div>

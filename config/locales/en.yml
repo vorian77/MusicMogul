@@ -14,6 +14,10 @@ en:
         profile_name: 'User or Band Name'
         facebook: 'Facebook'
         twitter: 'Twitter'
+        profile_photo_square: 'Album Photo'
+        remove_profile_photo_square: 'Delete current image'
+        profile_photo_landscape: 'Band Photo'
+        remove_profile_photo_landscape: 'Delete current image'
       entry:
         active: 'I will compete...'
         artist_type: 'Type of Artist'

@@ -57,8 +57,8 @@
                 <% if user_signed_in? %>
                   <div class="account-box">
                     <a href="<%= account_path %>" class="user">
-                      <% if current_user.profile_photo_square.try(:tiny).present? %>
-                        <%= image_tag current_user.profile_photo_square.tiny, :alt => 'Profile photo' %>
+                      <% if current_user.profile_photo_square? %>
+                        <%= image_tag current_user.profile_photo_square.cropped.tiny, :alt => 'Profile photo' %>
                       <% end %>
                       <span><div class="display-name"><%= current_user.display_name %></div></span>
                     </a>
@@ -67,7 +67,7 @@
                         <div class="frame">
                           <div class="foto">
                             <div class="profile-photo"><% if current_user.profile_photo_square? %>
-                              <%= image_tag current_user.profile_photo_square.small, :width => '77', :height => '77' %>
+                              <%= image_tag current_user.profile_photo_square.cropped.small, :width => '77', :height => '77' %>
                             <% end %></div>
                             <span><%= current_user.display_name %></span>
                           </div>

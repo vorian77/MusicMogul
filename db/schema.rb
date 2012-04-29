@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120429012414) do
+ActiveRecord::Schema.define(:version => 20120429051827) do
 
   create_table "contests", :force => true do |t|
     t.string   "name"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(:version => 20120429012414) do
     t.string   "profile_video"
     t.string   "performance_video"
     t.string   "profile_photo_square"
-    t.string   "profile_photo_rectangle"
+    t.string   "profile_photo_landscape"
     t.string   "facebook"
     t.string   "twitter"
     t.string   "phone"

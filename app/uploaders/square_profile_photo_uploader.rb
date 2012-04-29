@@ -1,26 +1,18 @@
 # encoding: utf-8
 
-class SquareProfilePhotoUploader < CarrierWave::Uploader::Base
-  include CarrierWave::RMagick
+class SquareProfilePhotoUploader < ProfilePhotoUploader
 
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
-
-  def cache_dir
-    File.join(Rails.root,'tmp','uploaders')
-  end
-
-  version :small do
+  version :cropped do
     process :resize_to_fit => [400,400]
     process :crop_thumbnail
-    process :resize_to_fill => [77, 77]
-  end
+    process :resize_to_fill => [240,240]
+    version :small do
+      process :resize_to_fill => [77, 77]
+    end
+    version :tiny do
+      process :resize_to_fill => [15, 15]
+    end
 
-  version :tiny do
-    process :resize_to_fit => [400,400]
-    process :crop_thumbnail
-    process :resize_to_fill => [15, 15]
   end
 
   def crop_thumbnail

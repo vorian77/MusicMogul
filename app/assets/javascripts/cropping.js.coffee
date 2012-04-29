@@ -1,10 +1,11 @@
 showPreview = (coords) ->
   rx = 77 / coords.w
   ry = 77 / coords.h
+  $holder = $('.jcrop-holder')
   $thumb = $('.thumbnail img')
   $thumb.css
-    width: Math.round(rx * 400) + 'px'
-    height: Math.round(ry * 400) + 'px'
+    width: Math.round(rx * $holder.width()) + 'px'
+    height: Math.round(ry * $holder.height()) + 'px'
     marginLeft: '-' + Math.round(rx * coords.x) + 'px'
     marginTop: '-' + Math.round(ry * coords.y) + 'px'
     $('#user_thumb_x').val(coords.x)
@@ -19,6 +20,9 @@ $(document).ready ->
     onSelect: showPreview
     aspectRatio: 1
     minSize: [ 77, 77 ]
+    setSelect: [0, 0, 400, 400]
 
   $('form.edit-thumbnail').bind 'ajax:success', ->
-    console.log('Success!')
+    parent.$.fancybox.close()
+    img = $('.profile-photo-box img')
+    img.attr('src',img.attr('src'))

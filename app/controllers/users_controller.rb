@@ -7,6 +7,10 @@ class UsersController < ApplicationController
   end
   
   def update
+    ['landscape','square'].each do |type|
+      params[:user]["remove_profile_photo_#{type}".to_sym] = nil if params[:user]["profile_photo_#{type}".to_sym]
+    end
+    params[:user]
     if current_user.update_attributes(params[:user])
       respond_with current_user, :location => account_path
     else

@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me,
     :name, :first_name, :last_name, :zip, :country, :birthdate,
     :interview_status, :profile_name, :hometown, :genre, :bio, :facebook,
-    :twitter, :phone, :profile_photo_square, :profile_photo_rectangle,
-    :remove_profile_photo_square, :remove_profile_photo_rectangle, :thumb_x,
+    :twitter, :phone, :profile_photo_square, :profile_photo_landscape,
+    :remove_profile_photo_square, :remove_profile_photo_landscape, :thumb_x,
     :thumb_y, :thumb_w, :account_type, :judgings_attributes,
     :entries_attributes, :genre, :youtube
 
@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   end
   
   mount_uploader :profile_photo_square, SquareProfilePhotoUploader
-  mount_uploader :profile_photo_rectangle, ProfilePhotoUploader
+  mount_uploader :profile_photo_landscape, LandscapeProfilePhotoUploader
 
   has_many :entries
   has_many :judgings

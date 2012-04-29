@@ -13,7 +13,8 @@ $(document).ready ->
       $('#genres-confirm-text .close').click (e) ->
         $.fancybox.close()
         e.preventDefault()
-
       $genres.off 'click.fanhelp'
-
-
+  $('.btn-delete').click (e) ->
+    $(this).prev().attr('value','1')
+    $(this).parent('.picture-holder').fadeOut()
+    false

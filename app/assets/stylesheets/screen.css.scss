@@ -40,10 +40,22 @@
   background: image-url('default-profile-photo.png') no-repeat;
 }
 
+.remove-profile-photo {
+  margin-top: 10px;
+  .boolean label {
+    width: auto;
+    padding: 0;
+    float: none;
+    text-align: left;
+    font: inherit;
+  }
+}
+
 .display-name {
   text-overflow: ellipsis;
   overflow: hidden;
   width: 100%;
+  padding-right: 10px;
 }
 
 .drop .frame .foto img{
@@ -60,7 +72,7 @@
 }
 
 .block-holder .box {
-  width: auto;
+  max-width: 200px;
 }
 
 .account-box{
@@ -195,13 +207,8 @@
   padding: 40px;
   .original {
     float: left;
-    width: 400px;
-    height: 400px;
-    background-color: #fff;
-    border: solid 1px #eee;
-    line-height: 400px;
-    text-align: center;
     img {
+      border: solid 1px #eee;
       max-width: 400px;
       max-height: 400px;
     }
@@ -214,6 +221,13 @@
     margin-bottom: 20px;
   }
   .button-save {
+    clear: right;
     float: right;
   }
+}
+
+hr {
+  height: 1px;
+  background-color: #ccc;
+  border: none;
 }
