@@ -153,7 +153,10 @@
                 <div class="form-box">
                   <%= entry.input :artist_type, :as => :select, :collection => Entry::ARTIST_TYPES, :include_blank => false %>
                   <div class="genres-row checkbox-row"><%= entry.input :genres_array, :as => :check_boxes, :collection => Contest::GENRES, :wrapper_html => { :class => 'checkbox-holder' } %></div>
-                  <div id="genres-confirm-text">It's ok to compete in multiple genres. We encourage it because it allows you more exposure and financial opportunities. However, know that each genre is a separate contest. Each week you'll have to submit a performance video for each genre.</div>
+                  <div id="genres-confirm-text">
+                    It's ok to compete in multiple genres. We encourage it because it allows you more exposure and financial opportunities. However, know that each genre is a separate contest. Each week you'll have to submit a performance video for each genre.
+                    <a href="javascript:;" onclick="$.fancybox.close();">Close</a>
+                  </div>
                 </div>
                 <div class="audition-box">
                   <h4>Audition Performance</h4>
