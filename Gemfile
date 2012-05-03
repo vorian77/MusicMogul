@@ -12,6 +12,7 @@ gem 'rmagick'
 gem 'fog'
 gem 'fancybox-rails'
 gem 'haml-rails'
+gem 'omniauth-facebook'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

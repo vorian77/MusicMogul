@@ -29,7 +29,7 @@
               <div class="col-1">
                 <h4>Sign up via Facebook <em>(recommended)</em></h4>
                 <div class="btn-holder">
-                  <a href="#" class="btn-facebook">Connect with facebook</a>
+                  <a href="<%= user_omniauth_authorize_path(:facebook) %>" class="btn-facebook">Connect with facebook</a>
                 </div>
                 <p>Sign up terms, lorem ipsum consectetur adipiscing elit. Suspendisse condimentum faucibus justo tempus gravida. Cras fringilla velit sed arcu gravida quis tincidunt dui porta.</p>
               </div>
@@ -73,7 +73,7 @@
               <div class="col-1">
                 <h4>Log in with <strong>Facebook</strong></h4>
                 <div class="btn-holder">
-                  <a href="#" class="btn-facebook">Connect with facebook</a>
+                  <a href="<%= user_omniauth_authorize_path(:facebook) %>" class="btn-facebook">Connect with facebook</a>
                 </div>
                 <p>Users who have not connected to facebook before will not be able to log in this way. Please sign in and connect to facebook on your My Account page.</p>
               </div>

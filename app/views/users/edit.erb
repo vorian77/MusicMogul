@@ -71,7 +71,7 @@
                   <div class="picture-holder">
                     <% if current_user.profile_photo_square? %>
                       <div class="profile-photo-box">
-                        <%= image_tag current_user.profile_photo_square.cropped, :width => '240', :height => '240' %>
+                        <%= image_tag current_user.profile_photo_square.cropped, :width => '240', :height => '240', :class => 'profile-photo-square' %>
                         <a href="#edit-thumbnail" class="lightbox crop">Click to crop photo</a>
                       </div>
                       <%= f.hidden_field :remove_profile_photo_square %>

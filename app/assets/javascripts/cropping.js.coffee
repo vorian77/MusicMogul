@@ -24,5 +24,5 @@ $(document).ready ->
 
   $('form.edit-thumbnail').bind 'ajax:success', ->
     parent.$.fancybox.close()
-    img = $('.profile-photo-box img')
+    img = $('img.profile-photo-square')
     img.attr('src',img.attr('src'))
