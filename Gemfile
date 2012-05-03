@@ -13,6 +13,7 @@ gem 'fog'
 gem 'fancybox-rails'
 gem 'haml-rails'
 gem 'omniauth-facebook'
+gem 'exception_notification'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
