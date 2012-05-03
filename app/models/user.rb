@@ -12,19 +12,22 @@ class User < ActiveRecord::Base
     :twitter, :phone, :profile_photo_square, :profile_photo_landscape,
     :remove_profile_photo_square, :remove_profile_photo_landscape, :thumb_x,
     :thumb_y, :thumb_w, :account_type, :judgings_attributes,
-    :entries_attributes, :genre, :youtube
+    :entries_attributes, :genre, :youtube, :current_tab
 
   attr_accessor :thumb_x, :thumb_y, :thumb_w
-  attr_accessor :account_type
+  attr_accessor :account_type, :current_tab
 
-  with_options :on => :update do |u|
+  with_options :on => :update, :if => Proc.new { |u| u.current_tab == 'details' } do |u|
     u.validates_presence_of :first_name, :message => "First Name is required."
     u.validates_presence_of :last_name, :message => "Last Name is required."
     u.validates_presence_of :birthdate, :message => "Birthdate is required. Must be at least 13 years old."
+  end
+  
+  with_options :on => :update, :if => Proc.new { |u| u.current_tab == 'profile' } do |u|
     u.validates_presence_of :profile_name, :message => "User or Band Name is required."
     u.validates_presence_of :hometown, :message => "Hometown is required."
   end
-  
+
   mount_uploader :profile_photo_square, SquareProfilePhotoUploader
   mount_uploader :profile_photo_landscape, LandscapeProfilePhotoUploader
 

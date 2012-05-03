@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  respond_to :html
   
   before_filter :authenticate_user!
   
@@ -14,8 +13,9 @@ class UsersController < ApplicationController
     if current_user.update_attributes(params[:user])
       respond_with current_user, :location => account_path
     else
-      respond_with current_user do |format|
-        format.html { render :action => 'show' }
+      respond_with current_user, :alert => 'Sorry, there was an error in the form' do |format|
+        format.html { render :action => 'edit' }
+        format.json { render :json => current_user.errors, :status => :unprocessable_entity }
       end
     end
   end

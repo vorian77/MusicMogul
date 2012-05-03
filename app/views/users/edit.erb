@@ -13,18 +13,19 @@
       <li><a href="#tab-3" class="tab"><span class="tab-judge">Judge</span></a></li>
       <li><a href="#tab-4" class="tab"><span class="tab-contestant">Contestant</span></a></li>
     </ul>
-    <%= semantic_form_for current_user, :url => account_path do |f| %>
-      <div class="tab-content" id="tab-1">
-        <div class="tab-holder">
-          <div class="tab-frame">
-            <div class="title-row">
-              <h3>General account details</h3>
-              <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save' %></div>
-            </div>
-            <div class="text-box">
-              <p>The information on this page is not shown on the site.</p>
-            </div>
+    <div class="tab-content" id="tab-1">
+      <div class="tab-holder">
+        <div class="tab-frame">
+          <%= semantic_form_for current_user, :url => account_path(:format => :json), :remote => true do |f| %>
             <%= f.inputs :class => 'profile-form' do %>
+              <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'details' } %>
+              <div class="title-row">
+                <h3>General account details</h3>
+                <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save' %></div>
+              </div>
+              <div class="text-box">
+                <p>The information on this page is not shown on the site.</p>
+              </div>
               <%= f.input :first_name %>
               <%= f.input :last_name %>
               <%= f.input :email %>
@@ -41,9 +42,11 @@
                 <% end %>
               </div>
             <% end %>
-          </div>
+          <% end %>
         </div>
       </div>
+    </div>
+    <%= semantic_form_for current_user, :url => account_path do |f| %>
       <div class="tab-content" id="tab-2">
         <div class="tab-holder">
           <div class="tab-frame">
