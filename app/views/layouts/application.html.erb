@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" lang="en">
 <head>
 	<%= render 'layouts/head' %>
 </head>
@@ -36,22 +36,14 @@
 				<div class="panel">
 					<div class="block">
 						<div class="block-holder">
-              <ul class="social-networks">
-                <li><a href="#">facebook</a></li>
-                <li><a href="#" class="twitter">twitter</a></li>
-                <li><a href="#" class="googleplus">google plus</a></li>
-								<li><a href="#" class="email">email</a></li>
-								<li><a href="#" class="shareyhis">ShareThis</a></li>
-                <!--
+              <ul class="social-networks addthis_toolbox" addthis:url="http://fanhelp.us" addthis:title="Fans Helping Artists" addthis:description="description stuff">
                 <script type="text/javascript">var addthis_config = { data_track_clickback: false }</script>
-                <li><a class="addthis_button_preferred_1"></a></li>
-								<li><a class="addthis_button_preferred_2"></a></li>
-								<li><a class="addthis_button_preferred_4"></a></li>
-								<li><a class="addthis_button_google_plusone" g:plusone:count="false" g:plusone:size="small"></a></li>
-								<li><a class="addthis_button_preferred_3"></a></li>
-								<li><a class="addthis_button_compact"></a></li>
+                <li><a href="#" class="addthis_button_facebook facebook"><div>facebook</div></a></li>
+                <li><a href="#" class="addthis_button_twitter twitter"><div>twitter</div></a></li>
+                <li><a href="#" class="addthis_button_google_plusone_share googleplus"><div>google plus</div></a></li>
+                <li><a href="#" class="addthis_button_email email"><div>email</div></a></li>
+                <li><a href="#" class="addthis_button sharethis"><div>ShareThis</div></a></li>
                 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f8a11bd2fe94136"></script>
-                -->
 							</ul>
 							<div class="box">
                 <% if user_signed_in? %>

@@ -283,3 +283,43 @@ hr {
     background-position: 0 -41px;
   }
 }
+
+.social-networks {
+  padding-bottom: 10px;
+  li a {
+    width: 18px;
+    height: 18px;
+    background: image-url('Spritesheet.png') no-repeat;
+    &.facebook {
+      background-position: -852px -30px;
+      &:hover {
+        background-position: -852px -50px;
+      }
+    }
+    &.twitter {
+      background-position: -874px -30px;
+      &:hover {
+        background-position: -874px -50px;
+      }
+    }
+    &.googleplus {
+      background-position: -895px -30px;
+      &:hover {
+        background-position: -895px -50px;
+      }
+    }
+    &.email {
+      background-position: -937px -30px;
+      &:hover {
+        background-position: -937px -50px;
+      }
+    }
+    &.sharethis {
+      background-position: -958px -30px;
+      &:hover {
+        background-position: -958px -50px;
+      }
+    }
+    
+  }
+}

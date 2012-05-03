@@ -79,6 +79,6 @@ Mvp2::Application.configure do
   config.middleware.use ExceptionNotifier,
     :email_prefix => "[Exception] ",
     :sender_address => %{"Exception Notifier" <no-reply@fanhelp.us>},
-    :exception_recipients => %w{tech@fanhelp.us}
+    :exception_recipients => %w{exceptions@fanhelp.us}
 
 end
