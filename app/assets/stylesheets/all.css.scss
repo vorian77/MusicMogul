@@ -814,7 +814,7 @@ form, fieldset{
 	background: image-url('icons.png') no-repeat;
 }
 .tabset a:hover,
-.tabset .active{
+.tabset a.active{
 	color:#000;
 	background: image-url('bg-tabset-hover.png') no-repeat;
 	margin:0 -10px 0 -1px;

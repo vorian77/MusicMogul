@@ -6,6 +6,18 @@ jQuery(function(){
 // accordion init
 function initCarousel() {
 	
+  jQuery('div.carousel').scrollGallery({
+		btnPrev:'a.prev',
+		btnNext:'a.next',
+		sliderHolder: '.frame',
+		slider:'.slide-list',
+		slides:'li.slide',
+		autoRotation:true,
+		circleSlide:true,
+		pauseOnHover:true,
+		switchTime: 3000
+  });
+
 	jQuery('div.carousel-2').scrollGallery({
 		mask: 'div.frame',
 		slider: '>ul',

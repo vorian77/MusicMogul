@@ -15,3 +15,11 @@ $(document).ready ->
       $toggled.toggle($toggle.is(':checked'))
 	
 
+  $('.tabs-holder').easytabs
+    tabs: '.tabset li'
+    animate: false
+
+  $('.tabs-holder .tab-content').map (i, content) ->
+    $(".bar a[href$='\##{content.id}']").click ->
+      $(".tabs-holder a[href='\##{content.id}']").trigger('click')
+      false
