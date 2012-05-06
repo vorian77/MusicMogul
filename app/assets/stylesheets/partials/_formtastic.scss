@@ -180,6 +180,8 @@
     clear: both;
     margin-left: 140px !important;
     color: #c00;
+    margin: 0;
+    line-height: 2em;
   }
   .profile-photo-box {
     width: 240px;
@@ -214,7 +216,7 @@
       padding-top: 14px;
     }
   }
-  #user_country { width: 263px; } // - 5
+  #user_country { width: 263px; }
   #user_country_input .select-area .center { width: 200px }
   #user_entries_attributes_0_artist_type {
     width: 152px;
@@ -223,7 +225,7 @@
     width: 240px;
   }
   #user_entries_attributes_0_audition_type {
-    width: 120px;
+    width: 140px;
   }
   #user_birthdate_2i {
     width: 140px;

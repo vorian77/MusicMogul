@@ -323,3 +323,19 @@ hr {
     
   }
 }
+
+.tab-content {
+  position: relative;
+  p {
+    margin: 0 0 20px 0;
+  }
+  .notice, .alert {
+    width: 400px;
+    margin-left: -200px;
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}

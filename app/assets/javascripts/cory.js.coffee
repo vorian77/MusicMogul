@@ -33,24 +33,46 @@ $(document).ready ->
   $('.tabs-holder').on 'easytabs:before', (e,clicked) ->
     if $active_form.attr('data-dirty')
       $active_form.submit()
+      $active_form.data('clicked',clicked)
       false
 
-  $close_button = $('<a></a>').addClass('close').html(' [X]')
+  setMessageTimeout = ->
+    hideMessages = -> $('.messages .notice, .messages .alert').fadeOut -> $(this).remove()
+    messageTimeout = setTimeout hideMessages, 3000
 
-  $active_form.on 'ajax:success', ->
+  $active_form.on 'ajax:success', (e, data, status, xhr) ->
+    $active_form.find('p.inline-errors').hide()
+    $notice = $('<div></div>').addClass('notice').html(data.notice) if data.notice
     $active_form.removeAttr('data-dirty')
-    $notice = $('<div></div>').addClass('notice').html('Your account was successfully saved').append($close_button)
-    $flash.append($notice)
-    setFlashTimeout()
+    if $clicked = $active_form.data('clicked')
+      $active_form.removeData('clicked')
+    $('.tab-content.active .messages').html $notice
+    setMessageTimeout()
 
-  $active_form.on 'ajax:error', (xhr, status, error) ->
-    console.log xhr
-    if errors = $.parseJSON(xhr.responseText)
-      for error in errors
-        $error = $('<p></p>').addClass('inline_error').text(errors[error])
-        $("user_#{error}").after($error)
-    
-    $alert = $('<div></div>').addClass('alert').html('Your account could not be saved').append($close_button)
-    $flash.append($alert)
-    setFlashTimeout()
+  $active_form.on 'ajax:error', (e, xhr, status, error) ->
+    $active_form.find('p.inline-errors').hide()
+    $active_form.removeData('clicked')
+    if errors = $.parseJSON(xhr.responseText).errors
+      for error of errors
+        $error = $('<p></p>').addClass('inline-errors').text(errors[error])
+        $("#user_#{error}_input").addClass('error').append($error)
+    $alert = $('<div></div>').addClass('alert').html('Your account could not be saved.')
+    $('.tab-content.active .messages').html $alert
+    setMessageTimeout()
 
+  (->
+    if $form = $('form.profile-video')
+      if $file = $form.find('#video_uploader_profile_video')
+        $file.uploadifive
+          swf: 'uploadify.swf'
+          uploadScript: $form.attr('action')
+          method: $form.attr('method')
+          multi: false
+          buttonText: 'Upload'
+          formData:
+            key: $form.find('#video_uploader_key').val()
+            aws_access_key_id: $form.find('#video_uploader_aws_access_key_id').val()
+            acl: $form.find('#video_uploader_acl').val()
+            success_action_redirect: $form.find('#video_uploader_success_action_redirect').val()
+            policy: $form.find('#video_uploader_policy').val()
+  )()

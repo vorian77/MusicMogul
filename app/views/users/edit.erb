@@ -8,7 +8,7 @@
   <h2>My account</h2>
   <div class="tabs-holder">
     <ul class="tabset">
-      <li><a href="#tab-1" class="tab active"><span class="tab-details">Account Details</span></a></li>
+      <li><a href="#tab-1" class="tab"><span class="tab-details">Account Details</span></a></li>
       <li><a href="#tab-2" class="tab"><span class="tab-profile">Public Profile</span></a></li>
       <li><a href="#tab-3" class="tab"><span class="tab-judge">Judge</span></a></li>
       <li><a href="#tab-4" class="tab"><span class="tab-contestant">Contestant</span></a></li>
@@ -16,6 +16,7 @@
     <div class="tab-content" id="tab-1">
       <div class="tab-holder">
         <div class="tab-frame">
+          <div class="messages"></div>
           <%= semantic_form_for current_user, :url => account_path(:format => :json), :remote => true do |f| %>
             <%= f.inputs :class => 'profile-form' do %>
               <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'details' } %>
@@ -34,7 +35,7 @@
                 <label class="label" for="user_country"><%= User.human_attribute_name(:country) %></label>
                 <%= country_select('user','country', ['United States','Canada','Mexico','United Kingdom']) %>
               </li>
-              <%= f.input :birthdate, :start_year => 1901, :order => [:month, :day, :year], :include_blank => false %>
+              <%= f.input :birthdate, :start_year => 1901, :order => [:month, :day, :year], :include_blank => false, :input_html => { :class => 'select-2' } %>
               <%= f.input :interview_status, :as => :boolean %>
               <div class="submit-row">
                 <%= f.actions :class => 'submit-holder' do %>
@@ -46,18 +47,18 @@
         </div>
       </div>
     </div>
-    <%= semantic_form_for current_user, :url => account_path do |f| %>
-      <div class="tab-content" id="tab-2">
-        <div class="tab-holder">
-          <div class="tab-frame">
-            <div class="title-row">
-              <h3>Your public profile</h3>
-              <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save' %></div>
-            </div>
-            <div class="text-box">
-              <p>This is your public profile shown throughout the site.</p>
-            </div>
+    <div class="tab-content" id="tab-2">
+      <div class="tab-holder">
+        <div class="tab-frame">
+          <%= semantic_form_for current_user, :url => account_path do |f| %>
             <%= f.inputs :class => 'profile-form' do %>
+              <div class="title-row">
+                <h3>Your public profile</h3>
+                <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save' %></div>
+              </div>
+              <div class="text-box">
+                <p>This is your public profile shown throughout the site.</p>
+              </div>
               <%= f.input :profile_name %>
               <%= f.input :genre %>
               <%= f.input :hometown %>
@@ -113,36 +114,40 @@
                   </div>
                 </div>
               </div>
-              <div class="video-box">
-                <h4>Profile Video</h4>
-                <div class="holder">
-                  <div class="picture-holder">
-                    <div class="video-holder">
-                      <img src="images/img-12.jpg" alt="image description" width="242" height="148" />
-                    </div>
-                    <a href="#" class="btn-delete">Delete current video</a>
-                  </div>
-                  <div class="file-box">
-                    <p>Click ‘browse to select a new video, then ‘upload’ to add the video to your profile.</p>
-                    <div class="file-row">
-                      <input type="file" />
-                    </div>
-                    <div class="button-row">
-                      <input type="button" value="Upload" class="btn-upload" />
-                      <span class="formats">.mpeg .flv or .mov, max 20mb</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <div class="submit-row">
                 <%= f.actions :class => 'submit-holder' do %>
                   <%= f.submit 'Save', :class => 'button-save' %>
                 <% end %>
               </div>
             <% end %>
+          <% end %>
+          <%= direct_upload_form_for current_user.profile_video, :html => { :class => 'formtastic user profile-video' } do |f| %>
+            <div class="video-box">
+              <h4>Profile Video</h4>
+              <div class="holder">
+                <div class="picture-holder">
+                  <div class="video-holder">
+                    <img src="<%= image_path('img-12.jpg') %>" alt="image description" width="242" height="148" />
+                  </div>
+                  <a href="#" class="btn-delete">Delete current video</a>
+                </div>
+                <div class="file-box2">
+                  <p>Click ‘browse to select a new video, then ‘upload’ to add the video to your profile.</p>
+                  <div class="file-row video-file">
+                    <%= f.file_field :profile_video %>
+                  </div>
+                  <div class="button-row">
+                    <input type="submit" value="Upload" class="btn-upload" />
+                    <span class="formats">.mpeg .flv or .mov, max 20mb</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
+    </div>
+    <%= semantic_form_for current_user, :url => account_path do |f| %>      
       <div class="tab-content" id="tab-3">
         <div class="tab-holder">
           <div class="tab-frame">
@@ -178,7 +183,7 @@
                   <p>Fill out the fields to complete your artist profile.</p>
                 </div>
                 <div class="form-box">
-                  <%= entry.input :artist_type, :as => :select, :collection => Entry::ARTIST_TYPES, :include_blank => false %>
+                  <%= entry.input :artist_type, :as => :select, :collection => Entry::ARTIST_TYPES, :include_blank => false, :input_html => { :class => 'select-2' } %>
                   <div class="genres-row checkbox-row"><%= entry.input :genres_array, :as => :check_boxes, :collection => Contest::GENRES, :wrapper_html => { :class => 'checkbox-holder' } %></div>
                   <div id="genres-confirm-text">
                     It's ok to compete in multiple genres. We encourage it because it allows you more exposure and financial opportunities. However, know that each genre is a separate contest. Each week you'll have to submit a performance video for each genre.
@@ -187,13 +192,13 @@
                 </div>
                 <div class="audition-box">
                   <h4>Audition Performance</h4>
-                  <%= entry.input :audition_type, :as => :select, :collection => Entry::ENTRY_TYPES, :include_blank => false %>
+                  <%= entry.input :audition_type, :as => :select, :collection => Entry::ENTRY_TYPES, :include_blank => false, :input_html => { :class => 'select-2' } %>
                   <%= entry.input :song_title %>
                   <%= entry.input :written_by %>
                   <div class="video-box">
                     <div class="picture-holder">
                       <div class="video-holder">
-                        <img src="images/img-12.jpg" alt="image description" width="242" height="148" />
+                        <img src="<%= image_path('img-12.jpg') %>" alt="image description" width="242" height="148" />
                       </div>
                       <a href="#" class="btn-delete">Delete current video</a>
                     </div>

@@ -796,6 +796,9 @@ jcf.addModule({
 			context.toggleDropdown.apply(context);
 			return false;
 		}
+    if(e.keyCode == 27) {
+      this.hideDropdown();
+    }
 	},
 	onResizeWindow: function(e){
 		if(this.isActiveDrop()) {
@@ -893,9 +896,7 @@ jcf.addModule({
 	buildDropdownScroll: function() {
 		if(this.options.dropMaxHeight) {
 			if(this.selectDrop.offsetHeight > this.options.dropMaxHeight) {
-				//this.selectList.style.height = this.options.dropMaxHeight+'px';
-				this.selectList.style.overflow = 'hidden';
-				this.selectList.style.overflowX = 'hidden';
+				// this.selectList.style.height = this.options.dropMaxHeight+'px';
 				jcf.lib.addClass(this.selectDrop, this.options.dropScrollableClass);
 			}
 		}

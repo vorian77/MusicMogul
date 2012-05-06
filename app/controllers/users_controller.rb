@@ -3,19 +3,20 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   
   def edit
+    current_user.profile_video.success_action_redirect = "#{account_url}\#tab-2"
   end
   
   def update
     ['landscape','square'].each do |type|
       params[:user]["remove_profile_photo_#{type}".to_sym] = nil if params[:user]["profile_photo_#{type}".to_sym]
     end
-    params[:user]
-    if current_user.update_attributes(params[:user])
-      respond_with current_user, :location => account_path
-    else
-      respond_with current_user, :alert => 'Sorry, there was an error in the form' do |format|
-        format.html { render :action => 'edit' }
-        format.json { render :json => current_user.errors, :status => :unprocessable_entity }
+    respond_with current_user do |format|
+      if current_user.update_attributes(params[:user])
+        format.html { redirect_to account_path }
+        format.json { render :json => { :notice => 'Your account has been successfully saved' } }
+      else
+        format.html { render :action => 'edit', :alert => 'Sorry, there was an error in the form' }
+        format.json { render :json => { :errors => current_user.errors }, :status => :unprocessable_entity }
       end
     end
   end
