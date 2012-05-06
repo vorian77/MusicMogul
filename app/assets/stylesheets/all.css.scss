@@ -994,6 +994,9 @@ form, fieldset{
 .tab-content .select-area .center{
 	float:left;
 	padding:14px 10px 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .tab-content .select-area .select-opener{
 	position:relative;
@@ -1018,7 +1021,8 @@ form, fieldset{
 .select-options .drop-list{
 	background: image-url('bg-select-1.png') repeat-y -368px 0;
 	height:1%;
-	overflow:hidden;
+  max-height: 400px;
+	overflow: auto;
 	padding:0 12px 0 10px;
 }
 .select-options ul{

@@ -1,4 +1,7 @@
 .formtastic {
+  label {
+    font: 14px/18px IstokBold, Arial, Helvetica, sans-serif;
+  }
   &.user {
     .thumbnail-wrapper {
       width: 77px;
@@ -85,7 +88,7 @@
       }
     }
     &.file {
-      label {
+      > label {
         width: auto;
         float: none;
         text-align: left;
@@ -117,6 +120,7 @@
     padding: 22px 0 26px;
     margin-top: 12px;
     border-width: 1px 0;
+    min-height: 49px;
   }
   .fragments {
     position:relative;
@@ -201,9 +205,17 @@
       }
     }
   }
-  #user_country {
-    width: 267px;
+  .tab-content {
+    .video-file {
+      overflow: auto;
+      margin-top: 10px;
+    }
+    .file-area .jcf-fake-input {
+      padding-top: 14px;
+    }
   }
+  #user_country { width: 263px; } // - 5
+  #user_country_input .select-area .center { width: 200px }
   #user_entries_attributes_0_artist_type {
     width: 152px;
   }
@@ -217,10 +229,10 @@
     width: 140px;
   }
   #user_birthdate_3i {
-    width: 80px;
+    width: 140px;
   }
   #user_birthdate_1i {
-    width: 96px;
+    width: 140px;
   }
   #user_facebook_input label {
     background: image-url('ico-facebook.gif') no-repeat 36px 14px;
