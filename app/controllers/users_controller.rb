@@ -8,11 +8,11 @@ class UsersController < ApplicationController
   
   def update
     ['landscape','square'].each do |type|
-      params[:user]["remove_profile_photo_#{type}".to_sym] = nil if params[:user]["profile_photo_#{type}".to_sym]
+      params[:user]["remove_profile_photo_#{type}".to_sym] = nil if params[:user] && params[:user]["profile_photo_#{type}".to_sym]
     end
     respond_with current_user do |format|
       if current_user.update_attributes(params[:user])
-        format.html { redirect_to account_path }
+        format.html { redirect_to account_path, :notice => 'Your account has been successfully saved' }
         format.json { render :json => { :notice => 'Your account has been successfully saved' } }
       else
         format.html { render :action => 'edit', :alert => 'Sorry, there was an error in the form' }

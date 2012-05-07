@@ -51,7 +51,7 @@
       <div class="tab-holder">
         <div class="tab-frame">
           <div class="messages"></div>
-          <%= semantic_form_for current_user, :url => account_path(:format => :json), :remote => true do |f| %>
+          <%= semantic_form_for current_user, :url => account_path(:anchor => 'tab-2'), :html => { 'data-non-ajax' => true } do |f| %>
             <%= f.inputs :class => 'profile-form' do %>
               <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'profile' } %>
               <div class="title-row">
@@ -183,7 +183,7 @@
       <div class="tab-holder">
         <div class="tab-frame">
           <div class="messages"></div>
-          <%= semantic_form_for current_user, :url => account_path(:format => :json), :remote => true do |f| %>
+          <%= semantic_form_for current_user, :url => account_path(:anchor => 'tab-4'), :html => { 'data-non-ajax' => true } do |f| %>
             <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'contestants' } %>
             <div class="title-row title-row-2">
               <h3>Contestant</h3>

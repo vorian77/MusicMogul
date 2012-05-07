@@ -54,12 +54,19 @@ $(document).ready ->
   $document = $(document)
 
   $document.on 'change', 'input, selext, textarea', ->
+    console.log 'Change!'
     $(this).closest('form').attr('data-dirty','true')
 
   $document.on 'easytabs:before', '.tabs-holder', (e,clicked) ->
     $active_form = $('.tab-content.active form').filter(':first')
     if $active_form.attr('data-dirty')
-      $active_form.submit()
+      if $active_form.data('non-ajax')
+        old_action = $active_form.attr('action')
+        $active_form.attr('action',clicked.attr('href'))
+        $active_form.submit()
+        $active_form.attr('action',old_action)
+      else
+        $active_form.submit()
       $active_form.data('clicked',clicked)
       false
 
