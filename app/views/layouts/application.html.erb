@@ -12,21 +12,8 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <body>
-	<div class="flash">
-		<%- if notice %>
-			<div class="notice">
-				<%= notice %>
-				<a class="close">x</a>
-			</div>
-		<%- end %>
-		<%- if alert %>
-			<div class="alert">
-			<%= alert %>
-				<a class="close">[X]</a>
-			</div>
-		<%- end %>
-	</div>
-	<div id="wrapper">
+  <%= render 'layouts/flash' %>
+  <div id="wrapper">
     <div class="w1">
 			<div id="header">
 				<div class="header-holder">

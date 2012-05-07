@@ -13,16 +13,24 @@ showPreview = (coords) ->
     $('#user_thumb_w').val(coords.w)
 
 $(document).ready ->
-  $thumb = $('.thumbnail img')
+  if $thumb = $('.thumbnail img')
+    $('.original img').Jcrop
+      onChange: showPreview
+      onSelect: showPreview
+      aspectRatio: 1
+      minSize: [ 77, 77 ]
+      setSelect: [0, 0, 400, 400]
+      keySupport: false
 
-  $('.original img').Jcrop
-    onChange: showPreview
-    onSelect: showPreview
-    aspectRatio: 1
-    minSize: [ 77, 77 ]
-    setSelect: [0, 0, 400, 400]
+    $('.original img').click ->
+      console.log 'Click'
+      false
 
-  $('form.edit-thumbnail').bind 'ajax:success', ->
-    parent.$.fancybox.close()
-    img = $('img.profile-photo-square')
-    img.attr('src',img.attr('src'))
+    $('form.edit-thumbnail').bind 'ajax:success', ->
+      parent.$.fancybox.close()
+      img = $('img.profile-photo-square')
+      img.attr('src',img.attr('src'))
+
+    $('form.edit-thumbnail').bind 'ajax:error', ->
+      $alert = $('<div></div>').addClass('alert').html('There was an error contacting the server. Please check your internet connection')
+      $('form.edit-thumbnail').before $alert

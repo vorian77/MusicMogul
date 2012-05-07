@@ -339,3 +339,20 @@ hr {
     margin-bottom: 20px;
   }
 }
+
+#fancybox-wrap {
+  .notice, .alert {
+    text-align: center;
+    line-height: 2em;
+  }
+}
+
+form.signup-form {
+  .text-row {
+    .inline-errors {
+      margin-left: 93px;
+      color: #c00;
+      line-height: 2em;
+    }
+  }
+}

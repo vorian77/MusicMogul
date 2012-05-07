@@ -2,11 +2,12 @@
   <div class="lightbox popup" id="popup">
     <div class="holder">
       <div class="frame">
+        <%= devise_error_messages! if defined?(resource) %>
         <h3>Sign up</h3>
         <div class="text-holder">
           <p>Please select which of these best describes how you will participate in contests...</p>
         </div>
-        <%= form_for (User.new), :url => registration_path('user'), :html => { :class => 'signup-form' } do |f| %>
+        <%= form_for (defined?(resource) ? resource : User.new), :url => registration_path('user'), :html => { :class => 'signup-form' } do |f| %>
           <fieldset>
             <div class="row">
               <%= f.label :account_type, :class => 'radio-label', :for => 'account_type_judge' do %>
@@ -29,7 +30,10 @@
               <div class="col-1">
                 <h4>Sign up via Facebook <em>(recommended)</em></h4>
                 <div class="btn-holder">
-                  <a href="<%= user_omniauth_authorize_path(:facebook) %>" class="btn-facebook">Connect with facebook</a>
+                  <a href="<%= user_omniauth_authorize_path(:facebook) %>" class="btn-facebook">Connect with Facebook</a>
+                </div>
+                <div class="btn-holder">
+                  <a href="<%= user_omniauth_authorize_path(:twitter) %>" class="btn-twitter">Connect with Twitter</a>
                 </div>
                 <p>Sign up terms, lorem ipsum consectetur adipiscing elit. Suspendisse condimentum faucibus justo tempus gravida. Cras fringilla velit sed arcu gravida quis tincidunt dui porta.</p>
               </div>
@@ -40,12 +44,14 @@
                     Email<span class="required">*</span>
                   <% end %>
                   <div class="text"><%= f.text_field :email, :placeholder => 'steph@gmail.com' %></div>
+                  <p class="inline-errors email-errors"><%= f.object.errors.messages[:email].join(', ') %></p>
                 </div>
                 <div class="text-row">
                   <%= f.label :password do %>
                     Password<span class="required">*</span>
                   <% end %>
                   <div class="text"><%= f.password_field :password %></div>
+                  <p class="inline-errors password-errors"><%= f.object.errors.messages[:password].join(', ') %></p>
                 </div>
               </div>
             </div>
@@ -66,16 +72,21 @@
   <div class="lightbox popup popup-login" id="popup-2">
     <div class="holder">
       <div class="frame">
+        <%= devise_error_messages! if defined?(resource) %>
+        <div class="alert"><%= flash[:alert] %></div>
+        <div class="notice"><%= flash[:notice] %></div>
         <h3>Log in</h3>
-        <%= form_for User.new, :url => session_path('user'), :html => { :class => 'login-form' } do |f| %>
+        <%= form_for (defined?(resource) ? resource : User.new), :url => session_path('user'), :html => { :class => 'login-form' } do |f| %>
           <fieldset>
             <div class="columns">
               <div class="col-1">
                 <h4>Log in with <strong>Facebook</strong></h4>
                 <div class="btn-holder">
-                  <a href="<%= user_omniauth_authorize_path(:facebook) %>" class="btn-facebook">Connect with facebook</a>
+                  <a href="<%= user_omniauth_authorize_path(:facebook) %>" class="btn-facebook">Connect with Facebook</a>
                 </div>
-                <p>Users who have not connected to facebook before will not be able to log in this way. Please sign in and connect to facebook on your My Account page.</p>
+                <div class="btn-holder">
+                  <a href="<%= user_omniauth_authorize_path(:twitter) %>" class="btn-twitter">Connect with Twitter</a>
+                </div>
               </div>
               <div class="col-2">
                 <h4>Or your <strong>FHA</strong> account details</h4>
@@ -84,12 +95,14 @@
                     Email<span class="required">*</span>
                   <% end %>
                   <div class="text"><%= f.text_field :email, :placeholder => 'steph@gmail.com' %></div>
+                  <p class="inline-errors email-errors"><%= f.object.errors.messages[:email].join(', ') %></p>
                 </div>
                 <div class="text-row">
                   <%= f.label :password do %>
                     Password<span class="required">*</span>
                   <% end %>
                   <div class="text"><%= f.password_field :password %></div>
+                  <p class="inline-errors email-errors"><%= f.object.errors.messages[:email].join(', ') %></p>
                 </div>
               </div>
             </div>
