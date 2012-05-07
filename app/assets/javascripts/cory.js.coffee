@@ -2,12 +2,12 @@ $(document).ready ->
   $('a.fancybox').fancybox()	
 
   $flash = $('.flash')
-
-  setFlashTimeout = ->
+  setFlashTimeout = (->
     hideFlash = -> $flash.children('div').fadeOut()
     $flash.click hideFlash
     flashTimeout = setTimeout hideFlash, 3000
     $flash.hover -> clearTimeout(flashTimeout)
+  )()
 
   $('input[data-shows]').each (index,toggle) ->
     $toggle = $(toggle)
@@ -15,7 +15,6 @@ $(document).ready ->
     $toggled.toggle($toggle.is(':checked'))
     $toggle.click ->
       $toggled.toggle($toggle.is(':checked'))
-	
 
   $('.tabs-holder').easytabs
     tabs: '.tabset li'
@@ -26,11 +25,20 @@ $(document).ready ->
       $(".tabs-holder a[href='\##{content.id}']").trigger('click')
       false
 
-  $active_form = $('.tab-content.active form')
-  $active_form.find('input, select, textarea').change ->
-    $active_form.attr('data-dirty','true')
 
-  $('.tabs-holder').on 'easytabs:before', (e,clicked) ->
+  (->
+  )()
+
+(->
+  return unless $('.profile-box')
+  
+  $document = $(document)
+
+  $document.on 'change', 'input, selext, textarea', ->
+    $(this).closest('form').attr('data-dirty','true')
+
+  $document.on 'easytabs:before', '.tabs-holder', (e,clicked) ->
+    $active_form = $('.tab-content.active form').filter(':first')
     if $active_form.attr('data-dirty')
       $active_form.submit()
       $active_form.data('clicked',clicked)
@@ -40,16 +48,20 @@ $(document).ready ->
     hideMessages = -> $('.messages .notice, .messages .alert').fadeOut -> $(this).remove()
     messageTimeout = setTimeout hideMessages, 3000
 
-  $active_form.on 'ajax:success', (e, data, status, xhr) ->
+  $document.on 'ajax:success', '.tab-content.active form', (e, data, status, xhr) ->
+    $active_form = $(this).filter(':first')
     $active_form.find('p.inline-errors').hide()
     $notice = $('<div></div>').addClass('notice').html(data.notice) if data.notice
     $active_form.removeAttr('data-dirty')
     if $clicked = $active_form.data('clicked')
+      $clicked.trigger 'click', ->
+        console.log 'Clicked tab!'
       $active_form.removeData('clicked')
-    $('.tab-content.active .messages').html $notice
-    setMessageTimeout()
+      $('.tab-content.active .messages').html $notice
+      setMessageTimeout()
 
-  $active_form.on 'ajax:error', (e, xhr, status, error) ->
+  $document.on 'ajax:error', '.tab-content.active form', (e, xhr, status, error) ->
+    $active_form = $(this).filter(':first')
     $active_form.find('p.inline-errors').hide()
     $active_form.removeData('clicked')
     if errors = $.parseJSON(xhr.responseText).errors

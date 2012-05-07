@@ -50,8 +50,10 @@
     <div class="tab-content" id="tab-2">
       <div class="tab-holder">
         <div class="tab-frame">
-          <%= semantic_form_for current_user, :url => account_path do |f| %>
+          <div class="messages"></div>
+          <%= semantic_form_for current_user, :url => account_path(:format => :json), :remote => true do |f| %>
             <%= f.inputs :class => 'profile-form' do %>
+              <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'profile' } %>
               <div class="title-row">
                 <h3>Your public profile</h3>
                 <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save' %></div>
@@ -134,7 +136,7 @@
                 <div class="file-box2">
                   <p>Click ‘browse to select a new video, then ‘upload’ to add the video to your profile.</p>
                   <div class="file-row video-file">
-                    <% # f.file_field :profile_video %>
+                    <%= f.file_field :profile_video %>
                   </div>
                   <div class="button-row">
                     <input type="submit" value="Upload" class="btn-upload" />
@@ -151,6 +153,8 @@
       <div class="tab-content" id="tab-3">
         <div class="tab-holder">
           <div class="tab-frame">
+          <div class="messages"></div>
+            <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'judge' } %>
             <div class="title-row title-row-2">
               <h3>Judge</h3>
               <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save' %></div>
@@ -172,6 +176,8 @@
       <div class="tab-content" id="tab-4">
         <div class="tab-holder">
           <div class="tab-frame">
+          <div class="messages"></div>
+            <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'contestants' } %>
             <div class="title-row title-row-2">
               <h3>Contestant</h3>
               <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save' %></div>

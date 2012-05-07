@@ -2,7 +2,7 @@
   <div class="lightbox popup" id="popup">
     <div class="holder">
       <div class="frame">
-        <%= devise_error_messages! if defined?(resource) %>
+        <div class="alert"><%= 'Sorry, one or more errors prevented the form from being saved' if defined?(resource) && resource.errors.present? %></div>
         <h3>Sign up</h3>
         <div class="text-holder">
           <p>Please select which of these best describes how you will participate in contests...</p>
@@ -72,9 +72,8 @@
   <div class="lightbox popup popup-login" id="popup-2">
     <div class="holder">
       <div class="frame">
-        <%= devise_error_messages! if defined?(resource) %>
-        <div class="alert"><%= flash[:alert] %></div>
         <div class="notice"><%= flash[:notice] %></div>
+        <div class="alert"><%= flash[:alert] %></div>
         <h3>Log in</h3>
         <%= form_for (defined?(resource) ? resource : User.new), :url => session_path('user'), :html => { :class => 'login-form' } do |f| %>
           <fieldset>
