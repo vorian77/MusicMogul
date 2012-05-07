@@ -15,6 +15,8 @@
 //= require jquery.Jcrop
 //= require jquery.fancybox
 //= require jquery.easytabs
-//= require jquery.uploadifive
+//= require jquery.ui.widget
+//= require jquery.iframe-transport
+//= require jquery.fileupload
 //= require jcf
 //= require_tree .

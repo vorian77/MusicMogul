@@ -27,6 +27,25 @@ $(document).ready ->
 
 
   (->
+    if $form = $('form.profile-video')
+      if $file = $form.find('#video_uploader_profile_video')
+        $file.fileupload
+          forceIframeTransport: true
+          autoUpload: true,
+          add: (event, data) ->
+            data.submit()
+          send: (event, data) ->
+            $('#loading').show()
+          fail: ->
+            alert('Fail!')
+          done: (event, data) ->
+            console.log event
+            console.log data
+            alert('Done!')
+            $('#loading').hide()
+        $file.on 'fileuploadprogress', (event, data) ->
+          console.log event
+          console.log data
   )()
 
 (->
@@ -54,11 +73,11 @@ $(document).ready ->
     $notice = $('<div></div>').addClass('notice').html(data.notice) if data.notice
     $active_form.removeAttr('data-dirty')
     if $clicked = $active_form.data('clicked')
-      $clicked.trigger 'click', ->
-        console.log 'Clicked tab!'
+      $clicked.trigger 'click'
       $active_form.removeData('clicked')
-      $('.tab-content.active .messages').html $notice
-      setMessageTimeout()
+    $('.tab-content.active .messages').html $notice
+    setMessageTimeout()
+
 
   $document.on 'ajax:error', '.tab-content.active form', (e, xhr, status, error) ->
     $active_form = $(this).filter(':first')
@@ -71,20 +90,4 @@ $(document).ready ->
     $alert = $('<div></div>').addClass('alert').html('Your account could not be saved.')
     $('.tab-content.active .messages').html $alert
     setMessageTimeout()
-
-  (->
-    if $form = $('form.profile-video')
-      if $file = $form.find('#video_uploader_profile_video')
-        $file.uploadifive
-          swf: 'uploadify.swf'
-          uploadScript: $form.attr('action')
-          method: $form.attr('method')
-          multi: false
-          buttonText: 'Upload'
-          formData:
-            key: $form.find('#video_uploader_key').val()
-            aws_access_key_id: $form.find('#video_uploader_aws_access_key_id').val()
-            acl: $form.find('#video_uploader_acl').val()
-            success_action_redirect: $form.find('#video_uploader_success_action_redirect').val()
-            policy: $form.find('#video_uploader_policy').val()
-  )()
+)()

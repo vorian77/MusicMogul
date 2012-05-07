@@ -9,6 +9,9 @@ Mvp2::Application.routes.draw do
 
   match 'video' => 'home#video', :as => :home_video
  
+  get '/upload' => 'users#upload', :as => :upload
+  get '/s3_callback' => 'users#s3_callback', :as => :s3_callback
+
 	root :to => 'home#index'
 	
   # get '/Fans' => 'home#fans', :as => :home_fans

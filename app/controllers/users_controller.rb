@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   
   def edit
-    current_user.profile_video.success_action_redirect = "#{account_url}\#tab-2"
+    current_user.profile_video.success_action_redirect = s3_callback_url
   end
   
   def update
@@ -21,6 +21,13 @@ class UsersController < ApplicationController
     end
   end
   
+  def s3_callback
+    raise unless params[:key]
+    current_user.key = params[:key]
+    current_user.save(:validate => false)
+    render :nothing => true
+  end
+
   def edit_thumbnail
     render 'edit_thumbnail', :layout => 'basic'
   end
@@ -33,6 +40,9 @@ class UsersController < ApplicationController
     end
     current_user.profile_photo_square.recreate_versions!
     render :nothing => true
+  end
+
+  def upload
   end
 
 end

@@ -127,15 +127,20 @@
             <div class="video-box">
               <h4>Profile Video</h4>
               <div class="holder">
-                <div class="picture-holder">
-                  <div class="video-holder">
-                    <img src="<%= image_path('img-12.jpg') %>" alt="image description" width="242" height="148" />
+                <% if current_user.profile_video.present? %>
+                  <div class="picture-holder">
+                    <div class="video-holder">
+                      <img src="<%= asset_path(current_user.profile_video) %>" alt="image description" width="242" height="148" />
+                    </div>
+                    <%= hidden_field_tag :remove_profile_video %>
+                    <a href="#" class="btn-delete">Delete current video</a>
                   </div>
-                  <a href="#" class="btn-delete">Delete current video</a>
-                </div>
+                <% end %>
                 <div class="file-box2">
                   <p>Click ‘browse to select a new video, then ‘upload’ to add the video to your profile.</p>
-                  <div class="file-row video-file">
+                  <div clas=fileupload-content
+                  <div class="fileupload-content file-row video-file">
+                    <div class="fileupload-progress"></div>
                     <%= f.file_field :profile_video %>
                   </div>
                   <div class="button-row">
@@ -149,11 +154,11 @@
         <% end %>
       </div>
     </div>
-    <%= semantic_form_for current_user, :url => account_path do |f| %>      
-      <div class="tab-content" id="tab-3">
-        <div class="tab-holder">
-          <div class="tab-frame">
+    <div class="tab-content" id="tab-3">
+      <div class="tab-holder">
+        <div class="tab-frame">
           <div class="messages"></div>
+          <%= semantic_form_for current_user, :url => account_path(:format => :json), :remote => true do |f| %>
             <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'judge' } %>
             <div class="title-row title-row-2">
               <h3>Judge</h3>
@@ -171,12 +176,14 @@
               <% end %>
             <% end %>
           </div>
-        </div>
+        <% end %>
       </div>
-      <div class="tab-content" id="tab-4">
-        <div class="tab-holder">
-          <div class="tab-frame">
+    </div>
+    <div class="tab-content" id="tab-4">
+      <div class="tab-holder">
+        <div class="tab-frame">
           <div class="messages"></div>
+          <%= semantic_form_for current_user, :url => account_path(:format => :json), :remote => true do |f| %>
             <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'contestants' } %>
             <div class="title-row title-row-2">
               <h3>Contestant</h3>
@@ -242,10 +249,10 @@
                 </div>
               <% end %>
             <% end %>
-          </div>
+          <% end %>
         </div>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
 
