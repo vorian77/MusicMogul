@@ -126,7 +126,7 @@
                           <source src="<%= video_path "https://s3.amazonaws.com/fanhelp.mvp/#{current_user.profile_video}" %>" type='video/mp4'>
                         </video>
                       </div>
-                      <%= hidden_field_tag :remove_profile_video %>
+                      <%= f.hidden_field :remove_profile_video %>
                       <a href="#" class="btn-delete">Delete current video</a>
                     </div>
                   <% end %>

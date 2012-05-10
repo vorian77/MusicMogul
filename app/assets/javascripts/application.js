@@ -19,10 +19,10 @@
 //= require jquery.iframe-transport
 //= require jquery.fileupload
 //= require jcf
-//= require jquery.main
-//= require jquery.main-1
-//= require uploads
-//= require main
-//= require cropping
 //= require account
 //= require cory
+//= require cropping
+//= require jquery.main-1
+//= require jquery.main
+//= require main
+//= require uploads
