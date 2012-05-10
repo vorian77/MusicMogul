@@ -27,6 +27,12 @@ class UsersController < ApplicationController
     render :nothing => true
   end
 
+  def create_profile_video
+    raise unless params[:s3_key]
+    current_user.update_attribute(:profile_video,params[:s3_key])
+    render :nothing => true
+  end
+
   def edit_thumbnail
     render 'edit_thumbnail', :layout => 'basic'
   end

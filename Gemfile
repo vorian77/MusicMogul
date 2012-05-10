@@ -16,6 +16,7 @@ gem 'haml-rails'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'exception_notification'
+gem 's3_direct_rails', :path => '~/Sites/s3_direct_rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

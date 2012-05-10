@@ -30,7 +30,6 @@ class User < ActiveRecord::Base
 
   mount_uploader :profile_photo_square, SquareProfilePhotoUploader
   mount_uploader :profile_photo_landscape, LandscapeProfilePhotoUploader
-  mount_uploader :profile_video, VideoUploader
 
   has_many :entries
   has_many :judgings
@@ -47,10 +46,8 @@ class User < ActiveRecord::Base
     [first_name, last_name].join(' ')
   end
 
-  def parse_account_type
-    types = account_type.to_s.split(/,\s?/)
-    self.judging.update_attribute(:active,true) if types.include? 'judge'
-    self.entry.update_attribute(:active,true) if types.include? 'compete'
+  def profile_video?
+    self.profile_video.present?
   end
 
   # Temporary hack until we need more than one judging
@@ -82,6 +79,14 @@ class User < ActiveRecord::Base
         user.email = data["email"]
       end
     end
+  end
+
+  protected
+
+  def parse_account_type
+    types = account_type.to_s.split(/,\s?/)
+    self.judging.update_attribute(:active,true) if types.include? 'judge'
+    self.entry.update_attribute(:active,true) if types.include? 'compete'
   end
 
 end
