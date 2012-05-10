@@ -129,7 +129,7 @@
                   <div class="file-box">
                     <p>Click ‘browse to select a new video, then ‘upload’ to add the video to your profile.</p>
                     <div class="file-row">
-                      <div id="uploader" data-s3-bucket="<%= S3DirectRails.s3_uploader_bucket %>">
+                      <div class="uploader" data-s3-bucket="<%= S3DirectRails.s3_uploader_bucket %>">
                         <%= s3_uploader(:uploaded_files_path => "uploads/user/profile_video/#{current_user.id}", :create_resource_url => account_profile_video_path) %>
                         <div class="uploading_files"></div>
                         <div class="format-types">.mpeg .flv or .mov, max 5GB</div>
@@ -226,6 +226,7 @@
                       </div>
                     </div>
                   </div>
+                  <hr />
                   <p>Instead of uploading a video, you could also copy and paste a Youtube video URL here:</p>
                   <%= entry.input :youtube_url %>
                 </div>

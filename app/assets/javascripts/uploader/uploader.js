@@ -39,7 +39,9 @@ jQuery(function() {
     if (e.originalEvent.origin !== host)
       return;
     var data = JSON.parse(e.originalEvent.data)
-    jqXHR[data.uuid].abort();
+    if (jqXHR[data.uuid]) {
+      jqXHR[data.uuid].abort();
+    }
   });
 
   $('#file_upload').fileupload({

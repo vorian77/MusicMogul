@@ -14,8 +14,7 @@ jQuery ->
   $('.uploading_files').on 'click', '.uploading_file .remove_link', (e) ->
     uuid = $(this).parent().data('uuid')
     $(this).parent().remove()
-    $('#uploader iframe')[0].contentWindow.postMessage(JSON.stringify({ eventType: 'abort upload', uuid: uuid }), uploaderHost);
-
+    $('.uploader:visible iframe')[0].contentWindow.postMessage(JSON.stringify({ eventType: 'abort upload', uuid: uuid }), uploaderHost);
 
   $(window).on "message", (event) ->
 
@@ -37,7 +36,7 @@ jQuery ->
 
         $(".uploading_file[data-uuid=#{data.uuid}]").append($message).remove()
 
-        $.ajax $('#uploader iframe').data('create-resource-url'),
+        $.ajax $('.uploader:visible iframe').data('create-resource-url'),
           type: 'POST',
           data: data
 
@@ -46,7 +45,7 @@ jQuery ->
 
         if progressSupported
           uploadPercent = "<br/><progress value='0' max='100' class='upload_progress_bar'>0</progress> <span class='upload_percentage'>0</span> %"
-          $('.uploading_files').append("<p class='uploading_file'>#{data.file_name + uploadPercent} <a href='#' class='remove_link'>X</a></p>")
+          $('.uploader:visible .uploading_files').append("<p class='uploading_file'>#{data.file_name + uploadPercent} <a href='#' class='remove_link'>X</a></p>")
         else
           $('.uploading_files').append("<p class='uploading_file'>#{data.file_name}<br/><img src='<%= asset_path('uploading.gif') %>'/></p>")
 
