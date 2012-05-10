@@ -34,7 +34,7 @@ jQuery ->
 
         $message = $('<p>Your video has been uploaded and will be available when you refresh</p>')
 
-        $(".uploading_file[data-uuid=#{data.uuid}]").append($message).remove()
+        $(".uploading_file[data-uuid=#{data.uuid}]").after($message).remove()
 
         $.ajax $('.uploader:visible iframe').data('create-resource-url'),
           type: 'POST',
