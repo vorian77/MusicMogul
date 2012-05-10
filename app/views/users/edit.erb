@@ -85,12 +85,10 @@
                     <% end %>
                   </div>
                   <div class="file-box">
-                    <p>Click ‘browse to select a new profile picture.</p>
+                    <p>Click below to select a new album photo.</p>
                     <div class="file-row">
                       <%= f.input :profile_photo_square, :as => :file %>
-                    </div>
-                    <div class="button-row">
-                      <span class="formats">jpeg, png or gif, max 4mb</span>
+                      <div class="format-types">jpeg, png or gif, max 4mb</div>
                     </div>
                   </div>
                 </div>
@@ -106,12 +104,10 @@
                     <% end %>
                   </div>
                   <div class="file-box">
-                    <p>Click ‘browse to select a new profile picture.</p>
+                    <p>Click below to select a new band photo.</p>
                     <div class="file-row">
                       <%= f.input :profile_photo_landscape, :as => :file %>
-                    </div>
-                    <div class="button-row">
-                      <span class="formats">jpeg, png or gif, max 4mb</span>
+                      <div class="format-types">jpeg, png or gif, max 4mb</div>
                     </div>
                   </div>
                 </div>
@@ -130,15 +126,15 @@
                       <a href="#" class="btn-delete">Delete current video</a>
                     </div>
                   <% end %>
-                  <div class="file-box2">
+                  <div class="file-box">
                     <p>Click ‘browse to select a new video, then ‘upload’ to add the video to your profile.</p>
-                    <div id="uploader" data-s3-bucket="<%= S3DirectRails.s3_uploader_bucket %>">
-                      <%= s3_uploader(:uploaded_files_path => "uploads/user/profile_video/#{current_user.id}", :create_resource_url => account_profile_video_path) %>
-                      <div id="uploading_files"></div>
+                    <div class="file-row">
+                      <div id="uploader" data-s3-bucket="<%= S3DirectRails.s3_uploader_bucket %>">
+                        <%= s3_uploader(:uploaded_files_path => "uploads/user/profile_video/#{current_user.id}", :create_resource_url => account_profile_video_path) %>
+                        <div class="uploading_files"></div>
+                        <div class="format-types">.mpeg .flv or .mov, max 5GB</div>
+                      </div>
                     </div>
-                  </div>
-                  <div class="button-row">
-                    <span class="formats">.mpeg .flv or .mov, max 5GB</span>
                   </div>
                 </div>
               </div>
@@ -195,10 +191,11 @@
                 </div>
                 <div class="form-box">
                   <%= entry.input :artist_type, :as => :select, :collection => Entry::ARTIST_TYPES, :include_blank => false, :input_html => { :class => 'select-2' } %>
-                  <div class="genres-row checkbox-row"><%= entry.input :genres_array, :as => :check_boxes, :collection => Contest::GENRES, :wrapper_html => { :class => 'checkbox-holder' } %></div>
-                  <div id="genres-confirm-text">
-                    It's ok to compete in multiple genres. We encourage it because it allows you more exposure and financial opportunities. However, know that each genre is a separate contest. Each week you'll have to submit a performance video for each genre.
-                    <a href="javascript:;" onclick="$.fancybox.close();">Close</a>
+                  <div class="genres-row checkbox-row">
+                    <%= entry.input :genres_array, :as => :check_boxes, :collection => Contest::GENRES, :wrapper_html => { :class => 'checkbox-holder' } %>
+                    <div id="genres-confirm-text">
+                      <strong>Note:</strong> It's ok to compete in multiple genres. We encourage it because it allows you more exposure and financial opportunities. However, know that <strong>each genre is a separate contest</strong>. Each week you'll have to submit a performance video for each genre.
+                    </div>
                   </div>
                 </div>
                 <div class="audition-box">
@@ -207,23 +204,30 @@
                   <%= entry.input :song_title %>
                   <%= entry.input :written_by %>
                   <div class="video-box">
-                    <div class="picture-holder">
-                      <div class="video-holder">
-                        <img src="<%= image_path('img-12.jpg') %>" alt="image description" width="242" height="148" />
+                    <% if current_user.entry.performance_video? %>
+                      <div class="picture-holder">
+                        <div class="video-holder">
+                          <video class="video-js vjs-default-skin" controls preload="auto" width="242" height="148" data-setup="{}">
+                            <source src="<%= video_path "https://s3.amazonaws.com/fanhelp.mvp/#{current_user.entry.performance_video}" %>" type='video/mp4'>
+                          </video>
+                        </div>
+                        <%= entry.hidden_field :remove_performance_video %>
+                        <a href="#" class="btn-delete">Delete current video</a>
                       </div>
-                      <a href="#" class="btn-delete">Delete current video</a>
-                    </div>
+                    <% end %>
                     <div class="file-box">
                       <p>Click ‘browse to select a new video, then ‘upload’ to add the video to your profile.</p>
                       <div class="file-row">
-                        <input type="file" />
-                      </div>
-                      <div class="button-row">
-                        <input type="button" value="Upload" class="btn-upload" />
-                        <span class="formats">.mpeg .flv or .mov, max 20mb</span>
+                        <div class="uploader" data-s3-bucket="<%= S3DirectRails.s3_uploader_bucket %>">
+                          <%= s3_uploader(:uploaded_files_path => "uploads/entry/performance_video/#{current_user.entry.id}", :create_resource_url => account_entry_performance_video_path) %>
+                          <div class="uploading_files"></div>
+                          <div>.mpeg .flv or .mov, max 20mb</div>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <p>Instead of uploading a video, you could also copy and paste a Youtube video URL here:</p>
+                  <%= entry.input :youtube_url %>
                 </div>
                 <div class="gift-box">
                   <h4>Career Support</h4>

@@ -1,6 +1,7 @@
 @import 'compass';
 @import 'compass/css3/border-radius';
 @import 'partials/formtastic';
+@import 'partials/popup';
 
 .copyright {
   color: #333;
@@ -22,7 +23,7 @@
     color: #000;
   }
   .alert {
-    color: #000;
+    color: #c00;
   }
   .close:hover {
     cursor: pointer;
@@ -93,7 +94,7 @@
 }
 
 #header .panel .block-holder {
-  width: 340px;
+  width: auto;
 }
 
 .block-holder .box {
@@ -101,8 +102,13 @@
   max-width: 200px;
 }
 
-.account-box{
+.account-box {
+  padding: 4px 8px 13px 12px;
 	display: block;
+}
+
+.drop {
+  right: -8px;
 }
 
 .social-media-buttons {
@@ -285,6 +291,7 @@ hr {
 }
 
 .social-networks {
+  padding: 8px 10px 12px 10px;
   padding-bottom: 10px;
   li a {
     width: 18px;

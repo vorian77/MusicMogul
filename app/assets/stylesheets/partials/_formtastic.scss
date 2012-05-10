@@ -1,4 +1,7 @@
 .formtastic {
+  .alert {
+    color: #c00;
+  }
   label {
     font: 14px/18px IstokBold, Arial, Helvetica, sans-serif;
   }
@@ -82,8 +85,10 @@
           width: 120px;
           text-align: left;
           &.chk-label-active {
-            background: image-url('bg-checkbox-active.gif') no-repeat;
-            color: white;
+            background-image: none;
+            background-color: #eee;
+            color: #000;
+            @include border-radius(5px);
           }
         }
       }
@@ -103,18 +108,17 @@
   .photo {
     width: 72%;
   }
-  input[type="text"], input[type="email"] {
+  input[type="text"], input[type="email"], input[type="url"] {
+    color: #000;
     background: image-url('sprites.png') no-repeat 0 -500px;
     float: left;
-  }
-  input[type="email"] {
-    border: 0;
-    margin: 0;
+    border: 0 none;
     color: #999;
     font: 14px/18px 'IstokBold', Arial, Helvetica, sans-serif;
+    height: 15px;
+    margin: 0;
     padding: 15px 13px;
     width: 406px;
-    height: 15px;
   }
   li.date_select {
     border: solid #CCC;
@@ -217,6 +221,24 @@
       padding-top: 14px;
     }
   }
+  .format-types {
+    font: 12px/15px 'IstokItalic', Arial, Helvetica, sans-serif;
+    color: #999;
+  }
+  .genres-row {
+    position: relative;
+    #genres-confirm-text {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 0;
+      width: 240px;
+      font-size: 12px;
+    }
+  }
+  strong {
+    font-family: 'IstokBold', Arial, Helvetica, sans-serif;
+  }
   #user_country { width: 263px; }
   #user_country_input .select-area .center { width: 200px }
   #user_entries_attributes_0_artist_type {
@@ -245,8 +267,5 @@
   }
   #user_youtube_input label {
     background: image-url('ico-youtube.gif') no-repeat 36px 6px;
-  }
-  #genres-confirm-text {
-    display: none;
   }
 }

@@ -7,6 +7,8 @@
     %script{:src => 'jquery.iframe-transport.js'}
     %script{:src => 'jquery.fileupload.js'}
     %script{:src => 'uploader.js'}
+    %style{:type => 'text/css'}
+      body { margin: 0; }
   %body
     %form#file_upload(action='' method='post' enctype='multipart/form-data')
       %input{:type => :hidden, :name => :key}
@@ -15,5 +17,5 @@
       %input{:type => :hidden, :name => :success_action_status, :value => '201'}
       %input{:type => :hidden, :name => :policy}
       %input{:type => :hidden, :name => :signature}
-      %input{:type => :file, :name => 'file', multiple: ''}
+      %input{:type => :file, :name => 'file'}
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120429051827) do
+ActiveRecord::Schema.define(:version => 20120510153949) do
 
   create_table "contests", :force => true do |t|
     t.string   "name"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20120429051827) do
     t.string   "gift_value"
     t.string   "kickstarter"
     t.string   "pledgemusic"
+    t.string   "youtube_url"
   end
 
   add_index "entries", ["contest_id"], :name => "index_entries_on_contest_id"

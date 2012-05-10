@@ -43,7 +43,7 @@
                   <%= f.label :email do %>
                     Email<span class="required">*</span>
                   <% end %>
-                  <div class="text"><%= f.text_field :email, :placeholder => 'steph@gmail.com' %></div>
+                  <div class="text"><%= f.text_field :email %></div>
                   <p class="inline-errors email-errors"><%= f.object.errors.messages[:email].join(', ') %></p>
                 </div>
                 <div class="text-row">
@@ -93,7 +93,7 @@
                   <%= f.label :email do %>
                     Email<span class="required">*</span>
                   <% end %>
-                  <div class="text"><%= f.text_field :email, :placeholder => 'steph@gmail.com' %></div>
+                  <div class="text"><%= f.text_field :email %></div>
                   <p class="inline-errors email-errors"><%= f.object.errors.messages[:email].join(', ') %></p>
                 </div>
                 <div class="text-row">

@@ -11,7 +11,7 @@ jQuery ->
   progressSupported = xhrUploadProgressSupported()
 
 
-  $('#uploading_files').on 'click', '.uploading_file .remove_link', (e) ->
+  $('.uploading_files').on 'click', '.uploading_file .remove_link', (e) ->
     uuid = $(this).parent().data('uuid')
     $(this).parent().remove()
     $('#uploader iframe')[0].contentWindow.postMessage(JSON.stringify({ eventType: 'abort upload', uuid: uuid }), uploaderHost);
@@ -33,7 +33,9 @@ jQuery ->
 
       when 'upload done'
 
-        $(".uploading_file[data-uuid=#{data.uuid}]").remove()
+        $message = $('<p>Your video has been uploaded and will be available when you refresh</p>')
+
+        $(".uploading_file[data-uuid=#{data.uuid}]").append($message).remove()
 
         $.ajax $('#uploader iframe').data('create-resource-url'),
           type: 'POST',
@@ -44,9 +46,9 @@ jQuery ->
 
         if progressSupported
           uploadPercent = "<br/><progress value='0' max='100' class='upload_progress_bar'>0</progress> <span class='upload_percentage'>0</span> %"
-          $('#uploading_files').append("<p class='uploading_file'>#{data.file_name + uploadPercent} <a href='#' class='remove_link'>X</a></p>")
+          $('.uploading_files').append("<p class='uploading_file'>#{data.file_name + uploadPercent} <a href='#' class='remove_link'>X</a></p>")
         else
-          $('#uploading_files').append("<p class='uploading_file'>#{data.file_name}<br/><img src='<%= asset_path('uploading.gif') %>'/></p>")
+          $('.uploading_files').append("<p class='uploading_file'>#{data.file_name}<br/><img src='<%= asset_path('uploading.gif') %>'/></p>")
 
         $('.uploading_file').last().attr 'data-uuid', data.uuid
 

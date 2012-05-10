@@ -12,8 +12,12 @@ showPreview = (coords) ->
     $('#user_thumb_y').val(coords.y)
     $('#user_thumb_w').val(coords.w)
 
+
+
 $(document).ready ->
+
   if $thumb = $('.thumbnail img')
+    jcrop = null
     $('.original img').Jcrop
       onChange: showPreview
       onSelect: showPreview
@@ -21,12 +25,14 @@ $(document).ready ->
       minSize: [ 77, 77 ]
       setSelect: [0, 0, 400, 400]
       keySupport: false
+      , ->
+        jcrop = this
 
-    $('.original img').click ->
-      console.log 'Click'
-      false
+    $('#fancybox-close').click ->
+      jcrop.setSelect [0, 0, 400, 400] if jcrop
 
     $('form.edit-thumbnail').bind 'ajax:success', ->
+      jcrop.setSelect [0, 0, 400, 400] if jcrop
       parent.$.fancybox.close()
       img = $('img.profile-photo-square')
       img.attr('src',img.attr('src'))

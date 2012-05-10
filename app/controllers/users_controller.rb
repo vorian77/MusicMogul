@@ -20,16 +20,15 @@ class UsersController < ApplicationController
     end
   end
   
-  def s3_callback
-    raise unless params[:key]
-    current_user.key = params[:key]
-    current_user.save(:validate => false)
-    render :nothing => true
-  end
-
   def create_profile_video
     raise unless params[:s3_key]
     current_user.update_attribute(:profile_video,params[:s3_key])
+    render :nothing => true
+  end
+  
+  def create_entry_performance_video
+    raise unless params[:s3_key]
+    current_user.entry.update_attribute(:performance_video,params[:s3_key])
     render :nothing => true
   end
 

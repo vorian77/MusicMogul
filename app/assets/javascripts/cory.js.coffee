@@ -54,7 +54,6 @@ $(document).ready ->
   $document = $(document)
 
   $document.on 'change', 'input, selext, textarea', ->
-    console.log 'Change!'
     $(this).closest('form').attr('data-dirty','true')
 
   $document.on 'easytabs:before', '.tabs-holder', (e,clicked) ->
