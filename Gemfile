@@ -14,7 +14,7 @@ gem 'haml-rails'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'exception_notification'
-gem 's3_direct_rails', :path => '~/Sites/s3_direct_rails'
+gem 's3_direct_rails'
 gem 'formtastic', '~> 2.1.1'
 gem 'activeadmin', "~> 0.4.3"
 
