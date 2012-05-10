@@ -3,4 +3,9 @@ class ApplicationController < ActionController::Base
 
   respond_to :html, :json
 
-end 
+  def authenticate_admin!
+    authenticate_user!
+    redirect_to new_user_session_path unless current_user.admin?
+  end
+
+end
