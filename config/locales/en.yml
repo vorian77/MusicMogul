@@ -26,6 +26,8 @@ en:
       judging:
         active: 'I will judge...'
         genres_array: 'Select genres you would like to judge'
+      contact:
+        copy_sender: 'Send me a copy'
     form_hints:
       user:
         twitter: 'Without the @'

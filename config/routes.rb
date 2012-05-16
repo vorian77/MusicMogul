@@ -11,6 +11,8 @@ Mvp2::Application.routes.draw do
   get '/account/thumbnail' => 'users#edit_thumbnail', :as => :edit_thumbnail
   put '/account/thumbnail' => 'users#update_thumbnail', :as => :update_thumbnail
 
+  resources :contacts, :only => :create
+
   match 'video' => 'home#video', :as => :home_video
  
   get '/upload' => 'users#upload', :as => :upload

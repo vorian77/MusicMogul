@@ -21,11 +21,11 @@
             <%= f.inputs :class => 'profile-form' do %>
               <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'details' } %>
               <div class="title-row">
-                <h3>General account details</h3>
+                <h3>Private account settings</h3>
                 <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save' %></div>
               </div>
               <div class="text-box">
-                <p>The information on this page is not shown on the site.</p>
+                <p>This information is not shown anywhere on the site.</p>
               </div>
               <%= f.input :first_name %>
               <%= f.input :last_name %>
@@ -36,7 +36,6 @@
                 <%= country_select('user','country', ['United States','Canada','Mexico','United Kingdom']) %>
               </li>
               <%= f.input :birthdate, :start_year => 1901, :order => [:month, :day, :year], :include_blank => false, :input_html => { :class => 'select-2' } %>
-              <%= f.input :interview_status, :as => :boolean %>
               <div class="submit-row">
                 <%= f.actions :class => 'submit-holder' do %>
                   <%= f.submit 'Save', :class => 'button-save' %>
@@ -55,22 +54,15 @@
             <%= f.inputs :class => 'profile-form' do %>
               <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'profile' } %>
               <div class="title-row">
-                <h3>Your public profile</h3>
+                <h3>Public account settings</h3>
                 <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save' %></div>
               </div>
               <div class="text-box">
-                <p>This is your public profile shown throughout the site.</p>
+                <p>This information is displayed throughout the site.</p>
               </div>
               <%= f.input :profile_name %>
-              <%= f.input :genre %>
               <%= f.input :hometown %>
               <%= f.input :bio, :as => :text, :input_html => { :rows => 6 } %>
-              <div class="social-box">
-                <h4>Social Accounts</h4>
-                <%= f.input :facebook %>
-                <%= f.input :twitter %>
-                <%= f.input :youtube %>
-              </div>              
               <div class="picture-box">
                 <h4>Profile Pictures</h4>
                 <div class="holder">
@@ -138,6 +130,12 @@
                   </div>
                 </div>
               </div>
+              <div class="social-box">
+                <h4>Social Accounts</h4>
+                <%= f.input :facebook %>
+                <%= f.input :twitter %>
+                <%= f.input :youtube %>
+              </div>
               <div class="submit-row">
                 <%= f.actions :class => 'submit-holder' do %>
                   <%= f.submit 'Save', :class => 'button-save' %>
@@ -161,7 +159,7 @@
             <%= f.semantic_fields_for :judgings, current_user.judging do |judging| %>
               <%= f.inputs :class => 'judge-form' do %>
                 <%= judging.input :active, :as => :radio, :collection => [['Yes',true],['No',false]], :wrapper_html => { :class => 'radio-row' } %>
-                <div class="checkbox-row"><%= judging.input :genres_array, :as => :check_boxes, :collection => Contest::GENRES, :wrapper_html => { :class => 'checkbox-holder' } %></div>
+                <div class="checkbox-row judge-fields"><%= judging.input :genres_array, :as => :check_boxes, :collection => Contest::GENRES, :wrapper_html => { :class => 'checkbox-holder' } %></div>
                 <div class="submit-row">
                   <%= f.actions :class => 'submit-holder' do %>
                     <%= f.submit 'Save', :class => 'button-save' %>
@@ -186,23 +184,19 @@
             <%= f.semantic_fields_for :entries, current_user.entry do |entry| %>
               <%= f.inputs :class => 'contestant-form' do %>
                 <%= entry.input :active, :as => :radio, :collection => [['Yes',true],['No',false]], :wrapper_html => { :class => 'radio-row' } %>
-                <div class="text-row">
-                  <p>Fill out the fields to complete your artist profile.</p>
-                </div>
                 <div class="form-box">
                   <%= entry.input :artist_type, :as => :select, :collection => Entry::ARTIST_TYPES, :include_blank => false, :input_html => { :class => 'select-2' } %>
                   <div class="genres-row checkbox-row">
-                    <%= entry.input :genres_array, :as => :check_boxes, :collection => Contest::GENRES, :wrapper_html => { :class => 'checkbox-holder' } %>
+                    <%= entry.input :genre, :as => :select, :collection => Contest::GENRES %>
                     <div id="genres-confirm-text">
                       <strong>Note:</strong> It's ok to compete in multiple genres. We encourage it because it allows you more exposure and financial opportunities. However, know that <strong>each genre is a separate contest</strong>. Each week you'll have to submit a performance video for each genre.
                     </div>
                   </div>
                 </div>
                 <div class="audition-box">
-                  <h4>Audition Performance</h4>
+                  <h4>Preview Performance (will not be judged)</h4>
                   <%= entry.input :audition_type, :as => :select, :collection => Entry::ENTRY_TYPES, :include_blank => false, :input_html => { :class => 'select-2' } %>
                   <%= entry.input :song_title %>
-                  <%= entry.input :written_by %>
                   <div class="video-box">
                     <% if current_user.entry.performance_video? %>
                       <div class="picture-holder">

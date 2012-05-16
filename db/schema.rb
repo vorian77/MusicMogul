@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120510174007) do
+ActiveRecord::Schema.define(:version => 20120516093815) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -46,6 +46,16 @@ ActiveRecord::Schema.define(:version => 20120510174007) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
+  create_table "contacts", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "subject"
+    t.text     "message"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.boolean  "copy_sender"
+  end
+
   create_table "contests", :force => true do |t|
     t.string   "name"
     t.time     "date"
@@ -60,7 +70,6 @@ ActiveRecord::Schema.define(:version => 20120510174007) do
     t.datetime "updated_at",                           :null => false
     t.boolean  "active",            :default => false, :null => false
     t.string   "artist_type"
-    t.string   "genres"
     t.string   "community_name"
     t.string   "audition_type"
     t.string   "song_title"
@@ -72,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20120510174007) do
     t.string   "kickstarter"
     t.string   "pledgemusic"
     t.string   "youtube_url"
+    t.string   "genre"
   end
 
   add_index "entries", ["contest_id"], :name => "index_entries_on_contest_id"

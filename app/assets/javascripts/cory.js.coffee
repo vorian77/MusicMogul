@@ -3,18 +3,29 @@ $(document).ready ->
 
   $flash = $('.flash')
   hideFlash = ->
+    $flash.removeData('timeout')
     $flash.children('div').slideUp()
-    $flash.off('message.fanhelp')
-  $flash.on 'message.fanhelp', -> hideFlash
-  $flash.click hideFlash
-  setTimeout hideFlash, 3000
+    $flash.off 'message.fanhelp'
+  $flash.on 'message.fanhelp', ->
+    $flash.data 'timeout', setTimeout(hideFlash, 3000)
+    $flash.click hideFlash
+  $flash.trigger 'message.fanhelp' if $flash.children('div')
+
+  is_checked = (el) ->
+    if el.attr('type') == 'radio'
+      el.attr('checked') == 'checked'
+    else if el.attr('type') == 'checkbox'
+      el.is(':checked')
+    else
+      el
 
   $('input[data-shows]').each (index,toggle) ->
     $toggle = $(toggle)
     $toggled = $($toggle.data('shows'))
-    $toggled.toggle($toggle.is(':checked'))
+    console.log $toggled
+    $toggled.toggle(is_checked($toggle))
     $toggle.click ->
-      $toggled.toggle($toggle.is(':checked'))
+      $toggled.toggle(is_checked($toggle))
 
   $('.tabs-holder').easytabs
     tabs: '.tabset li'
@@ -81,9 +92,7 @@ $(document).ready ->
     if $clicked = $active_form.data('clicked')
       $clicked.trigger 'click'
       $active_form.removeData('clicked')
-    $('.tab-content.active .messages').html $notice
-    setMessageTimeout()
-
+    $('.flash').html($notice).trigger('message.fanhelp')
 
   $document.on 'ajax:error', '.tab-content.active form', (e, xhr, status, error) ->
     $active_form = $(this).filter(':first')
@@ -96,4 +105,12 @@ $(document).ready ->
     $alert = $('<div></div>').addClass('alert').html('Your account could not be saved.')
     $('.tab-content.active .messages').html $alert
     setMessageTimeout()
+)()
+
+(->
+  $(document).ready ->
+    $('a#home-video-link').fancybox
+      onStart: ->
+        _V_('home-video').ready ->
+          this.play()
 )()

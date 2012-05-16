@@ -17,6 +17,7 @@ gem 'exception_notification'
 gem 's3_direct_rails'
 gem 'formtastic', '~> 2.1.1'
 gem 'activeadmin', "~> 0.4.3"
+gem 'ayah_integration'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

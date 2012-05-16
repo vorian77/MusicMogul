@@ -691,7 +691,7 @@ jcf.lib = {
 		return publicAPI;
 	}())
 }
-
+/*
 // custom radio module
 jcf.addModule({
 	name:'radio',
@@ -772,7 +772,7 @@ jcf.addModule({
 });
 
 
-
+*/
 
 
 

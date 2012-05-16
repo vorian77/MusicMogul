@@ -4,6 +4,11 @@
   }
   label {
     font: 14px/18px IstokBold, Arial, Helvetica, sans-serif;
+    float: left;
+    width: 121px;
+    padding: 13px 20px 0 0;
+    text-align: right;
+    color: #333;
   }
   &.user {
     .thumbnail-wrapper {
@@ -155,6 +160,10 @@
     }
   }
 
+  select {
+    margin-top: 12px;
+  }
+
   .checkbox-holder label {
     display: inline-block;
     vertical-align: middle;
@@ -237,26 +246,6 @@
   }
   strong {
     font-family: 'IstokBold', Arial, Helvetica, sans-serif;
-  }
-  #user_country { width: 263px; }
-  #user_country_input .select-area .center { width: 200px }
-  #user_entries_attributes_0_artist_type {
-    width: 152px;
-  }
-  #user_entries_attributes_0_genre {
-    width: 240px;
-  }
-  #user_entries_attributes_0_audition_type {
-    width: 140px;
-  }
-  #user_birthdate_2i {
-    width: 140px;
-  }
-  #user_birthdate_3i {
-    width: 140px;
-  }
-  #user_birthdate_1i {
-    width: 140px;
   }
   #user_facebook_input label {
     background: image-url('ico-facebook.gif') no-repeat 36px 14px;

@@ -10,7 +10,7 @@
 <div class="tabs-holder">
 <ul class="tabset">
 	<li><a href="#tab-5" class="tab"><span class="tab-about">About</span></a></li>
-	<li><a href="#tab-6" class="tab"><span class="tab-contact">Contact</span></a></li>
+  <li><a href="#tab-6" class="tab <%= @contact_selected ? 'active' : '' %>"><span class="tab-contact">Contact</span></a></li>
 	<li><a href="#tab-7" class="tab"><span class="tab-terms">Terms</span></a></li>
 	<li><a href="#tab-8" class="tab"><span class="tab-privacy">Privacy</span></a></li>
 </ul>
@@ -161,52 +161,32 @@
 </div>
 <div class="tab-content" id="tab-6">
 	<div class="tab-holder">
-		<div class="tab-frame">
-			<form action="#" class="contact-form">
-				<fieldset>
-					<div class="tab-heading">
-						<h3>Contact Fans Helping Artists</h3>
-					</div>
-					<div class="text-box">
-						<p>Have a question? Drop us a line!</p>
-					</div>
-					<div class="form-box">
-						<div class="row">
-							<label for="name">Name<span class="required">*</span></label>
-							<div class="text"><input type="text" id="name" value="Mr Joe Bloggs" /></div>
-						</div>
-						<div class="row">
-							<label for="email">Email<span class="required">*</span></label>
-							<div class="text"><input type="text" id="email" value="&#074;&#111;&#101;&#066;&#064;&#119;&#101;&#098;&#115;&#105;&#116;&#101;&#046;&#099;&#111;&#109;" /></div>
-						</div>
-						<div class="row">
-							<label for="subject">Subject<span class="required">*</span></label>
-							<div class="text"><input type="text" id="subject" value="Subject" /></div>
-						</div>
-						<div class="row">
-							<label for="message">Message<span class="required">*</span></label>
-							<div class="textarea-box">
-								<div class="textarea-holder">
-									<div class="textarea-frame">
-										<div class="textarea">
-											<textarea id="message" cols="30" rows="10" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et eros id mi gravida adipiscing. Vivamus neque urna, sodales et posuere eu, scelerisque at nulla. Fusce facilisis adipiscing tellus, vitae scelerisque nibh commodo in. Suspendisse mauris ipsum, placerat non elementum at, elementum et orci. Mauris vitae turpis nisi, sit amet aliquam purus. Donec quis luctus nulla. Vestibulum risus turpis, dapibus in aliquam at, congue sit amet quam. Vestibulum ornare sollicitudin ante, vel porta justo ornare ut.</textarea>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="plugin-box">
-						<p>Please complete the task below to prove you are human</p>
-						<div class="plugin-holder"><img src="/assets/img-14.jpg" alt="image description" width="356" height="155" /></div>
-					</div>
+    <div class="tab-frame">
+      <%= semantic_form_for @contact, :class => 'contact-form' do |f| %>
+        <div class="tab-heading">
+          <h3>Contact Fans Helping Artists</h3>
+        </div>
+        <div class="text-box">
+          <p>Have a question? Drop us a line!</p>
+        </div>
+        <div class="form-box">
+          <%= f.inputs do %>
+            <%= f.input :name %>
+            <%= f.input :email %>
+            <%= f.input :copy_sender %>
+            <%= f.input :subject %>
+            <%= f.input :message, :as => :text %>
+          <% end %>
+          <div class="plugin-box">
+            <%= raw @ayah.get_publisher_html if @ayah %>
+          </div>
 					<div class="submit-row">
-						<div class="submit-holder">
-							<input type="submit" value="Send" class="button-save" />
+            <div class="submit-holder">
+              <%= f.submit 'Send', :class => 'button-save' %>
 						</div>
-					</div>
-				</fieldset>
-			</form>
+          </div>
+        </div>
+      <% end %>
 		</div>
 	</div>
 </div>
