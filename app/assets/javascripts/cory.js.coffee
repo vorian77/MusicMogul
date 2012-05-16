@@ -2,12 +2,12 @@ $(document).ready ->
   $('a.fancybox').fancybox()	
 
   $flash = $('.flash')
-  setFlashTimeout = (->
-    hideFlash = -> $flash.children('div').fadeOut()
-    $flash.click hideFlash
-    flashTimeout = setTimeout hideFlash, 3000
-    $flash.hover -> clearTimeout(flashTimeout)
-  )()
+  hideFlash = ->
+    $flash.children('div').slideUp()
+    $flash.off('message.fanhelp')
+  $flash.on 'message.fanhelp', -> hideFlash
+  $flash.click hideFlash
+  setTimeout hideFlash, 30000
 
   $('input[data-shows]').each (index,toggle) ->
     $toggle = $(toggle)

@@ -11,24 +11,38 @@
 }
 
 .flash {
-  background: #E3E6E8 image-url('bg-w1.gif');
+  background: image-url('flash-bg.png') repeat-x;
+  border-bottom: solid 1px #fff;
+  text-align: center;
+  cursor: pointer;
   div {
-    background: image-url('bg-wrapper.jpg') repeat-y 50% 0;
-    height: 40px;
-    line-height: 40px;
+    color: #fff;
+    height: 59px;
+    line-height: 59px;
     font-weight: bold;
-    text-align: center;
-  }
-  .notice {
-    color: #000;
-  }
-  .alert {
-    color: #c00;
-  }
-  .close:hover {
+    width: 960px;
+    margin: 0 auto;
     cursor: pointer;
+  }
+  .close {
+    float: right;
+    display: block;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    line-height: 26px;
+    font-size: 20px;
+    text-align: center;
+    margin: 17px 10px 0 0;
+    background-color: #176192;
+    color: #6d9cbb;
+    @include border-radius(5px);
     text-decoration: none;
-    color: #369;
+    cursor: pointer;
+    &:hover {
+      background-color: darken(#176192, 5%);
+      color: darken(#6d9cbb,5%);
+    }
   }
 }
 
