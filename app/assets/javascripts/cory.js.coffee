@@ -7,7 +7,7 @@ $(document).ready ->
     $flash.off('message.fanhelp')
   $flash.on 'message.fanhelp', -> hideFlash
   $flash.click hideFlash
-  setTimeout hideFlash, 30000
+  setTimeout hideFlash, 3000
 
   $('input[data-shows]').each (index,toggle) ->
     $toggle = $(toggle)
