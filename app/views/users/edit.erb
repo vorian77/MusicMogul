@@ -27,15 +27,15 @@
               <div class="text-box">
                 <p>This information is not shown anywhere on the site.</p>
               </div>
-              <%= f.input :first_name %>
-              <%= f.input :last_name %>
               <%= f.input :email %>
-              <%= f.input :zip %>
+              <%= f.input :password %>
+              <%= f.input :birth_year %>
               <li class="select input optional" id="user_country_input">
                 <label class="label" for="user_country"><%= User.human_attribute_name(:country) %></label>
                 <%= country_select('user','country', ['United States','Canada','Mexico','United Kingdom']) %>
               </li>
-              <%= f.input :birthdate, :start_year => 1901, :order => [:month, :day, :year], :include_blank => false, :input_html => { :class => 'select-2' } %>
+              <%= f.input :zip %>
+              <%= f.input :gender, :as => :radio, :collection => ['Male','Female'] %>
               <div class="submit-row">
                 <%= f.actions :class => 'submit-holder' do %>
                   <%= f.submit 'Save', :class => 'button-save' %>

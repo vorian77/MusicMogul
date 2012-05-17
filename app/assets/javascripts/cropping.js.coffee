@@ -8,31 +8,37 @@ showPreview = (coords) ->
     height: Math.round(ry * $holder.height()) + 'px'
     marginLeft: '-' + Math.round(rx * coords.x) + 'px'
     marginTop: '-' + Math.round(ry * coords.y) + 'px'
-    $('#user_thumb_x').val(coords.x)
-    $('#user_thumb_y').val(coords.y)
-    $('#user_thumb_w').val(coords.w)
-
-
+  $('#user_thumb_x').val(coords.x)
+  $('#user_thumb_y').val(coords.y)
+  $('#user_thumb_w').val(coords.w)
 
 $(document).ready ->
 
   if $thumb = $('.thumbnail img')
+    $orig = $('.original img')
+    x = $orig.data('thumb-x') || 0
+    y = $orig.data('thumb-y') || 0
+    x2 = x + $orig.data('thumb-w') || 400
+    y2 = y + $orig.data('thumb-y') || 400
+    console.log 'x', x
+    console.log 'y', y
+    console.log 'x2', x2
+    console.log 'y2', y2
     jcrop = null
     $('.original img').Jcrop
       onChange: showPreview
       onSelect: showPreview
       aspectRatio: 1
       minSize: [ 77, 77 ]
-      setSelect: [0, 0, 400, 400]
+      setSelect: [x, y, x2, y2]
       keySupport: false
       , ->
         jcrop = this
 
     $('#fancybox-close').click ->
-      jcrop.setSelect [0, 0, 400, 400] if jcrop
+      jcrop.setSelect [x, y, x2, y2] if jcrop
 
     $('form.edit-thumbnail').bind 'ajax:success', ->
-      jcrop.setSelect [0, 0, 400, 400] if jcrop
       parent.$.fancybox.close()
       img = $('img.profile-photo-square')
       img.attr('src',img.attr('src'))

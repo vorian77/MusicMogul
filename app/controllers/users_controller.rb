@@ -41,6 +41,7 @@ class UsersController < ApplicationController
       u.thumb_x = params[:user][:thumb_x]
       u.thumb_y = params[:user][:thumb_y]
       u.thumb_w = params[:user][:thumb_w]
+      u.save(:validate => false)
     end
     current_user.profile_photo_square.recreate_versions!
     render :nothing => true

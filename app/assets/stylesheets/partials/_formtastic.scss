@@ -113,7 +113,7 @@
   .photo {
     width: 72%;
   }
-  input[type="text"], input[type="email"], input[type="url"] {
+  input[type="text"], input[type="email"], input[type="url"], input[type="password"] {
     color: #000;
     background: image-url('sprites.png') no-repeat 0 -500px;
     float: left;
@@ -246,6 +246,11 @@
   }
   strong {
     font-family: 'IstokBold', Arial, Helvetica, sans-serif;
+  }
+  .choice label {
+    float: none;
+    width: auto;
+    padding: 0;
   }
   #user_facebook_input label {
     background: image-url('ico-facebook.gif') no-repeat 36px 14px;

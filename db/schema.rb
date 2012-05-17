@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120516093815) do
+ActiveRecord::Schema.define(:version => 20120517154242) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -121,7 +121,6 @@ ActiveRecord::Schema.define(:version => 20120516093815) do
     t.string   "last_name"
     t.string   "zip"
     t.string   "country"
-    t.date     "birthdate"
     t.boolean  "interview_status"
     t.string   "profile_name"
     t.string   "hometown"
@@ -136,6 +135,11 @@ ActiveRecord::Schema.define(:version => 20120516093815) do
     t.string   "youtube"
     t.string   "genre"
     t.boolean  "admin",                   :default => false, :null => false
+    t.string   "gender"
+    t.string   "birth_year"
+    t.integer  "thumb_x"
+    t.integer  "thumb_y"
+    t.integer  "thumb_w"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

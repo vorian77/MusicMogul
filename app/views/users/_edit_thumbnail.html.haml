@@ -1,5 +1,5 @@
 = semantic_form_for current_user, :url => update_thumbnail_path, :remote => true, :html => { :class => 'edit-thumbnail' } do |f|
-  .original= image_tag current_user.profile_photo_square
+  .original= image_tag current_user.profile_photo_square, :data => { 'thumb-x' => current_user.thumb_x, 'thumb-y' => current_user.thumb_y, 'thumb-w' => current_user.thumb_w }
   .thumbnail= image_tag current_user.profile_photo_square
   = f.input :thumb_x, :as => :hidden
   = f.input :thumb_y, :as => :hidden

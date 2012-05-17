@@ -28,4 +28,6 @@ end
 
 group :development, :test do
   gem 'ruby-debug19'
+  gem 'taps'
+  gem 'sqlite3'
 end
