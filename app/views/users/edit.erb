@@ -64,7 +64,7 @@
               <%= f.input :hometown %>
               <%= f.input :bio, :as => :text, :input_html => { :rows => 6 } %>
               <div class="picture-box">
-                <h4>Profile Pictures</h4>
+                <h4>Profile Picture</h4>
                 <div class="holder">
                   <div class="picture-holder">
                     <% if current_user.profile_photo_square? %>
@@ -79,26 +79,7 @@
                   <div class="file-box">
                     <p>Click below to select a new album photo.</p>
                     <div class="file-row">
-                      <%= f.input :profile_photo_square, :as => :file %>
-                      <div class="format-types">jpeg, png or gif, max 4mb</div>
-                    </div>
-                  </div>
-                </div>
-                <hr />
-                <div class="holder">
-                  <div class="picture-holder">
-                    <% if current_user.profile_photo_landscape? %>
-                      <div class="profile-photo-box">
-                        <%= image_tag current_user.profile_photo_landscape.small, :width => '240', :height => '200' %>
-                      </div>
-                      <%= f.hidden_field :remove_profile_photo_landscape %>
-                      <a href="#" class="btn-delete">Delete current image</a>
-                    <% end %>
-                  </div>
-                  <div class="file-box">
-                    <p>Click below to select a new band photo.</p>
-                    <div class="file-row">
-                      <%= f.input :profile_photo_landscape, :as => :file %>
+                      <%= f.input :profile_photo_square, :as => :file, :label => false %>
                       <div class="format-types">jpeg, png or gif, max 4mb</div>
                     </div>
                   </div>

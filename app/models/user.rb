@@ -28,7 +28,6 @@ class User < ActiveRecord::Base
   end
 
   mount_uploader :profile_photo_square, SquareProfilePhotoUploader
-  mount_uploader :profile_photo_landscape, LandscapeProfilePhotoUploader
 
   has_many :entries
   has_many :judgings
