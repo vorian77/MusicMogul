@@ -97,9 +97,11 @@ $(document).ready ->
 (->
   $(document).ready ->
     $('a#home-video-link').fancybox
+      type: 'iframe'
+      width: 840
+      height: 516
+      scrolling: 'no'
       onStart: ->
-        _V_('home-video').ready ->
-          this.play()
 )()
 
 (->
