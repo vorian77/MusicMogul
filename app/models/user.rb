@@ -40,9 +40,10 @@ class User < ActiveRecord::Base
 
   before_save :parse_account_type, :if => :account_type
   
-  scope :has_photo, where("profile_photo_square is not ?", nil) 
+  scope :has_photo, where("users.profile_photo_square is not ?", nil)
+  scope :has_entry, includes(:entries).where("entries.id is not ?", nil)
   scope :genre, lambda { |genre| includes(:entries).where("entries.genre = ?", genre) }
-  scope :next, lambda { |p| {:conditions => ["id > ?", p.id], :limit => 1, :order => "id"} }
+  scope :next, lambda { |p| {:conditions => ["users.id > ?", p.id], :limit => 1, :order => "users.id"} }
   
   def display_name
     self.profile_name.presence || self.email
