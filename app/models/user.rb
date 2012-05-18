@@ -22,6 +22,11 @@ class User < ActiveRecord::Base
   attr_accessor :source
   attr_accessor :changing_password
 
+  with_options :on => :create do |u|
+    u.validates_presence_of :email
+    u.validates_presence_of :password
+  end
+
   with_options :if => :changing_password? do |u|
     u.validates_presence_of :old_password
     u.validates_presence_of     :password
