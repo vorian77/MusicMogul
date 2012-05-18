@@ -1,0 +1,41 @@
+<div class="breadcrumbs-holder">
+	<ul id="breadcrumbs">
+		<li><a class="home" href="index.html"><span>Home</span></a></li>
+		<%- if params[:genre] -%>
+		<li><a href="<%= previews_path %>"><span>Contestant Preview</span></a></li>
+		<li><span><%= params[:genre] %></span></li>
+	  <%- else -%>
+	  <li><span>Contestant Preview</span></li>
+		<% end -%>
+	</ul>
+</div>
+<div class="peview-heading">
+	<div class="heading-box">
+		<h2>Preview contestants</h2>
+		<p>Here are some of the artists already registered for the contest</p>
+	</div>
+	<div class="filter-box">
+		<form action="#" class="filter-form">
+			<fieldset>
+				<div class="row">
+          <%= select_tag "genre", options_for_select(Contest::GENRES), {:prompt => "Filter by genre", :onchange => "this.form.submit();"} %>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>
+<ul class="artists-list">
+  <li>
+  <% @artists.each do |artist| -%>
+		<a class="photo-holder" href="<%= preview_path(artist) %>"><%= image_tag artist.profile_photo_square.cropped, :width => '238', :height => '238' %></a>
+		<% if artist == @artists.last -%>
+  		</li>
+		<% else -%>
+  		</li><li>
+		<% end -%>
+	<% end -%>
+</ul>
+
+
+
+

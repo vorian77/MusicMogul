@@ -16,6 +16,9 @@ Mvp2::Application.routes.draw do
   put '/account/thumbnail' => 'users#update_thumbnail', :as => :update_thumbnail
   post '/reset_password' => 'users#reset_password', :as => :reset_password
 
+  resources :contacts, :only => :create
+  resources :previews, :only => [:index, :show]
+
   match 'video' => 'home#video', :as => :home_video
  
   get '/upload' => 'users#upload', :as => :upload
@@ -27,5 +30,18 @@ Mvp2::Application.routes.draw do
 	
 	get '/page/:name' => 'pages#show', :as => :page
   post '/page/notices' => 'contacts#create', :as => :contacts
+	
+	get '/channel.html' => proc {
+    [
+      200,
+      {
+        'Pragma'        => 'public',
+        'Cache-Control' => "max-age=#{1.year.to_i}",
+        'Expires'       => 1.year.from_now.to_s(:rfc822),
+        'Content-Type'  => 'text/html'
+      },
+      ['<script type="text/javascript" src="//connect.facebook.net/en_US/all.js"></script>']
+    ]
+  }
 
 end
