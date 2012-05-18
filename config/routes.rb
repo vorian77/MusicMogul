@@ -12,6 +12,7 @@ Mvp2::Application.routes.draw do
   put '/account/thumbnail' => 'users#update_thumbnail', :as => :update_thumbnail
 
   resources :contacts, :only => :create
+  resources :previews, :only => [:index, :show]
 
   match 'video' => 'home#video', :as => :home_video
  
@@ -23,5 +24,18 @@ Mvp2::Application.routes.draw do
   # get '/Fans' => 'home#fans', :as => :home_fans
 	
 	get '/page/:name' => 'pages#show', :as => :page
+	
+	get '/channel.html' => proc {
+    [
+      200,
+      {
+        'Pragma'        => 'public',
+        'Cache-Control' => "max-age=#{1.year.to_i}",
+        'Expires'       => 1.year.from_now.to_s(:rfc822),
+        'Content-Type'  => 'text/html'
+      },
+      ['<script type="text/javascript" src="//connect.facebook.net/en_US/all.js"></script>']
+    ]
+  }
 
 end
