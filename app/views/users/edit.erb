@@ -8,16 +8,16 @@
   <h2>My account</h2>
   <div class="tabs-holder">
     <ul class="tabset">
-      <li><a href="#tab-1" class="tab"><span class="tab-details">Account Details</span></a></li>
-      <li><a href="#tab-2" class="tab"><span class="tab-profile">Public Profile</span></a></li>
-      <li><a href="#tab-3" class="tab"><span class="tab-judge">Judge</span></a></li>
-      <li><a href="#tab-4" class="tab"><span class="tab-contestant">Contestant</span></a></li>
+      <li><a href="#details" class="tab"><span class="tab-details">Account Details</span></a></li>
+      <li><a href="#profile" class="tab"><span class="tab-profile">Public Profile</span></a></li>
+      <li><a href="#judge" class="tab"><span class="tab-judge">Judge</span></a></li>
+      <li><a href="#contestant" class="tab"><span class="tab-contestant">Contestant</span></a></li>
     </ul>
-    <div class="tab-content" id="tab-1">
+    <div class="tab-content" id="details">
       <div class="tab-holder">
         <div class="tab-frame">
           <div class="messages"></div>
-          <%= semantic_form_for current_user, :url => account_path(:anchor => 'tab-1', :format => :json), :remote => true do |f| %>
+          <%= semantic_form_for current_user, :url => account_path(:anchor => 'details', :format => :json), :remote => true do |f| %>
             <%= f.inputs :class => 'profile-form' do %>
               <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'details' } %>
               <div class="title-row">
@@ -46,11 +46,11 @@
         </div>
       </div>
     </div>
-    <div class="tab-content" id="tab-2">
+    <div class="tab-content" id="profile">
       <div class="tab-holder">
         <div class="tab-frame">
           <div class="messages"></div>
-          <%= semantic_form_for current_user, :url => account_path(:anchor => 'tab-2', :format => :json), :remote => true do |f| %>
+          <%= semantic_form_for current_user, :url => account_path(:anchor => 'profile', :format => :json), :remote => true do |f| %>
             <%= f.inputs :class => 'profile-form' do %>
               <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'profile' } %>
               <div class="title-row">
@@ -143,11 +143,11 @@
         </div>
       </div>
     </div>
-    <div class="tab-content" id="tab-3">
+    <div class="tab-content" id="judge">
       <div class="tab-holder">
         <div class="tab-frame">
           <div class="messages"></div>
-          <%= semantic_form_for current_user, :url => account_path(:anchor => 'tab-3', :format => :json), :remote => true do |f| %>
+          <%= semantic_form_for current_user, :url => account_path(:anchor => 'judge', :format => :json), :remote => true do |f| %>
             <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'judge' } %>
             <div class="title-row title-row-2">
               <h3>Judge</h3>
@@ -168,11 +168,11 @@
         <% end %>
       </div>
     </div>
-    <div class="tab-content" id="tab-4">
+    <div class="tab-content" id="contestant">
       <div class="tab-holder">
         <div class="tab-frame">
           <div class="messages"></div>
-          <%= semantic_form_for current_user, :url => account_path(:anchor => 'tab-4', :format => :json), :remote => true do |f| %>
+          <%= semantic_form_for current_user, :url => account_path(:anchor => 'contestant', :format => :json), :remote => true do |f| %>
             <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'contestants' } %>
             <div class="title-row title-row-2">
               <h3>Contestant</h3>
