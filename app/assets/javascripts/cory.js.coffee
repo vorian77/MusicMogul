@@ -174,14 +174,17 @@ $(document).ready ->
 
 (->
   $(document).ready ->
-    return unless $uploader = $('.profile-video-input.no-file')
-    $sourceInput = $uploader.find('.source-input')
+    return unless $uploader = $('.profile-video-input')
+    $sourceInput = $uploader.find('#user_source_input')
     $source = $uploader.find('.source')
     $youtubeInput = $uploader.find('#user_youtube_url_input')
     $video = $uploader.find('.profile-video-input')
     $holder = $uploader.find('.holder')
 
+    
+
     toggleProfileVideo = ->
+      console.log $source.val()
       if $source.val() == 'Youtube'
         $youtubeInput.show()
         $holder.hide()
@@ -200,7 +203,7 @@ $(document).ready ->
   $(document).delegate '.video-box .remove-file a', 'ajax:success', ->
     $uploader = $(this).closest('.video-box')
     $uploader.removeClass('uploaded-file youtube-url').addClass('no-file')
-    $uploader.find('.source').val('')
+    $uploader.find('.source').val('Upload')
     $close = $('<a></a>').addClass('close').attr('href','#')
     $notice = $('<div></div>').addClass('notice').html('Your video has been successfully deleted').append($close)
     $('.flash').append($notice).trigger('message.fanhelp')

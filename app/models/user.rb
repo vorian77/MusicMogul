@@ -11,13 +11,14 @@ class User < ActiveRecord::Base
     :interview_status, :profile_name, :hometown, :genre, :bio, :facebook,
     :twitter, :phone, :profile_photo_square, :profile_photo_landscape,
     :remove_profile_photo_square, :remove_profile_photo_landscape, :thumb_x,
-    :thumb_y, :thumb_w, :account_type, :judgings_attributes,
+    :thumb_y, :thumb_w, :account_type, :judgings_attributes, :source,
     :entries_attributes, :genre, :youtube, :current_tab, :gender,
-    :remove_profile_video, :thumb_x, :thumb_y, :thumb_w
+    :remove_profile_video, :thumb_x, :thumb_y, :thumb_w, :youtube_url
 
   attr_accessor :account_type, :current_tab
   attr_accessor :remove_profile_video
   attr_accessor :old_password
+  attr_accessor :source
 
   with_options :if => :reset_password_token? do |u|
     # u.validates_presence_of :old_password
@@ -69,6 +70,14 @@ class User < ActiveRecord::Base
       'youtube-url'
     else
       'no-file'
+    end
+  end
+
+  def source
+    if profile_video.present?
+      'Upload'
+    elsif youtube_url.present?
+      'Youtube'
     end
   end
 

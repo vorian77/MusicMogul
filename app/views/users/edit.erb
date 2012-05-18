@@ -94,10 +94,7 @@
               </div>
               <div class="video-box profile-video-input <%= current_user.profile_video_status %>">
                 <h4>Profile Video</h4>
-                <li class="input select source-input">
-                  <%= label_tag 'source' %>
-                  <%= select_tag 'source', options_for_select(['Upload','Youtube']), :include_blank => true, :class => 'source' %>
-                </li>
+                <%= f.input :source, :as => :select, :collection => ['Youtube','Upload'], :input_html => { :class => 'source' } %>
                 <%= f.input :youtube_url %>
                 <div class="holder">
                   <div class="picture-holder">
@@ -107,8 +104,6 @@
                           <source src="https://s3.amazonaws.com/fanhelp.mvp/<%= current_user.profile_video %>" %>" type="video/mp4">
                         <% end %>
                       </video>
-                    </div>
-                    <div class="youtube-holder">
                     </div>
                     <div class="placeholder"></div>
                   </div>
@@ -210,13 +205,6 @@
                               <source src="https://s3.amazonaws.com/fanhelp.mvp/<%= current_user.entry.performance_video %>" type="video/mp4">
                             <% end %>
                           </video>
-                        </div>
-                        <div class="youtube-holder">
-                          <!--
-                          <iframe class="youtube-embed" type="text/html" width="242" height="148"
-                            src="<%= current_user.entry.youtube_url %>?autoplay=0&origin=http://fanhelp.us"
-                            frameborder="0"></iframe>
-                          -->
                         </div>
                         <div class="placeholder"></div>
                       </div>
