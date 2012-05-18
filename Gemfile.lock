@@ -260,6 +260,7 @@ DEPENDENCIES
   formtastic (~> 2.1.1)
   haml-rails
   jquery-rails
+  mime-types
   omniauth-facebook
   omniauth-twitter
   pg
