@@ -101,7 +101,8 @@
                     <div class="video-holder">
                       <video class="video-js vjs-default-skin" controls preload="auto" width="242" height="148" data-setup="{}">
                         <% if current_user.profile_video.present? %>
-                          <source src="https://s3.amazonaws.com/fanhelp.mvp/<%= current_user.profile_video %>" %>" type="video/mp4">
+                          <% logger.info "VIDEO: #{current_user.profile_video.inspect}" %>
+                          <source src="https://s3.amazonaws.com/fanhelp.mvp/<%= current_user.profile_video %>" type="video/mp4">
                         <% end %>
                       </video>
                     </div>

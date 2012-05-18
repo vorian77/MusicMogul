@@ -146,9 +146,9 @@ $(document).ready ->
     $source = $box.find('.performance-video-source')
     $videoInput = $box.find('.performance-video-input')
 
-    console.log 'Youtube Input', $youtubeInput
-    console.log 'Source Input', $sourceInput
-    console.log 'Source', $source
+    #console.log 'Youtube Input', $youtubeInput
+    #console.log 'Source Input', $sourceInput
+    #console.log 'Source', $source
 
     togglePerformanceVideo = ->
       if $songType.val() == 'Cover'
