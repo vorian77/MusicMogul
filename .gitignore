@@ -22,3 +22,6 @@
 
 # Ignore sass files
 /.sass-cache
+
+.rvmrc
+config/database.yml

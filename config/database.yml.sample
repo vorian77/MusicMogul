@@ -6,7 +6,7 @@
 development:
   adapter: postgresql
   database: mvp2_dev
-  user: phall
+  username: postgres
   password: 
   pool: 5
   timeout: 5000
@@ -18,7 +18,7 @@ development:
 test:
   adapter: postgresql
   database: mvp2_test
-  user: phall
+  username: postgres
   password: 
   pool: 5
   timeout: 5000
