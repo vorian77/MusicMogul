@@ -5,7 +5,7 @@ class SquareProfilePhotoUploader < ProfilePhotoUploader
   version :cropped do
     process :resize_to_fit => [400,400]
     process :crop_thumbnail
-    process :resize_to_fill => [238,238]
+    process :resize_to_fill => [240,240]
     version :small do
       process :resize_to_fill => [77, 77]
     end
