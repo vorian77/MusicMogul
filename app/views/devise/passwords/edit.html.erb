@@ -16,7 +16,9 @@
       <div class="frame">
         <h3>Change Password</h3>
         <%= form_for resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, :class => 'change-password-form' } do |f| %>
+          <%= devise_error_messages! %>
           <%= f.hidden_field :reset_password_token %>
+          <%= f.hidden_field :changing_password, :value => 'true' %>
           <fieldset>
             <div class="columns">
               <div class="col-1">
@@ -26,7 +28,7 @@
                   Old password<span class="required">*</span>
                 <% end %>
                 <%= f.password_field :old_password %>
-                <p class="inline-errors password-errors"><%= f.object.errors.messages[:old_password].join(', ') %></p>
+                <p class="inline-errors password-errors"><%= resource.errors.messages[:old_password].join(', ') %></p>
               </div>
               </div>
               <div class="col-2">
@@ -36,14 +38,14 @@
                     New Password<span class="required">*</span>
                   <% end %>
                   <div class="text"><%= f.password_field :password %></div>
-                  <p class="inline-errors password-errors"><%= f.object.errors.messages[:password].join(', ') %></p>
+                  <p class="inline-errors password-errors"><%= resource.errors.messages[:password].join(', ') %></p>
                 </div>
                 <div class="text-row">
                   <%= f.label :password_confirmation do %>
                     Confirm New Password<span class="required">*</span>
                   <% end %>
                   <%= f.password_field :password_confirmation %>
-                  <p class="inline-errors password-errors"><%= f.object.errors.messages[:password_confirmation].join(', ') %></p>
+                  <p class="inline-errors password-errors"><%= resource.errors.messages[:password_confirmation].join(', ') %></p>
                 </div>
               </div>
             </div>

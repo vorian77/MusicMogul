@@ -13,18 +13,20 @@ class User < ActiveRecord::Base
     :remove_profile_photo_square, :remove_profile_photo_landscape, :thumb_x,
     :thumb_y, :thumb_w, :account_type, :judgings_attributes, :source,
     :entries_attributes, :genre, :youtube, :current_tab, :gender,
-    :remove_profile_video, :thumb_x, :thumb_y, :thumb_w, :youtube_url
+    :remove_profile_video, :thumb_x, :thumb_y, :thumb_w, :youtube_url,
+    :changing_password
 
   attr_accessor :account_type, :current_tab
   attr_accessor :remove_profile_video
   attr_accessor :old_password
   attr_accessor :source
+  attr_accessor :changing_password
 
-  with_options :if => :reset_password_token? do |u|
-    # u.validates_presence_of :old_password
-    # u.validates_presence_of     :password
-    # u.validates_confirmation_of :password
-    # u.validates_length_of       :password, :minimum => 4, :allow_blank => true
+  with_options :if => :changing_password? do |u|
+    u.validates_presence_of :old_password
+    u.validates_presence_of     :password
+    u.validates_confirmation_of :password
+    u.validates_length_of       :password, :minimum => 4, :allow_blank => true
   end
 
   with_options :on => :update, :if => Proc.new { |u| u.current_tab == 'details' || u.current_tab.blank? } do |u|
@@ -110,6 +112,10 @@ class User < ActiveRecord::Base
         user.email = data["email"]
       end
     end
+  end
+
+  def changing_password?
+    self.changing_password.present?
   end
 
   protected
