@@ -38,4 +38,14 @@ class Entry < ActiveRecord::Base
     end
   end
 
+  def source
+    if audition_type == 'Cover'
+      'Youtube'
+    elsif performance_video?
+      'Upload'
+    elsif youtube_url?
+      'Youtube'
+    end
+  end
+
 end

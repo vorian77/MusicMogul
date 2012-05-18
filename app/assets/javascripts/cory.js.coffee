@@ -140,31 +140,36 @@ $(document).ready ->
 (->
   $(document).ready ->
     return unless $songType = $('.song-type')
-    $uploader = $('.performance-video-input.no-file')
-    $youtubeInput =  $uploader.find('.youtube-url-input')
-    $sourceInput = $uploader.find('.source-input')
-    $source = $uploader.find('.performance-video-source')
+    $box = $('.audition-box')
+    $youtubeInput =  $box.find('.youtube-url-input')
+    $sourceInput = $box.find('.source-input')
+    $source = $box.find('.performance-video-source')
+    $videoInput = $box.find('.performance-video-input')
+
+    console.log 'Youtube Input', $youtubeInput
+    console.log 'Source Input', $sourceInput
+    console.log 'Source', $source
 
     togglePerformanceVideo = ->
       if $songType.val() == 'Cover'
-        $youtube.show()
+        $youtubeInput.show()
         $sourceInput.hide()
-        $uploader.hide()
+        $videoInput.hide()
       else if $songType.val() == 'Original'
         $sourceInput.show()
         if $source.val() == 'Youtube'
-          $uploader.show()
           $youtubeInput.show()
+          $videoInput.hide()
         else if $source.val() == 'Upload'
-          $uploader.show()
           $youtubeInput.hide()
+          $videoInput.show()
         else
-          $uploader.hide()
+          $videoInput.hide()
           $youtubeInput.hide()
       else
         $youtubeInput.hide()
-        $uploader.hide()
         $sourceInput.hide()
+        $videoInput.hide()
 
     $songType.change(togglePerformanceVideo)
     $source.change(togglePerformanceVideo)
@@ -181,10 +186,7 @@ $(document).ready ->
     $video = $uploader.find('.profile-video-input')
     $holder = $uploader.find('.holder')
 
-    
-
     toggleProfileVideo = ->
-      console.log $source.val()
       if $source.val() == 'Youtube'
         $youtubeInput.show()
         $holder.hide()

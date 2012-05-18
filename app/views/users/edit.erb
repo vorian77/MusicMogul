@@ -193,11 +193,11 @@
                   </div>
                   <div class="audition-box">
                     <h4>Preview Performance (will not be judged)</h4>
-                      <%= entry.input :song_title %>
+                    <%= entry.input :song_title %>
+                    <%= entry.input :audition_type, :as => :select, :collection => Entry::ENTRY_TYPES, :wrapper_html => { :class => 'song-type-input' }, :input_html => { :class => 'select-2 song-type' } %>
+                    <%= entry.input :source, :collection => ['Upload','Youtube'], :input_html => { :class => 'performance-video-source' }, :wrapper_html => { :class => 'source-input' } %>
+                    <%= entry.input :youtube_url, :wrapper_html => { :class => 'youtube-url-input' } %>
                     <div class="video-box performance-video-input <%= current_user.entry.performance_video_status %>">
-                      <%= entry.input :audition_type, :as => :select, :collection => Entry::ENTRY_TYPES, :wrapper_html => { :class => 'song-type-input' }, :input_html => { :class => 'select-2 song-type' } %>
-                      <%= entry.input :source, :collection => ['Upload','Youtube'], :input_html => { :class => 'performance-video-source' }, :wrapper_html => { :class => 'source-input' } %>
-                      <%= entry.input :youtube_url, :wrapper_html => { :class => 'youtube-url-input' } %>
                       <div class="picture-holder">
                         <div class="video-holder">
                           <video class="video-js vjs-default-skin" controls preload="auto" width="242" height="148" data-setup="{}">
