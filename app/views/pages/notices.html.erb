@@ -162,7 +162,7 @@
 <div class="tab-content" id="tab-6">
 	<div class="tab-holder">
     <div class="tab-frame">
-      <%= semantic_form_for @contact, :class => 'contact-form' do |f| %>
+      <%= semantic_form_for @contact, :url => contacts_path(:anchor => 'tab-6'), :class => 'contact-form' do |f| %>
         <div class="tab-heading">
           <h3>Contact Fans Helping Artists</h3>
         </div>
@@ -178,7 +178,7 @@
             <%= f.input :message, :as => :text %>
           <% end %>
           <div class="plugin-box">
-            <%= raw @ayah.get_publisher_html if @ayah %>
+            <%= raw @ayah.get_publisher_html %>
           </div>
 					<div class="submit-row">
             <div class="submit-holder">

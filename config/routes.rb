@@ -12,8 +12,6 @@ Mvp2::Application.routes.draw do
   put '/account/thumbnail' => 'users#update_thumbnail', :as => :update_thumbnail
   post '/reset_password' => 'users#reset_password', :as => :reset_password
 
-  resources :contacts, :only => :create
-
   match 'video' => 'home#video', :as => :home_video
  
   get '/upload' => 'users#upload', :as => :upload
@@ -24,5 +22,6 @@ Mvp2::Application.routes.draw do
   # get '/Fans' => 'home#fans', :as => :home_fans
 	
 	get '/page/:name' => 'pages#show', :as => :page
+  post '/page/notices' => 'contacts#create', :as => :contacts
 
 end
