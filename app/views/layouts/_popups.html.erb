@@ -101,6 +101,10 @@
                   <div class="text"><%= f.password_field :password %></div>
                   <p class="inline-errors email-errors"><%= f.object.errors.messages[:email].join(', ') %></p>
                 </div>
+                <div class="password-reset">
+                  Forgotten password?
+                  <%= link_to 'Click here', '#reset-password', :class => 'lightbox' %>
+                </div>
               </div>
             </div>
             <div class="submit-row">
@@ -108,6 +112,44 @@
                 <input type="submit" value="Log in" class="button-signup" />
               </div>
               <p>Not a member of Fans Helping Artists yet? <a class="lightbox" href="#popup">Sign up now!</a></p>
+            </div>
+          </fieldset>
+        <% end %>
+      </div>
+    </div>
+    <a href="#" class="btn-close">Close</a>
+  </div>
+</div>
+<div class="popup-holder">
+  <div class="lightbox popup popup-login" id="reset-password">
+    <div class="holder">
+      <div class="frame">
+        <h3>Password Reset</h3>
+        <%= form_for User.new, :url => reset_password_path, :html => { :class => 'login-form' } do |f| %>
+          <fieldset>
+            <div class="columns">
+              <div class="col-1">
+                <div class="forgotten-password-text">
+                  Forgotten your password?<br />
+                  Enter your email address and we'll<br />
+                  send you a new password.
+                </div>
+              </div>
+              <div class="col-2">
+                <h4>Enter your <strong>email address</strong></h4>
+                <div class="text-row">
+                  <%= f.label :email do %>
+                    Email<span class="required">*</span>
+                  <% end %>
+                  <div class="text"><%= f.text_field :email %></div>
+                  <p class="inline-errors email-errors"><%= f.object.errors.messages[:email].join(', ') %></p>
+                </div>
+              </div>
+            </div>
+            <div class="submit-row">
+              <div class="submit-holder">
+                <input type="submit" value="Reset password" class="button-reset-password" />
+              </div>
             </div>
           </fieldset>
         <% end %>

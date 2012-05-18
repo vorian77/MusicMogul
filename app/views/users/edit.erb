@@ -17,7 +17,7 @@
       <div class="tab-holder">
         <div class="tab-frame">
           <div class="messages"></div>
-          <%= semantic_form_for current_user, :url => account_path(:format => :json), :remote => true do |f| %>
+          <%= semantic_form_for current_user, :url => account_path(:anchor => 'tab-1', :format => :json), :remote => true do |f| %>
             <%= f.inputs :class => 'profile-form' do %>
               <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'details' } %>
               <div class="title-row">
@@ -50,7 +50,7 @@
       <div class="tab-holder">
         <div class="tab-frame">
           <div class="messages"></div>
-          <%= semantic_form_for current_user, :url => account_path(:anchor => 'tab-2'), :html => { 'data-non-ajax' => true } do |f| %>
+          <%= semantic_form_for current_user, :url => account_path(:anchor => 'tab-2', :format => :json), :remote => true do |f| %>
             <%= f.inputs :class => 'profile-form' do %>
               <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'profile' } %>
               <div class="title-row">
@@ -131,7 +131,7 @@
       <div class="tab-holder">
         <div class="tab-frame">
           <div class="messages"></div>
-          <%= semantic_form_for current_user, :url => account_path(:format => :json), :remote => true do |f| %>
+          <%= semantic_form_for current_user, :url => account_path(:anchor => 'tab-3', :format => :json), :remote => true do |f| %>
             <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'judge' } %>
             <div class="title-row title-row-2">
               <h3>Judge</h3>
@@ -139,8 +139,8 @@
             </div>
             <%= f.semantic_fields_for :judgings, current_user.judging do |judging| %>
               <%= f.inputs :class => 'judge-form' do %>
-                <%= judging.input :active, :as => :radio, :collection => [['Yes',true],['No',false]], :wrapper_html => { :class => 'radio-row' } %>
-                <div class="checkbox-row judge-fields"><%= judging.input :genres_array, :as => :check_boxes, :collection => Contest::GENRES, :wrapper_html => { :class => 'checkbox-holder' } %></div>
+                <%= judging.input :active, :as => :radio, :collection => [['Yes',true],['No',false]], :wrapper_html => { :class => 'radio-row judging-active' } %>
+                <div class="checkbox-row active-judge-fields"><%= judging.input :genres_array, :as => :check_boxes, :collection => Contest::GENRES, :wrapper_html => { :class => 'checkbox-holder' } %></div>
                 <div class="submit-row">
                   <%= f.actions :class => 'submit-holder' do %>
                     <%= f.submit 'Save', :class => 'button-save' %>
@@ -156,7 +156,7 @@
       <div class="tab-holder">
         <div class="tab-frame">
           <div class="messages"></div>
-          <%= semantic_form_for current_user, :url => account_path(:anchor => 'tab-4'), :html => { 'data-non-ajax' => true } do |f| %>
+          <%= semantic_form_for current_user, :url => account_path(:anchor => 'tab-4', :format => :json), :remote => true do |f| %>
             <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'contestants' } %>
             <div class="title-row title-row-2">
               <h3>Contestant</h3>
@@ -164,61 +164,63 @@
             </div>
             <%= f.semantic_fields_for :entries, current_user.entry do |entry| %>
               <%= f.inputs :class => 'contestant-form' do %>
-                <%= entry.input :active, :as => :radio, :collection => [['Yes',true],['No',false]], :wrapper_html => { :class => 'radio-row' } %>
-                <div class="form-box">
-                  <%= entry.input :artist_type, :as => :select, :collection => Entry::ARTIST_TYPES, :include_blank => false, :input_html => { :class => 'select-2' } %>
-                  <div class="genres-row checkbox-row">
-                    <%= entry.input :genre, :as => :select, :collection => Contest::GENRES %>
-                    <div id="genres-confirm-text">
-                      <strong>Note:</strong> It's ok to compete in multiple genres. We encourage it because it allows you more exposure and financial opportunities. However, know that <strong>each genre is a separate contest</strong>. Each week you'll have to submit a performance video for each genre.
-                    </div>
-                  </div>
-                </div>
-                <div class="audition-box">
-                  <h4>Preview Performance (will not be judged)</h4>
-                  <%= entry.input :audition_type, :as => :select, :collection => Entry::ENTRY_TYPES, :include_blank => false, :input_html => { :class => 'select-2' } %>
-                  <%= entry.input :song_title %>
-                  <div class="video-box">
-                    <% if current_user.entry.performance_video? %>
-                      <div class="picture-holder">
-                        <div class="video-holder">
-                          <video class="video-js vjs-default-skin" controls preload="auto" width="242" height="148" data-setup="{}">
-                            <source src="<%= video_path "https://s3.amazonaws.com/fanhelp.mvp/#{current_user.entry.performance_video}" %>" type='video/mp4'>
-                          </video>
-                        </div>
-                        <%= entry.hidden_field :remove_performance_video %>
-                        <a href="#" class="btn-delete">Delete current video</a>
-                      </div>
-                    <% end %>
-                    <div class="file-box">
-                      <p>Click ‘browse to select a new video, then ‘upload’ to add the video to your profile.</p>
-                      <div class="file-row">
-                        <div class="uploader" data-s3-bucket="<%= S3DirectRails.s3_uploader_bucket %>">
-                          <%= s3_uploader(:uploaded_files_path => "uploads/entry/performance_video/#{current_user.entry.id}", :create_resource_url => account_entry_performance_video_path) %>
-                          <div class="uploading_files"></div>
-                          <div>.mpeg .flv or .mov, max 20mb</div>
-                        </div>
+                <%= entry.input :active, :as => :radio, :collection => [['Yes',true],['No',false]], :wrapper_html => { :class => 'radio-row contestant-active' } %>
+                <div class="active-contestant-fields">
+                  <div class="form-box">
+                    <%= entry.input :artist_type, :as => :select, :collection => Entry::ARTIST_TYPES, :include_blank => false, :input_html => { :class => 'select-2' } %>
+                    <div class="genres-row checkbox-row">
+                      <%= entry.input :genre, :as => :select, :collection => Contest::GENRES %>
+                      <div id="genres-confirm-text">
+                        <strong>Note:</strong> It's ok to compete in multiple genres. We encourage it because it allows you more exposure and financial opportunities. However, know that <strong>each genre is a separate contest</strong>. Each week you'll have to submit a performance video for each genre.
                       </div>
                     </div>
                   </div>
-                  <hr />
-                  <p>Instead of uploading a video, you could also copy and paste a Youtube video URL here:</p>
-                  <%= entry.input :youtube_url %>
-                </div>
-                <div class="gift-box">
-                  <h4>Career Support</h4>
-                  <!--
-                  <div class="text-block">
-                    <p>What equipment (or amount of cash) would advance your musical career and why?</p>
+                  <div class="audition-box">
+                    <h4>Preview Performance (will not be judged)</h4>
+                    <%= entry.input :audition_type, :as => :select, :collection => Entry::ENTRY_TYPES, :include_blank => false, :input_html => { :class => 'select-2' } %>
+                    <%= entry.input :song_title %>
+                    <div class="video-box">
+                      <% if current_user.entry.performance_video? %>
+                        <div class="picture-holder">
+                          <div class="video-holder">
+                            <video class="video-js vjs-default-skin" controls preload="auto" width="242" height="148" data-setup="{}">
+                              <source src="<%= video_path "https://s3.amazonaws.com/fanhelp.mvp/#{current_user.entry.performance_video}" %>" type='video/mp4'>
+                            </video>
+                          </div>
+                          <%= entry.hidden_field :remove_performance_video %>
+                          <a href="#" class="btn-delete">Delete current video</a>
+                        </div>
+                      <% end %>
+                      <div class="file-box">
+                        <p>Click ‘browse to select a new video, then ‘upload’ to add the video to your profile.</p>
+                        <div class="file-row">
+                          <div class="uploader" data-s3-bucket="<%= S3DirectRails.s3_uploader_bucket %>">
+                            <%= s3_uploader(:uploaded_files_path => "uploads/entry/performance_video/#{current_user.entry.id}", :create_resource_url => account_entry_performance_video_path) %>
+                            <div class="uploading_files"></div>
+                            <div>.mpeg .flv or .mov, max 20mb</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr />
+                    <p>Instead of uploading a video, you could also copy and paste a Youtube video URL here:</p>
+                    <%= entry.input :youtube_url %>
                   </div>
+                  <div class="gift-box">
+                    <h4>Career Support</h4>
+                    <!--
+                    <div class="text-block">
+                      <p>What equipment (or amount of cash) would advance your musical career and why?</p>
+                    </div>
 
-                  <% # entry.input :gift_name %>
-                  <% # entry.input :gift_description, :as => :text %>
-                  <% # entry.input :gift_value %>
-                  -->
+                    <% # entry.input :gift_name %>
+                    <% # entry.input :gift_description, :as => :text %>
+                    <% # entry.input :gift_value %>
+                    -->
 
-                  <%= entry.input :kickstarter %>
-                  <%= entry.input :pledgemusic %>
+                    <%= entry.input :kickstarter %>
+                    <%= entry.input :pledgemusic %>
+                  </div>
                 </div>
                 <div class="submit-row">
                   <%= f.actions :class => 'submit-holder' do %>

@@ -40,7 +40,6 @@ $(document).ready ->
   $('input[data-shows]').each (index,toggle) ->
     $toggle = $(toggle)
     $toggled = $($toggle.data('shows'))
-    console.log $toggled
     $toggled.toggle(is_checked($toggle))
     $toggle.click ->
       $toggled.toggle(is_checked($toggle))
@@ -65,13 +64,7 @@ $(document).ready ->
   $document.on 'easytabs:before', '.tabs-holder', (e,clicked) ->
     $active_form = $('.tab-content.active form').filter(':first')
     if $active_form.attr('data-dirty')
-      if $active_form.data('non-ajax')
-        old_action = $active_form.attr('action')
-        $active_form.attr('action',clicked.attr('href'))
-        $active_form.submit()
-        $active_form.attr('action',old_action)
-      else
-        $active_form.submit()
+      $active_form.submit()
       $active_form.data('clicked',clicked)
       false
 
@@ -79,7 +72,7 @@ $(document).ready ->
   
   $document.on 'ajax:success', '.tab-content.active form', (e, data, status, xhr) ->
     $active_form = $(this).filter(':first')
-    $active_form.find('p.inline-errors').hide()
+    $active_form.find('p.inline-errors').remove()
     $notice = $('<div></div>').addClass('notice').html(data.notice).append($close) if data.notice
     $active_form.removeAttr('data-dirty')
     if $clicked = $active_form.data('clicked')
@@ -89,11 +82,13 @@ $(document).ready ->
 
   $document.on 'ajax:error', '.tab-content.active form', (e, xhr, status, error) ->
     $active_form = $(this).filter(':first')
-    $active_form.find('p.inline-errors').hide()
+    $active_form.find('p.inline-errors').remove()
     $active_form.removeData('clicked')
     if errors = $.parseJSON(xhr.responseText).errors
       for error of errors
         $error = $('<p></p>').addClass('inline-errors').text(errors[error])
+        error = error.replace('entries.','entries_attributes_0_')
+        error = error.replace('judgings.','judgings_attributes_0_')
         $("#user_#{error}_input").addClass('error').append($error)
     $alert = $('<div></div>').addClass('alert').html('Your account could not be saved.').append($close)
     $('.flash').html($alert).trigger('message.fanhelp')
@@ -118,4 +113,24 @@ $(document).ready ->
         $zip_input.hide()
     $country.change(toggleCountryAndZip)
     toggleCountryAndZip()
+)()
+
+(->
+  $(document).ready ->
+    $contestantActive = $('.contestant-active input[type="radio"]')
+    toggleActiveContestantFields = (active) ->
+      $('.active-contestant-fields').toggle(active)
+    $contestantActive.change ->
+      toggleActiveContestantFields $(this).val()
+    toggleActiveContestantFields $contestantActive.filter(':checked').val() == 'true'
+)()
+
+(->
+  $(document).ready ->
+    $judgingActive = $('.judging-active input[type="radio"]')
+    toggleActiveJudgingFields = (active) ->
+      $('.active-judge-fields').toggle active
+    $judgingActive.change ->
+      toggleActiveJudgingFields $(this).val()
+    toggleActiveJudgingFields $judgingActive.filter(':checked').val() == 'true'
 )()

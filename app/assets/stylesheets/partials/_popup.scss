@@ -52,3 +52,56 @@
     }
   }
 }
+
+.password-reset {
+  font:12px/14px IstokRegular, Arial, Helvetica, sans-serif;
+  text-align: right;
+}
+
+.popup {
+  .col-1 {
+    .forgotten-password-text {
+      font: 14px/18px IstokRegular, Arial, Helvetica, sans-serif;
+    }
+  }
+  h4 strong {
+    font: 14px/18px IstokBold, Arial, Helvetica, sans-serif;
+  }
+}
+
+#reset-password {
+  .button-reset-password {
+    width: 177px;
+    background: image-url('sprites.png') no-repeat 0 -350px;
+    font: 22px/26px BebasNeueRegular, Arial, Helvetica, sans-serif;
+    color: #fff;
+    display: block;
+    height: 39px;
+    padding: 0 5px 0 0;
+    text-align: center;
+    cursor: pointer;
+    border: 0;
+  }
+}
+
+#change-password {
+  .col-1 {
+    font-size: 16px !important;
+  }
+  label {
+    width: 120px;
+  }
+  input[type="password"] {
+    color: #000;
+    float: left;
+    border: 0 none;
+    font: 14px/18px 'IstokBold', Arial, Helvetica, sans-serif;
+    height: 15px;
+    margin: 0;
+    padding: 15px 13px;
+    width: 120px;
+    border: solid 1px #D4D4D4;
+    @include border-radius(5px);
+    background-color: #f9f9f9;
+  }
+}

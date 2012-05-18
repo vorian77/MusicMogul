@@ -1,16 +1,61 @@
-<h2>Change your password</h2>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('a[href="#change-password"]').click();
+  })
+</script>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+<div class="heading">
+  <h2>Change Password</h2>
+</div>
 
-  <div><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password %></div>
+<a href="#change-password" class="lightbox">Click here to change your password</a>
 
-  <div><%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Change my password" %></div>
-<% end %>
-
-<%= render "links" %>
+<div class="popup-holder">
+  <div class="lightbox popup popup-login" id="change-password">
+    <div class="holder">
+      <div class="frame">
+        <h3>Change Password</h3>
+        <%= form_for resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, :class => 'change-password-form' } do |f| %>
+          <%= f.hidden_field :reset_password_token %>
+          <fieldset>
+            <div class="columns">
+              <div class="col-1">
+                <h4>Enter your <strong>old password</strong></h4>
+              <div class="text-row">
+                <%= f.label :old_password do %>
+                  Old password<span class="required">*</span>
+                <% end %>
+                <%= f.password_field :old_password %>
+                <p class="inline-errors password-errors"><%= f.object.errors.messages[:old_password].join(', ') %></p>
+              </div>
+              </div>
+              <div class="col-2">
+                <h4>Enter a <strong>new password</strong></h4>
+                <div class="text-row">
+                  <%= f.label :password do %>
+                    New Password<span class="required">*</span>
+                  <% end %>
+                  <div class="text"><%= f.password_field :password %></div>
+                  <p class="inline-errors password-errors"><%= f.object.errors.messages[:password].join(', ') %></p>
+                </div>
+                <div class="text-row">
+                  <%= f.label :password_confirmation do %>
+                    Confirm New Password<span class="required">*</span>
+                  <% end %>
+                  <%= f.password_field :password_confirmation %>
+                  <p class="inline-errors password-errors"><%= f.object.errors.messages[:password_confirmation].join(', ') %></p>
+                </div>
+              </div>
+            </div>
+            <div class="submit-row">
+              <div class="submit-holder">
+                <input type="submit" value="Save" class="button-signup" />
+              </div>
+            </div>
+          </fieldset>
+        <% end %>
+      </div>
+    </div>
+    <a href="#" class="btn-close">Close</a>
+  </div>
+</div>

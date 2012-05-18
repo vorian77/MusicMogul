@@ -17,6 +17,14 @@ class User < ActiveRecord::Base
 
   attr_accessor :account_type, :current_tab
   attr_accessor :remove_profile_video
+  attr_accessor :old_password
+
+  with_options :if => :reset_password_token? do |u|
+    u.validates_presence_of :old_password
+    u.validates_presence_of     :password
+    u.validates_confirmation_of :password
+    u.validates_length_of       :password, :minimum => 4, :allow_blank => true
+  end
 
   with_options :on => :update, :if => Proc.new { |u| u.current_tab == 'details' || u.current_tab.blank? } do |u|
     u.validates_presence_of :email

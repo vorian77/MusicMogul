@@ -10,6 +10,7 @@ Mvp2::Application.routes.draw do
   post '/account/entry/performance_video' => 'users#create_entry_performance_video', :as => :account_entry_performance_video
   get '/account/thumbnail' => 'users#edit_thumbnail', :as => :edit_thumbnail
   put '/account/thumbnail' => 'users#update_thumbnail', :as => :update_thumbnail
+  post '/reset_password' => 'users#reset_password', :as => :reset_password
 
   resources :contacts, :only => :create
 

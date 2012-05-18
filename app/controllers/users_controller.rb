@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => :reset_password
   
   def edit
   end
@@ -49,6 +49,12 @@ class UsersController < ApplicationController
   end
 
   def upload
+  end
+
+  def reset_password
+    user = User.find_by_email(params[:user][:email])
+    user.send_reset_password_instructions if user
+    redirect_to root_path, :notice => 'A password reset email has been sent.'
   end
 
 end
