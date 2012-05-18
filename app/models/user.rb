@@ -107,7 +107,7 @@ class User < ActiveRecord::Base
     if user = self.find_by_email(data.email)
       user
     else
-      self.create!(:email => data.email, :password => Devise.friendly_token[0,20]) 
+      self.create!(:email => data.email || "temp_#{Time.now.to_i}@example.com", :password => Devise.friendly_token[0,20]) 
     end
   end
 
