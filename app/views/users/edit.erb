@@ -63,50 +63,71 @@
               <%= f.input :profile_name %>
               <%= f.input :hometown %>
               <%= f.input :bio, :as => :text, :input_html => { :rows => 6 } %>
-              <div class="picture-box">
+              <div class="picture-box profile-photo-square-input <%= current_user.profile_photo_square? ? 'uploaded-file' : 'no-file' %>">
                 <h4>Profile Picture</h4>
-                <div class="holder">
+                <div class="holderz">
                   <div class="picture-holder">
-                    <% if current_user.profile_photo_square? %>
-                      <div class="profile-photo-box">
+                    <div class="profile-photo-box">
+                      <% if current_user.profile_photo_square.present? %>
                         <%= image_tag current_user.profile_photo_square.cropped, :width => '240', :height => '240', :class => 'profile-photo-square' %>
-                        <a href="#edit-thumbnail" class="lightbox crop">Click to crop photo</a>
-                      </div>
-                      <%= f.hidden_field :remove_profile_photo_square %>
-                      <a href="#" class="btn-delete">Delete current image</a>
-                    <% end %>
+                      <% end %>
+                      <a href="#edit-thumbnail" class="lightbox crop">Click to crop photo</a>
+                    </div>
                   </div>
                   <div class="file-box">
-                    <p>Click below to select a new album photo.</p>
                     <div class="file-row">
-                      <%= f.input :profile_photo_square, :as => :file, :label => false %>
-                      <div class="format-types">jpeg, png or gif, max 4mb</div>
+                      <div class="uploader" data-s3-bucket="<%= S3DirectRails.s3_uploader_bucket %>">
+                        <%= s3_uploader(:uploaded_files_path => "uploads/user/profile_photo_square/#{current_user.id}", :create_resource_url => account_profile_photo_path, :uploader_id => '.profile-photo-square-input') %>
+                        <div class="instructions">
+                        </div>
+                        <div class="file-uploading">
+                          <div class="progress"></div>
+                          <div class="spinner"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="remove-file">
+                      <%= link_to 'Delete current image', account_profile_photo_path, :remote => true, :method => :delete, :confirm => 'Are you sure?', :class => 'btn-delete' %>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="video-box">
+              <div class="video-box profile-video-input <%= current_user.profile_video_status %>">
                 <h4>Profile Video</h4>
+                <li class="input select source-input">
+                  <%= label_tag 'source' %>
+                  <%= select_tag 'source', options_for_select(['Upload','Youtube']), :include_blank => true, :class => 'source' %>
+                </li>
+                <%= f.input :youtube_url %>
                 <div class="holder">
-                  <% if current_user.profile_video? %>
-                    <div class="picture-holder">
-                      <div class="video-holder">
-                        <video class="video-js vjs-default-skin" controls preload="auto" width="242" height="148" data-setup="{}">
-                          <source src="<%= video_path "https://s3.amazonaws.com/fanhelp.mvp/#{current_user.profile_video}" %>" type='video/mp4'>
-                        </video>
-                      </div>
-                      <%= f.hidden_field :remove_profile_video %>
-                      <a href="#" class="btn-delete">Delete current video</a>
+                  <div class="picture-holder">
+                    <div class="video-holder">
+                      <video class="video-js vjs-default-skin" controls preload="auto" width="242" height="148" data-setup="{}">
+                        <% if current_user.profile_video.present? %>
+                          <source src="https://s3.amazonaws.com/fanhelp.mvp/<%= current_user.profile_video %>" %>" type="video/mp4">
+                        <% end %>
+                      </video>
                     </div>
-                  <% end %>
+                    <div class="youtube-holder">
+                    </div>
+                    <div class="placeholder"></div>
+                  </div>
                   <div class="file-box">
-                    <p>Click ‘browse to select a new video, then ‘upload’ to add the video to your profile.</p>
                     <div class="file-row">
                       <div class="uploader" data-s3-bucket="<%= S3DirectRails.s3_uploader_bucket %>">
-                        <%= s3_uploader(:uploaded_files_path => "uploads/user/profile_video/#{current_user.id}", :create_resource_url => account_profile_video_path) %>
-                        <div class="uploading_files"></div>
-                        <div class="format-types">.mpeg .flv or .mov, max 5GB</div>
+                        <%= s3_uploader(:uploaded_files_path => "uploads/user/profile_video/#{current_user.id}", :create_resource_url => account_profile_video_path, :uploader_id => '.profile-video-input') %>
+                        <div class="instructions">
+                            <p>You can upload a MPEG, FLV or MOV file that is no larger than 5GB.</p>
+                            <p>(Do not upload video containing celebrities, nudity, artwork, images or video that you do not own or represent the copyright for.)
+                        </div>
+                        <div class="file-uploading">
+                          <div class="progress"></div>
+                          <div class="spinner"></div>
+                        </div>
                       </div>
+                    </div>
+                    <div class="remove-file">
+                      <%= link_to 'Delete current video', remove_profile_video_path, :remote => true, :method => :delete, :confirm => 'Are you sure?', :class => 'btn-delete' %>
                     </div>
                   </div>
                 </div>
@@ -177,11 +198,11 @@
                   </div>
                   <div class="audition-box">
                     <h4>Preview Performance (will not be judged)</h4>
-                    <%= entry.input :song_title %>
-                    <%= entry.input :audition_type, :as => :select, :collection => Entry::ENTRY_TYPES, :input_html => { :class => 'select-2 song-type' } %>
-                    <%= entry.input :source, :collection => ['Upload','Youtube'], :input_html => { :class => 'performance-video-source' }, :wrapper_html => { :class => 'source-input' } %>
-                    <%= entry.input :youtube_url, :wrapper_html => { :class => 'youtube-url-input' } %>
-                    <div class="video-box performance-video-input <%= current_user.entry.performance_video? ? 'uploaded-file' : 'no-file' %>">
+                      <%= entry.input :song_title %>
+                    <div class="video-box performance-video-input <%= current_user.entry.performance_video_status %>">
+                      <%= entry.input :audition_type, :as => :select, :collection => Entry::ENTRY_TYPES, :wrapper_html => { :class => 'song-type-input' }, :input_html => { :class => 'select-2 song-type' } %>
+                      <%= entry.input :source, :collection => ['Upload','Youtube'], :input_html => { :class => 'performance-video-source' }, :wrapper_html => { :class => 'source-input' } %>
+                      <%= entry.input :youtube_url, :wrapper_html => { :class => 'youtube-url-input' } %>
                       <div class="picture-holder">
                         <div class="video-holder">
                           <video class="video-js vjs-default-skin" controls preload="auto" width="242" height="148" data-setup="{}">
@@ -190,9 +211,14 @@
                             <% end %>
                           </video>
                         </div>
+                        <div class="youtube-holder">
+                          <!--
+                          <iframe class="youtube-embed" type="text/html" width="242" height="148"
+                            src="<%= current_user.entry.youtube_url %>?autoplay=0&origin=http://fanhelp.us"
+                            frameborder="0"></iframe>
+                          -->
+                        </div>
                         <div class="placeholder"></div>
-                      </div>
-                      <div class="video-holder">
                       </div>
                       <div class="file-box">
                         <div class="file-row">
@@ -202,13 +228,13 @@
                               <p>You can upload a MPEG, FLV or MOV file that is no larger than 5GB.</p>
                               <p>(Do not upload video containing celebrities, nudity, artwork, images or video that you do not own or represent the copyright for.)
                             </div>
-                            <div class="remove-file">
-                              <%= link_to 'Delete current video', remove_entry_performance_video_path, :remote => true, :method => :delete, :confirm => 'Are you sure?', :class => 'btn-delete' %>
-                            </div>
                             <div class="file-uploading">
                               <div class="progress"></div>
+                              <div class="spinner"></div>
                             </div>
-                            <div class="uploading-files"></div>
+                          </div>
+                          <div class="remove-file">
+                            <%= link_to 'Delete current video', remove_entry_performance_video_path, :remote => true, :method => :delete, :confirm => 'Are you sure?', :class => 'btn-delete' %>
                           </div>
                         </div>
                       </div>

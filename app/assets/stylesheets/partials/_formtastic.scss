@@ -277,7 +277,7 @@
       }
     }
   }
-  .video-holder {
+  .video-holder, .youtube-holder {
     float: left;
     width: 262px;
   }
@@ -304,8 +304,8 @@
   abbr {
     border: none;
   }
-  .uploaded-file {
-    .file-uploading, .placeholder {
+  .uploaded-file, .youtube-url {
+    .song-type-input, .source-input, .youtube-url-input, .file-uploading, .placeholder {
       display: none;
     }
     .remove-file, .instructions {
@@ -313,7 +313,7 @@
     }
   }
   .no-file {
-    .file-uploading, .remove-file, .video-holder {
+    .file-uploading, .remove-file, .video-holder, #user_youtube_url_input, .holder {
       display: none;
     }
     .placeholder, .instructions {
@@ -326,6 +326,22 @@
     }
     .remove-file, .video-holder, .instructions {
       display: none;
+    }
+  }
+  .video-box.youtube-url {
+    .youtube-holder {
+      display: block;
+    }
+    .video-holder, .uploader {
+      display: none;
+    }
+  }
+  .video-box.uploaded-file {
+    .youtube-holder, #user_youtube_url_input {
+      display: none;
+    }
+    .video-holder, .uploader {
+      display: block;
     }
   }
 }

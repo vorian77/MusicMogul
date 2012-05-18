@@ -20,10 +20,10 @@ class User < ActiveRecord::Base
   attr_accessor :old_password
 
   with_options :if => :reset_password_token? do |u|
-    u.validates_presence_of :old_password
-    u.validates_presence_of     :password
-    u.validates_confirmation_of :password
-    u.validates_length_of       :password, :minimum => 4, :allow_blank => true
+    # u.validates_presence_of :old_password
+    # u.validates_presence_of     :password
+    # u.validates_confirmation_of :password
+    # u.validates_length_of       :password, :minimum => 4, :allow_blank => true
   end
 
   with_options :on => :update, :if => Proc.new { |u| u.current_tab == 'details' || u.current_tab.blank? } do |u|
@@ -60,6 +60,16 @@ class User < ActiveRecord::Base
 
   def remove_profile_video=(remove)
     self.profile_video = nil
+  end
+
+  def profile_video_status
+    if profile_video.present?
+      'uploaded-file'
+    elsif youtube_url.present?
+      'youtube-url'
+    else
+      'no-file'
+    end
   end
 
   # Temporary hack until we need more than one judging

@@ -24,6 +24,18 @@ class Entry < ActiveRecord::Base
 
   def remove_performance_video=(remove)
     self.performance_video = nil
+    self.youtube_url = nil
+    self.save(:validate => false)
+  end
+
+  def performance_video_status
+    if performance_video?
+      'uploaded-file'
+    elsif youtube_url?
+      'youtube-url'
+    else
+      'no-file'
+    end
   end
 
 end

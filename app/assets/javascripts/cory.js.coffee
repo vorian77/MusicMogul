@@ -139,43 +139,78 @@ $(document).ready ->
 
 (->
   $(document).ready ->
-    return unless $songType = $('select.song-type')
-    $youtube =  $('.youtube-url-input')
-    $sourceInput = $('.source-input')
-    $source = $('.performance-video-source')
-    $upload = $('.performance-video-input')
+    return unless $songType = $('.song-type')
+    $uploader = $('.performance-video-input.no-file')
+    $youtubeInput =  $uploader.find('.youtube-url-input')
+    $sourceInput = $uploader.find('.source-input')
+    $source = $uploader.find('.performance-video-source')
 
     togglePerformanceVideo = ->
       if $songType.val() == 'Cover'
         $youtube.show()
         $sourceInput.hide()
-        $upload.hide()
+        $uploader.hide()
       else if $songType.val() == 'Original'
         $sourceInput.show()
         if $source.val() == 'Youtube'
-          $upload.hide()
-          $youtube.show()
+          $uploader.show()
+          $youtubeInput.show()
         else if $source.val() == 'Upload'
-          $upload.show()
-          $youtube.hide()
+          $uploader.show()
+          $youtubeInput.hide()
         else
-          $upload.hide()
-          $youtube.hide()
+          $uploader.hide()
+          $youtubeInput.hide()
       else
-        $youtube.hide()
-        $upload.hide()
+        $youtubeInput.hide()
+        $uploader.hide()
         $sourceInput.hide()
 
     $songType.change(togglePerformanceVideo)
     $source.change(togglePerformanceVideo)
     togglePerformanceVideo()
+
 )()
 
 (->
+  $(document).ready ->
+    return unless $uploader = $('.profile-video-input.no-file')
+    $sourceInput = $uploader.find('.source-input')
+    $source = $uploader.find('.source')
+    $youtubeInput = $uploader.find('#user_youtube_url_input')
+    $video = $uploader.find('.profile-video-input')
+    $holder = $uploader.find('.holder')
+
+    toggleProfileVideo = ->
+      if $source.val() == 'Youtube'
+        $youtubeInput.show()
+        $holder.hide()
+      else if $source.val() == 'Upload'
+        $youtubeInput.hide()
+        $holder.show()
+      else
+        $youtubeInput.hide()
+        $holder.hide()
+    $sourceInput.change(toggleProfileVideo)
+    toggleProfileVideo()
+)()
+
+
+(->
   $(document).delegate '.video-box .remove-file a', 'ajax:success', ->
-    $(this).closest('div.uploaded-file').removeClass('uploaded-file').addClass('no-file')
+    $uploader = $(this).closest('.video-box')
+    $uploader.removeClass('uploaded-file youtube-url').addClass('no-file')
+    $uploader.find('.source').val('')
     $close = $('<a></a>').addClass('close').attr('href','#')
     $notice = $('<div></div>').addClass('notice').html('Your video has been successfully deleted').append($close)
     $('.flash').append($notice).trigger('message.fanhelp')
-    
+  
+  $(document).delegate '.picture-box .remove-file a', 'ajax:success', ->
+    $uploader = $(this).closest('.picture-box')
+    $uploader.find('.profile-photo-box').html('')
+    $uploader.removeClass('uploaded-file').addClass('no-file')
+    $close = $('<a></a>').addClass('close').attr('href','#')
+    $notice = $('<div></div>').addClass('notice').html('Your photo has been successfully deleted').append($close)
+    $('.flash').append($notice).trigger('message.fanhelp')
+
 )()

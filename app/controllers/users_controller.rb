@@ -21,12 +21,32 @@ class UsersController < ApplicationController
     end
   end
   
+  def create_profile_photo
+    raise unless params[:s3_key]
+    current_user.remote_profile_photo_square_url = "https://s3.amazonaws.com/fanhelp.mvp/#{params[:s3_key]}"
+    current_user.save(:validate => false)
+    render :nothing => true
+  end
+
+  def remove_profile_photo
+    current_user.remove_profile_photo_square = '1'
+    current_user.save(:validate => false)
+    render :nothing => true
+  end
+
   def create_profile_video
     raise unless params[:s3_key]
     current_user.update_attribute(:profile_video,params[:s3_key])
     render :nothing => true
   end
   
+  def remove_profile_video
+    current_user.profile_video = nil
+    current_user.youtube_url = nil
+    current_user.save(:validate => false)
+    render :nothing => true
+  end
+
   def create_entry_performance_video
     raise unless params[:s3_key]
     puts params.inspect
@@ -36,7 +56,10 @@ class UsersController < ApplicationController
   end
 
   def remove_entry_performance_video
-    current_user.entry.update_attribute(:performance_video,nil)
+    entry = current_user.entry
+    entry.performance_video = nil
+    entry.youtube_url = nil
+    entry.save(:validate => false)
     render :nothing => true
   end
 

@@ -6,7 +6,10 @@ Mvp2::Application.routes.draw do
 
   get '/account' => 'users#edit', :as => :account
   put '/account' => 'users#update'
+  post '/account/profile_photo' => 'users#create_profile_photo', :as => :account_profile_photo
+  delete '/account/profile_photo' => 'users#remove_profile_photo'
   post '/account/profile_video' => 'users#create_profile_video', :as => :account_profile_video
+  delete '/account/profile_video' => 'users#remove_profile_video', :as => :remove_profile_video
   post '/account/entry/performance_video' => 'users#create_entry_performance_video', :as => :account_entry_performance_video
   delete '/account/entry/performance_video' => 'users#remove_entry_performance_video', :as => :remove_entry_performance_video
   get '/account/thumbnail' => 'users#edit_thumbnail', :as => :edit_thumbnail

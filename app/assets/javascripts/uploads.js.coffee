@@ -51,8 +51,11 @@ jQuery ->
         if video = $uploader.find('video')[0]
           video.src = "https://s3.amazonaws.com/fanhelp.mvp/#{data.s3_key}"
           video.load()
+        if $box = $uploader.find('.profile-photo-box')
+          $img = $('<img>').attr('src',"https://s3.amazonaws.com/fanhelp.mvp/#{data.s3_key}").attr('width',240).attr('height',240).addClass('profile-photo_square')
+          $box.html($img).append('<a href="#edit-thumbnail" class="lightbox crop">Click to crop photo</a>')
 
-        $.ajax $('.uploader:visible iframe').data('create-resource-url'),
+        $.ajax $uploader.find('iframe').data('create-resource-url'),
           type: 'POST',
           data: data
 
