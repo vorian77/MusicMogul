@@ -30,31 +30,29 @@ jQuery ->
 
     switch eventType
 
+      when 'add upload'
+        $uploader = $(data.uploader_id)
+        $uploader = $('div.no-file').filter(':first') unless $uploader
+        $uploader.removeClass('no-file')
+        
+        if progressSupported
+          $uploader.addClass('uploading-with-progress')
+        else
+          $uploader.addClass('uploading-with-spinner')
+
+      when 'upload progress'
+        if progressSupported
+          $('.file-uploading .progress').css('width', (data.progress / 100) * 270)
+
       when 'upload done'
+        $uploader = $('.uploading-with-progress, .uploading-with-spinner')
+        $uploader.removeClass('uploading-with-progress').addClass('uploaded-file')
 
-        $message = $('<p>Your video has been uploaded and will be available when you refresh</p>')
-
-        $(".uploading_file[data-uuid=#{data.uuid}]").after($message).remove()
+        if video = $uploader.find('video')[0]
+          video.src = "https://s3.amazonaws.com/fanhelp.mvp/#{data.s3_key}"
+          video.load()
 
         $.ajax $('.uploader:visible iframe').data('create-resource-url'),
           type: 'POST',
           data: data
-
-
-      when 'add upload'
-
-        if progressSupported
-          uploadPercent = "<br/><progress value='0' max='100' class='upload_progress_bar'>0</progress> <span class='upload_percentage'>0</span> %"
-          $('.uploader:visible .uploading_files').append("<p class='uploading_file'>#{data.file_name + uploadPercent} <a href='#' class='remove_link'>X</a></p>")
-        else
-          $('.uploading_files').append("<p class='uploading_file'>#{data.file_name}<br/><img src='<%= asset_path('uploading.gif') %>'/></p>")
-
-        $('.uploading_file').last().attr 'data-uuid', data.uuid
-
-
-      when 'upload progress'
-
-        if progressSupported
-          $(".uploading_file[data-uuid=#{data.uuid}]").find('.upload_percentage').html(data.progress)
-          $(".uploading_file[data-uuid=#{data.uuid}]").find('.upload_progress_bar').val(data.progress)
 

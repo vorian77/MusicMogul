@@ -277,6 +277,57 @@
       }
     }
   }
+  .video-holder {
+    float: left;
+    width: 262px;
+  }
+  .placeholder {
+    width: 242px;
+    height: 148px;
+    background: image-url('video-placeholder.png') no-repeat;
+  }
+  .file-uploading {
+    position: relative;
+    width: 311px;
+    height: 81px;
+    background: image-url('video-uploading-bg.png') no-repeat;
+    .progress {
+      position: absolute;
+      left: 21px;
+      top: 45px;
+      background: image-url('video-uploading-progress.png') repeat-x;
+      width: 270px;
+      height: 14px;
+      @include border-radius(3px);
+    }
+  }
+  abbr {
+    border: none;
+  }
+  .uploaded-file {
+    .file-uploading, .placeholder {
+      display: none;
+    }
+    .remove-file, .instructions {
+      display: block;
+    }
+  }
+  .no-file {
+    .file-uploading, .remove-file, .video-holder {
+      display: none;
+    }
+    .placeholder, .instructions {
+      display: block;
+    }
+  }
+  .uploading-with-progress {
+    .file-uploading, .placeholder {
+      display: block;
+    }
+    .remove-file, .video-holder, .instructions {
+      display: none;
+    }
+  }
 }
 
 .inline-errors {

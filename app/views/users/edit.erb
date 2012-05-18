@@ -177,34 +177,42 @@
                   </div>
                   <div class="audition-box">
                     <h4>Preview Performance (will not be judged)</h4>
-                    <%= entry.input :audition_type, :as => :select, :collection => Entry::ENTRY_TYPES, :include_blank => false, :input_html => { :class => 'select-2' } %>
                     <%= entry.input :song_title %>
-                    <div class="video-box">
-                      <% if current_user.entry.performance_video? %>
-                        <div class="picture-holder">
-                          <div class="video-holder">
-                            <video class="video-js vjs-default-skin" controls preload="auto" width="242" height="148" data-setup="{}">
-                              <source src="<%= video_path "https://s3.amazonaws.com/fanhelp.mvp/#{current_user.entry.performance_video}" %>" type='video/mp4'>
-                            </video>
-                          </div>
-                          <%= entry.hidden_field :remove_performance_video %>
-                          <a href="#" class="btn-delete">Delete current video</a>
+                    <%= entry.input :audition_type, :as => :select, :collection => Entry::ENTRY_TYPES, :input_html => { :class => 'select-2 song-type' } %>
+                    <%= entry.input :source, :collection => ['Upload','Youtube'], :input_html => { :class => 'performance-video-source' }, :wrapper_html => { :class => 'source-input' } %>
+                    <%= entry.input :youtube_url, :wrapper_html => { :class => 'youtube-url-input' } %>
+                    <div class="video-box performance-video-input <%= current_user.entry.performance_video? ? 'uploaded-file' : 'no-file' %>">
+                      <div class="picture-holder">
+                        <div class="video-holder">
+                          <video class="video-js vjs-default-skin" controls preload="auto" width="242" height="148" data-setup="{}">
+                            <% if current_user.entry.performance_video? %>
+                              <source src="https://s3.amazonaws.com/fanhelp.mvp/<%= current_user.entry.performance_video %>" type="video/mp4">
+                            <% end %>
+                          </video>
                         </div>
-                      <% end %>
+                        <div class="placeholder"></div>
+                      </div>
+                      <div class="video-holder">
+                      </div>
                       <div class="file-box">
-                        <p>Click ‘browse to select a new video, then ‘upload’ to add the video to your profile.</p>
                         <div class="file-row">
                           <div class="uploader" data-s3-bucket="<%= S3DirectRails.s3_uploader_bucket %>">
-                            <%= s3_uploader(:uploaded_files_path => "uploads/entry/performance_video/#{current_user.entry.id}", :create_resource_url => account_entry_performance_video_path) %>
-                            <div class="uploading_files"></div>
-                            <div>.mpeg .flv or .mov, max 20mb</div>
+                            <%= s3_uploader(:uploaded_files_path => "uploads/entry/performance_video/#{current_user.entry.id}", :create_resource_url => account_entry_performance_video_path, :uploader_id => '.performance-video-input') %>
+                            <div class="instructions">
+                              <p>You can upload a MPEG, FLV or MOV file that is no larger than 5GB.</p>
+                              <p>(Do not upload video containing celebrities, nudity, artwork, images or video that you do not own or represent the copyright for.)
+                            </div>
+                            <div class="remove-file">
+                              <%= link_to 'Delete current video', remove_entry_performance_video_path, :remote => true, :method => :delete, :confirm => 'Are you sure?', :class => 'btn-delete' %>
+                            </div>
+                            <div class="file-uploading">
+                              <div class="progress"></div>
+                            </div>
+                            <div class="uploading-files"></div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <hr />
-                    <p>Instead of uploading a video, you could also copy and paste a Youtube video URL here:</p>
-                    <%= entry.input :youtube_url %>
                   </div>
                   <div class="gift-box">
                     <h4>Career Support</h4>

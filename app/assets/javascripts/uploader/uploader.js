@@ -11,6 +11,8 @@ jQuery(function() {
     var val = params[x].substring(params[x].search('=')+1);
     if( key == 'bucket' )
       s3BucketUrl = val;
+    else if (key == 'uploader_id')
+      $('#file_upload').data('uploader_id',val)
     else
       $('#file_upload input[name=' + key.replace(/^_/,'') + ']').val(val);
    }
@@ -63,6 +65,7 @@ jQuery(function() {
       postData.uuidInKey = $('#file_upload input[name=key]').val().search(':uuid') != -1;
       postData.file_name = data.files[0].name;
       postData.uuid = randomString(20);
+      postData.uploader_id = $('#file_upload').data('uploader_id')
 
       window.parent.postMessage(JSON.stringify(postData), host);
 

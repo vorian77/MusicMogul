@@ -3,7 +3,7 @@ class ContactsMailer < ActionMailer::Base
 
   def phyl_contact_email(contact)
     @contact = contact
-    mail(:to => 'cory@corykaufman.com', :subject => '[FHA] Contact form submitted')
+    mail(:to => 'phyl@fanhelp.us', :subject => '[FHA] Contact form submitted')
   end
 
   def sender_contact_email(contact)

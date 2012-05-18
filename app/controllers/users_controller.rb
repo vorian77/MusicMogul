@@ -29,7 +29,14 @@ class UsersController < ApplicationController
   
   def create_entry_performance_video
     raise unless params[:s3_key]
-    current_user.entry.update_attribute(:performance_video,params[:s3_key])
+    puts params.inspect
+    puts current_user.entry.update_attribute(:performance_video,params[:s3_key])
+    puts current_user.entry.inspect
+    render :nothing => true
+  end
+
+  def remove_entry_performance_video
+    current_user.entry.update_attribute(:performance_video,nil)
     render :nothing => true
   end
 

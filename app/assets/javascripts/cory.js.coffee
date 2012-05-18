@@ -136,3 +136,46 @@ $(document).ready ->
       toggleActiveJudgingFields $(this).val()
     toggleActiveJudgingFields $judgingActive.filter(':checked').val() == 'true'
 )()
+
+(->
+  $(document).ready ->
+    return unless $songType = $('select.song-type')
+    $youtube =  $('.youtube-url-input')
+    $sourceInput = $('.source-input')
+    $source = $('.performance-video-source')
+    $upload = $('.performance-video-input')
+
+    togglePerformanceVideo = ->
+      if $songType.val() == 'Cover'
+        $youtube.show()
+        $sourceInput.hide()
+        $upload.hide()
+      else if $songType.val() == 'Original'
+        $sourceInput.show()
+        if $source.val() == 'Youtube'
+          $upload.hide()
+          $youtube.show()
+        else if $source.val() == 'Upload'
+          $upload.show()
+          $youtube.hide()
+        else
+          $upload.hide()
+          $youtube.hide()
+      else
+        $youtube.hide()
+        $upload.hide()
+        $sourceInput.hide()
+
+    $songType.change(togglePerformanceVideo)
+    $source.change(togglePerformanceVideo)
+    togglePerformanceVideo()
+)()
+
+(->
+  $(document).delegate '.video-box .remove-file a', 'ajax:success', ->
+    $(this).closest('div.uploaded-file').removeClass('uploaded-file').addClass('no-file')
+    $close = $('<a></a>').addClass('close').attr('href','#')
+    $notice = $('<div></div>').addClass('notice').html('Your video has been successfully deleted').append($close)
+    $('.flash').append($notice).trigger('message.fanhelp')
+    
+)()

@@ -8,6 +8,7 @@ Mvp2::Application.routes.draw do
   put '/account' => 'users#update'
   post '/account/profile_video' => 'users#create_profile_video', :as => :account_profile_video
   post '/account/entry/performance_video' => 'users#create_entry_performance_video', :as => :account_entry_performance_video
+  delete '/account/entry/performance_video' => 'users#remove_entry_performance_video', :as => :remove_entry_performance_video
   get '/account/thumbnail' => 'users#edit_thumbnail', :as => :edit_thumbnail
   put '/account/thumbnail' => 'users#update_thumbnail', :as => :update_thumbnail
   post '/reset_password' => 'users#reset_password', :as => :reset_password
