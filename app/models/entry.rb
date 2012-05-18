@@ -4,7 +4,7 @@ class Entry < ActiveRecord::Base
   
   attr_accessor :remove_performance_video
 
-  attr_accessible :active, :artist_type, :genres_array, :community_name, :audition_type,
+  attr_accessible :active, :artist_type, :genre, :community_name, :audition_type,
     :song_title, :written_by, :gift_name, :gift_description, :gift_value,
     :kickstarter, :pledgemusic, :remove_performance_video, :youtube_url
   

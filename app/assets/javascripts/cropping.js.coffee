@@ -20,10 +20,6 @@ $(document).ready ->
     y = $orig.data('thumb-y') || 0
     x2 = x + $orig.data('thumb-w') || 400
     y2 = y + $orig.data('thumb-y') || 400
-    console.log 'x', x
-    console.log 'y', y
-    console.log 'x2', x2
-    console.log 'y2', y2
     jcrop = null
     $('.original img').Jcrop
       onChange: showPreview

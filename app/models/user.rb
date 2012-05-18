@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable,
+         :recoverable, :rememberable, :trackable, :confirmable,
          :omniauthable
 
   # Set up accessible (or protected) attributes for your model
@@ -12,14 +12,16 @@ class User < ActiveRecord::Base
     :twitter, :phone, :profile_photo_square, :profile_photo_landscape,
     :remove_profile_photo_square, :remove_profile_photo_landscape, :thumb_x,
     :thumb_y, :thumb_w, :account_type, :judgings_attributes,
-    :entries_attributes, :genre, :youtube, :current_tab,
+    :entries_attributes, :genre, :youtube, :current_tab, :gender,
     :remove_profile_video, :thumb_x, :thumb_y, :thumb_w
 
   attr_accessor :account_type, :current_tab
   attr_accessor :remove_profile_video
 
   with_options :on => :update, :if => Proc.new { |u| u.current_tab == 'details' || u.current_tab.blank? } do |u|
-    u.validates_presence_of :birth_year, :message => "Birth year is required. Must be at least 13 years old."
+    u.validates_presence_of :email
+    u.validates_presence_of :birth_year, :message => 'Birth year is required'
+    u.validates_numericality_of :birth_year, :less_than => 12.years.ago.year, :message => 'Must be at least 13 years old'
   end
   
   with_options :on => :update, :if => Proc.new { |u| u.current_tab == 'profile' || u.current_tab.blank? } do |u|

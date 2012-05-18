@@ -49,7 +49,6 @@
       }
     }
     &.radio {
-      padding-bottom: 0;
       .choices {
         width: 317px;
         .choice label.jcf-label-active {
@@ -61,10 +60,10 @@
       }
       legend {
         float: left;
-        width: 144px;
-        padding: 8px 0 0;
+        width: 121px;
+        padding: 13px 20px 0 0;
         label {
-          width: 144px;
+          width: 121px;
           border: none;
           padding: 0;
         }
@@ -177,6 +176,7 @@
   .boolean label {
     width: auto;
     padding-left: 140px;
+    padding-top: 0;
     display: block;
   }
   .chk-area{
@@ -193,7 +193,11 @@
     clear: both;
     margin-left: 140px !important;
     color: #c00;
-    margin: 0;
+    line-height: 2em;
+  }
+  .inline-hints {
+    clear: both;
+    margin: 0 0 0 140px !important;
     line-height: 2em;
   }
   .profile-photo-box {
@@ -250,7 +254,7 @@
   .choice label {
     float: none;
     width: auto;
-    padding: 0;
+    padding: 8px 0 0 0;
   }
   #user_facebook_input label {
     background: image-url('ico-facebook.gif') no-repeat 36px 14px;

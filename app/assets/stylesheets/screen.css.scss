@@ -11,11 +11,14 @@
 }
 
 .flash {
+  position: relative;
+  z-index: 1200;
   background: image-url('flash-bg.png') repeat-x;
   border-bottom: solid 1px #fff;
   text-align: center;
   cursor: pointer;
   div {
+    z-index: 1200;
     color: #fff;
     height: 59px;
     line-height: 59px;
@@ -30,18 +33,11 @@
     cursor: pointer;
     width: 24px;
     height: 24px;
-    line-height: 26px;
-    font-size: 20px;
-    text-align: center;
     margin: 17px 10px 0 0;
-    background-color: #176192;
-    color: #6d9cbb;
-    @include border-radius(5px);
-    text-decoration: none;
+    background: image-url('close.png') no-repeat 0 0;
     cursor: pointer;
     &:hover {
-      background-color: darken(#176192, 5%);
-      color: darken(#6d9cbb,5%);
+      background-position: 0 -24px;
     }
   }
 }

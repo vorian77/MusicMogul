@@ -1,15 +1,33 @@
-$(document).ready ->
-  $('a.fancybox').fancybox()	
-
+(->
   $flash = $('.flash')
   hideFlash = ->
-    $flash.removeData('timeout')
     $flash.children('div').slideUp()
-    $flash.off 'message.fanhelp'
-  $flash.on 'message.fanhelp', ->
-    $flash.data 'timeout', setTimeout(hideFlash, 3000)
-    $flash.click hideFlash
-  $flash.trigger 'message.fanhelp' if $flash.children('div')
+  
+  $document = $(document)
+  $document.delegate '.flash', 'message.fanhelp', ->
+    $flash = $(this)
+    $('html, body').animate({ scrollTop: 0 }, 300)
+    if $flash.data('timeout.fanhelp')
+      clearTimeout $flash.data('timeout.fanhelp')
+      $flash.removeData('timeout.fanhelp')
+    $flash.data 'timeout.fanhelp', setTimeout(hideFlash, 3000)
+
+  $document.delegate '.flash .close', 'click', -> 
+    $flash = $('.flash')
+    if $flash.data('timeout.fanhelp')
+      clearTimeout $flash.data('timeout.fanhelp')
+      $flash.removeData('timeout.fanhelp')
+    hideFlash()
+
+  $document.ready ->
+    $flash = $('.flash')
+    $flash.trigger('message.fanhelp') if $flash.children('div')
+
+)()
+
+
+$(document).ready ->
+  $('a.fancybox').fancybox()	
 
   is_checked = (el) ->
     if el.attr('type') == 'radio'
@@ -36,29 +54,6 @@ $(document).ready ->
       $(".tabs-holder a[href='\##{content.id}']").trigger('click')
       false
 
-
-  (->
-    if $form = $('form.profile-video')
-      if $file = $form.find('#video_uploader_profile_video')
-        $file.fileupload
-          forceIframeTransport: true
-          autoUpload: true,
-          add: (event, data) ->
-            data.submit()
-          send: (event, data) ->
-            $('#loading').show()
-          fail: ->
-            alert('Fail!')
-          done: (event, data) ->
-            console.log event
-            console.log data
-            alert('Done!')
-            $('#loading').hide()
-        $file.on 'fileuploadprogress', (event, data) ->
-          console.log event
-          console.log data
-  )()
-
 (->
   return unless $('.profile-box')
   
@@ -80,14 +75,12 @@ $(document).ready ->
       $active_form.data('clicked',clicked)
       false
 
-  setMessageTimeout = ->
-    hideMessages = -> $('.messages .notice, .messages .alert').fadeOut -> $(this).remove()
-    messageTimeout = setTimeout hideMessages, 3000
-
+  $close = $('<a></a>').addClass('close').attr('href','#')
+  
   $document.on 'ajax:success', '.tab-content.active form', (e, data, status, xhr) ->
     $active_form = $(this).filter(':first')
     $active_form.find('p.inline-errors').hide()
-    $notice = $('<div></div>').addClass('notice').html(data.notice) if data.notice
+    $notice = $('<div></div>').addClass('notice').html(data.notice).append($close) if data.notice
     $active_form.removeAttr('data-dirty')
     if $clicked = $active_form.data('clicked')
       $clicked.trigger 'click'
@@ -102,9 +95,8 @@ $(document).ready ->
       for error of errors
         $error = $('<p></p>').addClass('inline-errors').text(errors[error])
         $("#user_#{error}_input").addClass('error').append($error)
-    $alert = $('<div></div>').addClass('alert').html('Your account could not be saved.')
-    $('.tab-content.active .messages').html $alert
-    setMessageTimeout()
+    $alert = $('<div></div>').addClass('alert').html('Your account could not be saved.').append($close)
+    $('.flash').html($alert).trigger('message.fanhelp')
 )()
 
 (->
@@ -113,4 +105,17 @@ $(document).ready ->
       onStart: ->
         _V_('home-video').ready ->
           this.play()
+)()
+
+(->
+  $(document).ready ->
+    return unless $country = $('#user_country')
+    $zip_input = $('#user_zip_input')
+    toggleCountryAndZip = ->
+      if $country.val() == 'United States'
+        $zip_input.show()
+      else
+        $zip_input.hide()
+    $country.change(toggleCountryAndZip)
+    toggleCountryAndZip()
 )()

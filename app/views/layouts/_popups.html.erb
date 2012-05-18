@@ -72,8 +72,6 @@
   <div class="lightbox popup popup-login" id="popup-2">
     <div class="holder">
       <div class="frame">
-        <div class="notice"><%= flash[:notice] %></div>
-        <div class="alert"><%= flash[:alert] %></div>
         <h3>Log in</h3>
         <%= form_for (defined?(resource) ? resource : User.new), :url => session_path('user'), :html => { :class => 'login-form' } do |f| %>
           <fieldset>
