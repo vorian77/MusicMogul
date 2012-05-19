@@ -1719,7 +1719,7 @@ form, fieldset{
 .peview-heading p{margin:0 0 5px;}
 .peview-heading .filter-box{
 	float:right;
-	padding:25px 0 16px;
+	padding:0 0 16px;
 	width:262px;
 }
 .filter-form .row{
@@ -1754,6 +1754,7 @@ form, fieldset{
 .filter-form .select-area .select-opener:hover{background-position:-700px -600px;}
 .artists-list{
 	list-style:none;
+	font-size:0;
 	margin:0;
 	padding:0 0 10px;
 	width:100%;

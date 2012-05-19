@@ -1,10 +1,14 @@
 class PreviewsController < ApplicationController
 
   def index
-    if params[:genre]
+    if params[:genre] && params[:genre] != ""
       @artists = User.has_photo.has_entry.genre(params[:genre]).all.sort_by {rand}
     else
       @artists = User.has_photo.has_entry.all.sort_by {rand}
+    end
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
   

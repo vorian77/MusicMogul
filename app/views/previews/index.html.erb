@@ -1,3 +1,17 @@
+<% content_for :head do -%>
+<script>
+$(document).ready(function() {
+   $('#genre').change(function(){
+     $.ajax({url: '/previews.js',
+       data: 'genre=' + $(this).val(),
+       success: function(data){
+         return false;
+         }
+     })
+   });
+});
+</script>
+<% end -%>
 <div class="breadcrumbs-holder">
 	<ul id="breadcrumbs">
 		<li><a class="home" href="index.html"><span>Home</span></a></li>
@@ -18,24 +32,15 @@
 		<form action="#" class="filter-form">
 			<fieldset>
 				<div class="row">
-          <%= select_tag "genre", options_for_select(Contest::GENRES), {:prompt => "Filter by genre", :onchange => "this.form.submit();"} %>
+          <%= select_tag "genre", options_for_select(Contest::GENRES), {:prompt => "Filter by genre"} %>
 				</div>
 			</fieldset>
 		</form>
 	</div>
 </div>
-<ul class="artists-list">
-  <li>
-  <% @artists.each do |artist| -%>
-		<a class="photo-holder" href="<%= preview_path(artist) %>"><%= image_tag artist.profile_photo_square.cropped, :width => '238', :height => '238' %></a>
-		<% if artist == @artists.last -%>
-  		</li>
-		<% else -%>
-  		</li><li>
-		<% end -%>
-	<% end -%>
-</ul>
-
+<div id ="artists">
+  <%= render :partial => "artists" %>
+</div>
 
 
 
