@@ -14,7 +14,7 @@ $(document).ready(function() {
 <% end -%>
 <div class="breadcrumbs-holder">
 	<ul id="breadcrumbs">
-		<li><a class="home" href="index.html"><span>Home</span></a></li>
+		<li><a class="home" href="<%= root_path %>"><span>Home</span></a></li>
 		<%- if params[:genre] -%>
 		<li><a href="<%= previews_path %>"><span>Contestant Preview</span></a></li>
 		<li><span><%= params[:genre] %></span></li>
