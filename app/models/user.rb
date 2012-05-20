@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   attr_accessor :changing_password
 
   with_options :on => :create do |u|
-    u.validates_presence_of :email
+    u.validates :email, :presence => true, :uniqueness => true
     u.validates_presence_of :password
   end
 
