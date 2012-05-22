@@ -123,20 +123,17 @@
 }
 
 .social-media-buttons {
-  float: right;
-  width: 330px;
   height: 35px;
-  margin-top: -5px;
-  margin-right: -2px;
+  margin-top: -6px;
+  margin-right: 10px;
+  float: left;
   .facebook-button {
-    float: left;
     background: image-url('Spritesheet.png') no-repeat -640px -92px;
     width: 175px;
     height: 35px;
     @include hide-text;
   }
   .twitter-button {
-    float: right;
     background: image-url('Spritesheet.png') no-repeat -825px -92px;
     width: 152px;
     height: 35px;
@@ -305,9 +302,9 @@ hr {
 #share-label {
   float: left;
   margin: 0;
-  padding: 7px 0 0 15px;
+  padding: 11px 0 0 15px;
   color: #999;
-  font-size: 16px;
+  font: 12px/15px IstokRegular, Arial, Helvetica, sans-serif;
 }
 .social-networks {
   padding: 7px 10px 12px 5px;

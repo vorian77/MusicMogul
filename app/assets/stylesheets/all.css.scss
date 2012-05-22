@@ -2179,19 +2179,20 @@ form, fieldset{
 #footer .panel a img{vertical-align:top;}
 #footer .bar{
 	overflow:hidden;
-	width:958px;
+	width: 280px;
 	padding:22px 2px 1px 0;
-	text-align:right;
+	text-align: center;
 	color:#333;
 	font:14px/16px IstokRegular, Arial, Helvetica, sans-serif;
+  margin: auto;
 }
 #footer .bar p{margin:0;}
 .add-nav-box{
-	float:left;
 	background:image-url('bg-add-nav.png') no-repeat 100% 100%;
 	padding:0 8px 0 0;
 	text-align:left;
 	margin:-5px 0 0;
+  float:left;
 }
 .add-nav{
 	margin:0;
