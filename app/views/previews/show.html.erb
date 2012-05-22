@@ -31,8 +31,8 @@
 		</div>
 		<div class="info">
 			<div class="photo">
-			  <%- if @artist.profile_photo_landscape? -%>
-			    <%= image_tag @artist.profile_photo_landscape.small, :width => '280', :height => '172' %>
+			  <%- if @artist.profile_photo_square? -%>
+			    <%= image_tag @artist.profile_photo_square.cropped, :width => '240', :height => '240' %>
 			  <% end -%>
 			</div>
 			<dl>
