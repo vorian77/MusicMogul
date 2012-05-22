@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     respond_with current_user do |format|
       if current_user.update_attributes(params[:user])
         sign_in(current_user, :bypass => true) if params[:user] && params[:user][:password]
-        notice = current_user.pending_reconfirmation? ? 'Your new email address is pending confirmation' : 'Your account has been successfully saved'
+        notice = 'Your account has been successfully saved'
         format.html { redirect_to account_path, :notice => notice }
         format.json { render :json => { :notice => notice } }
       else
