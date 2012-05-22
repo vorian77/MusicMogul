@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120518113625) do
+ActiveRecord::Schema.define(:version => 20120522070048) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -124,6 +124,8 @@ ActiveRecord::Schema.define(:version => 20120518113625) do
     t.integer  "thumb_y"
     t.integer  "thumb_w"
     t.string   "youtube_url"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

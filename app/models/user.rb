@@ -109,10 +109,23 @@ class User < ActiveRecord::Base
 
   def self.find_for_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
-    if user = self.find_by_email(data.email)
+    if user = find_by_provider_and_uid(access_token.provider, access_token.uid)
       user
+    elsif data.email.present? && (user = find_by_email(data.email))
+      user.provider = access_token.provider
+      user.uid = access_token.uid
+      user.save!
     else
-      self.create!(:email => data.email || "temp_#{Time.now.to_i}@example.com", :password => Devise.friendly_token[0,20]) 
+      user = self.new(
+        :email => data.email || "temp_#{Time.now.to_i}@example.com",
+        :name => data.name,
+        :password => Devise.friendly_token[0,20]
+      )
+      # Not mass-assignable
+      user.provider = access_token.provider
+      user.uid = access_token.uid
+      user.save!
+      user
     end
   end
 
@@ -138,7 +151,7 @@ class User < ActiveRecord::Base
 
   # Callback to overwrite if confirmation is required or not.
   def confirmation_required?
-    !confirmed? && !facebook? && !twitter?
+    !confirmed? && provider.blank?
   end
 
 end
