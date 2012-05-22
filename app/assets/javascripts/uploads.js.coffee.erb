@@ -49,7 +49,7 @@ jQuery ->
         $uploader.removeClass('uploading-with-progress').addClass('uploaded-file')
 
         s3Dir = "https://s3.amazonaws.com/fanhelp.mvp"
-        <% if ProfilePhotoUploader.storage == CarrierWave::Storage::Fog %>
+        <% if Rails.env == 'production' %>
         basePath = s3Dir
         <% else %>
         basePath = ""
