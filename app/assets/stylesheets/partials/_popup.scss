@@ -89,7 +89,7 @@
     font-size: 16px !important;
   }
   label {
-    width: 120px;
+    width: 180px;
   }
   input[type="password"] {
     color: #000;
@@ -99,7 +99,7 @@
     height: 15px;
     margin: 0;
     padding: 15px 13px;
-    width: 120px;
+    width: 250px;
     border: solid 1px #D4D4D4;
     @include border-radius(5px);
     background-color: #f9f9f9;

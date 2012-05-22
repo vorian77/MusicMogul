@@ -20,18 +20,6 @@
           <%= f.hidden_field :reset_password_token %>
           <%= f.hidden_field :changing_password, :value => 'true' %>
           <fieldset>
-            <div class="columns">
-              <div class="col-1">
-                <h4>Enter your <strong>old password</strong></h4>
-              <div class="text-row">
-                <%= f.label :old_password do %>
-                  Old password<span class="required">*</span>
-                <% end %>
-                <%= f.password_field :old_password %>
-                <p class="inline-errors password-errors"><%= resource.errors.messages[:old_password].join(', ') %></p>
-              </div>
-              </div>
-              <div class="col-2">
                 <h4>Enter a <strong>new password</strong></h4>
                 <div class="text-row">
                   <%= f.label :password do %>
@@ -47,8 +35,6 @@
                   <%= f.password_field :password_confirmation %>
                   <p class="inline-errors password-errors"><%= resource.errors.messages[:password_confirmation].join(', ') %></p>
                 </div>
-              </div>
-            </div>
             <div class="submit-row">
               <div class="submit-holder">
                 <input type="submit" value="Save" class="button-signup" />
