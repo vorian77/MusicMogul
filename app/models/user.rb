@@ -109,12 +109,12 @@ class User < ActiveRecord::Base
 
   def self.find_for_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
+
     if user = find_by_provider_and_uid(access_token.provider, access_token.uid)
       user
     elsif data.email.present? && (user = find_by_email(data.email))
       user.provider = access_token.provider
       user.uid = access_token.uid
-      user.save!
     else
       user = self.new(
         :email => data.email || "temp_#{Time.now.to_i}@example.com",
@@ -124,9 +124,15 @@ class User < ActiveRecord::Base
       # Not mass-assignable
       user.provider = access_token.provider
       user.uid = access_token.uid
-      user.save!
       user
     end
+
+    if user
+      user.twitter = data.screen_name if access_token.provider == "twitter"
+      user.save!(:validate => false)
+    end
+
+    user
   end
 
   def self.new_with_session(params, session)
