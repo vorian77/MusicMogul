@@ -10,7 +10,7 @@
     if $flash.data('timeout.fanhelp')
       clearTimeout $flash.data('timeout.fanhelp')
       $flash.removeData('timeout.fanhelp')
-    $flash.data 'timeout.fanhelp', setTimeout(hideFlash, 3000)
+    $flash.data 'timeout.fanhelp', setTimeout(hideFlash, 5000)
 
   $document.delegate '.flash .close', 'click', -> 
     $flash = $('.flash')
