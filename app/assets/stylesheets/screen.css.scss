@@ -127,6 +127,7 @@
   width: 330px;
   height: 35px;
   margin-top: -5px;
+  margin-right: -2px;
   .facebook-button {
     float: left;
     background: image-url('Spritesheet.png') no-repeat -640px -92px;
@@ -135,9 +136,9 @@
     @include hide-text;
   }
   .twitter-button {
-    float: left;
+    float: right;
     background: image-url('Spritesheet.png') no-repeat -825px -92px;
-    width: 155px;
+    width: 152px;
     height: 35px;
     @include hide-text;
   }
