@@ -136,4 +136,9 @@ class User < ActiveRecord::Base
     self.entry.update_attribute(:active,true) if types.include? 'compete'
   end
 
+  # Callback to overwrite if confirmation is required or not.
+  def confirmation_required?
+    !confirmed? && !facebook? && !twitter?
+  end
+
 end
