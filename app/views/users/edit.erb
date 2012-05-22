@@ -71,7 +71,8 @@
                       <% if current_user.profile_photo_square.present? %>
                         <%= image_tag current_user.profile_photo_square.cropped, :width => '240', :height => '240', :class => 'profile-photo-square' %>
                       <% end %>
-                      <a href="#edit-thumbnail" class="lightbox crop">Click to crop photo</a>
+                      <a href="#edit-thumbnail" class="lightbox crop" id="edit-thumbnail-button">Click to crop photo</a>
+                      <span class="crop-processing" id="edit-thumbnail-processing">Processing...</span>
                     </div>
                   </div>
                   <div class="file-box">
@@ -258,8 +259,10 @@
   </div>
 </div>
 
-<% if current_user.profile_photo_square? %>
-  <div class="popup-holder">
-    <div class="lightbox popup" id="edit-thumbnail"><%= render 'users/edit_thumbnail' %></div>
+<div class="popup-holder">
+  <div class="lightbox popup" id="edit-thumbnail">
+    <% if current_user.profile_photo_square? %>
+      <%= render 'users/edit_thumbnail' %>
+    <% end %>
   </div>
-<% end %>
+</div>

@@ -191,13 +191,15 @@
   }
   .profile-photo-box {
     width: 240px;
+    height: 240px;
     overflow: auto;
     position: relative;
     img {
       width: 240px;
       height: auto;
     }
-    a.crop {
+    a.crop,
+    span.crop-processing {
       color: #eee;
       position: absolute;
       bottom: 0;
@@ -211,6 +213,9 @@
         text-decoration: none;
         background-color: rgba(4,107,168,.6);
       }
+    }
+    span.crop-processing {
+      display: none;
     }
   }
   .tab-content {
@@ -318,6 +323,9 @@
     }
     .placeholder, .instructions {
       display: block;
+    }
+    .profile-photo-box {
+      height: auto;
     }
   }
   .uploading-with-progress {

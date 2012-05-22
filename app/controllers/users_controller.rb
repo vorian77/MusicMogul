@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     raise unless params[:s3_key]
     current_user.remote_profile_photo_square_url = "https://s3.amazonaws.com/fanhelp.mvp/#{params[:s3_key]}"
     current_user.save(:validate => false)
-    render :nothing => true
+    render :partial => 'users/edit_thumbnail', :layout => false
   end
 
   def remove_profile_photo

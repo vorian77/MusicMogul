@@ -1,3 +1,5 @@
+window.Application ||= {}
+
 showPreview = (coords) ->
   rx = 77 / coords.w
   ry = 77 / coords.h
@@ -12,16 +14,15 @@ showPreview = (coords) ->
   $('#user_thumb_y').val(coords.y)
   $('#user_thumb_w').val(coords.w)
 
-$(document).ready ->
-
-  if $thumb = $('.thumbnail img')
-    $orig = $('.original img')
+Application.bindJcrop = ($context) ->
+  if $thumb = $context.find('.thumbnail img')
+    $orig = $context.find('.original img')
     x = $orig.data('thumb-x') || 0
     y = $orig.data('thumb-y') || 0
     x2 = x + $orig.data('thumb-w') || 400
-    y2 = y + $orig.data('thumb-y') || 400
+    y2 = y + $orig.data('thumb-w') || 400
     jcrop = null
-    $('.original img').Jcrop
+    $context.find('.original img').Jcrop
       onChange: showPreview
       onSelect: showPreview
       aspectRatio: 1
@@ -31,14 +32,22 @@ $(document).ready ->
       , ->
         jcrop = this
 
-    $('#fancybox-close').click ->
+    $context.find('#fancybox-close').click ->
       jcrop.setSelect [x, y, x2, y2] if jcrop
 
-    $('form.edit-thumbnail').bind 'ajax:success', ->
+    # find form in $context, including root node of $context (when $context is the form)
+    formSelector = 'form.edit-thumbnail'
+    $form = $context.filter(formSelector).add($context.find(formSelector))
+
+    $form.bind 'ajax:success', ->
+      d = new Date()
       parent.$.fancybox.close()
       img = $('img.profile-photo-square')
-      img.attr('src',img.attr('src'))
+      img.attr('src',"#{img.attr('src')}?#{d.getTime()}") # Force browser to ignore cached image
 
-    $('form.edit-thumbnail').bind 'ajax:error', ->
+    $form.bind 'ajax:error', ->
       $alert = $('<div></div>').addClass('alert').html('There was an error contacting the server. Please check your internet connection')
-      $('form.edit-thumbnail').before $alert
+      $context.find('form.edit-thumbnail').before $alert
+
+$(document).ready ->
+  Application.bindJcrop($(document))

@@ -212,7 +212,8 @@ $(document).ready ->
   
   $(document).delegate '.picture-box .remove-file a', 'ajax:success', ->
     $uploader = $(this).closest('.picture-box')
-    $uploader.find('.profile-photo-box').html('')
+    $uploader.find('.profile-photo-box img').remove()
+    $uploader.find('#edit-thumbnail-button').hide()
     $uploader.removeClass('uploaded-file').addClass('no-file')
     $close = $('<a></a>').addClass('close').attr('href','#')
     $notice = $('<div></div>').addClass('notice').html('Your photo has been successfully deleted').append($close)
