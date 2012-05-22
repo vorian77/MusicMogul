@@ -1,38 +1,11 @@
 <div class="carousel">
-    <div class="frame">
-      <ul class="slide-list">
-        <li class="slide slide-1">
-          <div class="text-box">
-            <h2>introduction</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet nisi lorem, nec molestie tortor.</p>
-            <%= link_to 'Sign up', '#popup', :class => 'signup lightbox' %>
-          </div>
-          <a href="<%= home_video_path %>" class="fancybox" id="home-video-link"><img src="<%= asset_path('img-video.gif') %>" width="460" height="282" alt="image description" /></a>
-        </li>
-        <li class="slide linked-slide slide-2">
-          <%= link_to page_path('preview_contestants') do %>
-            <div class="text-box">
-              <h2>contestants</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet nisi lorem, nec molestie tortor.</p>
-              <div class="preview">Preview</div>
-            </div>
-            <img src="/assets/img-04.png" width="510" height="323" alt="image description" />
-          <% end %>
-        </li>
-        <li class="slide linked-slide slide-3">
-          <%= link_to page_path('prize_pool') do %>
-            <div class="text-box">
-              <h2>prize pool promise</h2>
-              <p>Morbi hendrerit varius lectus eget scelerisque. Donec nibh nisl, tempus eu imperdiet stibulum.</p>
-              <div class="learn-more">learn more</div>
-              <!--<%= link_to 'learn more', page_path('prize_pool'), :class => 'learn-more' %>-->
-            </div>
-            <img src="/assets/img-05.png" width="345" height="253" alt="image description" />
-          <% end %>
-        </li>
-      </ul>
+  <div class="slide linked-slide" id="intro-video-slide">
+    <div class="text-box">
+      <h2>introduction</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet nisi lorem, nec molestie tortor.</p>
+      <%= link_to 'Sign up', '#popup', :class => 'signup lightbox' %>
     </div>
-    <div class="switcher"><!--bullets--></div>
+    <a href="<%= home_video_path %>" class="fancybox" id="home-video-link"><img src="<%= asset_path('img-video.gif') %>" width="460" height="282" alt="image description" /></a>
   </div>
   <div class="info-box">
     <div class="holder">
@@ -51,5 +24,32 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="frame">
+    <ul class="slide-list">
+      <li class="slide linked-slide slide-2">
+        <%= link_to page_path('preview_contestants') do %>
+          <div class="text-box">
+            <h2>contestants</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet nisi lorem, nec molestie tortor.</p>
+            <div class="preview">Preview</div>
+          </div>
+          <img src="/assets/img-04.png" width="510" height="323" alt="image description" />
+        <% end %>
+      </li>
+      <li class="slide linked-slide slide-3">
+        <%= link_to page_path('prize_pool') do %>
+          <div class="text-box">
+            <h2>prize pool promise</h2>
+            <p>Morbi hendrerit varius lectus eget scelerisque. Donec nibh nisl, tempus eu imperdiet stibulum.</p>
+            <div class="learn-more">learn more</div>
+            <!--<%= link_to 'learn more', page_path('prize_pool'), :class => 'learn-more' %>-->
+          </div>
+          <img src="/assets/img-05.png" width="345" height="253" alt="image description" />
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <div class="switcher"><!--bullets--></div>
   </div>
 </div>

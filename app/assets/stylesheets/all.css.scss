@@ -335,14 +335,18 @@ form, fieldset{
 	width:99999px;
 	overflow:hidden;
 }
-.carousel .slide-list li{
+.carousel .slide-list li,
+#intro-video-slide{
 	float:left;
 	width:832px;
 	padding:39px 60px  20px 68px;
 	position:relative;
 	height:324px;
 }
-.carousel .slide-list .slide-1{background:image-url('bg-gallery.png') no-repeat;}
+#intro-video-slide{
+  float: none;
+}
+#intro-video-slide{background:image-url('bg-gallery.png') no-repeat;}
 .carousel .slide-list .slide-2{background:image-url('bg-gallery-2.png') no-repeat;}
 .carousel .slide-list .slide-3{background:image-url('bg-gallery-3.png') no-repeat;}
 .carousel .slide-list .slide-2 img{
@@ -449,6 +453,7 @@ form, fieldset{
 	width:100%;
 	background:image-url('bg-info-box.png') no-repeat 100% 100%;
 	padding:0 0 12px;
+  margin: 20px 0 30px;
 }
 .info-box .holder{
 	background:image-url('bg-info-box.png') repeat-y -960px 0;
