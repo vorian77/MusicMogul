@@ -114,3 +114,12 @@ $(document).ready ->
         _V_('home-video').ready ->
           this.play()
 )()
+
+(->
+  $(document).ready ->
+    $('#genre').change ->
+      $.ajax '/previews.js',
+        data: 'genre=' + $(this).val(),
+        success: (data) ->
+          return false
+)()
