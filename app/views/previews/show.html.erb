@@ -23,7 +23,7 @@
 		    <video class="video-js vjs-default-skin" controls preload="auto" width="640" height="391" data-setup="{}">
           <source src="<%= video_path "https://s3.amazonaws.com/fanhelp.mvp/#{@artist.entry.performance_video}" %>" type='video/mp4'>
         </video>
-      <% elsif @artist.entry.youtube_url -%>
+      <% elsif @artist.entry.youtube_url? -%>
         <iframe width="640" height="391" src="<%= parse_youtube @artist.entry.youtube_url %>" frameborder="0"></iframe>
       <% else -%>
         <h2>Video not yet uploaded.</h2>

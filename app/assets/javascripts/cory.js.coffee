@@ -220,3 +220,12 @@ $(document).ready ->
     $('.flash').append($notice).trigger('message.fanhelp')
 
 )()
+
+(->
+  $(document).ready ->
+    $('#genre').change ->
+      $.ajax '/previews.js',
+        data: 'genre=' + $(this).val(),
+        success: (data) ->
+          return false
+)()

@@ -1,26 +1,7 @@
-<% content_for :head do -%>
-<script>
-$(document).ready(function() {
-   $('#genre').change(function(){
-     $.ajax({url: '/previews.js',
-       data: 'genre=' + $(this).val(),
-       success: function(data){
-         return false;
-         }
-     })
-   });
-});
-</script>
-<% end -%>
 <div class="breadcrumbs-holder">
 	<ul id="breadcrumbs">
 		<li><a class="home" href="<%= root_path %>"><span>Home</span></a></li>
-		<%- if params[:genre] -%>
-		<li><a href="<%= previews_path %>"><span>Contestant Preview</span></a></li>
-		<li><span><%= params[:genre] %></span></li>
-	  <%- else -%>
-	  <li><span>Contestant Preview</span></li>
-		<% end -%>
+		<li><span>Contestant Preview</span></a></li>
 	</ul>
 </div>
 <div class="peview-heading">
