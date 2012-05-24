@@ -96,12 +96,17 @@ $(document).ready ->
 
 (->
   $(document).ready ->
-    $('a#home-video-link').fancybox
-      type: 'iframe'
-      width: 840
-      height: 516
-      scrolling: 'no'
-      onStart: ->
+    $('a#home-video-link')
+      .click( ->
+        $('div.carousel').trigger('pauseSlideshow')
+      ).fancybox
+        type: 'iframe'
+        width: 840
+        height: 516
+        scrolling: 'no'
+        onStart: ->
+        onClosed: ->
+          $('div.carousel').trigger('resumeSlideshow')
 )()
 
 (->

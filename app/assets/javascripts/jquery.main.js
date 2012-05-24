@@ -262,5 +262,13 @@ jQuery.fn.scrollGallery = function(_options){
 			});
 		}
 		if(_afterInit && typeof _afterInit === 'function') _afterInit(_this, _slides);
+
+    _this.bind('pauseSlideshow', function() {
+      stopAutoSlide();
+    });
+    _this.bind('resumeSlideshow', function() {
+      _autoRotation = true;
+      autoSlide();
+    });
 	});
 }
