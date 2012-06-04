@@ -1,6 +1,6 @@
 jQuery(function() {
 
-  var host = 'http://mvp2.fanhelp.us';
+  var host = 'http://www.fanhelp.us';
 
   var params = decodeURIComponent(location.href).split('?')[1].split('&');
   var s3BucketUrl;
