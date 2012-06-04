@@ -58,6 +58,15 @@ $(document).ready ->
   
   $document = $(document)
 
+  # Log all jQuery AJAX requests to Google Analytics
+  $document.ajaxSend (event, xhr, settings) ->
+    if (typeof _gaq != "undefined" && _gaq != null)
+      _gaq.push(['_trackPageview', settings.url])
+
+  # Log tab-changes on account page in Google Analytics
+  $document.on 'easytabs:after', '.tabs-holder', (e,clicked) ->
+    _gaq.push(['_trackPageview', location.pathname + location.search  + location.hash])
+
   $document.on 'change', 'input, select, textarea', ->
     $(this).closest('form').attr('data-dirty','true')
 
