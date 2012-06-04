@@ -362,10 +362,13 @@ form, fieldset{
 .carousel .slide-3 .text-box{color:#292a2b;}
 .carousel .text-box{
 	width:313px;
-	float:right;
+	float:left;
 	color:#fff;
 	font:18px/22px IstokRegular, Arial, Helvetica, sans-serif;
 	padding:18px 0 0;
+}
+#intro-video-slide .text-box {
+  float: right;
 }
 .carousel .text-box h2{
 	margin:0 0 18px;
