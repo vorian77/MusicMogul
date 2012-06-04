@@ -310,7 +310,7 @@
     border: none;
   }
   .uploaded-file, .youtube-url {
-    .song-type-input, .source-input, .youtube-url-input, .file-uploading, .placeholder {
+    .song-type-input, .source-input, .file-uploading, .placeholder {
       display: none;
     }
     .remove-file, .instructions {
@@ -318,7 +318,7 @@
     }
   }
   .no-file {
-    .file-uploading, .remove-file, .video-holder, #user_youtube_url_input, .holder {
+    .file-uploading, .remove-file, .video-holder, .holder {
       display: none;
     }
     .placeholder, .instructions {
@@ -346,7 +346,7 @@
   }
   .video-box.uploaded-file {
     .youtube-holder, #user_youtube_url_input {
-      display: none;
+      /*display: none;*/
     }
     .video-holder, .uploader {
       display: block;

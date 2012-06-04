@@ -143,77 +143,86 @@ $(document).ready ->
 )()
 
 (->
-  $(document).ready ->
-    return unless $songType = $('.song-type')
-    $box = $('.audition-box')
-    $youtubeInput =  $box.find('.youtube-url-input')
-    $sourceInput = $box.find('.source-input')
-    $source = $box.find('.performance-video-source')
-    $videoInput = $box.find('.performance-video-input')
+  # This isn't being used since we made YouTube the only
+  # video upload option. But we'll keep it here to make it
+  # easy to switch back.
+  #$(document).ready ->
+    #return unless $songType = $('.song-type')
+    #$box = $('.audition-box')
+    #$youtubeInput =  $box.find('.youtube-url-input')
+    #$sourceInput = $box.find('.source-input')
+    #$source = $box.find('.performance-video-source')
+    #$videoInput = $box.find('.performance-video-input')
 
-    #console.log 'Youtube Input', $youtubeInput
-    #console.log 'Source Input', $sourceInput
-    #console.log 'Source', $source
+    ##console.log 'Youtube Input', $youtubeInput
+    ##console.log 'Source Input', $sourceInput
+    ##console.log 'Source', $source
 
-    togglePerformanceVideo = ->
-      if $songType.val() == 'Cover'
-        $youtubeInput.show()
-        $sourceInput.hide()
-        $videoInput.hide()
-      else if $songType.val() == 'Original'
-        $sourceInput.show()
-        if $source.val() == 'Youtube'
-          $youtubeInput.show()
-          $videoInput.hide()
-        else if $source.val() == 'Upload'
-          $youtubeInput.hide()
-          $videoInput.show()
-        else
-          $videoInput.hide()
-          $youtubeInput.hide()
-      else
-        $youtubeInput.hide()
-        $sourceInput.hide()
-        $videoInput.hide()
+    #togglePerformanceVideo = ->
+      #if $songType.val() == 'Cover'
+        #$youtubeInput.show()
+        #$sourceInput.hide()
+        #$videoInput.hide()
+      #else if $songType.val() == 'Original'
+        #$sourceInput.show()
+        #if $source.val() == 'Youtube'
+          #$youtubeInput.show()
+          #$videoInput.hide()
+        #else if $source.val() == 'Upload'
+          #$youtubeInput.hide()
+          #$videoInput.show()
+        #else
+          #$videoInput.hide()
+          #$youtubeInput.hide()
+      #else
+        #$youtubeInput.hide()
+        #$sourceInput.hide()
+        #$videoInput.hide()
 
-    $songType.change(togglePerformanceVideo)
-    $source.change(togglePerformanceVideo)
-    togglePerformanceVideo()
+    #$songType.change(togglePerformanceVideo)
+    #$source.change(togglePerformanceVideo)
+    #togglePerformanceVideo()
 
 )()
 
 (->
-  $(document).ready ->
-    return unless $uploader = $('.profile-video-input')
-    $sourceInput = $uploader.find('#user_source_input')
-    $source = $uploader.find('.source')
-    $youtubeInput = $uploader.find('#user_youtube_url_input')
-    $video = $uploader.find('.profile-video-input')
-    $holder = $uploader.find('.holder')
+  # This isn't being used since we made YouTube the only
+  # video upload option. But we'll keep it here to make it
+  # easy to switch back.
+  #$(document).ready ->
+    #return unless $uploader = $('.profile-video-input')
+    #$sourceInput = $uploader.find('#user_source_input')
+    #$source = $uploader.find('.source')
+    #$youtubeInput = $uploader.find('#user_youtube_url_input')
+    #$video = $uploader.find('.profile-video-input')
+    #$holder = $uploader.find('.holder')
 
-    toggleProfileVideo = ->
-      if $source.val() == 'Youtube'
-        $youtubeInput.show()
-        $holder.hide()
-      else if $source.val() == 'Upload'
-        $youtubeInput.hide()
-        $holder.show()
-      else
-        $youtubeInput.hide()
-        $holder.hide()
-    $sourceInput.change(toggleProfileVideo)
-    toggleProfileVideo()
+    #toggleProfileVideo = ->
+      #if $source.val() == 'Youtube'
+        #$youtubeInput.show()
+        #$holder.hide()
+      #else if $source.val() == 'Upload'
+        #$youtubeInput.hide()
+        #$holder.show()
+      #else
+        #$youtubeInput.hide()
+        #$holder.hide()
+    #$sourceInput.change(toggleProfileVideo)
+    #toggleProfileVideo()
 )()
 
 
 (->
-  $(document).delegate '.video-box .remove-file a', 'ajax:success', ->
-    $uploader = $(this).closest('.video-box')
-    $uploader.removeClass('uploaded-file youtube-url').addClass('no-file')
-    $uploader.find('.source').val('Upload')
-    $close = $('<a></a>').addClass('close').attr('href','#')
-    $notice = $('<div></div>').addClass('notice').html('Your video has been successfully deleted').append($close)
-    $('.flash').append($notice).trigger('message.fanhelp')
+  # This isn't being used since we made YouTube the only
+  # video upload option. But we'll keep it here to make it
+  # easy to switch back.
+  #$(document).delegate '.video-box .remove-file a', 'ajax:success', ->
+    #$uploader = $(this).closest('.video-box')
+    #$uploader.removeClass('uploaded-file youtube-url').addClass('no-file')
+    #$uploader.find('.source').val('Upload')
+    #$close = $('<a></a>').addClass('close').attr('href','#')
+    #$notice = $('<div></div>').addClass('notice').html('Your video has been successfully deleted').append($close)
+    #$('.flash').append($notice).trigger('message.fanhelp')
   
   $(document).delegate '.picture-box .remove-file a', 'ajax:success', ->
     $uploader = $(this).closest('.picture-box')
