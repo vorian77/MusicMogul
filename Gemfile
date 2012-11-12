@@ -28,6 +28,7 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'bullet'
   gem 'factory_girl_rails'
   gem 'ffaker'
   gem 'fixture_builder'
