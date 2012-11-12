@@ -77,17 +77,27 @@ GEM
       orm_adapter (~> 0.0.3)
       railties (~> 3.1)
       warden (~> 1.1.1)
+    diff-lcs (1.1.3)
     erubis (2.7.0)
     exception_notification (2.6.1)
       actionmailer (>= 3.0.4)
     excon (0.13.4)
     execjs (1.3.0)
       multi_json (~> 1.0)
+    factory_girl (4.1.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.1.0)
+      factory_girl (~> 4.1.0)
+      railties (>= 3.0.0)
     fancybox-rails (0.1.4)
       railties (>= 3.1.0)
     faraday (0.8.0)
       multipart-post (~> 1.1)
     fastercsv (1.5.4)
+    ffaker (1.15.0)
+    fixture_builder (0.3.4)
+      activerecord (>= 2)
+      activesupport (>= 2)
     fog (1.3.1)
       builder
       excon (~> 0.13.0)
@@ -212,6 +222,19 @@ GEM
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rmagick (2.13.1)
+    rspec (2.11.0)
+      rspec-core (~> 2.11.0)
+      rspec-expectations (~> 2.11.0)
+      rspec-mocks (~> 2.11.0)
+    rspec-core (2.11.1)
+    rspec-expectations (2.11.3)
+      diff-lcs (~> 1.1.3)
+    rspec-mocks (2.11.3)
+    rspec-rails (2.11.4)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec (~> 2.11.0)
     ruby-debug-base19 (0.11.25)
       columnize (>= 0.3.1)
       linecache19 (>= 0.5.11)
@@ -235,6 +258,12 @@ GEM
       json
       json
     sequel (3.20.0)
+    shoulda (3.3.2)
+      shoulda-context (~> 1.0.1)
+      shoulda-matchers (~> 1.4.1)
+    shoulda-context (1.0.1)
+    shoulda-matchers (1.4.1)
+      activesupport (>= 3.0.0)
     sinatra (1.0)
       rack (>= 1.0)
     sprockets (2.1.3)
@@ -272,7 +301,10 @@ DEPENDENCIES
   country-select (~> 1.1.1)
   devise
   exception_notification
+  factory_girl_rails
   fancybox-rails
+  ffaker
+  fixture_builder
   fog
   formtastic (~> 2.1.1)
   haml-rails
@@ -285,10 +317,12 @@ DEPENDENCIES
   pg
   rails (= 3.2.3)
   rmagick
+  rspec-rails
   ruby-debug19
   s3_direct_rails
   sass-rails (~> 3.2.3)
   sendgrid
+  shoulda
   sqlite3
   taps
   uglifier (>= 1.0.3)

@@ -28,9 +28,14 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'ffaker'
+  gem 'fixture_builder'
   gem 'heroku'
   gem 'heroku_san'
   gem 'taps'
   gem 'ruby-debug19'
+  gem 'rspec-rails'
+  gem 'shoulda'
   gem 'sqlite3'
 end
