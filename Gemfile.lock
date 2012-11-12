@@ -55,9 +55,18 @@ GEM
     builder (3.0.4)
     bullet (4.2.0)
       uniform_notifier
+    capybara (1.1.3)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      selenium-webdriver (~> 2.0)
+      xpath (~> 0.1.4)
     carrierwave (0.6.2)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
+    childprocess (0.3.6)
+      ffi (~> 1.0, >= 1.0.6)
     chunky_png (1.2.5)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -97,6 +106,7 @@ GEM
       multipart-post (~> 1.1)
     fastercsv (1.5.4)
     ffaker (1.15.0)
+    ffi (1.1.5)
     fixture_builder (0.3.4)
       activerecord (>= 2)
       activesupport (>= 2)
@@ -151,6 +161,8 @@ GEM
       railties (>= 3.0.0)
     launchy (2.1.2)
       addressable (~> 2.3)
+    libwebsocket (0.1.5)
+      addressable
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
     mail (2.4.4)
@@ -256,6 +268,11 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    selenium-webdriver (2.26.0)
+      childprocess (>= 0.2.5)
+      libwebsocket (~> 0.1.3)
+      multi_json (~> 1.0)
+      rubyzip
     sendgrid (1.0.1)
       json
       json
@@ -291,6 +308,8 @@ GEM
     warden (1.1.1)
       rack (>= 1.0)
     xml-simple (1.1.1)
+    xpath (0.1.4)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
@@ -299,6 +318,7 @@ DEPENDENCIES
   activeadmin (~> 0.4.3)
   ayah_integration
   bullet
+  capybara
   carrierwave
   coffee-rails (~> 3.2.1)
   compass-rails

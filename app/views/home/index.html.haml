@@ -1,0 +1,12 @@
+%ul.entries
+  - @entries.each do |entry|
+    %li
+      = image_tag entry.profile_photo.url(:medium)
+      %div
+        %h3= entry.community_name
+        %dl
+          %dt Genre
+          %dd= entry.genre
+          %dt Hometown
+          %dd= entry.hometown
+        %p= entry.bio

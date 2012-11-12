@@ -11,6 +11,8 @@ class Entry < ActiveRecord::Base
   ARTIST_TYPES = %w{Group Singer}
   ENTRY_TYPES = %w{Original Cover}
 
+  mount_uploader :profile_photo, ProfilePhotoUploader
+
   with_options :if => :active? do |u|
     u.validates_presence_of :artist_type
     u.validates_presence_of :genre

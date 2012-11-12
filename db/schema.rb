@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120522070048) do
+ActiveRecord::Schema.define(:version => 20121112182748) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -65,6 +65,9 @@ ActiveRecord::Schema.define(:version => 20120522070048) do
     t.string   "youtube_url"
     t.string   "genre"
     t.string   "source"
+    t.string   "hometown"
+    t.text     "bio"
+    t.string   "profile_photo"
   end
 
   add_index "entries", ["contest_id"], :name => "index_entries_on_contest_id"
