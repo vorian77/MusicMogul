@@ -25,3 +25,4 @@
 
 .rvmrc
 config/database.yml
+.idea
