@@ -28,7 +28,9 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'ruby-debug19'
+  gem 'heroku'
+  gem 'heroku_san'
   gem 'taps'
+  gem 'ruby-debug19'
   gem 'sqlite3'
 end

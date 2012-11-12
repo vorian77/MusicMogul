@@ -39,6 +39,7 @@ GEM
     activesupport (3.2.3)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    addressable (2.3.2)
     archive-tar-minitar (0.5.2)
     arel (3.0.2)
     aws-s3 (0.6.2)
@@ -109,6 +110,18 @@ GEM
       railties (~> 3.0)
     has_scope (0.5.1)
     hashie (1.2.0)
+    heroku (2.26.3)
+      heroku-api (~> 0.2.1)
+      launchy (>= 0.3.2)
+      netrc (~> 0.7.2)
+      rest-client (~> 1.6.1)
+      rubyzip
+    heroku-api (0.2.1)
+      excon (~> 0.13.3)
+    heroku_san (4.0.1)
+      activesupport
+      heroku-api (>= 0.1.2)
+      rake
     hike (1.2.1)
     httpauth (0.1)
     i18n (0.6.0)
@@ -124,6 +137,8 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
+    launchy (2.1.2)
+      addressable (~> 2.3)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
     mail (2.4.4)
@@ -141,6 +156,7 @@ GEM
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.3.0)
+    netrc (0.7.7)
     nokogiri (1.5.2)
     oauth (0.4.6)
     oauth2 (0.6.1)
@@ -207,6 +223,7 @@ GEM
     ruby-hmac (0.4.0)
     ruby_core_source (0.1.5)
       archive-tar-minitar (>= 0.5.2)
+    rubyzip (0.9.9)
     s3_direct_rails (0.1.1)
       aws-s3
     sass (3.1.15)
@@ -259,6 +276,8 @@ DEPENDENCIES
   fog
   formtastic (~> 2.1.1)
   haml-rails
+  heroku
+  heroku_san
   jquery-rails
   mime-types
   omniauth-facebook
