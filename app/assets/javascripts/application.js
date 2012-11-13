@@ -29,3 +29,4 @@
 //= require uploads
 //= require youtube
 //= require sliders
+//= require follows

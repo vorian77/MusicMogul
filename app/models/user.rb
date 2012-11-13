@@ -48,6 +48,7 @@ class User < ActiveRecord::Base
   mount_uploader :profile_photo_square, SquareProfilePhotoUploader
 
   has_many :entries
+  has_many :follows, dependent: :destroy
   has_many :judgings, dependent: :destroy
 
   accepts_nested_attributes_for :entries, :judgings
@@ -63,8 +64,12 @@ class User < ActiveRecord::Base
     self.profile_name.presence || self.email
   end
 
+  def follows?(entry)
+    follows.where(entry_id: entry.id).count > 0
+  end
+
   def has_evaluated?(entry)
-    judgings.where(entry_id: entry).count > 0
+    judgings.where(entry_id: entry.id).count > 0
   end
 
   def name

@@ -21,6 +21,7 @@ Mvp2::Application.routes.draw do
 
   resources :entries, only: [:show] do
     resources :judgings, only: [:create]
+    resource :follows, only: [:create, :destroy]
   end
 
   match 'video' => 'home#video', :as => :home_video
