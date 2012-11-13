@@ -1,0 +1,22 @@
+%ul.entries
+  - entries.each do |entry|
+    %li[entry]
+      = image_tag entry.profile_photo.url(:medium)
+      %div
+        %h3
+          - if user_signed_in?
+            = link_to entry.community_name, entry
+          - else
+            = entry.community_name
+        %dl
+          %dt Genre
+          %dd= entry.genre
+          %dt Hometown
+          %dd= entry.hometown
+        %p= entry.bio
+
+        - if user_signed_in?
+          - if current_user.follows?(entry)
+            = button_to "Following", entry_follows_path(entry), method: :delete, remote: true, form_class: "follow"
+          - else
+            = button_to "Follow", entry_follows_path(entry), method: :post, remote: true, form_class: "follow"

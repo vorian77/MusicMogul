@@ -51,6 +51,8 @@ class User < ActiveRecord::Base
   has_many :follows, dependent: :destroy
   has_many :judgings, dependent: :destroy
 
+  has_many :followed_entries, through: :follows, source: :entry
+
   accepts_nested_attributes_for :entries, :judgings
 
   before_save :parse_account_type, :if => :account_type

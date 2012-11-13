@@ -41,4 +41,23 @@ feature "follows" do
       end
     end
   end
+
+  scenario "user views follows" do
+    user = users(:confirmed_user)
+    login_as user, scope: :user
+
+    visit root_path
+    click_link "Following"
+    current_path.should == follows_path
+
+    Entry.find_each do |entry|
+      page.should have_no_content entry.community_name
+    end
+
+    entry = Entry.first
+    FactoryGirl.create(:follow, user: user, entry: entry)
+
+    visit follows_path
+    page.should have_content entry.community_name
+  end
 end

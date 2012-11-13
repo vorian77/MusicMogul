@@ -1,6 +1,10 @@
 class FollowsController < ApplicationController
   before_filter :authenticate_user!
 
+  def index
+    @entries = current_user.followed_entries.order("random()")
+  end
+
   def create
     current_user.follows.create(entry_id: params[:entry_id])
     render nothing: true
