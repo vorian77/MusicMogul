@@ -1,2 +1,37 @@
 %h1 #{@entry.community_name} - #{@entry.song_title}
 %div{"data-youtube-id" => @entry.youtube_id, id: "video_#{@entry.id}"}
+
+- if current_user.has_evaluated?(@entry)
+  #rank
+    Rank #{@entry.rank}
+  #points
+    Points #{@entry.points}
+  %table#evaluations
+    %thead
+      %tr
+        %th Evaluations
+        %th Me
+        %th Community
+      %tr
+        %td Music
+        %td #{@judging.music_score}
+        %td #{number_with_precision @entry.overall_music_score, precision: 2}
+      %tr
+        %td Vocals
+        %td #{@judging.vocals_score}
+        %td #{number_with_precision @entry.overall_vocals_score, precision: 2}
+      %tr
+        %td Presentation
+        %td #{@judging.presentation_score}
+        %td #{number_with_precision @entry.overall_presentation_score, precision: 2}
+
+  %ul.comments
+    - @entry.judgings.order("created_at desc").each do |judging|
+      %li= judging.comment
+- else
+  = simple_form_for [@entry, @judging] do |f|
+    = f.input :music_score, as: :slider
+    = f.input :vocals_score, as: :slider
+    = f.input :presentation_score, as: :slider
+    = f.input :comment
+    = f.submit

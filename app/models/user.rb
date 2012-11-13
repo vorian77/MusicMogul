@@ -62,7 +62,11 @@ class User < ActiveRecord::Base
   def display_name
     self.profile_name.presence || self.email
   end
- 
+
+  def has_evaluated?(entry)
+    judgings.where(entry_id: entry).count > 0
+  end
+
   def name
     [first_name, last_name].join(' ')
   end

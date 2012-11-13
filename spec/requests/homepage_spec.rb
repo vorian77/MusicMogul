@@ -27,8 +27,9 @@ feature "homepage" do
   end
 
   scenario "user views audition progress bar" do
-    user = users(:confirmed_user)
+    Judging.destroy_all
 
+    user = users(:confirmed_user)
     login_as(user, scope: :user)
 
     visit root_path

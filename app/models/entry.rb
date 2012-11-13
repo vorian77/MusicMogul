@@ -1,7 +1,10 @@
 class Entry < ActiveRecord::Base
   belongs_to :contest
   belongs_to :user
-  
+  has_many :judgings, dependent: :destroy
+
+  validates :points, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
   attr_accessor :remove_performance_video
 
   attr_accessible :active, :artist_type, :genre, :community_name, :audition_type,
@@ -41,6 +44,22 @@ class Entry < ActiveRecord::Base
     end
   end
 
+  def overall_music_score
+    judgings.sum(:music_score) / judgings.count.to_f
+  end
+
+  def overall_vocals_score
+    judgings.sum(:vocals_score) / judgings.count.to_f
+  end
+
+  def overall_presentation_score
+    judgings.sum(:presentation_score) / judgings.count.to_f
+  end
+
+  def rank
+    self.class.order("points desc").index(self) + 1
+  end
+
   def source
     if audition_type == 'Cover'
       'Youtube'
@@ -52,6 +71,7 @@ class Entry < ActiveRecord::Base
   end
 
   def youtube_id
+    return unless youtube_url?
     youtube_url.scan(/\?v=(.*)/).flatten.first
   end
 end

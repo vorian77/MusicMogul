@@ -19,7 +19,9 @@ Mvp2::Application.routes.draw do
   resources :contacts, :only => :create
   resources :previews, :only => [:index, :show]
 
-  resources :entries, only: [:show]
+  resources :entries, only: [:show] do
+    resources :judgings, only: [:create]
+  end
 
   match 'video' => 'home#video', :as => :home_video
  

@@ -19,6 +19,7 @@ gem 'formtastic', '~> 2.1.1'
 gem 'activeadmin', "~> 0.4.3"
 gem 'ayah_integration'
 gem 'mime-types', :require => 'mime/types'
+gem 'simple_form'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -30,6 +31,7 @@ end
 group :development, :test do
   gem 'bullet'
   gem 'capybara'
+  gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'ffaker'
   gem 'fixture_builder'

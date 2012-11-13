@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require jquery.Jcrop
 //= require jquery.fancybox
 //= require jquery.easytabs
@@ -27,3 +28,4 @@
 //= require main
 //= require uploads
 //= require youtube
+//= require sliders
