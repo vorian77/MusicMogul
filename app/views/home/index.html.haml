@@ -3,7 +3,11 @@
     %li
       = image_tag entry.profile_photo.url(:medium)
       %div
-        %h3= entry.community_name
+        %h3
+          - if user_signed_in?
+            = link_to entry.community_name, entry
+          - else
+            = entry.community_name
         %dl
           %dt Genre
           %dd= entry.genre

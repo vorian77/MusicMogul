@@ -19,6 +19,8 @@ Mvp2::Application.routes.draw do
   resources :contacts, :only => :create
   resources :previews, :only => [:index, :show]
 
+  resources :entries, only: [:show]
+
   match 'video' => 'home#video', :as => :home_video
  
   get '/upload' => 'users#upload', :as => :upload

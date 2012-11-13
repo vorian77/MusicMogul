@@ -26,3 +26,4 @@
 .rvmrc
 config/database.yml
 .idea
+spec/fixtures

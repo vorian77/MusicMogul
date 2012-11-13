@@ -26,3 +26,4 @@
 //= require jquery.main
 //= require main
 //= require uploads
+//= require youtube

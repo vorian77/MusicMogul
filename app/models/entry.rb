@@ -51,4 +51,7 @@ class Entry < ActiveRecord::Base
     end
   end
 
+  def youtube_id
+    youtube_url.scan(/\?v=(.*)/).flatten.first
+  end
 end

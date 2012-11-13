@@ -38,6 +38,7 @@ group :development, :test do
   gem 'taps'
   gem 'ruby-debug19'
   gem 'rspec-rails'
+  gem 'poltergeist'
   gem 'shoulda'
   gem 'sqlite3'
 end
