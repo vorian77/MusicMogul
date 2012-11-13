@@ -1,5 +1,6 @@
 class Judging < ActiveRecord::Base
   belongs_to :contest
+  belongs_to :entry
   belongs_to :user
 
   attr_accessible :active, :genres_array

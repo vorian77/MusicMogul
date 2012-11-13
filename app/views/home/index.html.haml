@@ -1,3 +1,12 @@
+- if user_signed_in?
+  %div.audition_progress
+    %ul
+      %li Contestants #{Entry.count}
+      %li # Evaluated #{current_user.judgings.count}
+      %li % Evaluated #{percentage_evaluated(current_user)}
+    %div.bar_container
+      %div.bar_progress{style: "width: #{percentage_evaluated(current_user)};"}
+
 %ul.entries
   - @entries.each do |entry|
     %li

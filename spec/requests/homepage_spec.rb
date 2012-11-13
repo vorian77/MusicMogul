@@ -18,11 +18,35 @@ feature "homepage" do
   scenario "user views homepage", js: true do
     user = users(:confirmed_user)
 
-    login_as user
+    sign_in_as user
 
     Entry.count.should > 0
     Entry.find_each do |entry|
       page.should have_content entry.community_name
+    end
+  end
+
+  scenario "user views audition progress bar" do
+    user = users(:confirmed_user)
+
+    login_as(user, scope: :user)
+
+    visit root_path
+
+    within "div.audition_progress" do
+      page.should have_content "Contestants 3"
+      page.should have_content "# Evaluated 0"
+      page.should have_content "% Evaluated 0"
+    end
+
+    FactoryGirl.create(:judging, entry: Entry.first, user: user)
+
+    visit root_path
+
+    within "div.audition_progress" do
+      page.should have_content "Contestants 3"
+      page.should have_content "# Evaluated 1"
+      page.should have_content "% Evaluated 33"
     end
   end
 end

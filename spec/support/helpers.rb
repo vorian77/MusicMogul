@@ -1,5 +1,5 @@
 module HelperMethods
-  def login_as(user)
+  def sign_in_as(user)
     visit root_path
 
     within "ul.log-in-nav" do

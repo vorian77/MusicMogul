@@ -6,6 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.create(email: "test@fanhelp.us",
+            password: "password",
+            confirmed_at: Date.today)
+
 Entry.create(community_name: "The Doors",
              hometown: "Los Angeles",
              genre: "Rock",

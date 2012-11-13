@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121112182748) do
+ActiveRecord::Schema.define(:version => 20121113151618) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -80,9 +80,11 @@ ActiveRecord::Schema.define(:version => 20121112182748) do
     t.datetime "updated_at",                    :null => false
     t.boolean  "active",     :default => false, :null => false
     t.string   "genres"
+    t.integer  "entry_id"
   end
 
   add_index "judgings", ["contest_id"], :name => "index_judgings_on_contest_id"
+  add_index "judgings", ["entry_id"], :name => "index_judgings_on_entry_id"
   add_index "judgings", ["user_id"], :name => "index_judgings_on_user_id"
 
   create_table "users", :force => true do |t|

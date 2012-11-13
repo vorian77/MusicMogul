@@ -379,3 +379,14 @@ form.signup-form, form.login-form {
     }
   }
 }
+
+div.audition_progress {
+  div.bar_container {
+    height: 25px;
+    border: 1px solid black;
+    div.bar_progress {
+      background-color: #8b0000;
+      height: 100%;
+    }
+  }
+}

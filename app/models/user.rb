@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
     :thumb_y, :thumb_w, :account_type, :judgings_attributes, :source,
     :entries_attributes, :genre, :youtube, :current_tab, :gender,
     :remove_profile_video, :thumb_x, :thumb_y, :thumb_w, :youtube_url,
-    :changing_password
+    :changing_password, :confirmed_at
 
   attr_accessor :account_type, :current_tab
   attr_accessor :remove_profile_video
@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   mount_uploader :profile_photo_square, SquareProfilePhotoUploader
 
   has_many :entries
-  has_many :judgings
+  has_many :judgings, dependent: :destroy
 
   accepts_nested_attributes_for :entries, :judgings
 
