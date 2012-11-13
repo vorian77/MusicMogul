@@ -116,6 +116,10 @@
       </div>
     </div>
     <div id="main">
+      <% if user_signed_in? %>
+        <%= link_to_unless_current "Auditions", root_path %>
+        <%= link_to_unless_current "Following", follows_path %>
+      <% end %>
       <%= yield %>
     </div>
   </div>

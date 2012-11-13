@@ -17,6 +17,11 @@ class Entry < ActiveRecord::Base
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
+  scope :unevaluated_by, lambda { |user|
+    joins("LEFT OUTER JOIN judgings on entries.id = judgings.entry_id AND judgings.user_id = #{user.id}").
+        where("judgings.entry_id IS NULL", user.id)
+  }
+
   with_options :if => :active? do |u|
     u.validates_presence_of :artist_type
     u.validates_presence_of :genre

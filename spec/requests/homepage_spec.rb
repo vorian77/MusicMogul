@@ -20,8 +20,8 @@ feature "homepage" do
 
     sign_in_as user
 
-    Entry.count.should > 0
-    Entry.find_each do |entry|
+    Entry.unevaluated_by(user).count.should > 0
+    Entry.unevaluated_by(user).find_each do |entry|
       page.should have_content entry.community_name
     end
   end

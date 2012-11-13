@@ -19,6 +19,8 @@ Mvp2::Application.routes.draw do
   resources :contacts, :only => :create
   resources :previews, :only => [:index, :show]
 
+  resources :follows, only: [:index]
+
   resources :entries, only: [:show] do
     resources :judgings, only: [:create]
     resource :follows, only: [:create, :destroy]
