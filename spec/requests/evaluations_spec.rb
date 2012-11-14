@@ -25,6 +25,10 @@ feature "evaluations" do
     within("table#evaluations") do
       page.should have_content "1"
     end
-    within("ul.comments") { page.should have_content comment }
+
+    within("ul.evaluations") do
+      page.should have_content user.name
+      page.should have_content comment
+    end
   end
 end

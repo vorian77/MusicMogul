@@ -31,6 +31,16 @@ describe User do
     end
   end
 
+  describe "#average_judging_score" do
+    subject { user.average_judging_score }
+    let(:user) { User.first }
+
+    context "when the user has no judgings" do
+      before { user.judgings.destroy_all }
+      it { should == 0 }
+    end
+  end
+
   describe "#has_evaluated?" do
     subject { user.has_evaluated?(entry) }
     let(:user) { User.first }

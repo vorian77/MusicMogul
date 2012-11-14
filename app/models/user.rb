@@ -62,6 +62,11 @@ class User < ActiveRecord::Base
 
   validate :ensure_birth_date_is_at_13_years_ago
 
+  def average_judging_score
+    return 0 unless judgings.present?
+    judgings.sum(:overall_score) / judgings.count.to_f
+  end
+
   def display_name
     self.profile_name.presence || self.email
   end
