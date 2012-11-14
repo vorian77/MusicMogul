@@ -1,6 +1,10 @@
 %ul.entries
   - entries.each do |entry|
     %li[entry]
+      - if controller.action_name == "leaderboard"
+        %div
+          #rank Rank #{entry.rank}
+          #points #{pluralize(entry.points, "point")}
       = image_tag entry.profile_photo.url(:medium)
       %div
         %h3

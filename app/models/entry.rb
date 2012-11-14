@@ -3,15 +3,15 @@ class Entry < ActiveRecord::Base
   belongs_to :user
   has_many :judgings, dependent: :destroy
 
-  validates :points, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :points, numericality: {only_integer: true, greater_than_or_equal_to: 0}
 
   attr_accessor :remove_performance_video
 
   attr_accessible :active, :artist_type, :genre, :community_name, :audition_type,
-    :song_title, :written_by, :gift_name, :gift_description, :gift_value,
-    :kickstarter, :pledgemusic, :remove_performance_video, :youtube_url, :source,
-    :hometown, :bio
-  
+                  :song_title, :written_by, :gift_name, :gift_description, :gift_value,
+                  :kickstarter, :pledgemusic, :remove_performance_video, :youtube_url, :source,
+                  :hometown, :bio
+
   ARTIST_TYPES = %w{Group Singer}
   ENTRY_TYPES = %w{Original Cover}
 
@@ -62,7 +62,7 @@ class Entry < ActiveRecord::Base
   end
 
   def rank
-    self.class.order("points desc").index(self) + 1
+    self.class.uniq.order("points desc").pluck(:points).index(self.points) + 1
   end
 
   def source

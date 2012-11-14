@@ -26,6 +26,8 @@ Mvp2::Application.routes.draw do
     resource :follows, only: [:create, :destroy]
   end
 
+  match "leaderboard" => "entries#leaderboard", as: :leaderboard
+
   match 'video' => 'home#video', :as => :home_video
  
   get '/upload' => 'users#upload', :as => :upload
