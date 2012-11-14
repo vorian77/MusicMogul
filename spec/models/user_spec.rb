@@ -8,6 +8,29 @@ describe User do
     it { should have_many(:followed_entries).through(:follows) }
   end
 
+  describe "validations" do
+    describe "birth date" do
+      context "when it is nil" do
+        it "should be valid" do
+          FactoryGirl.build(:user, birth_date: nil).should be_valid
+        end
+      end
+
+      context "when it is present" do
+        context "and at least 13 years ago"
+        it "should be valid" do
+          FactoryGirl.build(:user, birth_date: 13.years.ago).should be_valid
+        end
+
+        context "and less than the 13 years ago" do
+          it "should be valid" do
+            FactoryGirl.build(:user, birth_date: 12.years.ago).should_not be_valid
+          end
+        end
+      end
+    end
+  end
+
   describe "#has_evaluated?" do
     subject { user.has_evaluated?(entry) }
     let(:user) { User.first }

@@ -1,60 +1,49 @@
-<div class="breadcrumbs-holder">
-  <ul id="breadcrumbs">
-    <li><a class="home" href="<%= root_path %>"><span>Home</span></a></li>
-    <li><span>My Account</span></li>
-  </ul>
-</div>
-<div class="profile-box">
-  <h2>My account</h2>
-  <div class="tabs-holder">
-    <ul class="tabset">
-      <li><a href="#details" class="tab"><span class="tab-details">Account Details</span></a></li>
-      <li><a href="#profile" class="tab"><span class="tab-profile">Public Profile</span></a></li>
-      <li><a href="#judge" class="tab"><span class="tab-judge">Judge</span></a></li>
-      <li><a href="#contestant" class="tab"><span class="tab-contestant">Contestant</span></a></li>
-    </ul>
-    <div class="tab-content" id="details">
-      <div class="tab-holder">
-        <div class="tab-frame">
-          <div class="messages"></div>
-          <%= semantic_form_for current_user, :url => account_path(:anchor => 'details', :format => :json), :remote => true do |f| %>
-            <%= f.inputs :class => 'profile-form' do %>
-              <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'details' } %>
-              <div class="title-row">
-                <h3>Private account settings</h3>
-                <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save' %></div>
-              </div>
-              <div class="text-box">
-                <p>This information is not shown anywhere on the site.</p>
-              </div>
-              <%= f.input :email, :label => "Email*", :hint => 'A confirmation email will be sent if changed' %>
-              <%= f.input :password %>
-              <%= f.input :birth_year %>
-              <li class="select input optional" id="user_country_input">
-                <label class="label" for="user_country"><%= User.human_attribute_name(:country) %></label>
-                <%= country_select('user','country', ['United States','Canada','Mexico','United Kingdom']) %>
-              </li>
-              <%= f.input :zip %>
-              <%= f.input :gender, :as => :radio, :collection => ['Male','Female'] %>
-              <div class="submit-row">
-                <%= f.actions :class => 'submit-holder' do %>
-                  <%= f.submit 'Save', :class => 'button-save' %>
-                <% end %>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
+<h2>My account</h2>
+
+<div class="tabs-holder">
+<ul class="tabset">
+  <li><a href="#details" class="tab"><span class="tab-details">Account Details</span></a></li>
+  <li><a href="#profile" class="tab"><span class="tab-profile">Public Profile</span></a></li>
+  <li><a href="#judge" class="tab"><span class="tab-judge">Judge</span></a></li>
+  <li><a href="#contestant" class="tab"><span class="tab-contestant">Contestant</span></a></li>
+</ul>
+<div class="tab-content" id="details">
+  <div class="tab-holder">
+    <div class="tab-frame">
+      <div class="messages"></div>
+      <%= simple_form_for @user, :url => account_path do |f| %>
+          <%= f.input :current_tab, :as => :hidden, :input_html => {:value => 'details'} %>
+          <div class="title-row">
+            <h3>Private account settings</h3>
+            <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save' %></div>
+          </div>
+          <div class="text-box">
+            <p>This information is not shown anywhere on the site.</p>
+          </div>
+          <%= f.input :email, label: "Email*", hint: 'A confirmation email will be sent if changed' %>
+          <%= f.input :password %>
+          <%= f.input :password_confirmation %>
+          <%= f.input :birth_date, start_year: Date.today.year - 100, end_year: Date.today.year - 13, order: [:month, :day, :year], include_blank: true %>
+          <%= f.input :gender, as: :radio_buttons, collection: ['Male', 'Female'] %>
+          <%= f.input :show_explicit_videos %>
+          <%= f.input :receive_email_updates %>
+          <div class="submit-row">
+            <%= f.submit 'Save', :class => 'button-save' %>
+          </div>
+      <% end %>
     </div>
-    <div class="tab-content" id="profile">
-      <div class="tab-holder">
-        <div class="tab-frame">
-          <div class="messages"></div>
-          <%= semantic_form_for current_user, :url => account_path(:anchor => 'profile', :format => :json), :remote => true do |f| %>
-            <%= f.inputs :class => 'profile-form' do %>
-              <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'profile' } %>
+  </div>
+</div>
+<div class="tab-content" id="profile">
+  <div class="tab-holder">
+    <div class="tab-frame">
+      <div class="messages"></div>
+      <%= semantic_form_for current_user, :url => account_path(:anchor => 'profile', :format => :json), :remote => true do |f| %>
+          <%= f.inputs :class => 'profile-form' do %>
+              <%= f.input :current_tab, :as => :hidden, :input_html => {:value => 'profile'} %>
               <div class="title-row">
                 <h3>Public account settings</h3>
+
                 <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save' %></div>
               </div>
               <div class="text-box">
@@ -62,14 +51,15 @@
               </div>
               <%= f.input :profile_name %>
               <%= f.input :hometown %>
-              <%= f.input :bio, :as => :text, :input_html => { :rows => 6 } %>
+              <%= f.input :bio, :as => :text, :input_html => {:rows => 6} %>
               <div class="picture-box profile-photo-square-input <%= current_user.profile_photo_square? ? 'uploaded-file' : 'no-file' %>">
                 <h4>Profile Picture</h4>
+
                 <div class="holderz">
                   <div class="picture-holder">
                     <div class="profile-photo-box">
                       <% if current_user.profile_photo_square.present? %>
-                        <%= image_tag current_user.profile_photo_square.cropped, :width => '240', :height => '240', :class => 'profile-photo-square' %>
+                          <%= image_tag current_user.profile_photo_square.cropped, :width => '240', :height => '240', :class => 'profile-photo-square' %>
                       <% end %>
                       <a href="#edit-thumbnail" class="lightbox crop" id="edit-thumbnail-button">Click to crop photo</a>
                       <span class="crop-processing" id="edit-thumbnail-processing">Processing...</span>
@@ -96,39 +86,41 @@
               <div class="video-box profile-video-input <%= current_user.profile_video_status %>">
                 <h4>Profile Video</h4>
                 <%#= f.input :source, :as => :select, :collection => ['Youtube','Upload'], :input_html => { :class => 'source' } %>
-                <%= f.input :source, :as => :hidden, :input_html => { :value => 'Youtube' } %>
+                <%= f.input :source, :as => :hidden, :input_html => {:value => 'Youtube'} %>
                 <%= f.input :youtube_url %>
-                <% if false # Ugly, but I don't want some other developer to spend time re-implementing this, not realizing it's been done and in the git history, when they want video uploads back %>
-                  <div class="holder">
-                    <div class="picture-holder">
-                      <div class="video-holder">
-                        <video class="video-js vjs-default-skin" controls preload="auto" width="242" height="148" data-setup="{}">
-                        <% if current_user.profile_video.present? %>
-                          <source src="https://s3.amazonaws.com/fanhelp.mvp/<%= current_user.profile_video %>" type="<%= type_from_path(current_user.profile_video) %>">
-                        <% end %>
-                        </video>
+                <% if false # Ugly, but I don't want some other developer to spend time re-implementing this, not realizing it's been done and in the git history, when they want video uploads back   %>
+                    <div class="holder">
+                      <div class="picture-holder">
+                        <div class="video-holder">
+                          <video class="video-js vjs-default-skin" controls preload="auto" width="242" height="148" data-setup="{}">
+                            <% if current_user.profile_video.present? %>
+                                <source src="https://s3.amazonaws.com/fanhelp.mvp/<%= current_user.profile_video %>" type="<%= type_from_path(current_user.profile_video) %>">
+                            <% end %>
+                          </video>
+                        </div>
+                        <div class="placeholder"></div>
                       </div>
-                      <div class="placeholder"></div>
-                    </div>
-                    <div class="file-box">
-                      <div class="file-row">
-                        <div class="uploader" data-s3-bucket="<%= S3DirectRails.s3_uploader_bucket %>">
-                          <%= s3_uploader(:uploaded_files_path => "uploads/user/profile_video/#{current_user.id}", :create_resource_url => account_profile_video_path, :uploader_id => '.profile-video-input') %>
-                          <div class="instructions">
-                            <p>You can upload a MPEG, FLV or MOV file that is no larger than 5GB.</p>
-                            <p>(Do not upload video containing celebrities, nudity, artwork, images or video that you do not own or represent the copyright for.)
-                          </div>
-                          <div class="file-uploading">
-                            <div class="progress"></div>
-                            <div class="spinner"></div>
+                      <div class="file-box">
+                        <div class="file-row">
+                          <div class="uploader" data-s3-bucket="<%= S3DirectRails.s3_uploader_bucket %>">
+                            <%= s3_uploader(:uploaded_files_path => "uploads/user/profile_video/#{current_user.id}", :create_resource_url => account_profile_video_path, :uploader_id => '.profile-video-input') %>
+                            <div class="instructions">
+                              <p>You can upload a MPEG, FLV or MOV file that is no larger than 5GB.</p>
+
+                              <p>(Do not upload video containing celebrities, nudity, artwork, images or video that you
+                                do not own or represent the copyright for.)
+                            </div>
+                            <div class="file-uploading">
+                              <div class="progress"></div>
+                              <div class="spinner"></div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="remove-file">
-                        <%= link_to 'Delete current video', remove_profile_video_path, :remote => true, :method => :delete, :confirm => 'Are you sure?', :class => 'btn-delete' %>
+                        <div class="remove-file">
+                          <%= link_to 'Delete current video', remove_profile_video_path, :remote => true, :method => :delete, :confirm => 'Are you sure?', :class => 'btn-delete' %>
+                        </div>
                       </div>
                     </div>
-                  </div>
                 <% end %>
               </div>
               <div class="social-box">
@@ -139,136 +131,143 @@
               </div>
               <div class="submit-row">
                 <%= f.actions :class => 'submit-holder' do %>
-                  <%= f.submit 'Save', :class => 'button-save' %>
+                    <%= f.submit 'Save', :class => 'button-save' %>
                 <% end %>
               </div>
-            <% end %>
           <% end %>
-        </div>
-      </div>
+      <% end %>
     </div>
-    <div class="tab-content" id="judge">
-      <div class="tab-holder">
-        <div class="tab-frame">
-          <div class="messages"></div>
-          <%= semantic_form_for current_user, :url => account_path(:anchor => 'judge', :format => :json), :remote => true do |f| %>
-            <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'judge' } %>
-            <div class="title-row title-row-2">
-              <h3>Judge</h3>
-              <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save' %></div>
-            </div>
-            <%= f.semantic_fields_for :judgings, current_user.judging do |judging| %>
-              <%= f.inputs :class => 'judge-form' do %>
-                <%= judging.input :active, :as => :radio, :collection => [['Yes',true],['No',false]], :wrapper_html => { :class => 'radio-row judging-active' } %>
-                <div class="checkbox-row active-judge-fields"><%= judging.input :genres_array, :as => :check_boxes, :collection => Contest::GENRES, :wrapper_html => { :class => 'checkbox-holder' } %></div>
-                <div class="submit-row">
-                  <%= f.actions :class => 'submit-holder' do %>
-                    <%= f.submit 'Save', :class => 'button-save' %>
-                  <% end %>
-                </div>
-              <% end %>
-            <% end %>
+  </div>
+</div>
+<div class="tab-content" id="judge">
+  <div class="tab-holder">
+    <div class="tab-frame">
+      <div class="messages"></div>
+      <%= semantic_form_for current_user, :url => account_path(:anchor => 'judge', :format => :json), :remote => true do |f| %>
+          <%= f.input :current_tab, :as => :hidden, :input_html => {:value => 'judge'} %>
+          <div class="title-row title-row-2">
+            <h3>Judge</h3>
+
+            <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save' %></div>
           </div>
-        <% end %>
-      </div>
-    </div>
-    <div class="tab-content" id="contestant">
-      <div class="tab-holder">
-        <div class="tab-frame">
-          <div class="messages"></div>
-          <%= semantic_form_for current_user, :url => account_path(:anchor => 'contestant', :format => :json), :remote => true do |f| %>
-            <%= f.input :current_tab, :as => :hidden, :input_html => { :value => 'contestants' } %>
-            <div class="title-row title-row-2">
-              <h3>Contestant</h3>
-              <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save' %></div>
-            </div>
-            <%= f.semantic_fields_for :entries, current_user.entry do |entry| %>
-              <%= f.inputs :class => 'contestant-form' do %>
-                <%= entry.input :active, :as => :radio, :collection => [['Yes',true],['No',false]], :wrapper_html => { :class => 'radio-row contestant-active' } %>
-                <div class="active-contestant-fields">
-                  <div class="form-box">
-                    <%= entry.input :artist_type, :as => :select, :collection => Entry::ARTIST_TYPES, :include_blank => false, :input_html => { :class => 'select-2' } %>
-                    <div class="genres-row checkbox-row">
-                      <%= entry.input :genre, :as => :select, :collection => Contest::GENRES %>
-                      <div id="genres-confirm-text">
-                        <strong>Note:</strong> It's ok to compete in multiple genres. We encourage it because it allows you more exposure and financial opportunities. However, know that <strong>each genre is a separate contest</strong>. Each week you'll have to submit a performance video for each genre.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="audition-box">
-                    <h4>Preview Performance (will not be judged)</h4>
-                    <%= entry.input :song_title %>
-                    <%= entry.input :audition_type, :as => :select, :collection => Entry::ENTRY_TYPES, :wrapper_html => { :class => 'song-type-input' }, :input_html => { :class => 'select-2 song-type' } %>
-                    <%#= entry.input :source, :collection => ['Upload','Youtube'], :input_html => { :class => 'performance-video-source' }, :wrapper_html => { :class => 'source-input' } %>
-                    <%= entry.input :source, :as => 'hidden', :input_html => { :value => 'Youtube' } %>
-                    <%= entry.input :youtube_url, :wrapper_html => { :class => 'youtube-url-input' } %>
-                    <% if false # Same as above %>
-                      <div class="video-box performance-video-input <%= current_user.entry.performance_video_status %>">
-                        <div class="picture-holder">
-                          <div class="video-holder">
-                            <video class="video-js vjs-default-skin" controls preload="auto" width="242" height="148" data-setup="{}">
-                            <% if current_user.entry.performance_video? %>
-                              <source src="https://s3.amazonaws.com/fanhelp.mvp/<%= current_user.entry.performance_video %>" type="video/mp4">
-                            <% end %>
-                            </video>
-                          </div>
-                          <div class="placeholder"></div>
-                        </div>
-                        <div class="file-box">
-                          <div class="file-row">
-                            <div class="uploader" data-s3-bucket="<%= S3DirectRails.s3_uploader_bucket %>">
-                              <%= s3_uploader(:uploaded_files_path => "uploads/entry/performance_video/#{current_user.entry.id}", :create_resource_url => account_entry_performance_video_path, :uploader_id => '.performance-video-input') %>
-                              <div class="instructions">
-                                <p>You can upload a MPEG, FLV or MOV file that is no larger than 5GB.</p>
-                                <p>(Do not upload video containing celebrities, nudity, artwork, images or video that you do not own or represent the copyright for.)
-                              </div>
-                              <div class="file-uploading">
-                                <div class="progress"></div>
-                                <div class="spinner"></div>
-                              </div>
-                            </div>
-                            <div class="remove-file">
-                              <%= link_to 'Delete current video', remove_entry_performance_video_path, :remote => true, :method => :delete, :confirm => 'Are you sure?', :class => 'btn-delete' %>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+          <%= f.semantic_fields_for :judgings, current_user.judging do |judging| %>
+              <%= f.inputs :class => 'judge-form' do %>
+                  <%= judging.input :active, :as => :radio, :collection => [['Yes', true], ['No', false]], :wrapper_html => {:class => 'radio-row judging-active'} %>
+                  <div class="checkbox-row active-judge-fields"><%= judging.input :genres_array, :as => :check_boxes, :collection => Contest::GENRES, :wrapper_html => {:class => 'checkbox-holder'} %></div>
+                  <div class="submit-row">
+                    <%= f.actions :class => 'submit-holder' do %>
+                        <%= f.submit 'Save', :class => 'button-save' %>
                     <% end %>
                   </div>
-                  <div class="gift-box">
-                    <h4>Career Support</h4>
-                    <!--
+              <% end %>
+          <% end %>
+          </div>
+      <% end %>
+      </div>
+</div>
+<div class="tab-content" id="contestant">
+  <div class="tab-holder">
+    <div class="tab-frame">
+      <div class="messages"></div>
+      <%= semantic_form_for current_user, :url => account_path(:anchor => 'contestant', :format => :json), :remote => true do |f| %>
+          <%= f.input :current_tab, :as => :hidden, :input_html => {:value => 'contestants'} %>
+          <div class="title-row title-row-2">
+            <h3>Contestant</h3>
+
+            <div class="btn-holder"><%= f.submit 'Save', :class => 'button-save' %></div>
+          </div>
+          <%= f.semantic_fields_for :entries, current_user.entry do |entry| %>
+              <%= f.inputs :class => 'contestant-form' do %>
+                  <%= entry.input :active, :as => :radio, :collection => [['Yes', true], ['No', false]], :wrapper_html => {:class => 'radio-row contestant-active'} %>
+                  <div class="active-contestant-fields">
+                    <div class="form-box">
+                      <%= entry.input :artist_type, :as => :select, :collection => Entry::ARTIST_TYPES, :include_blank => false, :input_html => {:class => 'select-2'} %>
+                      <div class="genres-row checkbox-row">
+                        <%= entry.input :genre, :as => :select, :collection => Contest::GENRES %>
+                        <div id="genres-confirm-text">
+                          <strong>Note:</strong> It's ok to compete in multiple genres. We encourage it because it
+                          allows you more exposure and financial opportunities. However, know that
+                          <strong>each genre is a separate contest</strong>. Each week you'll have to submit a
+                          performance video for each genre.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="audition-box">
+                      <h4>Preview Performance (will not be judged)</h4>
+                      <%= entry.input :song_title %>
+                      <%= entry.input :audition_type, :as => :select, :collection => Entry::ENTRY_TYPES, :wrapper_html => {:class => 'song-type-input'}, :input_html => {:class => 'select-2 song-type'} %>
+                      <%#= entry.input :source, :collection => ['Upload','Youtube'], :input_html => { :class => 'performance-video-source' }, :wrapper_html => { :class => 'source-input' } %>
+                      <%= entry.input :source, :as => 'hidden', :input_html => {:value => 'Youtube'} %>
+                      <%= entry.input :youtube_url, :wrapper_html => {:class => 'youtube-url-input'} %>
+                      <% if false # Same as above   %>
+                          <div class="video-box performance-video-input <%= current_user.entry.performance_video_status %>">
+                            <div class="picture-holder">
+                              <div class="video-holder">
+                                <video class="video-js vjs-default-skin" controls preload="auto" width="242" height="148" data-setup="{}">
+                                  <% if current_user.entry.performance_video? %>
+                                      <source src="https://s3.amazonaws.com/fanhelp.mvp/<%= current_user.entry.performance_video %>" type="video/mp4">
+                                  <% end %>
+                                </video>
+                              </div>
+                              <div class="placeholder"></div>
+                            </div>
+                            <div class="file-box">
+                              <div class="file-row">
+                                <div class="uploader" data-s3-bucket="<%= S3DirectRails.s3_uploader_bucket %>">
+                                  <%= s3_uploader(:uploaded_files_path => "uploads/entry/performance_video/#{current_user.entry.id}", :create_resource_url => account_entry_performance_video_path, :uploader_id => '.performance-video-input') %>
+                                  <div class="instructions">
+                                    <p>You can upload a MPEG, FLV or MOV file that is no larger than 5GB.</p>
+
+                                    <p>(Do not upload video containing celebrities, nudity, artwork, images or video
+                                      that you do not own or represent the copyright for.)
+                                  </div>
+                                  <div class="file-uploading">
+                                    <div class="progress"></div>
+                                    <div class="spinner"></div>
+                                  </div>
+                                </div>
+                                <div class="remove-file">
+                                  <%= link_to 'Delete current video', remove_entry_performance_video_path, :remote => true, :method => :delete, :confirm => 'Are you sure?', :class => 'btn-delete' %>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      <% end %>
+                    </div>
+                    <div class="gift-box">
+                      <h4>Career Support</h4>
+                      <!--
                     <div class="text-block">
                       <p>What equipment (or amount of cash) would advance your musical career and why?</p>
                     </div>
 
-                    <% # entry.input :gift_name %>
-                    <% # entry.input :gift_description, :as => :text %>
-                    <% # entry.input :gift_value %>
+                    <% # entry.input :gift_name   %>
+                    <% # entry.input :gift_description, :as => :text   %>
+                    <% # entry.input :gift_value   %>
                     -->
 
-                    <%= entry.input :kickstarter %>
-                    <%= entry.input :pledgemusic %>
+                      <%= entry.input :kickstarter %>
+                      <%= entry.input :pledgemusic %>
+                    </div>
                   </div>
-                </div>
-                <div class="submit-row">
-                  <%= f.actions :class => 'submit-holder' do %>
-                    <%= f.submit 'Save', :class => 'button-save' %>
-                  <% end %>
-                </div>
+                  <div class="submit-row">
+                    <%= f.actions :class => 'submit-holder' do %>
+                        <%= f.submit 'Save', :class => 'button-save' %>
+                    <% end %>
+                  </div>
               <% end %>
-            <% end %>
           <% end %>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
+</div>
+</div>
 </div>
 
 <div class="popup-holder">
   <div class="lightbox popup" id="edit-thumbnail">
     <% if current_user.profile_photo_square? %>
-      <%= render 'users/edit_thumbnail' %>
+        <%= render 'users/edit_thumbnail' %>
     <% end %>
   </div>
 </div>

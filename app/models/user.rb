@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
     :thumb_y, :thumb_w, :account_type, :judgings_attributes, :source,
     :entries_attributes, :genre, :youtube, :current_tab, :gender,
     :remove_profile_video, :thumb_x, :thumb_y, :thumb_w, :youtube_url,
-    :changing_password, :confirmed_at
+    :changing_password, :confirmed_at, :birth_date, :show_explicit_videos, :receive_email_updates
 
   attr_accessor :account_type, :current_tab
   attr_accessor :remove_profile_video
@@ -36,8 +36,6 @@ class User < ActiveRecord::Base
 
   with_options :on => :update, :if => Proc.new { |u| u.current_tab == 'details' || u.current_tab.blank? } do |u|
     u.validates_presence_of :email
-    u.validates_presence_of :birth_year, :message => 'Birth year is required'
-    u.validates_numericality_of :birth_year, :less_than => 12.years.ago.year, :message => 'Must be at least 13 years old'
   end
   
   with_options :on => :update, :if => Proc.new { |u| u.current_tab == 'profile' || u.current_tab.blank? } do |u|
@@ -61,7 +59,9 @@ class User < ActiveRecord::Base
   scope :has_entry, includes(:entries).where("entries.id is not ?", nil)
   scope :genre, lambda { |genre| includes(:entries).where("entries.genre = ?", genre) }
   scope :next, lambda { |p| {:conditions => ["users.id > ?", p.id], :limit => 1, :order => "users.id"} }
-  
+
+  validate :ensure_birth_date_is_at_13_years_ago
+
   def display_name
     self.profile_name.presence || self.email
   end
@@ -171,4 +171,10 @@ class User < ActiveRecord::Base
     !confirmed? && provider.blank?
   end
 
+  def ensure_birth_date_is_at_13_years_ago
+    return unless birth_date?
+    if birth_date.to_date > 13.years.ago.to_date
+      errors.add(:birth_date, "must be at least 13 years old")
+    end
+  end
 end

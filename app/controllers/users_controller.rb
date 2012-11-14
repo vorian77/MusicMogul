@@ -1,24 +1,31 @@
 class UsersController < ApplicationController
-  
   before_filter :authenticate_user!, :except => :reset_password
   
   def edit
+    @user = current_user
   end
   
   def update
-    ['landscape','square'].each do |type|
-      params[:user]["remove_profile_photo_#{type}".to_sym] = nil if params[:user] && params[:user]["profile_photo_#{type}".to_sym]
-    end
-    respond_with current_user do |format|
-      if current_user.update_attributes(params[:user])
-        sign_in(current_user, :bypass => true) if params[:user] && params[:user][:password]
-        notice = 'Your account has been successfully saved'
-        format.html { redirect_to account_path, :notice => notice }
-        format.json { render :json => { :notice => notice } }
-      else
-        format.html { render :action => 'edit', :alert => 'Sorry, there was an error in the form' }
-        format.json { render :json => { :errors => current_user.errors }, :status => :unprocessable_entity }
-      end
+    #['landscape','square'].each do |type|
+    #  params[:user]["remove_profile_photo_#{type}".to_sym] = nil if params[:user] && params[:user]["profile_photo_#{type}".to_sym]
+    #end
+    #respond_with current_user do |format|
+    #  if current_user.update_attributes(params[:user])
+    #    sign_in(current_user, :bypass => true) if params[:user] && params[:user][:password]
+    #    notice = 'Your account has been successfully saved'
+    #    format.html { redirect_to account_path, :notice => notice }
+    #    format.json { render :json => { :notice => notice } }
+    #  else
+    #    format.html { render :action => 'edit', :alert => 'Sorry, there was an error in the form' }
+    #    format.json { render :json => { :errors => current_user.errors }, :status => :unprocessable_entity }
+    #  end
+    #end
+
+    @user = current_user
+    if @user.update_attributes(params[:user])
+      redirect_to account_path
+    else
+      render :edit
     end
   end
   
