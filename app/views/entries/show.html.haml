@@ -32,7 +32,7 @@
         = judging.user.name
         %dl
           %dt Hometown
-          %dd #{judging.user.hometown}
+          %dd #{judging.user.hometown.presence || "Unspecified"}
           %dt Evaluations
           %dd #{judging.user.judgings.count}
           %dt Average Score

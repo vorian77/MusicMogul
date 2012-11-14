@@ -23,6 +23,7 @@
           <%= f.input :email, label: "Email*", hint: 'A confirmation email will be sent if changed' %>
           <%= f.input :password %>
           <%= f.input :password_confirmation %>
+          <%= f.input :hometown %>
           <%= f.input :birth_date, start_year: Date.today.year - 100, end_year: Date.today.year - 13, order: [:month, :day, :year], include_blank: true %>
           <%= f.input :gender, as: :radio_buttons, collection: ['Male', 'Female'] %>
           <%= f.input :show_explicit_videos %>

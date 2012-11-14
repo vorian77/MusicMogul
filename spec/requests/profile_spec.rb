@@ -9,13 +9,16 @@ feature "profile" do
     click_link user.email
     current_path.should == account_path
 
-    fill_in "Email", with: Faker::Internet.email
-    choose "Male"
-    uncheck "Show explicit videos"
-    uncheck "Receive email updates"
-    click_button "Save"
-    current_path.should == account_path
+    within "form.edit_user" do
+      fill_in "Email", with: Faker::Internet.email
+      fill_in "Hometown", with: "Detroit"
+      choose "Male"
+      uncheck "Show explicit videos"
+      uncheck "Receive email updates"
+      click_button "Save"
+    end
 
+    current_path.should == account_path
     visit account_path
     find_field("user_gender_male").should be_checked
     find_field("user[show_explicit_videos]").should_not be_checked
