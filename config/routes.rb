@@ -17,8 +17,6 @@ Mvp2::Application.routes.draw do
   post '/reset_password' => 'users#reset_password', :as => :reset_password
 
   resources :contacts, :only => :create
-  resources :previews, :only => [:index, :show]
-
   resources :follows, only: [:index]
 
   resources :entries, only: [:show] do
