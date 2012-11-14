@@ -28,7 +28,7 @@
   %ul.evaluations
     - @entry.judgings.order("created_at desc").each do |judging|
       %li
-        = image_tag judging.user.profile_photo_square.url
+        = image_tag judging.user.profile_photo.url(:thumb)
         = judging.user.name
         %dl
           %dt Hometown

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114145922) do
+ActiveRecord::Schema.define(:version => 20121114222034) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -150,6 +150,7 @@ ActiveRecord::Schema.define(:version => 20121114145922) do
     t.date     "birth_date"
     t.boolean  "show_explicit_videos",    :default => true
     t.boolean  "receive_email_updates",   :default => true
+    t.string   "profile_photo"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

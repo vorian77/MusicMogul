@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
     :thumb_y, :thumb_w, :account_type, :judgings_attributes, :source,
     :entries_attributes, :genre, :youtube, :current_tab, :gender,
     :remove_profile_video, :thumb_x, :thumb_y, :thumb_w, :youtube_url,
-    :changing_password, :confirmed_at, :birth_date, :show_explicit_videos, :receive_email_updates
+    :changing_password, :confirmed_at, :birth_date, :show_explicit_videos, :receive_email_updates,
+    :profile_photo
 
   attr_accessor :account_type, :current_tab
   attr_accessor :remove_profile_video
@@ -43,7 +44,7 @@ class User < ActiveRecord::Base
     u.validates_presence_of :hometown, :message => "Hometown is required."
   end
 
-  mount_uploader :profile_photo_square, SquareProfilePhotoUploader
+  mount_uploader :profile_photo, ProfilePhotoUploader
 
   has_many :entries
   has_many :follows, dependent: :destroy

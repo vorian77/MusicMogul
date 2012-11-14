@@ -28,6 +28,10 @@
           <%= f.input :gender, as: :radio_buttons, collection: ['Male', 'Female'] %>
           <%= f.input :show_explicit_videos %>
           <%= f.input :receive_email_updates %>
+          <% if current_user.profile_photo? %>
+              <%= image_tag current_user.profile_photo.url(:thumb) %>
+          <% end %>
+          <%= f.input :profile_photo %>
           <div class="submit-row">
             <%= f.submit 'Save', :class => 'button-save' %>
           </div>

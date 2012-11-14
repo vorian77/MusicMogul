@@ -12,15 +12,15 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :large do
-    process resize_to_fit: [400, 400]
+    process resize_to_fill: [400, 400]
   end
 
   version :medium do
-    process resize_to_fit: [200, 200]
+    process resize_to_fill: [200, 200]
   end
 
   version :thumb do
-    process resize_to_fit: [50, 50]
+    process resize_to_fill: [50, 50]
   end
 
   def default_url
