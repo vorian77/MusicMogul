@@ -77,6 +77,6 @@ class Entry < ActiveRecord::Base
 
   def youtube_id
     return unless youtube_url?
-    youtube_url.scan(/\?v=(.*)/).flatten.first
+    youtube_url.scan(/[\?|&]v=(.*)/).flatten.first
   end
 end
