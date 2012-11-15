@@ -37,10 +37,11 @@ group :development, :test do
   gem 'fixture_builder'
   gem 'heroku'
   gem 'heroku_san'
-  gem 'taps'
+  gem 'poltergeist'
   gem 'ruby-debug19'
   gem 'rspec-rails'
-  gem 'poltergeist'
   gem 'shoulda'
   gem 'sqlite3'
+  gem 'taps'
+  gem 'valid_attribute'
 end

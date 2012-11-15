@@ -4,6 +4,7 @@ class Entry < ActiveRecord::Base
   has_many :judgings, dependent: :destroy
 
   validates :points, numericality: {only_integer: true, greater_than_or_equal_to: 0}
+  validate :ensure_youtube_url_is_valid
 
   attr_accessor :remove_performance_video
 
@@ -77,6 +78,19 @@ class Entry < ActiveRecord::Base
 
   def youtube_id
     return unless youtube_url?
-    youtube_url.scan(/[\?|&]v=(.*)/).flatten.first
+    if youtube_url =~ /youtu\.be\/([^&|?]+)/
+      youtube_url.scan(/youtu\.be\/([^&|?]+)/).flatten.first
+    elsif youtube_url =~ /youtube\.com\/v\/([^&|?]+)/
+      youtube_url.scan(/youtube\.com\/v\/([^&|?]+)/).flatten.first
+    else
+      youtube_url.scan(/[\?|&]v=([^&]+)/).flatten.first
+    end
+  end
+
+  private
+
+  def ensure_youtube_url_is_valid
+    return unless youtube_url?
+    errors.add(:youtube_url, "is not valid") unless youtube_id.present?
   end
 end

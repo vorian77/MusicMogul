@@ -9,6 +9,12 @@ describe Entry do
 
   describe "validations" do
     it { should validate_numericality_of(:points).only_integer }
+    it { should have_valid(:youtube_url).when("http://youtu.be/sGE4HMvDe-Q") }
+    it { should have_valid(:youtube_url).when("http://www.youtube.com/watch?v=sGE4HMvDe-Q&feature=relmfu") }
+    it { should have_valid(:youtube_url).when("http://www.youtube.com/v/sGE4HMvDe-Q?version=3&autohide=1") }
+    it { should_not have_valid(:youtube_url).when("http://youtu.be/") }
+    it { should_not have_valid(:youtube_url).when("http://www.bootynonstop.com") }
+    it { should_not have_valid(:youtube_url).when("http://www.youtube.com/watch?feature=relmfu") }
   end
 
   describe "scopes" do
@@ -31,6 +37,31 @@ describe Entry do
         before { FactoryGirl.create(:judging) }
         it { should =~ Entry.all }
       end
+    end
+  end
+
+  describe "#youtube_id" do
+    subject { entry.youtube_id }
+    let(:entry) { FactoryGirl.build(:entry, youtube_url: youtube_url) }
+
+    context "when the url is http://youtu.be/sGE4HMvDe-Q" do
+      let(:youtube_url) { "http://youtu.be/sGE4HMvDe-Q" }
+      it { should == "sGE4HMvDe-Q" }
+    end
+
+    context "when the url is http://www.youtube.com/watch?v=sGE4HMvDe-Q&feature=relmfu" do
+      let(:youtube_url) { "http://www.youtube.com/watch?v=sGE4HMvDe-Q&feature=relmfu" }
+      it { should == "sGE4HMvDe-Q" }
+    end
+
+    context "when the url is http://www.youtube.com/watch?feature=relmfu&v=sGE4HMvDe-Q" do
+      let(:youtube_url) { "http://www.youtube.com/watch?feature=relmfu&v=sGE4HMvDe-Q" }
+      it { should == "sGE4HMvDe-Q" }
+    end
+
+    context "when the url is http://www.youtube.com/v/sGE4HMvDe-Q?version=3&autohide=1" do
+      let(:youtube_url) { "http://www.youtube.com/v/sGE4HMvDe-Q?version=3&autohide=1" }
+      it { should == "sGE4HMvDe-Q" }
     end
   end
 end
