@@ -1,11 +1,9 @@
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('a[href="#popup-2"]').click();
-  })
-</script>
-
 <div class="heading">
   <h2>Log in</h2>
 </div>
 
-<a href="#popup-2" class="lightbox">Click here to log in</a>
+<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <%= f.input :email %>
+    <%= f.input :password %>
+    <%= f.submit "Log in" %>
+<% end %>

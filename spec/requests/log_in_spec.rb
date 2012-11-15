@@ -1,5 +1,9 @@
-module HelperMethods
-  def sign_in_as(user)
+require "spec_helper"
+
+feature "log in" do
+  scenario "user logs in" do
+    user = users(:confirmed_user)
+
     visit root_path
 
     within "ul.log-in-nav" do
@@ -23,5 +27,3 @@ module HelperMethods
     end
   end
 end
-
-RSpec.configuration.include HelperMethods, type: :request

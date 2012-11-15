@@ -15,7 +15,7 @@ feature "homepage" do
     end
   end
 
-  scenario "user views homepage", js: true do
+  scenario "user views homepage" do
     user = users(:confirmed_user)
 
     sign_in_as user
