@@ -26,5 +26,11 @@ feature "entries" do
     end
 
     current_path.should == account_path
+
+    within "form.edit_entry" do
+      click_button "Save"
+    end
+
+    current_path.should == account_path
   end
 end
