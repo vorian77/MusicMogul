@@ -10,7 +10,7 @@ class Entry < ActiveRecord::Base
   attr_accessible :active, :artist_type, :genre, :community_name, :audition_type,
                   :song_title, :written_by, :gift_name, :gift_description, :gift_value,
                   :kickstarter, :pledgemusic, :remove_performance_video, :youtube_url, :source,
-                  :hometown, :bio
+                  :hometown, :bio, :facebook, :youtube, :twitter, :pinterest, :website
 
   ARTIST_TYPES = %w{Group Singer}
   ENTRY_TYPES = %w{Original Cover}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114222034) do
+ActiveRecord::Schema.define(:version => 20121115155902) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -69,6 +69,11 @@ ActiveRecord::Schema.define(:version => 20121114222034) do
     t.text     "bio"
     t.string   "profile_photo"
     t.integer  "points",            :default => 0
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "youtube"
+    t.string   "pinterest"
+    t.string   "website"
   end
 
   add_index "entries", ["contest_id"], :name => "index_entries_on_contest_id"
