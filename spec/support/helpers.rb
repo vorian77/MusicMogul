@@ -18,9 +18,7 @@ module HelperMethods
     current_path.should == root_path
 
     page.should have_content "Signed in successfully"
-    within "div.display-name" do
-      page.should have_content user.email
-    end
+    within("div.display-name") { page.should have_content user.email }
   end
 end
 
