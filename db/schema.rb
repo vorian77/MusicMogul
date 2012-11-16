@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121115155902) do
+ActiveRecord::Schema.define(:version => 20121116201301) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(:version => 20121115155902) do
   create_table "entries", :force => true do |t|
     t.integer  "contest_id"
     t.integer  "user_id"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
-    t.boolean  "active",            :default => false, :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+    t.boolean  "active",               :default => false, :null => false
     t.string   "artist_type"
     t.string   "community_name"
     t.string   "audition_type"
@@ -68,12 +68,15 @@ ActiveRecord::Schema.define(:version => 20121115155902) do
     t.string   "hometown"
     t.text     "bio"
     t.string   "profile_photo"
-    t.integer  "points",            :default => 0
+    t.integer  "points",               :default => 0
     t.string   "facebook"
     t.string   "twitter"
     t.string   "youtube"
     t.string   "pinterest"
     t.string   "website"
+    t.boolean  "has_music",            :default => true
+    t.boolean  "has_vocals",           :default => true
+    t.boolean  "has_explicit_content", :default => false
   end
 
   add_index "entries", ["contest_id"], :name => "index_entries_on_contest_id"
@@ -101,7 +104,7 @@ ActiveRecord::Schema.define(:version => 20121115155902) do
     t.integer  "music_score"
     t.integer  "presentation_score"
     t.integer  "vocals_score"
-    t.integer  "overall_score"
+    t.float    "overall_score"
   end
 
   add_index "judgings", ["contest_id"], :name => "index_judgings_on_contest_id"

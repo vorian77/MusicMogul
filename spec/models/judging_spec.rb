@@ -14,13 +14,23 @@ describe Judging do
     it { should validate_numericality_of(:music_score).only_integer }
     it { should validate_numericality_of(:vocals_score).only_integer }
     it { should validate_numericality_of(:presentation_score).only_integer }
-    it { should validate_numericality_of(:overall_score).only_integer }
+    it { should validate_numericality_of(:overall_score) }
+
+    it { should have_valid(:music_score).when(nil) }
+    it { should have_valid(:music_score).when("") }
   end
 
   describe "callbacks" do
     describe "before_validation" do
-      it "should set overall score" do
+      it "should set overall score when all components are present" do
         judging = FactoryGirl.build(:judging)
+        judging.overall_score.should be_nil
+        judging.save
+        judging.overall_score.should be_present
+      end
+
+      it "should set overall score when a component is nil" do
+        judging = FactoryGirl.build(:judging, vocals_score: nil)
         judging.overall_score.should be_nil
         judging.save
         judging.overall_score.should be_present

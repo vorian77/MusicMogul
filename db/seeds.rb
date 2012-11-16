@@ -1,10 +1,14 @@
 User.create(email: "test@fanhelp.us",
             password: "password",
-            confirmed_at: Date.today)
+            confirmed_at: Date.today,
+            profile_name: "tester",
+            hometown: "Detroit")
 
 User.create(email: "phyl@fanhelp.us",
             password: "password",
-            confirmed_at: Date.today)
+            confirmed_at: Date.today,
+            profile_name: "phyl",
+            hometown: "Detroit")
 
 Entry.create(community_name: "The Doors",
              hometown: "Los Angeles",

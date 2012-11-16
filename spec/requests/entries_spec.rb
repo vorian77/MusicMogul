@@ -7,7 +7,6 @@ feature "entries" do
 
     visit root_path
     click_link user.profile_name
-
     current_path.should == account_path
 
     within "form#new_entry" do
@@ -17,6 +16,9 @@ feature "entries" do
       fill_in "Bio", with: Faker::HipsterIpsum.paragraph
       fill_in "Youtube URL", with: ""
       fill_in "Song title", with: ""
+      check "Has music"
+      check "Has vocals"
+      check "Has explicit content"
       fill_in "Facebook", with: ""
       fill_in "Twitter", with: ""
       fill_in "Youtube", with: ""

@@ -12,14 +12,16 @@
         %th Evaluations
         %th Me
         %th Community
-      %tr
-        %td Music
-        %td #{@judging.music_score}
-        %td #{number_with_precision @entry.overall_music_score, precision: 2}
-      %tr
-        %td Vocals
-        %td #{@judging.vocals_score}
-        %td #{number_with_precision @entry.overall_vocals_score, precision: 2}
+      - if @entry.has_music?
+        %tr
+          %td Music
+          %td #{@judging.music_score}
+          %td #{number_with_precision @entry.overall_music_score, precision: 2}
+      - if @entry.has_vocals?
+        %tr
+          %td Vocals
+          %td #{@judging.vocals_score}
+          %td #{number_with_precision @entry.overall_vocals_score, precision: 2}
       %tr
         %td Presentation
         %td #{@judging.presentation_score}
@@ -39,16 +41,20 @@
           %dd #{judging.user.average_judging_score}
 
         %ul.scores
-          %li Music #{judging.music_score}
-          %li Vocals #{judging.vocals_score}
+          - if @entry.has_music?
+            %li Music #{judging.music_score}
+          - if @entry.has_vocals?
+            %li Vocals #{judging.vocals_score}
           %li Presentation #{judging.presentation_score}
           - if judging.user.follows?(@entry)
             %li Following
         %p= judging.comment
 - else
   = simple_form_for [@entry, @judging] do |f|
-    = f.input :music_score, as: :slider
-    = f.input :vocals_score, as: :slider
+    - if @entry.has_music?
+      = f.input :music_score, as: :slider
+    - if @entry.has_vocals?
+      = f.input :vocals_score, as: :slider
     = f.input :presentation_score, as: :slider
     = f.input :comment
     = f.submit

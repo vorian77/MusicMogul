@@ -40,6 +40,29 @@ describe Entry do
     end
   end
 
+  describe "#component_count" do
+    subject { entry.component_count }
+    let(:entry) { FactoryGirl.build(:entry, has_music: has_music, has_vocals: has_vocals) }
+
+    context "when both are false" do
+      let(:has_music) { false }
+      let(:has_vocals) { false }
+      it { should == 1 }
+    end
+
+    context "when one is true" do
+      let(:has_music) { true }
+      let(:has_vocals) { false }
+      it { should == 2 }
+    end
+
+    context "when both are true" do
+      let(:has_music) { true }
+      let(:has_vocals) { true }
+      it { should == 3 }
+    end
+  end
+
   describe "#youtube_id" do
     subject { entry.youtube_id }
     let(:entry) { FactoryGirl.build(:entry, youtube_url: youtube_url) }

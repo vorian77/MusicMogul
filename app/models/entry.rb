@@ -11,7 +11,8 @@ class Entry < ActiveRecord::Base
   attr_accessible :active, :artist_type, :genre, :community_name, :audition_type,
                   :song_title, :written_by, :gift_name, :gift_description, :gift_value,
                   :kickstarter, :pledgemusic, :remove_performance_video, :youtube_url, :source,
-                  :hometown, :bio, :facebook, :youtube, :twitter, :pinterest, :website
+                  :hometown, :bio, :facebook, :youtube, :twitter, :pinterest, :website,
+                  :has_music, :has_vocals, :has_explicit_content
 
   ARTIST_TYPES = %w{Group Singer}
   ENTRY_TYPES = %w{Original Cover}
@@ -28,6 +29,10 @@ class Entry < ActiveRecord::Base
     u.validates_presence_of :genre
     u.validates_presence_of :audition_type
     u.validates_presence_of :song_title
+  end
+
+  def component_count
+    (has_music? ? 1 : 0) + (has_vocals? ? 1 : 0) + 1
   end
 
   def performance_video?
