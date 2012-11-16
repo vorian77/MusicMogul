@@ -22,8 +22,6 @@ feature "log in" do
     current_path.should == root_path
 
     page.should have_content "Signed in successfully"
-    within "div.display-name" do
-      page.should have_content user.email
-    end
+    user_should_be_logged_in user
   end
 end

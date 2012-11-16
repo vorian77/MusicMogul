@@ -9,6 +9,9 @@ describe User do
   end
 
   describe "validations" do
+    it { should validate_presence_of :hometown }
+    it { should validate_presence_of :profile_name }
+
     describe "birth date" do
       context "when it is nil" do
         it "should be valid" do

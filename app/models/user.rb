@@ -61,6 +61,8 @@ class User < ActiveRecord::Base
   scope :genre, lambda { |genre| includes(:entries).where("entries.genre = ?", genre) }
   scope :next, lambda { |p| {:conditions => ["users.id > ?", p.id], :limit => 1, :order => "users.id"} }
 
+  validates :hometown, presence: true
+  validates :profile_name, presence: true
   validate :ensure_birth_date_is_at_13_years_ago
 
   def average_judging_score
