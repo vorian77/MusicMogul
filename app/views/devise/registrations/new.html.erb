@@ -1,11 +1,9 @@
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('a[href="#popup"]').click();
-  })
-</script>
-
 <div class="heading">
-  <h2>Sign up</h2>
+  <h2>Mogul Sign Up</h2>
 </div>
 
-<a href="#popup" class="lightbox">Click here to sign up</a>
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+    <%= f.input :email %>
+    <%= f.input :password %>
+    <%= f.submit "Sign up" %>
+<% end %>
