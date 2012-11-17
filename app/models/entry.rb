@@ -3,19 +3,16 @@ class Entry < ActiveRecord::Base
   belongs_to :user
   has_many :judgings, dependent: :destroy
 
+  validates :user, presence: true
+  validates :community_name, presence: true
+  validates :song_title, presence: true
+  validates :youtube_url, presence: true
   validates :points, numericality: {only_integer: true, greater_than_or_equal_to: 0}
   validate :ensure_youtube_url_is_valid
 
-  attr_accessor :remove_performance_video
-
-  attr_accessible :active, :artist_type, :genre, :community_name, :audition_type,
-                  :song_title, :written_by, :gift_name, :gift_description, :gift_value,
-                  :kickstarter, :pledgemusic, :remove_performance_video, :youtube_url, :source,
-                  :hometown, :bio, :facebook, :youtube, :twitter, :pinterest, :website,
+  attr_accessible :genre, :community_name, :song_title, :youtube_url, :hometown, :bio,
+                  :facebook, :youtube, :twitter, :pinterest, :website,
                   :has_music, :has_vocals, :has_explicit_content
-
-  ARTIST_TYPES = %w{Group Singer}
-  ENTRY_TYPES = %w{Original Cover}
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
@@ -24,35 +21,8 @@ class Entry < ActiveRecord::Base
         where("judgings.entry_id IS NULL", user.id)
   }
 
-  with_options :if => :active? do |u|
-    u.validates_presence_of :artist_type
-    u.validates_presence_of :genre
-    u.validates_presence_of :audition_type
-    u.validates_presence_of :song_title
-  end
-
   def component_count
     (has_music? ? 1 : 0) + (has_vocals? ? 1 : 0) + 1
-  end
-
-  def performance_video?
-    self.performance_video.present?
-  end
-
-  def remove_performance_video=(remove)
-    self.performance_video = nil
-    self.youtube_url = nil
-    self.save(:validate => false)
-  end
-
-  def performance_video_status
-    if performance_video?
-      'uploaded-file'
-    elsif youtube_url?
-      'youtube-url'
-    else
-      'no-file'
-    end
   end
 
   def overall_music_score
@@ -69,16 +39,6 @@ class Entry < ActiveRecord::Base
 
   def rank
     self.class.uniq.order("points desc").pluck(:points).index(self.points) + 1
-  end
-
-  def source
-    if audition_type == 'Cover'
-      'Youtube'
-    elsif performance_video?
-      'Upload'
-    elsif youtube_url?
-      'Youtube'
-    end
   end
 
   def youtube_id

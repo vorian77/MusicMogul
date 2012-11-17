@@ -21,8 +21,11 @@ feature "profile" do
 
     current_path.should == account_path
     visit account_path
-    find_field("user_gender_male").should be_checked
-    find_field("user[show_explicit_videos]").should_not be_checked
-    find_field("user[receive_email_updates]").should_not be_checked
+
+    within "form.edit_user" do
+      find_field("user_gender_male").should be_checked
+      find_field("user[show_explicit_videos]").should_not be_checked
+      find_field("user[receive_email_updates]").should_not be_checked
+    end
   end
 end

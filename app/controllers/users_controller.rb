@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, :except => :reset_password
+  before_filter :authenticate_user!, except: :reset_password
   
   def edit
     @user = current_user
@@ -8,72 +8,13 @@ class UsersController < ApplicationController
   
   def update
     @user = current_user
-    @entry = current_user.entries.first || current_user.entries.new
     if @user.update_attributes(params[:user])
+      @entry = current_user.entries.first || current_user.entries.new
       redirect_to account_path
     else
+      @entry = current_user.entries.first || current_user.entries.new
       render :edit
     end
-  end
-  
-  def create_profile_photo
-    raise unless params[:s3_key]
-    current_user.remote_profile_photo_square_url = "https://s3.amazonaws.com/fanhelp.mvp/#{params[:s3_key]}"
-    current_user.save(:validate => false)
-    render :partial => 'users/edit_thumbnail', :layout => false
-  end
-
-  def remove_profile_photo
-    current_user.remove_profile_photo_square = '1'
-    current_user.save(:validate => false)
-    render :nothing => true
-  end
-
-  def create_profile_video
-    raise unless params[:s3_key]
-    current_user.update_attribute(:profile_video,params[:s3_key])
-    render :nothing => true
-  end
-  
-  def remove_profile_video
-    current_user.profile_video = nil
-    current_user.youtube_url = nil
-    current_user.save(:validate => false)
-    render :nothing => true
-  end
-
-  def create_entry_performance_video
-    raise unless params[:s3_key]
-    puts params.inspect
-    puts current_user.entry.update_attribute(:performance_video,params[:s3_key])
-    puts current_user.entry.inspect
-    render :nothing => true
-  end
-
-  def remove_entry_performance_video
-    entry = current_user.entry
-    entry.performance_video = nil
-    entry.youtube_url = nil
-    entry.save(:validate => false)
-    render :nothing => true
-  end
-
-  def edit_thumbnail
-    render 'edit_thumbnail', :layout => 'basic'
-  end
-
-  def update_thumbnail
-    current_user.tap do |u|
-      u.thumb_x = params[:user][:thumb_x]
-      u.thumb_y = params[:user][:thumb_y]
-      u.thumb_w = params[:user][:thumb_w]
-      u.save(:validate => false)
-    end
-    current_user.profile_photo_square.recreate_versions!
-    render :nothing => true
-  end
-
-  def upload
   end
 
   def reset_password
@@ -81,5 +22,4 @@ class UsersController < ApplicationController
     user.send_reset_password_instructions if user
     redirect_to root_path, :notice => 'A password reset email has been sent.'
   end
-
 end

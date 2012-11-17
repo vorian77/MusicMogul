@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121117155336) do
+ActiveRecord::Schema.define(:version => 20121117160000) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -50,21 +50,10 @@ ActiveRecord::Schema.define(:version => 20121117155336) do
     t.integer  "user_id"
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
-    t.boolean  "active",               :default => false, :null => false
-    t.string   "artist_type"
     t.string   "community_name"
-    t.string   "audition_type"
     t.string   "song_title"
-    t.string   "written_by"
-    t.string   "performance_video"
-    t.string   "gift_name"
-    t.string   "gift_description"
-    t.string   "gift_value"
-    t.string   "kickstarter"
-    t.string   "pledgemusic"
     t.string   "youtube_url"
     t.string   "genre"
-    t.string   "source"
     t.string   "hometown"
     t.text     "bio"
     t.string   "profile_photo"

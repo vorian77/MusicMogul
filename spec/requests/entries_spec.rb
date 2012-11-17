@@ -14,8 +14,8 @@ feature "entries" do
       select Contest::GENRES.sample, from: "Genre"
       fill_in "Hometown", with: Faker::Address.city
       fill_in "Bio", with: Faker::HipsterIpsum.paragraph
-      fill_in "Youtube URL", with: ""
-      fill_in "Song title", with: ""
+      fill_in "Youtube URL", with: "http://youtu.be/sGE4HMvDe-Q"
+      fill_in "Song title", with: Faker::HipsterIpsum.words.join(" ")
       check "Has music"
       check "Has vocals"
       check "Has explicit content"

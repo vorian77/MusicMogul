@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe User do
   describe "associations" do
-    it { should have_many :entries }
+    it { should have_many(:entries).dependent(:destroy) }
     it { should have_many(:follows).dependent(:destroy) }
     it { should have_many(:judgings).dependent(:destroy) }
     it { should have_many(:followed_entries).through(:follows) }
