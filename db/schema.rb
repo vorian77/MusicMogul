@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121116201301) do
+ActiveRecord::Schema.define(:version => 20121117155336) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -93,12 +93,9 @@ ActiveRecord::Schema.define(:version => 20121116201301) do
   add_index "follows", ["user_id"], :name => "index_follows_on_user_id"
 
   create_table "judgings", :force => true do |t|
-    t.integer  "contest_id"
     t.integer  "user_id"
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
-    t.boolean  "active",             :default => false, :null => false
-    t.string   "genres"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "entry_id"
     t.text     "comment"
     t.integer  "music_score"
@@ -107,7 +104,6 @@ ActiveRecord::Schema.define(:version => 20121116201301) do
     t.float    "overall_score"
   end
 
-  add_index "judgings", ["contest_id"], :name => "index_judgings_on_contest_id"
   add_index "judgings", ["entry_id"], :name => "index_judgings_on_entry_id"
   add_index "judgings", ["user_id"], :name => "index_judgings_on_user_id"
 

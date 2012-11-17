@@ -1,9 +1,8 @@
 class Judging < ActiveRecord::Base
-  belongs_to :contest
   belongs_to :entry
   belongs_to :user
 
-  attr_accessible :active, :music_score, :vocals_score, :presentation_score, :comment, :entry_id
+  attr_accessible :music_score, :vocals_score, :presentation_score, :comment, :entry_id
 
   validates :entry, presence: true
   validates :user, presence: true
