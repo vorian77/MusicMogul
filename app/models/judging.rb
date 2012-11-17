@@ -3,7 +3,7 @@ class Judging < ActiveRecord::Base
   belongs_to :entry
   belongs_to :user
 
-  attr_accessible :active, :genres_array, :music_score, :vocals_score, :presentation_score, :comment, :entry_id
+  attr_accessible :active, :music_score, :vocals_score, :presentation_score, :comment, :entry_id
 
   validates :entry, presence: true
   validates :user, presence: true
@@ -15,14 +15,6 @@ class Judging < ActiveRecord::Base
 
   before_validation :calculate_overall_score
   after_save :calculate_entry_points
-
-  def genres_array=(g)
-    self.genres = g.join(', ')
-  end
-
-  def genres_array
-    self.genres.to_s.split(/,\s?/)
-  end
 
   private
 
