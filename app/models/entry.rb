@@ -1,7 +1,8 @@
 class Entry < ActiveRecord::Base
   belongs_to :contest
   belongs_to :user
-  has_many :judgings, dependent: :destroy
+  has_many :evaluations, dependent: :destroy
+  has_many :follows, dependent: :destroy
 
   validates :user, presence: true
   validates :community_name, presence: true
@@ -17,24 +18,28 @@ class Entry < ActiveRecord::Base
   mount_uploader :profile_photo, ProfilePhotoUploader
 
   scope :unevaluated_by, lambda { |user|
-    joins("LEFT OUTER JOIN judgings on entries.id = judgings.entry_id AND judgings.user_id = #{user.id}").
-        where("judgings.entry_id IS NULL", user.id)
+    joins("LEFT OUTER JOIN evaluations on entries.id = evaluations.entry_id AND evaluations.user_id = #{user.id}").
+        where("evaluations.entry_id IS NULL", user.id)
   }
 
   def component_count
     (has_music? ? 1 : 0) + (has_vocals? ? 1 : 0) + 1
   end
 
+  def overall_score
+    evaluations.sum(:overall_score) / evaluations.count.to_f
+  end
+
   def overall_music_score
-    judgings.sum(:music_score) / judgings.count.to_f
+    evaluations.sum(:music_score) / evaluations.count.to_f
   end
 
   def overall_vocals_score
-    judgings.sum(:vocals_score) / judgings.count.to_f
+    evaluations.sum(:vocals_score) / evaluations.count.to_f
   end
 
   def overall_presentation_score
-    judgings.sum(:presentation_score) / judgings.count.to_f
+    evaluations.sum(:presentation_score) / evaluations.count.to_f
   end
 
   def rank

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Judging do
+describe Evaluation do
   describe "associations" do
     it { should belong_to :entry }
     it { should belong_to :user }
@@ -22,17 +22,17 @@ describe Judging do
   describe "callbacks" do
     describe "before_validation" do
       it "should set overall score when all components are present" do
-        judging = FactoryGirl.build(:judging)
-        judging.overall_score.should be_nil
-        judging.save
-        judging.overall_score.should be_present
+        evaluation = FactoryGirl.build(:evaluation)
+        evaluation.overall_score.should be_nil
+        evaluation.save
+        evaluation.overall_score.should be_present
       end
 
       it "should set overall score when a component is nil" do
-        judging = FactoryGirl.build(:judging, vocals_score: nil)
-        judging.overall_score.should be_nil
-        judging.save
-        judging.overall_score.should be_present
+        evaluation = FactoryGirl.build(:evaluation, vocals_score: nil)
+        evaluation.overall_score.should be_nil
+        evaluation.save
+        evaluation.overall_score.should be_present
       end
     end
 
@@ -40,7 +40,7 @@ describe Judging do
       it "should update the entry's points" do
         entry = FactoryGirl.create(:entry)
         lambda {
-          FactoryGirl.create(:judging, entry: entry)
+          FactoryGirl.create(:evaluation, entry: entry)
         }.should change { entry.points }.from(0)
       end
     end

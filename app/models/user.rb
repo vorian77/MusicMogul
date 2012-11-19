@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
     :interview_status, :profile_name, :hometown, :genre, :bio, :facebook,
     :twitter, :phone, :profile_photo_square, :profile_photo_landscape,
     :remove_profile_photo_square, :remove_profile_photo_landscape, :thumb_x,
-    :thumb_y, :thumb_w, :account_type, :judgings_attributes, :source,
+    :thumb_y, :thumb_w, :account_type, :evaluations_attributes, :source,
     :genre, :youtube, :current_tab, :gender,
     :remove_profile_video, :thumb_x, :thumb_y, :thumb_w, :youtube_url,
     :changing_password, :confirmed_at, :birth_date, :show_explicit_videos, :receive_email_updates,
@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
 
   has_many :entries, dependent: :destroy
   has_many :follows, dependent: :destroy
-  has_many :judgings, dependent: :destroy
+  has_many :evaluations, dependent: :destroy
 
   has_many :followed_entries, through: :follows, source: :entry
 
@@ -52,9 +52,9 @@ class User < ActiveRecord::Base
   validates :profile_name, presence: true
   validate :ensure_birth_date_is_at_13_years_ago
 
-  def average_judging_score
-    return 0 unless judgings.present?
-    judgings.sum(:overall_score) / judgings.count.to_f
+  def average_evaluation_score
+    return 0 unless evaluations.present?
+    evaluations.sum(:overall_score) / evaluations.count.to_f
   end
 
   def changing_password?
@@ -70,7 +70,7 @@ class User < ActiveRecord::Base
   end
 
   def has_evaluated?(entry)
-    judgings.where(entry_id: entry.id).count > 0
+    evaluations.where(entry_id: entry.id).count > 0
   end
 
   protected

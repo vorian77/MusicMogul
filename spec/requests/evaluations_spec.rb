@@ -11,14 +11,14 @@ feature "evaluations" do
 
     comment = Faker::HipsterIpsum.paragraph
 
-    within "form#new_judging" do
+    within "form#new_evaluation" do
       fill_in "Comment", with: comment
-      click_button "Create Judging"
+      click_button "Create Evaluation"
     end
 
     current_path.should == entry_path(entry)
 
-    page.should have_no_css "form#new_judging"
+    page.should have_no_css "form#new_evaluation"
 
     within("div#rank") { page.should have_content entry.reload.rank }
     within("div#points") { page.should have_content entry.reload.points }
@@ -29,6 +29,21 @@ feature "evaluations" do
     within("ul.evaluations") do
       page.should have_content user.name
       page.should have_content comment
+    end
+  end
+
+  scenario "user views their evaluations" do
+    user = users(:confirmed_user)
+    login_as user, scope: :user
+
+    evaluation = FactoryGirl.create(:evaluation, user: user)
+
+    visit root_path
+    click_link "My Evaluations"
+    current_path.should == evaluations_path
+
+    within("ul.evaluations") do
+      page.should have_content evaluation.entry.community_name
     end
   end
 end

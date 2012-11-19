@@ -11,9 +11,11 @@ Mvp2::Application.routes.draw do
   resources :follows, only: [:index]
 
   resources :entries, only: [:show, :create, :update] do
-    resources :judgings, only: [:create]
+    resources :evaluations, only: [:create]
     resource :follows, only: [:create, :destroy]
   end
+
+  resources :evaluations, only: [:index]
 
   match "leaderboard" => "entries#leaderboard", as: :leaderboard
 

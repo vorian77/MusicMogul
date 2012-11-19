@@ -3,7 +3,7 @@ class EntriesController < ApplicationController
 
   def show
     @entry = Entry.find params[:id]
-    @judging = current_user.judgings.where(entry_id: @entry.id).first || @entry.judgings.new
+    @evaluation = current_user.evaluations.where(entry_id: @entry.id).first || @entry.evaluations.new
   end
 
   def create

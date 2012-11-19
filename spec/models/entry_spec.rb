@@ -4,7 +4,8 @@ describe Entry do
   describe "associations" do
     it { should belong_to :contest }
     it { should belong_to :user }
-    it { should have_many(:judgings).dependent(:destroy) }
+    it { should have_many(:evaluations).dependent(:destroy) }
+    it { should have_many(:follows).dependent(:destroy) }
   end
 
   describe "validations" do
@@ -27,18 +28,18 @@ describe Entry do
       let(:user) { FactoryGirl.create(:user) }
 
       context "when there are no evaluations" do
-        before { Judging.destroy_all }
+        before { Evaluation.destroy_all }
         it { should =~ Entry.all }
       end
 
       context "when there is an evaluation for the given user" do
-        let!(:judging) { FactoryGirl.create(:judging, user: user) }
+        let!(:evaluation) { FactoryGirl.create(:evaluation, user: user) }
         it { should_not == Entry.all }
-        it { should_not include judging.entry }
+        it { should_not include evaluation.entry }
       end
 
       context "when there is an evaluation for a different user" do
-        before { FactoryGirl.create(:judging) }
+        before { FactoryGirl.create(:evaluation) }
         it { should =~ Entry.all }
       end
     end

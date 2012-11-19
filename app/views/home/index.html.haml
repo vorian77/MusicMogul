@@ -2,7 +2,7 @@
   %div.audition_progress
     %ul
       %li Contestants #{Entry.count}
-      %li # Evaluated #{current_user.judgings.count}
+      %li # Evaluated #{current_user.evaluations.count}
       %li % Evaluated #{percentage_evaluated(current_user)}
     %div.bar_container
       %div.bar_progress{style: "width: #{percentage_evaluated(current_user)};"}

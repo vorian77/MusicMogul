@@ -4,7 +4,7 @@ describe User do
   describe "associations" do
     it { should have_many(:entries).dependent(:destroy) }
     it { should have_many(:follows).dependent(:destroy) }
-    it { should have_many(:judgings).dependent(:destroy) }
+    it { should have_many(:evaluations).dependent(:destroy) }
     it { should have_many(:followed_entries).through(:follows) }
   end
 
@@ -34,12 +34,12 @@ describe User do
     end
   end
 
-  describe "#average_judging_score" do
-    subject { user.average_judging_score }
+  describe "#average_evaluation_score" do
+    subject { user.average_evaluation_score }
     let(:user) { User.first }
 
-    context "when the user has no judgings" do
-      before { user.judgings.destroy_all }
+    context "when the user has no evaluations" do
+      before { user.evaluations.destroy_all }
       it { should == 0 }
     end
   end
@@ -50,12 +50,12 @@ describe User do
     let(:entry) { Entry.first }
 
     context "when the user has evaluated the entry" do
-      before { FactoryGirl.create(:judging, user: user, entry: entry) }
+      before { FactoryGirl.create(:evaluation, user: user, entry: entry) }
       it { should be_true }
     end
 
     context "when the user has not evaluated the entry" do
-      before { Judging.destroy_all }
+      before { Evaluation.destroy_all }
       it { should be_false }
     end
   end

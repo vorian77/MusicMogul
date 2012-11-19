@@ -15,42 +15,42 @@
       - if @entry.has_music?
         %tr
           %td Music
-          %td #{@judging.music_score}
+          %td #{@evaluation.music_score}
           %td #{number_with_precision @entry.overall_music_score, precision: 2}
       - if @entry.has_vocals?
         %tr
           %td Vocals
-          %td #{@judging.vocals_score}
+          %td #{@evaluation.vocals_score}
           %td #{number_with_precision @entry.overall_vocals_score, precision: 2}
       %tr
         %td Presentation
-        %td #{@judging.presentation_score}
+        %td #{@evaluation.presentation_score}
         %td #{number_with_precision @entry.overall_presentation_score, precision: 2}
 
   %ul.evaluations
-    - @entry.judgings.order("created_at desc").each do |judging|
+    - @entry.evaluations.order("created_at desc").each do |evaluation|
       %li
-        = image_tag judging.user.profile_photo.url(:thumb)
-        = judging.user.profile_name.presence || "Anonymous"
+        = image_tag evaluation.user.profile_photo.url(:thumb)
+        = evaluation.user.profile_name.presence || "Anonymous"
         %dl
           %dt Hometown
-          %dd #{judging.user.hometown.presence || "Unspecified"}
+          %dd #{evaluation.user.hometown.presence || "Unspecified"}
           %dt Evaluations
-          %dd #{judging.user.judgings.count}
+          %dd #{evaluation.user.evaluations.count}
           %dt Average Score
-          %dd #{judging.user.average_judging_score}
+          %dd #{evaluation.user.average_evaluation_score}
 
         %ul.scores
           - if @entry.has_music?
-            %li Music #{judging.music_score}
+            %li Music #{evaluation.music_score}
           - if @entry.has_vocals?
-            %li Vocals #{judging.vocals_score}
-          %li Presentation #{judging.presentation_score}
-          - if judging.user.follows?(@entry)
+            %li Vocals #{evaluation.vocals_score}
+          %li Presentation #{evaluation.presentation_score}
+          - if evaluation.user.follows?(@entry)
             %li Following
-        %p= judging.comment
+        %p= evaluation.comment
 - else
-  = simple_form_for [@entry, @judging] do |f|
+  = simple_form_for [@entry, @evaluation] do |f|
     - if @entry.has_music?
       = f.input :music_score, as: :slider
     - if @entry.has_vocals?

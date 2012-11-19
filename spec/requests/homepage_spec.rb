@@ -27,7 +27,7 @@ feature "homepage" do
   end
 
   scenario "user views audition progress bar" do
-    Judging.destroy_all
+    Evaluation.destroy_all
 
     user = users(:confirmed_user)
     login_as(user, scope: :user)
@@ -40,7 +40,7 @@ feature "homepage" do
       page.should have_content "% Evaluated 0"
     end
 
-    FactoryGirl.create(:judging, entry: Entry.first, user: user)
+    FactoryGirl.create(:evaluation, entry: Entry.first, user: user)
 
     visit root_path
 

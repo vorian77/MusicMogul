@@ -14,6 +14,6 @@ module ApplicationHelper
   end
 
   def percentage_evaluated(user)
-    number_to_percentage((user.judgings.count / Entry.count.to_f) * 100, precision: 0)
+    number_to_percentage((user.evaluations.count / Entry.count.to_f) * 100, precision: 0)
   end
 end

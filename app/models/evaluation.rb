@@ -1,4 +1,4 @@
-class Judging < ActiveRecord::Base
+class Evaluation < ActiveRecord::Base
   belongs_to :entry
   belongs_to :user
 
@@ -23,6 +23,6 @@ class Judging < ActiveRecord::Base
   end
 
   def calculate_entry_points
-    self.entry.update_attribute(:points, entry.judgings.sum(:overall_score))
+    self.entry.update_attribute(:points, entry.evaluations.sum(:overall_score))
   end
 end

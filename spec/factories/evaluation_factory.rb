@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :judging do
+  factory :evaluation do
     user
     entry
     music_score { (1..10).to_a.sample }
