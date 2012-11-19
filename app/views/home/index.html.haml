@@ -1,7 +1,7 @@
 - if user_signed_in?
   %div.audition_progress
     %ul
-      %li Contestants #{Entry.count}
+      %li Contestants #{contestant_count_for_user(current_user)}
       %li # Evaluated #{current_user.evaluations.count}
       %li % Evaluated #{percentage_evaluated(current_user)}
     %div.bar_container

@@ -17,6 +17,7 @@ class Entry < ActiveRecord::Base
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
+  scope :unexplicit, where(has_explicit_content: false)
   scope :unevaluated_by, lambda { |user|
     joins("LEFT OUTER JOIN evaluations on entries.id = evaluations.entry_id AND evaluations.user_id = #{user.id}").
         where("evaluations.entry_id IS NULL", user.id)

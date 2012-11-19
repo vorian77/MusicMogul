@@ -1,4 +1,6 @@
 %h1 #{@entry.community_name} - #{@entry.song_title}
+- if should_show_explicit_content_warning?(@entry)
+  %h2 WARNING: EXPLICIT CONTENT
 %div{"data-youtube-id" => @entry.youtube_id, id: "video_#{@entry.id}"}
 
 - if current_user.has_evaluated?(@entry)
