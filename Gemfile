@@ -1,31 +1,29 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
-gem 'pg'
-gem 'jquery-rails'
-gem 'devise'
-gem 'sendgrid'
-gem 'country-select', '~> 1.1.1'
+gem 'activeadmin', "~> 0.4.3"
 gem 'carrierwave'
-gem 'mini_magick'
-gem 'fog'
+gem 'country-select', '~> 1.1.1'
+gem 'devise'
+gem 'exception_notification'
 gem 'fancybox-rails'
+gem 'fog'
+gem 'jquery-rails'
 gem 'haml-rails'
+gem 'mime-types', require: 'mime/types'
+gem 'mini_magick'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
-gem 'exception_notification'
+gem 'pg'
+gem 'rails', '3.2.8'
 gem 's3_direct_rails'
-gem 'formtastic', '~> 2.1.1'
-gem 'activeadmin', "~> 0.4.3"
-gem 'ayah_integration'
-gem 'mime-types', :require => 'mime/types'
+gem 'sendgrid'
 gem 'simple_form'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
   gem 'compass-rails'
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'uglifier', '>= 1.0.3'
 end
 
 group :development, :test do
