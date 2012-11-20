@@ -5,7 +5,7 @@ feature "follows" do
     user = users(:confirmed_user)
     login_as user, scope: :user
 
-    visit root_path
+    visit leaderboard_path
 
     entry = Entry.first
     within("li#entry_#{entry.id}") do
@@ -16,7 +16,7 @@ feature "follows" do
       end
     end
 
-    visit root_path
+    visit leaderboard_path
 
     within("li#entry_#{entry.id}") do
       within "form.follow" do
@@ -32,7 +32,7 @@ feature "follows" do
       end
     end
 
-    visit root_path
+    visit leaderboard_path
 
     within("li#entry_#{entry.id}") do
       within "form.follow" do

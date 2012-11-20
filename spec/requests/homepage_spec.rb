@@ -24,6 +24,8 @@ feature "homepage" do
     Entry.unevaluated_by(user).find_each do |entry|
       page.should have_content entry.community_name
     end
+
+    page.should have_no_css "form.follow"
   end
 
   scenario "user views audition progress bar" do

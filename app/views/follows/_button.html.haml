@@ -1,0 +1,4 @@
+- if current_user.follows?(entry)
+  = button_to "Following", entry_follows_path(entry), method: :delete, remote: true, form_class: "follow"
+- else
+  = button_to "Follow", entry_follows_path(entry), method: :post, remote: true, form_class: "follow"

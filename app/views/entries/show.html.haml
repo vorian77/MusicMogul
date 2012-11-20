@@ -3,6 +3,8 @@
   %h2 WARNING: EXPLICIT CONTENT
 %div{"data-youtube-id" => @entry.youtube_id, id: "video_#{@entry.id}"}
 
+= render "follows/button", entry: @entry
+
 - if current_user.has_evaluated?(@entry)
   #rank
     Rank #{@entry.rank}
