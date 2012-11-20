@@ -13,7 +13,7 @@ class Entry < ActiveRecord::Base
 
   attr_accessible :genre, :community_name, :song_title, :youtube_url, :hometown, :bio,
                   :facebook, :youtube, :twitter, :pinterest, :website,
-                  :has_music, :has_vocals, :has_explicit_content
+                  :has_music, :has_vocals, :has_explicit_content, :user
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
