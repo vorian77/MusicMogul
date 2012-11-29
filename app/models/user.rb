@@ -14,31 +14,8 @@ class User < ActiveRecord::Base
     :thumb_y, :thumb_w, :account_type, :evaluations_attributes, :source,
     :genre, :youtube, :current_tab, :gender,
     :remove_profile_video, :thumb_x, :thumb_y, :thumb_w, :youtube_url,
-    :changing_password, :confirmed_at, :birth_date, :show_explicit_videos, :receive_email_updates,
+    :confirmed_at, :birth_date, :show_explicit_videos, :receive_email_updates,
     :profile_photo
-
-  attr_accessor :changing_password
-
-  #with_options :on => :create do |u|
-  #  u.validates :email, :presence => true, :uniqueness => true
-  #  u.validates_presence_of :password
-  #end
-  #
-  #with_options :if => :changing_password? do |u|
-  #  u.validates_presence_of :old_password
-  #  u.validates_presence_of     :password
-  #  u.validates_confirmation_of :password
-  #  u.validates_length_of       :password, :minimum => 4, :allow_blank => true
-  #end
-  #
-  #with_options :on => :update, :if => Proc.new { |u| u.current_tab == 'details' || u.current_tab.blank? } do |u|
-  #  u.validates_presence_of :email
-  #end
-  #
-  #with_options :on => :update, :if => Proc.new { |u| u.current_tab == 'profile' || u.current_tab.blank? } do |u|
-  #  u.validates_presence_of :profile_name, :message => "User or Band Name is required."
-  #  u.validates_presence_of :hometown, :message => "Hometown is required."
-  #end
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
@@ -55,10 +32,6 @@ class User < ActiveRecord::Base
   def average_evaluation_score
     return 0 unless evaluations.present?
     evaluations.sum(:overall_score) / evaluations.count.to_f
-  end
-
-  def changing_password?
-    self.changing_password.present?
   end
 
   def display_name

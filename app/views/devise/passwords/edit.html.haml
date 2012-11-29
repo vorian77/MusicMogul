@@ -1,0 +1,11 @@
+.login-holder.login-holder2
+  %p Please enter your existing password and your new password.
+  = simple_form_for resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, :class => 'change-password-form' } do |f|
+    = devise_error_messages!
+    = f.input :reset_password_token, as: :hidden
+    = f.input :password, label: "New Password", input_html: { class: "field" }
+    = f.input :password_confirmation, label: "Confirm New Password", input_html: { class: "field" }
+    .cl
+    %br/
+    = f.submit "Change Password", class: "submit submit2"
+  .cl
