@@ -6,7 +6,7 @@ feature "entries" do
     login_as user, scope: :user
 
     visit root_path
-    click_link user.profile_name
+    click_link "My Player Profile"
     current_path.should == account_path
 
     within "form#new_entry" do

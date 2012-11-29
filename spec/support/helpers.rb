@@ -13,7 +13,7 @@ module HelperMethods
       fill_in "Password", with: "password"
     end
 
-    click_button "Log in"
+    click_button "Sign In"
 
     current_path.should == root_path
 

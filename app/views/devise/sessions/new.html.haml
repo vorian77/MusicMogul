@@ -1,0 +1,13 @@
+.login-holder.login-holder2
+  %span.sign-in-title Sign In
+  = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    = f.input :email, input_html: { class: "field" }
+    = f.input :password, input_html: { class: "field" }
+    .cl  
+    %br/
+    = f.submit "Sign In", class: "submit"
+  .bottom-part
+    %a.not{:href => "#{new_user_password_path}"} Forgot Password?
+    %span
+      Not already registered?
+      %a{:href => "#{new_user_registration_path}"} Sign up now!
