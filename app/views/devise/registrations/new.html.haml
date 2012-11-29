@@ -1,0 +1,29 @@
+-#<div class="heading">
+-#  <h2>Mogul Sign Up</h2>
+-#</div>
+-#
+-#<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+-#    <%= f.input :email %>
+-#    <%= f.input :password %>
+-#    <%= f.input :profile_name, label: "Player name" %>
+-#    <%= f.input :hometown %>
+-#    <%= f.submit "Sign up" %>
+-#<% end %>
+
+.login-holder.login-holder2
+  %span.sign-in-title Sign Up
+  = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+    = f.input :email, input_html: { class: "field" }
+    = f.input :password, input_html: { class: "field" }
+    = f.input :profile_name, label: "Player Name", required: false, input_html: { class: "field" }
+    = f.input :hometown, required: false, input_html: { class: "field" }
+    .row
+      %input#compete.check.ez-mark{:type => "checkbox", :value => ""}/
+      %label{:for => "compete"} I want to compete in the contest
+    .cl  
+    = f.submit "Sign Up", class: "submit"
+  .cl  
+  .bottom-part
+    %span
+      Already registered?
+      %a{:href => "#{new_user_session_path}"} Sign in

@@ -10,11 +10,11 @@ feature "sign up" do
     player_name = Faker::Internet.user_name
     fill_in "Email", with: Faker::Internet.email
     fill_in "Password", with: "password"
-    fill_in "Player name", with: player_name
+    fill_in "Player Name", with: player_name
     fill_in "Hometown", with: Faker::Address.city
 
     lambda {
-      click_button "Sign up"
+      click_button "Sign Up"
     }.should change { User.count }.by(1)
     current_path.should == root_path
 

@@ -296,13 +296,13 @@ a.red-btn:active span { background-position:right bottom;  }
  **/
 .ez-hide { opacity: 0; filter:alpha(opacity=0); }
 .ez-checkbox { float:left; display: inline; width: 13px; height: 13px; margin: 0 8px 18px 0;
-  background: transparent url('images/check-sprite.png') 0 0 no-repeat;
+  background: transparent image_url('check-sprite.png') 0 0 no-repeat;
 }
 
 .ez-checked { background-position: 0 -13px; }
 
 .ez-checkbox-green {
-  background: transparent url('images/check-sprite.png') 0 0 no-repeat;
+  background: transparent image_url('check-sprite.png') 0 0 no-repeat;
   display:inline-block;
   *display: inline;
 }
