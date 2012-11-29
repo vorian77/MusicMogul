@@ -77,10 +77,4 @@ Mvp2::Application.configure do
     :user_name => ENV['SENDGRID_USERNAME'],
     :password => ENV['SENDGRID_PASSWORD']
   }
-
-  config.middleware.use ExceptionNotifier,
-    :email_prefix => "[Exception] ",
-    :sender_address => %{"Exception Notifier" <no-reply@fanhelp.us>},
-    :exception_recipients => %w{exceptions@fanhelp.us}
-
 end

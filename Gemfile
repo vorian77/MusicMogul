@@ -4,7 +4,6 @@ gem 'activeadmin', "~> 0.4.3"
 gem 'carrierwave'
 gem 'country-select', '~> 1.1.1'
 gem 'devise'
-gem 'exception_notification'
 gem 'fancybox-rails'
 gem 'fog'
 gem 'jquery-rails'
