@@ -1,13 +1,16 @@
 $ ->
-  $("form.follow").live "submit", () ->
-    $(this).find(":submit").attr("disabled", "disabled")
+  follow_links = $("a.red-follow, a.gray-follow")
+  follow_links.live "click", () ->
+    $(this).attr("disabled", "disabled")
 
-  $("form.follow").live "ajax:success", () ->
-    submit = $(this).find(":submit")
-    submit.removeAttr("disabled")
-    if submit.val() == "Follow"
-      $(this).find("> div:first").prepend("<input name='_method' type='hidden' value='delete'>")
-      submit.val("Following")
+  follow_links.live "ajax:success", () ->
+    link = $(this)
+    if link.html() == "Follow"
+      link.removeClass("gray-follow").addClass("red-follow")
+      link.data("method", "delete")
+      link.html("Following")
     else
-      $(this).find("input[name=_method]").remove()
-      submit.val("Follow")
+      link.removeClass("red-follow").addClass("gray-follow")
+      link.data("method", "post")
+      link.html("Follow")
+    link.removeAttr("disabled")

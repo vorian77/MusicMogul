@@ -1,10 +1,29 @@
-- if user_signed_in?
-  %div.audition_progress
-    %ul
-      %li Contestants #{contestant_count_for_user(current_user)}
-      %li # Evaluated #{current_user.evaluations.count}
-      %li % Evaluated #{percentage_evaluated(current_user)}
-    %div.bar_container
-      %div.bar_progress{style: "width: #{percentage_evaluated(current_user)};"}
+= content_for(:bottom_of_header) do
+  - if user_signed_in?
+    .red-box
+      .left-side  
+      %span.left-text My Evaluations
+      .progress
+        %ul
+          %li
+            %span Contestants
+            %span.white #{contestant_count_for_user(current_user)}
+          %li
+            %span # Evaluated
+            %span.white #{current_user.evaluations.count}
+          %li
+            %span % Evaluated
+            %span.white #{percentage_evaluated(current_user)}
+        .cl  
+        .progress-bar
+          %span{:style => "width: #{percentage_evaluated(current_user)};"}  
+      .right-side  
+      .cl  
+  - else
+    .red-box
+      .left-side  
+      %h2 Sign Up Or Sign In To Judge The Contest
+      .right-side  
+      .cl  
 
 = render "entries/list", entries: @entries

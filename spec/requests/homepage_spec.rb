@@ -5,7 +5,7 @@ feature "homepage" do
     visit root_path
 
     Entry.count.should > 0
-    within("ul.entries") do
+    within("div#content") do
       Entry.find_each do |entry|
         page.should have_content entry.community_name
         page.should have_content entry.genre
@@ -36,7 +36,7 @@ feature "homepage" do
 
     visit root_path
 
-    within "div.audition_progress" do
+    within "div.red-box" do
       page.should have_content "Contestants 3"
       page.should have_content "# Evaluated 0"
       page.should have_content "% Evaluated 0"
@@ -46,7 +46,7 @@ feature "homepage" do
 
     visit root_path
 
-    within "div.audition_progress" do
+    within "div.red-box" do
       page.should have_content "Contestants 3"
       page.should have_content "# Evaluated 1"
       page.should have_content "% Evaluated 33"

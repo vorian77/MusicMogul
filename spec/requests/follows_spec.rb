@@ -8,37 +8,23 @@ feature "follows" do
     visit leaderboard_path
 
     entry = Entry.first
-    within("li#entry_#{entry.id}") do
-      click_button "Follow"
-      within "form.follow" do
-        page.should have_css "input[type=submit][value=Following]"
-        page.should have_no_css "input[type=submit][value=Follow]"
-      end
+    within("div#entry_#{entry.id}") do
+      click_link "Follow"
+      page.should have_css "a", text: "Following"
     end
 
     visit leaderboard_path
 
-    within("li#entry_#{entry.id}") do
-      within "form.follow" do
-        page.should have_css "input[type=submit][value=Following]"
-        page.should have_no_css "input[type=submit][value=Follow]"
-      end
-
-      click_button "Following"
-
-      within "form.follow" do
-        page.should have_css "input[type=submit][value=Follow]"
-        page.should have_no_css "input[type=submit][value=Following]"
-      end
+    within("div#entry_#{entry.id}") do
+      page.should have_css "a", text: "Following"
+      click_link "Following"
+      page.should have_css "a", text: "Follow"
     end
 
     visit leaderboard_path
 
-    within("li#entry_#{entry.id}") do
-      within "form.follow" do
-        page.should have_css "input[type=submit][value=Follow]"
-        page.should have_no_css "input[type=submit][value=Following]"
-      end
+    within("div#entry_#{entry.id}") do
+      page.should have_css "a", text: "Follow"
     end
   end
 

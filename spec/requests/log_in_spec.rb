@@ -6,8 +6,8 @@ feature "log in" do
 
     visit root_path
 
-    within "ul.log-in-nav" do
-      click_link "Log in"
+    within "div.btn-holder" do
+      click_link "Sign In"
     end
 
     current_path.should == new_user_session_path

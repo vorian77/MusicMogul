@@ -1,5 +1,6 @@
 class FollowsController < ApplicationController
   before_filter :authenticate_user!
+  skip_before_filter :verify_authenticity_token
 
   def index
     @entries = current_user.followed_entries.order("random()")
