@@ -1,6 +1,6 @@
 class Evaluation < ActiveRecord::Base
   belongs_to :entry
-  belongs_to :user
+  belongs_to :user, include: :evaluations
 
   attr_accessible :music_score, :vocals_score, :presentation_score, :comment, :entry_id
 

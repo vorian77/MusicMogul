@@ -9,11 +9,6 @@ $(function () {
             }
         });
 
-    $(".red-line").slider({
-        range:"max",
-        value:50
-    });
-
     if ($('.scrollpane').length > 0) {
         $('.scrollpane').jScrollPane({
             showArrows:true

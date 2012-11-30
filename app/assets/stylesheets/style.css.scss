@@ -200,8 +200,8 @@ h1#logo a { display:block; height: 58px; background: image_url("logo.png") no-re
 
 #main-content .comment-box { padding: 10px 17px 0; border-top: 1px solid #fff;  }
 #main-content .comment-box h5 { padding-bottom: 4px;  }
-#main-content .comment-box .scrollpane { width: 568px; height: 82px; padding: 10px 16px; margin: 0 0 9px; background-color:#fff;  border: 1px solid #bfbaba; border-radius: 7px; }
-#main-content .comment-box .scrollpane p { font: 14px/20px "helvrommedium", arial, sans-serif; color:#000; }
+#main-content .comment-box .text textarea { width: 568px; height: 70px; padding: 10px 16px 0 16px; margin: 0 0 9px; background-color:#fff;  border: 1px solid #bfbaba; border-radius: 7px; }
+#main-content .comment-box .text textarea { font: 14px/20px "helvrommedium", arial, sans-serif; color:#000; resize: none; }
 
 /*
 	Sidebar
@@ -218,13 +218,13 @@ h1#logo a { display:block; height: 58px; background: image_url("logo.png") no-re
 #sidebar .ellipsis p { padding: 10px 15px 0 13px; font: 15px/20px "helvrommedium", arial, sans-serif; color:#4c4c4c; }
 
 
-a.red-btn { width: 55px; margin-right: 23px;  }
-a.red-btn, a.red-btn span { float:right; display: inline; height: 33px; padding-left: 10px;  background: image_url("red-btn.png") no-repeat 0 0; font: 15px/35px "helvbold", arial, sans-serif; color:#fff;  }
-a.red-btn span { margin-right: -7px; padding-left:0; padding-right: 10px;  background-position:right 0;  }
-a.red-btn:hover { background-position:0 center; text-decoration: none; }
-a.red-btn:hover span { background-position:right center;  }
-a.red-btn:active { background-position:0 bottom;  }
-a.red-btn:active span { background-position:right bottom;  }
+input.red-btn { border: 0; width: 55px; margin-right: 23px;  }
+input.red-btn, input.red-btn span { float:right; display: inline; height: 33px; padding-left: 10px;  background: image_url("red-btn.png") no-repeat 0 0; font: 15px/35px "helvbold", arial, sans-serif; color:#fff;  }
+input.red-btn span { margin-right: -7px; padding-left:0; padding-right: 10px;  background-position:right 0;  }
+input.red-btn:hover { background-position:0 center; text-decoration: none; }
+input.red-btn:hover span { background-position:right center;  }
+input.red-btn:active { background-position:0 bottom;  }
+input.red-btn:active span { background-position:right bottom;  }
 
 
 /*

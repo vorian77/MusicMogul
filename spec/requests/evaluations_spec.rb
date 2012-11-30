@@ -12,8 +12,8 @@ feature "evaluations" do
     comment = Faker::HipsterIpsum.paragraph
 
     within "form#new_evaluation" do
-      fill_in "Comment", with: comment
-      click_button "Create Evaluation"
+      fill_in "evaluation_comment", with: comment
+      click_button "Submit"
     end
 
     current_path.should == entry_path(entry)

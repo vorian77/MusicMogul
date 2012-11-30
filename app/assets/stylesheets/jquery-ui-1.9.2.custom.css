@@ -52,14 +52,14 @@
 .ui-widget { font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif; font-size: 1.1em; }
 .ui-widget .ui-widget { font-size: 1em; }
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif; font-size: 1em; }
-.ui-widget-content { border: 1px solid #dddddd; background: url(images/red-line.png) no-repeat 0 0; color: #333333; }
+.ui-widget-content { border: 1px solid #dddddd; background: url(red-line.png) no-repeat 0 0; color: #333333; }
 .ui-widget-content a { color: #333333; }
-.ui-widget-header { border: 1px solid #e78f08; background: #eeeeee url(images/bg-progress.png) repeat-x 0 0; color: #ffffff; font-weight: bold; }
+.ui-widget-header { border: 1px solid #e78f08; background: #eeeeee url(bg-progress.png) repeat-x 0 0; color: #ffffff; font-weight: bold; }
 .ui-widget-header a { color: #ffffff; }
 
 /* Interaction states
 ----------------------------------*/
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { width: 18px; height: 24px; background: url(images/slider-btn.png); font-weight: bold; color: #1c94c4; cursor: pointer; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { width: 18px; height: 24px; background: url(slider-btn.png); font-weight: bold; color: #1c94c4; cursor: pointer; }
 .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #1c94c4; text-decoration: none; }
 
 
