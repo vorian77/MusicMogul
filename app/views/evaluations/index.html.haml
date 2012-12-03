@@ -1,33 +1,64 @@
-%ul.evaluations
-  - @evaluations.each do |evaluation|
-    - entry = evaluation.entry
-    %li[evaluation]
-      = image_tag entry.profile_photo.url(:medium)
-      %div
-        %h3
-          = link_to entry.community_name, entry
-        %dl
-          %dt Genre
-          %dd= entry.genre
-          %dt Hometown
-          %dd= entry.hometown
-          %dt My Evaluation
-          %dd= evaluation.overall_score
-          %dt Evaluations
-          %dd= entry.evaluations.count
-          %dt Average Evaluation
-          %dd= entry.overall_score
-          %dt Followers
-          %dd= entry.follows.count
-
-        %div.evaluation
-          %ul
-            %li= evaluation.created_at
-            - if evaluation.music_score?
-              %li Music #{evaluation.music_score}
-            - if evaluation.vocals_score?
-              %li Vocals #{evaluation.vocals_score}
-            %li Presentation #{evaluation.presentation_score}
-          %p= evaluation.comment
-
-          = render "follows/button", entry: entry
+- @evaluations.each do |evaluation|
+  - entry = evaluation.entry
+  .box
+    .img-holder
+      %a{:href => "#{entry_path(entry)}"}
+        %img{:alt => "", :height => "186", :src => "#{entry.profile_photo.url(:medium)}", :width => "186"}/
+    .text-holder.left
+      = link_to entry.community_name, entry, class: "title"
+      = render "follows/button", entry: entry
+      .cl  
+      .left-part
+        %span.left-text Genre
+        %span.right-text #{entry.genre || "Unspecified"}
+        .cl  
+        %span.left-text Hometown
+        %span.right-text #{entry.hometown  || "Unspecified"}
+        %span.left-text Place/Points
+        %span.right-text #{entry.rank}/#{entry.points}
+        .cl  
+        %span.left-text Evaluations
+        %span.right-text #{entry.evaluations.count}
+        .cl  
+        %span.left-text Avg. Eval.
+        %span.right-text #{entry.overall_score}
+        .cl  
+        %span.left-text Followers
+        %span.right-text #{entry.follows.count}
+        .cl  
+      .right-part
+        %ul
+          %li
+            %span.red #{entry.created_at.strftime("%m/%d/%y")}
+          %li
+            %span.red #{entry.created_at.strftime("%H:%m")}
+          - if entry.has_music?
+            %li
+              %span
+                Music
+                %span.red #{evaluation.music_score}
+          - if entry.has_vocals?
+            %li
+              %span
+                Vocal
+                %span.red #{evaluation.vocals_score}
+          %li
+            %span
+              Presentation
+              %span.red #{evaluation.presentation_score}
+        .cl  
+        .ellipsis
+          = evaluation.comment
+    .cl  
+-#
+-#        %div.evaluation
+-#          %ul
+-#            %li= evaluation.created_at
+-#            - if evaluation.music_score?
+-#              %li Music #{evaluation.music_score}
+-#            - if evaluation.vocals_score?
+-#              %li Vocals #{evaluation.vocals_score}
+-#            %li Presentation #{evaluation.presentation_score}
+-#          %p= evaluation.comment
+-#
+-#          = render "follows/button", entry: entry

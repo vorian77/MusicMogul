@@ -42,7 +42,7 @@ feature "evaluations" do
     click_link "My Evaluations"
     current_path.should == evaluations_path
 
-    within("ul.evaluations") do
+    within("div.box") do
       page.should have_content evaluation.entry.community_name
     end
   end
