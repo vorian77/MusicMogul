@@ -217,15 +217,9 @@ h1#logo a { display:block; height: 58px; background: image_url("logo.png") no-re
 #sidebar .ellipsis { width: 250px; height: 105px; padding:0; margin: 6px 0 0;  background-color:#fefefe; border: 1px solid #e2e2e2; border-radius: 5px; }
 #sidebar .ellipsis p { padding: 10px 15px 0 13px; font: 15px/20px "helvrommedium", arial, sans-serif; color:#4c4c4c; }
 
-
-input.red-btn { border: 0; width: 55px; margin-right: 23px;  }
-input.red-btn, input.red-btn span { float:right; display: inline; height: 33px; padding-left: 10px;  background: image_url("red-btn.png") no-repeat 0 0; font: 15px/35px "helvbold", arial, sans-serif; color:#fff;  }
-input.red-btn span { margin-right: -7px; padding-left:0; padding-right: 10px;  background-position:right 0;  }
-input.red-btn:hover { background-position:0 center; text-decoration: none; }
-input.red-btn:hover span { background-position:right center;  }
-input.red-btn:active { background-position:0 bottom;  }
-input.red-btn:active span { background-position:right bottom;  }
-
+#main-content .gray-box form input.submit { float:right; display: inline; width: 82px; height: 36px; margin: 0 20px 0 0; background: image_url("submit-btn.png") no-repeat 0 0; border: 0; font: 15px/35px "helvbold", arial, sans-serif; color:#fff; cursor: pointer; }
+#main-content .gray-box form input.submit:hover { background-position:0 center;  }
+#main-content .gray-box form input.submit:active { background-position:0 bottom;  }
 
 /*
 	Footer
