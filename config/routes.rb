@@ -17,6 +17,7 @@ Mvp2::Application.routes.draw do
   resources :evaluations, only: [:index]
 
   match "leaderboard" => "entries#leaderboard", as: :leaderboard
+  match "notices" => "home#notices"
 
   root :to => 'home#index'
 end

@@ -1,0 +1,92 @@
+= content_for(:bottom_of_header) do
+  .red-box
+    .left-side  
+    .cl  
+    %span.notice Notices
+    .cl  
+    .right-side  
+
+.tabs
+  %ul
+    %li.active
+      %a{:href => "#about"} About Us
+    %li
+      %a{:href => "#contact"} Contact Us
+    %li
+      %a{:href => "#"} Terms
+    %li
+      %a{:href => "#"} Privacy
+  .cl  
+#about.tab-box
+  %p Our mission is to help unheralded singers and bands to advance their career in professional music.
+  %p We think the best way to help is to provide a fun way for music fans to meet and support their next favorite singers and bands
+  %p The Music Mogul game has been designed by a dedicated group of consultants who are passionate about music and helping musicians. You can see their care and talent in the site. Don’t hesitate to condider them for any projects that benefit from their skills.
+  %ul.descr-list
+    %li.gray-line
+      .img-hold
+        %img{:alt => "", :height => "116", :src => "css/images/empty-img.png", :width => "116"}/
+      .text-hold
+        %span.name Phyllip Hall
+        %ul
+          %li
+            %a.location{:href => "#"} Detroit, MI
+          %li
+            %a.email{:href => "mailto:Phyllip@musicmogul.com"} Phyllip@musicmogul.com
+          %li
+            %a.twitter{:href => "#"} phylliphall
+          %li
+            %a.website{:href => "#"} www.musicmogul.com
+        %p Phasellus sed mi id eros feugiat ullamcorper. Proin eleifend semper volutpat. Donec at tellus metus. Phasellus ac augue porttitor massa pulvinar interdum ac sit amet libero. Class aptent taciti sociosqu ad litora torquent per
+      .cl  
+    %li
+      .img-hold
+        %img{:alt => "", :height => "116", :src => "css/images/empty-img.png", :width => "116"}/
+      .text-hold
+        %span.name Linda Cassel
+        %ul
+          %li
+            %a.location{:href => "#"} Detroit, MI
+          %li
+            %a.email{:href => "mailto:Phyllip@musicmogul.com"} Phyllip@musicmogul.com
+          %li
+            %a.twitter{:href => "#"} phylliphall
+          %li
+            %a.website{:href => "#"} www.musicmogul.com
+        %p Phasellus sed mi id eros feugiat ullamcorper. Proin eleifend semper volutpat. Donec at tellus metus. Phasellus ac augue porttitor massa pulvinar interdum ac sit amet libero. Class aptent taciti sociosqu ad litora torquent per
+      .cl  
+    %li.gray-line
+      .img-hold
+        %img{:alt => "", :height => "116", :src => "css/images/empty-img.png", :width => "116"}/
+      .text-hold
+        %span.name Name
+        %ul
+          %li
+            %a.location{:href => "#"} Detroit, MI
+          %li
+            %a.email{:href => "mailto:Phyllip@musicmogul.com"} Phyllip@musicmogul.com
+          %li
+            %a.twitter{:href => "#"} phylliphall
+          %li
+            %a.website{:href => "#"} www.musicmogul.com
+        %p Phasellus sed mi id eros feugiat ullamcorper. Proin eleifend semper volutpat. Donec at tellus metus. Phasellus ac augue porttitor massa pulvinar interdum ac sit amet libero. Class aptent taciti sociosqu ad litora torquent per
+      .cl  
+#contact.tab-box
+  %span.title Have a question? Drop us a line!
+  %form{:action => "", :method => "post"}
+    .row
+      %label Name*
+      %input.field{:type => "text", :value => ""}/
+    .row
+      %label Email*
+      %input.field{:type => "text", :value => ""}/
+    .row
+      %input#check.check.ez-mark{:type => "checkbox", :value => ""}/
+      %label.check-label{:for => "check"} Send me a copy
+    .row
+      %label Subject*
+      %input.field{:type => "text", :value => ""}/
+    .row
+      %label Message*
+      %textarea{:cols => "5", :rows => "5"}
+    %input.submit{:type => "submit", :value => "Send"}/
+    .cl  

@@ -176,7 +176,7 @@ span.list-title { display:block; padding: 0 0 20px; font: 20px/24px "helvbold", 
 #content .tabs { padding: 0 0 0 17px; }
 #content .tabs ul { float:left; display: inline; position:relative; height:100%;  }
 #content .tabs ul li { position:relative; float:left; display: inline; margin-right:-1px;  }
-#content .tabs ul li a { display:block; width: 135px; height: 24px; padding: 10px 0 0; background: image_url("checkers-bg3.png); border: 1px solid #d2d2d2; border-bottom:0;  border-radius: 5px 5px 0 0; font: 16px/20px "helvbold", arial, sans-serif; color:#a9a9a9; text-shadow: 0 1px 1px #fff; text-align:center; box-shadow: 0 0 5px rgba(0,0,0,0.13"); }
+#content .tabs ul li a { display:block; width: 135px; height: 24px; padding: 10px 0 0; background: image_url("checkers-bg3.png"); border: 1px solid #d2d2d2; border-bottom:0;  border-radius: 5px 5px 0 0; font: 16px/20px "helvbold", arial, sans-serif; color:#a9a9a9; text-shadow: 0 1px 1px #fff; text-align:center; box-shadow: 0 0 5px rgba(0,0,0,0.13); }
 #content .tabs ul li a:hover {  text-decoration: none; color:#333; }
 #content .tabs ul li.active { position:relative; z-index: 10!important; }
 #content .tabs ul li.active a { position:relative; background:#fff; border-color:#fff; color:#333333; }
@@ -209,8 +209,6 @@ span.list-title { display:block; padding: 0 0 20px; font: 20px/24px "helvbold", 
 #content .tab-box form input.submit { float:right; display: inline; width: 66px; height:33px;  background: image_url("sprite.png") no-repeat right -124px; font: 15px 'helvbold', arial, sans-serif; color:#fff; border: 0; box-shadow: 0 0 0; cursor: pointer; }
 #content .tab-box form input.submit:hover { background-position:right -159px;  }
 #content .tab-box form input.submit:active { background-position:right -194px;  }
-
-#content #about { display:block;  }
 
 #content .main-form { }
 #content .main-form input.submit {  float:right; display: inline; width: 66px; height:33px; margin: 0 0 9px; background: image_url("sprite.png") no-repeat right -124px; font: 15px/33px 'helvbold', arial, sans-serif; color:#fff; text-align:center; border: 0; cursor: pointer; }
