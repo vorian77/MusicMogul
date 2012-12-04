@@ -9,7 +9,7 @@ Mvp2::Application.routes.draw do
 
   resources :follows, only: [:index]
 
-  resources :entries, only: [:show, :create, :update] do
+  resources :entries, only: [:new, :edit, :show, :create, :update] do
     resources :evaluations, only: [:create]
     resource :follows, only: [:create, :destroy]
   end

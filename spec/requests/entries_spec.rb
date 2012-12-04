@@ -6,33 +6,36 @@ feature "entries" do
     login_as user, scope: :user
 
     visit root_path
-    click_link "My Player Profile"
-    current_path.should == account_path
+    click_link "Submit A Video"
+    current_path.should == new_entry_path
 
     within "form#new_entry" do
       fill_in "Stage name", with: Faker::HipsterIpsum.words.join(" ")
       select Contest::GENRES.sample, from: "Genre"
       fill_in "Hometown", with: Faker::Address.city
       fill_in "Bio", with: Faker::HipsterIpsum.paragraph
-      fill_in "Youtube URL", with: "http://youtu.be/sGE4HMvDe-Q"
-      fill_in "Song title", with: Faker::HipsterIpsum.words.join(" ")
-      check "Has music"
-      check "Has vocals"
-      check "Has explicit content"
+      fill_in "YouTube URL", with: "http://youtu.be/sGE4HMvDe-Q"
+      fill_in "Title", with: Faker::HipsterIpsum.words.join(" ")
+      check "Has Music"
+      check "Has Vocals"
+      check "Has Explicit Content"
       fill_in "Facebook", with: ""
       fill_in "Twitter", with: ""
-      fill_in "Youtube", with: ""
+      fill_in "YouTube", with: ""
       fill_in "Pinterest", with: ""
       fill_in "Website", with: ""
-      click_button "Save"
+      lambda {
+        click_button "Save"
+      }.should change { Entry.count }.by(1)
     end
 
-    current_path.should == account_path
+    entry = Entry.order("created_at").last
+    current_path.should == edit_entry_path(entry)
 
     within "form.edit_entry" do
       click_button "Save"
     end
 
-    current_path.should == account_path
+    current_path.should == edit_entry_path(entry)
   end
 end

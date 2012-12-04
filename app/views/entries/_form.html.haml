@@ -1,0 +1,80 @@
+= simple_form_for @entry, html: {multipart: true} do |f|
+  %input.submit{:type => "submit", :value => "Save"}/
+  .cl  
+  .line-title
+    %span
+      %strong Performer Settings
+    .cl  
+  .row
+    = f.input :community_name, label: "Stage name", input_html: { class: "field" }
+    .cl  
+  .row
+    %label{for: "entry_genre"} Genre*
+    %select.select#entry_genre{name: "entry[genre]"}
+      = options_for_select(Contest::GENRES, selected: @entry.genre, include_blank: true)
+    .cl  
+  .row
+    = f.input :hometown, input_html: { class: "field" }
+    .cl  
+  .row
+    %label{for: "entry_bio"} Bio
+    .textarea-holder.scrollpane
+      %textarea#entry_bio{:cols => "5", :rows => "5", name: "entry[bio]", value: @entry.bio}
+    .cl  
+  .line-title
+    %span
+      %strong Audition Video
+    .cl  
+  .row
+    %label.larger{for: "entry_youtube_url"} YouTube URL*
+    %input.field#entry_youtube_url{type: "text", value: @entry.youtube_url, name: "entry[youtube_url]"}/
+    %a.verify{:href => "#"} verify
+    .cl  
+  .row
+    %label.larger{for: "entry_song_title"} Title*
+    %input.field#entry_song_title{type: "text", value: @entry.song_title, name: "entry[song_title]"}/
+    .cl  
+  .row.check-row
+    %input{name: "entry[has_music]", type: "hidden", value: "0"}
+    %input#entry_has_music.check.ez-mark{type: "checkbox", value: "1", checked: @entry.has_music?, name: "entry[has_music]"}/
+    %label.check{:for => "entry_has_music"} Has Music
+
+    %input{name: "entry[has_vocals]", type: "hidden", value: "0"}
+    %input#entry_has_vocals.check.ez-mark{type: "checkbox", value: "1", checked: @entry.has_vocals?, name: "entry[has_vocals]"}/
+    %label.check{:for => "entry_has_vocals"} Has Vocals
+
+    %input{name: "entry[has_explicit_content]", type: "hidden", value: "0"}
+    %input#entry_has_explicit_content.check.ez-mark{type: "checkbox", value: "1", checked: @entry.has_explicit_content?, name: "entry[has_explicit_content]"}/
+    %label.check{:for => "entry_has_explicit_content"} Has Explicit Content
+    .cl  
+  .line-title
+    %span.smaller
+      %strong Social Accounts
+      Allow community members to connect with you on your social networks
+    .cl  
+  .row
+    = f.input :facebook, input_html: { class: "field" }
+    %a.verify{:href => "#"} verify
+    .cl  
+  .row
+    = f.input :pinterest, input_html: { class: "field" }
+    %a.verify{:href => "#"} verify
+    .cl  
+  .row
+    = f.input :twitter, input_html: { class: "field" }
+    %a.verify{:href => "#"} verify
+    .cl  
+  .row
+    = f.input :youtube, label: "YouTube", input_html: { class: "field" }
+    %a.verify{:href => "#"} verify
+    .cl  
+  .row
+    = f.input :website, input_html: { class: "field" }
+    %a.verify{:href => "#"} verify
+    .cl  
+    %br/
+  %hr/
+  %br/
+  %span.req *Required
+  %input.submit{:type => "submit", :value => "Save"}/
+  .cl  
