@@ -1,3 +1,6 @@
+= content_for(:bottom_of_header) do
+  = render "evaluations/progress"
+
 - @evaluations.each do |evaluation|
   - entry = evaluation.entry
   .box
@@ -21,7 +24,7 @@
         %span.right-text #{entry.evaluations.count}
         .cl  
         %span.left-text Avg. Eval.
-        %span.right-text #{entry.overall_score}
+        %span.right-text #{number_with_precision entry.overall_score, precision: 1}
         .cl  
         %span.left-text Followers
         %span.right-text #{entry.follows.count}
@@ -29,9 +32,9 @@
       .right-part
         %ul
           %li
-            %span.red #{entry.created_at.strftime("%m/%d/%y")}
+            %span.red #{evaluation.created_at.strftime("%m/%d/%y")}
           %li
-            %span.red #{entry.created_at.strftime("%H:%m")}
+            %span.red #{evaluation.created_at.strftime("%H:%m")}
           - if entry.has_music?
             %li
               %span
@@ -49,16 +52,4 @@
         .cl  
         .ellipsis
           = evaluation.comment
-    .cl  
--#
--#        %div.evaluation
--#          %ul
--#            %li= evaluation.created_at
--#            - if evaluation.music_score?
--#              %li Music #{evaluation.music_score}
--#            - if evaluation.vocals_score?
--#              %li Vocals #{evaluation.vocals_score}
--#            %li Presentation #{evaluation.presentation_score}
--#          %p= evaluation.comment
--#
--#          = render "follows/button", entry: entry
+    .cl

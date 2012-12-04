@@ -1,67 +1,5 @@
--#%h1 #{@entry.community_name} - #{@entry.song_title}
--#- if should_show_explicit_content_warning?(@entry)
--#  %h2 WARNING: EXPLICIT CONTENT
--#%div{"data-youtube-id" => @entry.youtube_id, id: "video_#{@entry.id}"}
--#
--#= render "follows/button", entry: @entry
--#
--#- if current_user.has_evaluated?(@entry)
--#  #rank
--#    Rank #{@entry.rank}
--#  #points
--#    Points #{@entry.points}
--#  %table#evaluations
--#    %thead
--#      %tr
--#        %th Evaluations
--#        %th Me
--#        %th Community
--#      - if @entry.has_music?
--#        %tr
--#          %td Music
--#          %td #{@evaluation.music_score}
--#          %td #{number_with_precision @entry.overall_music_score, precision: 2}
--#      - if @entry.has_vocals?
--#        %tr
--#          %td Vocals
--#          %td #{@evaluation.vocals_score}
--#          %td #{number_with_precision @entry.overall_vocals_score, precision: 2}
--#      %tr
--#        %td Presentation
--#        %td #{@evaluation.presentation_score}
--#        %td #{number_with_precision @entry.overall_presentation_score, precision: 2}
--#
--#  %ul.evaluations
--#    - @entry.evaluations.order("created_at desc").each do |evaluation|
--#      %li
--#        = image_tag evaluation.user.profile_photo.url(:thumb)
--#        = evaluation.user.profile_name.presence || "Anonymous"
--#        %dl
--#          %dt Hometown
--#          %dd #{evaluation.user.hometown.presence || "Unspecified"}
--#          %dt Evaluations
--#          %dd #{evaluation.user.evaluations.count}
--#          %dt Average Score
--#          %dd #{evaluation.user.average_evaluation_score}
--#
--#        %ul.scores
--#          - if @entry.has_music?
--#            %li Music #{evaluation.music_score}
--#          - if @entry.has_vocals?
--#            %li Vocals #{evaluation.vocals_score}
--#          %li Presentation #{evaluation.presentation_score}
--#          - if evaluation.user.follows?(@entry)
--#            %li Following
--#        %p= evaluation.comment
--#- else
--#  = simple_form_for [@entry, @evaluation] do |f|
--#    - if @entry.has_music?
--#      = f.input :music_score, as: :slider
--#    - if @entry.has_vocals?
--#      = f.input :vocals_score, as: :slider
--#    = f.input :presentation_score, as: :slider
--#    = f.input :comment
--#    = f.submit
+= content_for(:bottom_of_header) do
+  = render "evaluations/progress"
 
 / Main Content
 #main-content.left
@@ -71,149 +9,103 @@
     %a.flag-btn{:href => "#"}
       %span Flag as inappropiate
     .cl  
+    - if current_user.has_evaluated?(@entry)
+      .stats
+        .left-part
+          .stat-box
+            .heading
+              %span Rank
+            %span.number #{@entry.rank}
+          .cl  
+          .stat-box
+            .heading
+              %span Points
+            %span.number #{@entry.points}
+        .right-part
+          %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+            %tr
+              %th.first{:style => "width:128px;"} Evaluations
+              %th{:style => "width:114px;"}
+                %span.me Me
+              %th.last{:style => "width:114px;"}
+                %span.all Community
+            %tr.even
+              %td.first Music
+              %td #{@entry.has_music? ? @evaluation.music_score : "N/A"}
+              %td.last #{@entry.has_music? ? number_with_precision(@entry.overall_music_score, precision: 1) : "N/A"}
+            %tr
+              %td.first Vocals
+              %td #{@entry.has_vocals? ? @evaluation.vocals_score : "N/A"}
+              %td.last #{@entry.has_music? ? number_with_precision(@entry.overall_vocals_score, precision: 1) : "N/A"}
+            %tr.even
+              %td.first Presentation
+              %td #{@evaluation.presentation_score}
+              %td.last #{@entry.has_music? ? number_with_precision(@entry.overall_presentation_score, precision: 1) : "N/A"}
+            %tr.last
+              %td.first Average
+              %td #{number_with_precision @evaluation.overall_score, precision: 1}
+              %td.last #{number_with_precision @entry.overall_score, precision: 1}
+        .cl
   - if current_user.has_evaluated?(@entry)
-    #rank
-      Rank #{@entry.rank}
-    #points
-      Points #{@entry.points}
-    %table#evaluations
-      %thead
-        %tr
-          %th Evaluations
-          %th Me
-          %th Community
-        - if @entry.has_music?
-          %tr
-            %td Music
-            %td #{@evaluation.music_score}
-            %td #{number_with_precision @entry.overall_music_score, precision: 2}
-        - if @entry.has_vocals?
-          %tr
-            %td Vocals
-            %td #{@evaluation.vocals_score}
-            %td #{number_with_precision @entry.overall_vocals_score, precision: 2}
-        %tr
-          %td Presentation
-          %td #{@evaluation.presentation_score}
-          %td #{number_with_precision @entry.overall_presentation_score, precision: 2}
+    .bottom-list
+      %ul
+        - @entry.evaluations.includes(:user).order("created_at desc").each do |evaluation|
+          %li.box
+            .img-holder
+              %a{:href => "#"}
+                %img{:alt => "", :height => "61", :src => "#{evaluation.user.profile_photo.url(:thumb)}", :width => "61"}/
+            .text-holder.left
+              %a.title{:href => "#"}= evaluation.user.profile_name.presence || "Anonymous"
+              .cl  
+              .left-part
+                %span.left-text Home town
+                %span.right-text #{evaluation.user.hometown.presence || "Unspecified"}
+                .cl  
+                %span.left-text Evaluations
+                %span.right-text #{evaluation.user.evaluations.count}
+                .cl  
+                %span.left-text Avg. Score
+                %span.right-text #{number_with_precision evaluation.user.average_evaluation_score, precision: 1}
+                .cl  
+              .right-part
+                %ul
+                  %li
+                    %span.red #{evaluation.created_at.strftime("%m/%d/%y")}
+                  %li
+                    %span.red #{evaluation.created_at.strftime("%H:%m")}
+                  - if @entry.has_music?
+                    %li
+                      %span
+                        Music
+                        %span.red #{evaluation.music_score}
+                  - if @entry.has_vocals?
+                    %li
+                      %span
+                        Vocals
+                        %span.red #{evaluation.vocals_score}
+                  %li
+                    %span
+                      Presentation
+                      %span.red #{evaluation.presentation_score}
+                %a.red-star{:href => "#"}  
+                .cl  
+                .ellipsis
+                  #{evaluation.comment}        
 
-    %ul.evaluations
-      - @entry.evaluations.includes(:user).order("created_at desc").each do |evaluation|
-        %li
-          = image_tag evaluation.user.profile_photo.url(:thumb)
-          = evaluation.user.profile_name.presence || "Anonymous"
-          %dl
-            %dt Hometown
-            %dd #{evaluation.user.hometown.presence || "Unspecified"}
-            %dt Evaluations
-            %dd #{evaluation.user.evaluations.count}
-            %dt Average Score
-            %dd #{evaluation.user.average_evaluation_score}
-
-          %ul.scores
-            - if @entry.has_music?
-              %li Music #{evaluation.music_score}
-            - if @entry.has_vocals?
-              %li Vocals #{evaluation.vocals_score}
-            %li Presentation #{evaluation.presentation_score}
-            - if evaluation.user.follows?(@entry)
-              %li Following
-          %p= evaluation.comment
-
-  - else
+  - unless current_user.has_evaluated?(@entry)
     %h4 Watch the video and make an evaluation.
     .gray-box
       = simple_form_for [@entry, @evaluation] do |f|
         .top-part
           - if @entry.has_music?
-            .progress-box
-              = f.input :music_score, as: :hidden
-              %h5 Music
-              .red-progress
-                .inner-progress
-                  .red-line
-                    %span.arrow  
-                %ul
-                  %li
-                    %a{:href => "#"} 1
-                  %li
-                    %a{:href => "#"} 2
-                  %li
-                    %a{:href => "#"} 3
-                  %li
-                    %a{:href => "#"} 4
-                  %li
-                    %a{:href => "#"} 5
-                  %li
-                    %a{:href => "#"} 6
-                  %li
-                    %a{:href => "#"} 7
-                  %li
-                    %a{:href => "#"} 8
-                  %li
-                    %a{:href => "#"} 9
-                  %li
-                    %a{:href => "#"} 10
+            = render "evaluations/slider", form: f, type: :music
           - if @entry.has_vocals?
-            .progress-box
-              = f.input :vocals_score, as: :hidden
-              %h5 Vocals
-              .red-progress
-                .inner-progress
-                  .red-line  
-                %ul
-                  %li
-                    %a{:href => "#"} 1
-                  %li
-                    %a{:href => "#"} 2
-                  %li
-                    %a{:href => "#"} 3
-                  %li
-                    %a{:href => "#"} 4
-                  %li
-                    %a{:href => "#"} 5
-                  %li
-                    %a{:href => "#"} 6
-                  %li
-                    %a{:href => "#"} 7
-                  %li
-                    %a{:href => "#"} 8
-                  %li
-                    %a{:href => "#"} 9
-                  %li
-                    %a{:href => "#"} 10
-          .progress-box
-            = f.input :presentation_score, as: :hidden
-            %h5 Presentation
-            .red-progress
-              .inner-progress
-                .red-line
-                  %span.arrow  
-              %ul
-                %li
-                  %a{:href => "#"} 1
-                %li
-                  %a{:href => "#"} 2
-                %li
-                  %a{:href => "#"} 3
-                %li
-                  %a{:href => "#"} 4
-                %li
-                  %a{:href => "#"} 5
-                %li
-                  %a{:href => "#"} 6
-                %li
-                  %a{:href => "#"} 7
-                %li
-                  %a{:href => "#"} 8
-                %li
-                  %a{:href => "#"} 9
-                %li
-                  %a{:href => "#"} 10
+            = render "evaluations/slider", form: f, type: :vocals
+          = render "evaluations/slider", form: f, type: :presentation
           .cl  
         .comment-box
           %h5 Comments
-          = f.input :comment, label: false
+          = f.input :comment, label: false, input_html: { rows: "5", cols: "5" }, wrapper_html: { class: "textarea-holder scrollpane" }
         = f.submit "Submit", class: "submit"
         .cl  
   / END Main Content
@@ -234,6 +126,3 @@
     %p= @entry.bio
 / END Sidebar
 .cl  
-%br/
-%br/
-%br/

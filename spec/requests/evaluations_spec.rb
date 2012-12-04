@@ -20,13 +20,13 @@ feature "evaluations" do
 
     page.should have_no_css "form#new_evaluation"
 
-    within("div#rank") { page.should have_content entry.reload.rank }
-    within("div#points") { page.should have_content entry.reload.points }
-    within("table#evaluations") do
+    within("span.number") { page.should have_content entry.reload.rank }
+    within("span.number") { page.should have_content entry.reload.points }
+    within("div.stats div.right-part table") do
       page.should have_content "1"
     end
 
-    within("ul.evaluations") do
+    within("div.bottom-list > ul") do
       page.should have_content user.name
       page.should have_content comment
     end
