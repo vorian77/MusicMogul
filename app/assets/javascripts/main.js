@@ -11,7 +11,7 @@ $(function () {
 
     $(".datepicker").datepicker({
         showOn:"button",
-        buttonImage:"css/images/datepicker-icon.png",
+        buttonImage:"assets/datepicker-icon.png",
         buttonImageOnly:true
     });
 
