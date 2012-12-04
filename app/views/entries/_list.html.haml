@@ -8,7 +8,7 @@
         - unless controller.controller_name == "home"
           = render "follows/button", entry: entry
       - else
-        = link_to entry.community_name, "#", class: "title black-title"
+        %span.title.black-title= entry.community_name
       .cl  
       .left-part
         %span.left-text Genre
