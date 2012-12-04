@@ -15,12 +15,12 @@
           .stat-box
             .heading
               %span Rank
-            %span.number #{@entry.rank}
+            %span.number#rank #{@entry.rank}
           .cl  
           .stat-box
             .heading
               %span Points
-            %span.number #{@entry.points}
+            %span.number#points #{@entry.points}
         .right-part
           %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
             %tr
@@ -90,7 +90,7 @@
                 %a.red-star{:href => "#"}  
                 .cl  
                 .ellipsis
-                  #{evaluation.comment}        
+                  %p #{evaluation.comment}        
 
   - unless current_user.has_evaluated?(@entry)
     %h4 Watch the video and make an evaluation.

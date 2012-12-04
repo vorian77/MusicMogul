@@ -1,3 +1,63 @@
 = content_for(:bottom_of_header) do
   = render "evaluations/progress"
-= render "entries/list", entries: @entries
+
+- @entries.each do |entry|
+  - if current_user.has_evaluated?(entry)
+    .box.box-edit[entry]{class: cycle("", "box-white")}
+      .place-holder
+        %span.place #{entry.rank}
+        %span.points
+          Points
+          %strong #{entry.points}
+      .img-holder
+        %a{:href => "#"}
+          %img{:alt => "", :height => "186", :src => "css/images/group-img1.jpg", :width => "186"}/
+      .text-holder.left
+        %a.title{:href => "#{entry_path(entry)}"} #{entry.community_name}
+        = render "follows/button", entry: entry
+        .cl  
+        .left-part
+          %span.left-text Genre
+          %span.right-text #{entry.genre}
+          .cl  
+          %span.left-text Hometown
+          %span.right-text #{entry.hometown}
+          %span.left-text My Evaluation
+          %span.right-text= number_with_precision current_user.evaluation_for(entry).overall_score, precision: 1
+          .cl  
+          %span.left-text Evaluations
+          %span.right-text #{entry.evaluations.count}
+          .cl  
+          %span.left-text Avg. Eval.
+          %span.right-text= number_with_precision entry.overall_score, precision: 1
+          .cl  
+          %span.left-text Followers
+          %span.right-text #{entry.follows.count}
+          .cl  
+        .right-part
+          .ellipsis
+            %p #{entry.bio}
+      .cl
+  - else
+    .box.box-edit[entry]{class: cycle("", "box-white")}
+      .place-holder
+        %span.place #{entry.rank}
+        %span.points
+          Points
+          %strong #{entry.points}
+      .img-holder
+        .img-text
+          %span
+            You haven’t
+            %br/
+            evaluated this
+            %br/
+            contestant yet
+          %span
+            Try to discover
+            %br/
+            them in the
+            %br/
+            %a{:href => "#{root_path}"} Auditions
+            list!
+      .cl  

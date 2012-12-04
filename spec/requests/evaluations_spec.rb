@@ -20,8 +20,8 @@ feature "evaluations" do
 
     page.should have_no_css "form#new_evaluation"
 
-    within("span.number") { page.should have_content entry.reload.rank }
-    within("span.number") { page.should have_content entry.reload.points }
+    within("span.number#rank") { page.should have_content entry.reload.rank }
+    within("span.number#points") { page.should have_content entry.reload.points }
     within("div.stats div.right-part table") do
       page.should have_content "1"
     end

@@ -7,7 +7,7 @@ feature "follows" do
 
     visit leaderboard_path
 
-    entry = Entry.first
+    entry = user.evaluations.first.entry
     within("div#entry_#{entry.id}") do
       click_link "Follow"
       page.should have_css "a", text: "Following"

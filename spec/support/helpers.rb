@@ -22,7 +22,7 @@ module HelperMethods
   end
 
   def user_should_be_logged_in(user)
-    within("a.name > span") do
+    within("a.name") do
       page.should have_content user.profile_name? ? user.profile_name : user.email
     end
   end

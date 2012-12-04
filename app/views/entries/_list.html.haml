@@ -1,35 +1,5 @@
--#%ul.entries
--#  - entries.each do |entry|
--#    %li[entry]
--#      - if controller.action_name == "leaderboard"
--#        %div
--#          #rank Rank #{entry.rank}
--#          #points #{pluralize(entry.points, "point")}
--#      = image_tag entry.profile_photo.url(:medium)
--#      %div
--#        %h3
--#          - if user_signed_in?
--#            = link_to entry.community_name, entry
--#          - else
--#            = entry.community_name
--#        %dl
--#          %dt Genre
--#          %dd= entry.genre
--#          %dt Hometown
--#          %dd= entry.hometown
--#        %p= entry.bio
--#
--#        - unless controller.controller_name == "home"
--#          - if user_signed_in?
--#            = render "follows/button", entry: entry
-
 - entries.each do |entry|
   .box[entry]{class: cycle("", "box-white")}
-    - if controller.action_name == "leaderboard"
-      %div
-        #rank Rank #{entry.rank}
-        #points #{pluralize(entry.points, "point")}
-
     .img-holder
       %img{:alt => "", :height => "186", :src => "#{entry.profile_photo.url(:medium)}", :width => "186"}/
     .text-holder.left

@@ -38,12 +38,16 @@ class User < ActiveRecord::Base
     self.profile_name.presence || self.email
   end
 
+  def evaluation_for(entry)
+    evaluations.where(entry_id: entry.id).first
+  end
+
   def follows?(entry)
     follows.where(entry_id: entry.id).count > 0
   end
 
   def has_evaluated?(entry)
-    evaluations.where(entry_id: entry.id).count > 0
+    evaluation_for(entry).present?
   end
 
   protected

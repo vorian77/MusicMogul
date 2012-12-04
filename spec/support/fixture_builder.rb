@@ -8,5 +8,6 @@ FixtureBuilder.configure do |config|
   config.factory do
     config.name :confirmed_user, FactoryGirl.create(:confirmed_user)
     FactoryGirl.create_list(:entry, 3)
+    FactoryGirl.create(:evaluation, user: User.first, entry: Entry.all.sample)
   end
 end

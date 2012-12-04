@@ -12,9 +12,9 @@ feature "leaderboard" do
     Entry.count.should > 0
     Entry.find_each do |entry|
       within "div#entry_#{entry.id}" do
-        page.should have_content entry.community_name
-        within("div#rank") { page.should have_content "#{entry.rank}" }
-        within("div#points") { page.should have_content "#{entry.points}" }
+        page.should have_content entry.community_name if user.has_evaluated? entry
+        within("span.place") { page.should have_content "#{entry.rank}" }
+        within("span.points") { page.should have_content "#{entry.points}" }
       end
     end
   end
