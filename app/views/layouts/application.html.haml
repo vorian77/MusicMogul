@@ -34,8 +34,7 @@
             .drop-holder
               .avatar
                 %img{src: "#{current_user.profile_photo.url(:thumb)}", width: "23", height: "23", alt: ""}
-              %a.name{href: "#"}
-                %span #{current_user.display_name}
+              %a.name{href: "#"} #{current_user.display_name}
               .cl  
               .drop-down
                 %span.arrow-drop  
