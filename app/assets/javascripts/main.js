@@ -9,6 +9,12 @@ $(function () {
             }
         });
 
+    $( ".datepicker" ).datepicker({
+        showOn: "button",
+        buttonImage: "assets/datepicker-icon.png",
+        buttonImageOnly: true
+    });
+
     if ($('.scrollpane').length > 0) {
         $('.scrollpane').jScrollPane({
             showArrows:true

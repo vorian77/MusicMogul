@@ -10,4 +10,12 @@ module ApplicationHelper
   def should_show_explicit_content_warning?(entry)
     user_signed_in? && entry.has_explicit_content? && !current_user.show_explicit_videos?
   end
+
+  def birth_date_value(user)
+    if @user.birth_date?
+      @user.birth_date.strftime("%m/%d/%Y")
+    else
+      "        /         /"
+    end
+  end
 end

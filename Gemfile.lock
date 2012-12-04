@@ -40,6 +40,7 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.3.2)
+    american_date (1.0.0)
     archive-tar-minitar (0.5.2)
     arel (3.0.2)
     aws-s3 (0.6.2)
@@ -328,6 +329,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin (~> 0.4.3)
+  american_date
   bullet
   capybara
   carrierwave

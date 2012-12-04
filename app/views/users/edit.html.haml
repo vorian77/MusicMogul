@@ -1,0 +1,81 @@
+= content_for(:bottom_of_header) do
+  .red-box
+    .left-side  
+    .cl  
+    %span.contest-profile My Player Profile
+    .cl  
+    .right-side  
+
+.main-form
+  = simple_form_for @user, url: account_path, html: {multipart: true} do |f|
+    %input.submit{:type => "submit", :value => "Save"}/
+    .cl  
+    .line-title
+      %span.smaller
+        %strong Public Settings
+        This information is displayed throughout the site
+      .cl  
+    .row
+      = f.input :profile_name, label: "Player name", input_html: { class: "field" }
+      .cl  
+    .row
+      = f.input :hometown, input_html: { class: "field" }
+      .cl  
+    .line-title
+      %span.smaller
+        %strong Private Settings
+        This information is not shown anywhere on the site
+      .cl  
+    .row
+      = f.input :email, input_html: { class: "field" }
+      .cl  
+    .row
+      = f.input :password, input_html: { class: "field" }
+      .cl  
+    .row
+      = f.input :password_confirmation, input_html: { class: "field" }
+      .cl  
+    .row
+      %label{for: "user_birth_date"} Birth date
+      %input.field.datepicker#user_birth_date{title: "        /         /", type: "text", value: birth_date_value(@user), name: "user[birth_date]"}/
+      .cl  
+    .row
+      %label{for: "user_gender"} Gender
+      %select.select.smaller#user_gender{name: "user[gender]"}
+        %option
+        %option{value: "Male"} Male
+        %option{value: "Female"} Female
+      .cl  
+    .row.check-row2
+      %input{name: "user[show_explicit_videos]", type: "hidden", value: "0"}
+      %input#show_explicit_videos.check.ez-mark{type: "checkbox", value: "1", checked: @user.show_explicit_videos?, name: "user[show_explicit_videos]"}/
+      %label.check{:for => "show_explicit_videos"} Show videos with explicit content
+      .cl  
+      %input{name: "user[receive_email_updates]", type: "hidden", value: "0"}
+      %input#receive_email_updates.check.ez-mark{type: "checkbox", value: "1", checked: @user.receive_email_updates?, name: "user[receive_email_updates]"}/
+      %label.check{:for => "receive_email_updates"} Send me contest updates via email
+      .cl  
+    .line-title
+      %span
+        %strong Profile Photo
+      .cl  
+    .photo-upload
+      .img-holder
+        %img{:alt => "", :src => "#{current_user.profile_photo.url(:thumb)}"}/
+        %a.crop-text{:href => "#"} click to crop photo
+        %a.delete-photo delete photo
+      .text-holder
+        %input.file#user_profile_photo{type: "file", name: "user[profile_photo]"}/
+        %span.file-btn Choose File
+        %span.no-file No file chosen
+        .cl  
+        %p
+          You can upload a JPG, PNG, or GIF file
+          that is no more than 4MB (Do not upload pictures containing celebrities, nudity, artwork or images that you do not own or represent the copyright for.)
+        .photo-progress
+          %span.text Upload Progress:
+          .progress
+            %span{:style => "width: 34%;"}  
+      .cl  
+    %input.submit{:type => "submit", :value => "Save"}/
+    .cl  
