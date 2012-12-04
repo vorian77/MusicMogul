@@ -28,7 +28,7 @@ feature "evaluations" do
 
     within("div.bottom-list > ul") do
       page.should have_content user.name
-      page.should have_content comment
+      page.should have_content comment.first(178)
     end
   end
 
