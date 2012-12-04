@@ -18,4 +18,8 @@ module ApplicationHelper
       "        /         /"
     end
   end
+
+  def show_social?(entry)
+    entry.facebook? || entry.twitter? || entry.pinterest? || entry.youtube? || entry.website?
+  end
 end

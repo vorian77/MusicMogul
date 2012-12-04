@@ -124,5 +124,24 @@
   .cl  
   .ellipsis
     %p= @entry.bio
+  - if show_social?(@entry)
+    .social-holder
+      %ul
+        - if @entry.facebook?
+          %li
+            %a.facebook{:href => "#{@entry.facebook}"}  
+        - if @entry.twitter?
+          %li
+            %a.twitter{:href => "#{@entry.twitter}"}  
+        - if @entry.pinterest?
+          %li
+            %a.pinterest{:href => "#{@entry.pinterest}"}  
+        - if @entry.youtube?
+          %li
+            %a.youtube{:href => "#{@entry.youtube}"}  
+        - if @entry.website?
+          %li
+            %a.global{:href => "#{@entry.website}"}  
+      .cl  
 / END Sidebar
 .cl  
