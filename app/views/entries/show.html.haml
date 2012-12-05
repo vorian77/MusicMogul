@@ -87,7 +87,8 @@
                     %span
                       Presentation
                       %span.red #{evaluation.presentation_score}
-                %a.red-star{:href => "#"}  
+                - if evaluation.user.follows?(@entry)
+                  %a.red-star{:href => "#"}
                 .cl  
                 .ellipsis
                   %p #{evaluation.comment}        
