@@ -42,9 +42,7 @@
     .row
       %label{for: "user_gender"} Gender
       %select.select.smaller#user_gender{name: "user[gender]"}
-        %option
-        %option{value: "Male"} Male
-        %option{value: "Female"} Female
+        = options_for_select(["", "Male", "Female"], selected: @user.gender)
       .cl  
     .row.check-row2
       %input{name: "user[show_explicit_videos]", type: "hidden", value: "0"}

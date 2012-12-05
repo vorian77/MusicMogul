@@ -9,10 +9,8 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update_attributes(params[:user])
-      @entry = current_user.entries.first || current_user.entries.new
       redirect_to account_path
     else
-      @entry = current_user.entries.first || current_user.entries.new
       render :edit
     end
   end

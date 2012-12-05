@@ -49,6 +49,10 @@ class User < ActiveRecord::Base
     evaluation_for(entry).present?
   end
 
+  def profile_complete?
+    profile_name? && hometown? && birth_date? && gender? && profile_photo?
+  end
+
   protected
 
   def ensure_birth_date_is_at_13_years_ago
