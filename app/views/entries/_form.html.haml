@@ -19,7 +19,8 @@
   .row
     %label{for: "entry_bio"} Bio
     .textarea-holder.scrollpane
-      %textarea#entry_bio{:cols => "5", :rows => "5", name: "entry[bio]", value: @entry.bio}
+      %textarea#entry_bio{:cols => "5", :rows => "5", name: "entry[bio]"}
+        = @entry.bio
     .cl  
   .line-title
     %span
