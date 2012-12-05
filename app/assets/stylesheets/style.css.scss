@@ -342,6 +342,7 @@ span.list-title { display:block; padding: 0 0 20px; font: 20px/24px "helvbold", 
 
 #sidebar { width: 278px; min-height: 780px; padding: 6px 0 0 24px;  background: image_url("sidebar-side.png") no-repeat 0 0; }
 #sidebar a.next { float:right; display: inline; margin: 0 0 12px; padding-right: 18px; background: image_url("gray-arrow.png") no-repeat right center; font: 15px/20px "helvrommedium", arial, sans-serif; color:#4680d6; }
+#sidebar div.next { margin-bottom: 12px; height: 20px; }
 #sidebar .img-box { padding: 1px; margin: 0 0 19px; background-color:#fff; border: 1px solid #e3e3e3; }
 #sidebar .img-box img { display:block;  }
 #sidebar h5 { padding-bottom:5px;  color:#464646; }

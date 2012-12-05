@@ -112,7 +112,10 @@
   / END Main Content
 / Sidebar
 #sidebar.right
-  %a.next{:href => "#"} Next Audition
+  - if entry = Entry.unevaluated_by(current_user).where("entries.id != ?", @entry.id).order("random()").first
+    %a.next{:href => "#{entry_path(entry)}"} Next Audition
+  - else
+    %div.next
   .cl  
   .img-box
     %img{:alt => "", :height => "260", :src => "#{@entry.profile_photo.url(:medium)}", :width => "274"}/
