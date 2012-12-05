@@ -11,7 +11,7 @@
   .row
     %label{for: "entry_genre"} Genre*
     %select.select#entry_genre{name: "entry[genre]"}
-      = options_for_select(Contest::GENRES, selected: @entry.genre, include_blank: true)
+      = options_for_select([" "] + Contest::GENRES, selected: @entry.genre)
     .cl  
   .row
     = f.input :hometown, input_html: { class: "field" }
