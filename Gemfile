@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'american_date'
 gem 'activeadmin', "~> 0.4.3"
+gem 'american_date'
 gem 'carrierwave'
 gem 'country-select', '~> 1.1.1'
 gem 'devise'
@@ -11,11 +11,8 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'mime-types', require: 'mime/types'
 gem 'mini_magick'
-gem 'omniauth-twitter'
-gem 'omniauth-facebook'
 gem 'pg'
 gem 'rails', '3.2.8'
-gem 's3_direct_rails'
 gem 'sendgrid'
 gem 'simple_form'
 
@@ -36,7 +33,6 @@ group :development, :test do
   gem 'heroku'
   gem 'heroku_san'
   gem 'poltergeist'
-  gem 'ruby-debug19'
   gem 'rspec-rails'
   gem 'shoulda'
   gem 'sqlite3'
