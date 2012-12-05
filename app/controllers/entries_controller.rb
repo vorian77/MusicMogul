@@ -33,6 +33,6 @@ class EntriesController < ApplicationController
   end
 
   def leaderboard
-    @entries = Entry.order("points desc")
+    @entries = Entry.where("points > 0").order("points desc")
   end
 end
