@@ -90,8 +90,9 @@
                 - if evaluation.user.follows?(@entry)
                   %a.red-star{:href => "#"}
                 .cl  
-                .ellipsis
-                  %p #{evaluation.comment}        
+                - if evaluation.comment?
+                  .ellipsis
+                    %p #{evaluation.comment}
 
   - unless current_user.has_evaluated?(@entry)
     %h4 Watch the video and make an evaluation.

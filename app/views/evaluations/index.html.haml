@@ -50,6 +50,7 @@
               Presentation
               %span.red #{evaluation.presentation_score}
         .cl  
-        .ellipsis
-          %p= evaluation.comment
+        - if evaluation.comment?
+          .ellipsis
+            %p= evaluation.comment
     .cl
