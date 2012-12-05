@@ -13,7 +13,10 @@ describe Entry do
     it { should validate_presence_of :community_name }
     it { should validate_presence_of :song_title }
     it { should validate_presence_of :youtube_url }
+    it { should validate_presence_of :genre }
+    it { should validate_presence_of :hometown }
     it { should validate_numericality_of(:points).only_integer }
+    it { should ensure_inclusion_of(:genre).in_array(Contest::GENRES) }
     it { should have_valid(:youtube_url).when("http://youtu.be/sGE4HMvDe-Q") }
     it { should have_valid(:youtube_url).when("http://www.youtube.com/watch?v=sGE4HMvDe-Q&feature=relmfu") }
     it { should have_valid(:youtube_url).when("http://www.youtube.com/v/sGE4HMvDe-Q?version=3&autohide=1") }

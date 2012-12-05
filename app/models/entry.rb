@@ -6,6 +6,8 @@ class Entry < ActiveRecord::Base
 
   validates :user, presence: true
   validates :community_name, presence: true
+  validates :genre, presence: true, inclusion: { in: Contest::GENRES }
+  validates :hometown, presence: true
   validates :song_title, presence: true
   validates :youtube_url, presence: true
   validates :points, numericality: {only_integer: true, greater_than_or_equal_to: 0}
