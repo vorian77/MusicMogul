@@ -46,12 +46,14 @@
                   %ul
                     %li
                       %a{:href => "#{account_path}"} My Player Profile
-                    %li
-                      %a{:href => "#{new_entry_path}"} Submit A Video
-                    %li
-                      %a{:href => "#"} My Contestant
-                    %li
-                      %a{:href => "#"} My Audition
+                    - unless current_user.entries.count > 0
+                      %li
+                        %a{:href => "#{new_entry_path}"} Submit A Video
+                    - else
+                      %li
+                        %a{:href => "#{edit_entry_path(current_user.entries.first)}"} My Contestant Profile
+                      %li
+                        %a{:href => "#{entry_path(current_user.entries.first)}"} My Audition
                     %li
                       %a{:href => "#"} Administration
                     %li.last
