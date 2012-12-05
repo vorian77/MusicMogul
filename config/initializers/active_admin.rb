@@ -5,7 +5,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Fans Helping Artists MVP"
+  config.site_title = "Music Mogul Admin"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -67,8 +67,6 @@ ActiveAdmin.setup do |config|
   # to return the currently logged in user.
   config.current_user_method = :current_user
 
-  config.logout_link_path      = :destroy_user_session_path
-  config.logout_link_method    = :delete
 
   # == Logging Out
   #
@@ -86,8 +84,15 @@ ActiveAdmin.setup do |config|
   # link. For example :get, :delete, :put, etc..
   #
   # Default:
-  # config.logout_link_method = :get
+  config.logout_link_method = :delete
 
+  # == Root
+  #
+  # Set the action to call for the root path. You can set different
+  # roots for each namespace.
+  #
+  # Default:
+  # config.root_to = 'dashboard#index'
 
   # == Admin Comments
   #
@@ -106,6 +111,13 @@ ActiveAdmin.setup do |config|
   #   end
 
 
+  # == Batch Actions
+  #
+  # Enable and disable Batch Actions
+  #
+  config.batch_actions = true
+  
+
   # == Controller Filters
   #
   # You can add before, after and around filters to all of your
@@ -122,10 +134,16 @@ ActiveAdmin.setup do |config|
   #
   # To load a stylesheet:
   #   config.register_stylesheet 'my_stylesheet.css'
-  #
+  
   # You can provide an options hash for more control, which is passed along to stylesheet_link_tag():
   #   config.register_stylesheet 'my_print_stylesheet.css', :media => :print
   #
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
+
+
+  # == CSV options
+  #
+  # Set the CSV builder separator (default is ",")
+  # config.csv_column_separator = ','
 end

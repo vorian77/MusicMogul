@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'activeadmin', "~> 0.4.3"
+gem 'activeadmin'
 gem 'american_date'
 gem 'carrierwave'
 gem 'country-select', '~> 1.1.1'
