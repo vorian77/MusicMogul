@@ -2,13 +2,15 @@ User.create(email: "test@fanhelp.us",
             password: "password",
             confirmed_at: Date.today,
             profile_name: "tester",
-            hometown: "Detroit")
+            hometown: "Detroit",
+            admin: true)
 
 User.create(email: "phyl@fanhelp.us",
             password: "password",
             confirmed_at: Date.today,
             profile_name: "phyl",
-            hometown: "Detroit")
+            hometown: "Detroit",
+            admin: true)
 
 morrison = User.create(email: "jim@morrison.com",
                        password: "password",
