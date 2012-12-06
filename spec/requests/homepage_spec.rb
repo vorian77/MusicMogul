@@ -7,7 +7,7 @@ feature "homepage" do
     Entry.count.should > 0
     within("div#content") do
       Entry.find_each do |entry|
-        page.should have_content entry.community_name
+        page.should have_content entry.stage_name
         page.should have_content entry.genre
         page.should have_content entry.hometown
         page.should have_content entry.bio
@@ -22,7 +22,7 @@ feature "homepage" do
 
     Entry.unevaluated_by(user).count.should > 0
     Entry.unevaluated_by(user).find_each do |entry|
-      page.should have_content entry.community_name
+      page.should have_content entry.stage_name
     end
 
     page.should have_no_css "form.follow"

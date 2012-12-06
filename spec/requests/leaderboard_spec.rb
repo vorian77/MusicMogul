@@ -15,7 +15,7 @@ feature "leaderboard" do
     Entry.find_each do |entry|
       if entry.points > 0
         within "div#entry_#{entry.id}" do
-          page.should have_content entry.community_name if user.has_evaluated? entry
+          page.should have_content entry.stage_name if user.has_evaluated? entry
           within("span.place") { page.should have_content "#{entry.rank}" }
           within("span.points") { page.should have_content "#{entry.points}" }
         end

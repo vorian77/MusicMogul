@@ -23,7 +23,7 @@ module HelperMethods
 
   def user_should_be_logged_in(user)
     within("a.name") do
-      page.should have_content user.profile_name? ? user.profile_name : user.email
+      page.should have_content user.player_name? ? user.player_name : user.email
     end
   end
 end

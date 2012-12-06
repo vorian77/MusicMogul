@@ -6,7 +6,7 @@ feature "evaluations" do
     sign_in_as user
 
     entry = Entry.first
-    click_link entry.community_name
+    click_link entry.stage_name
     current_path.should == entry_path(entry)
 
     comment = Faker::HipsterIpsum.paragraph
@@ -43,7 +43,7 @@ feature "evaluations" do
     current_path.should == evaluations_path
 
     within("div.box") do
-      page.should have_content evaluation.entry.community_name
+      page.should have_content evaluation.entry.stage_name
     end
   end
 end

@@ -4,11 +4,11 @@
       %img{:alt => "", :height => "186", :src => "#{entry.profile_photo.url(:medium)}", :width => "186"}/
     .text-holder.left
       - if user_signed_in?
-        = link_to entry.community_name, entry, class: "title"
+        = link_to entry.stage_name, entry, class: "title"
         - unless controller.controller_name == "home"
           = render "follows/button", entry: entry
       - else
-        %span.title.black-title= entry.community_name
+        %span.title.black-title= entry.stage_name
       .cl  
       .left-part
         %span.left-text Genre

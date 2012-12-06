@@ -10,7 +10,7 @@ describe User do
 
   describe "validations" do
     it { should validate_presence_of :hometown }
-    it { should validate_presence_of :profile_name }
+    it { should validate_presence_of :player_name }
 
     describe "birth date" do
       context "when it is nil" do

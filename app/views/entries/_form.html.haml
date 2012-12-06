@@ -6,7 +6,7 @@
       %strong Performer Settings
     .cl  
   .row
-    = f.input :community_name, label: "Stage name", input_html: { class: "field" }
+    = f.input :stage_name, input_html: { class: "field" }
     .cl  
   .row
     %label{for: "entry_genre"} Genre*
@@ -32,8 +32,8 @@
     %a.verify{:href => "#"} verify
     .cl  
   .row
-    %label.larger{for: "entry_song_title"} Title*
-    %input.field#entry_song_title{type: "text", value: @entry.song_title, name: "entry[song_title]"}/
+    %label.larger{for: "entry_title"} Title*
+    %input.field#entry_title{type: "text", value: @entry.title, name: "entry[title]"}/
     .cl  
   .row.check-row
     %input{name: "entry[has_music]", type: "hidden", value: "0"}

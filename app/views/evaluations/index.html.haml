@@ -8,7 +8,7 @@
       %a{:href => "#{entry_path(entry)}"}
         %img{:alt => "", :height => "186", :src => "#{entry.profile_photo.url(:medium)}", :width => "186"}/
     .text-holder.left
-      = link_to entry.community_name, entry, class: "title"
+      = link_to entry.stage_name, entry, class: "title"
       = render "follows/button", entry: entry
       .cl  
       .left-part

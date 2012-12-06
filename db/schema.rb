@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121206193421) do
+ActiveRecord::Schema.define(:version => 20121206194326) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(:version => 20121206193421) do
     t.integer  "user_id"
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
-    t.string   "community_name"
-    t.string   "song_title"
+    t.string   "stage_name"
+    t.string   "title"
     t.string   "youtube_url"
     t.string   "genre"
     t.string   "hometown"
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(:version => 20121206193421) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.string   "profile_name"
+    t.string   "player_name"
     t.string   "hometown"
     t.boolean  "admin",                  :default => false, :null => false
     t.string   "gender"

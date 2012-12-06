@@ -4,7 +4,7 @@
 / Main Content
 #main-content.left
   .video-holder
-    %h3.left #{@entry.community_name} - #{@entry.song_title}
+    %h3.left #{@entry.stage_name} - #{@entry.title}
     = render "follows/button", entry: @entry
     %iframe{:allowfullscreen => "", :frameborder => "0", :height => "363", :src => "http://www.youtube.com/embed/#{@entry.youtube_id}", :width => "640"}
     %a.flag-btn{:href => "#"}
@@ -56,7 +56,7 @@
               %a{:href => "#"}
                 %img{:alt => "", :height => "61", :src => "#{evaluation.user.profile_photo.url(:thumb)}", :width => "61"}/
             .text-holder.left
-              %a.title{:href => "#"}= evaluation.user.profile_name.presence || "Anonymous"
+              %a.title{:href => "#"}= evaluation.user.player_name.presence || "Anonymous"
               .cl  
               .left-part
                 %span.left-text Hometown

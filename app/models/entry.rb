@@ -6,15 +6,15 @@ class Entry < ActiveRecord::Base
   has_many :follows, dependent: :destroy
 
   validates :user, presence: true
-  validates :community_name, presence: true
+  validates :stage_name, presence: true
   validates :genre, presence: true, inclusion: { in: Entry::GENRES }
   validates :hometown, presence: true
-  validates :song_title, presence: true
+  validates :title, presence: true
   validates :youtube_url, presence: true
   validates :points, numericality: {only_integer: true, greater_than_or_equal_to: 0}
   validate :ensure_youtube_url_is_valid
 
-  attr_accessible :genre, :community_name, :song_title, :youtube_url, :hometown, :bio,
+  attr_accessible :genre, :stage_name, :title, :youtube_url, :hometown, :bio,
                   :facebook, :youtube, :twitter, :pinterest, :website,
                   :has_music, :has_vocals, :has_explicit_content, :user
 

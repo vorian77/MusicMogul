@@ -1,20 +1,9 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :confirmable
 
-  # Set up accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me,
-    :name, :first_name, :last_name, :zip, :country, :birth_year,
-    :interview_status, :profile_name, :hometown, :genre, :bio, :facebook,
-    :twitter, :phone, :profile_photo_square, :profile_photo_landscape,
-    :remove_profile_photo_square, :remove_profile_photo_landscape, :thumb_x,
-    :thumb_y, :thumb_w, :account_type, :evaluations_attributes, :source,
-    :genre, :youtube, :current_tab, :gender,
-    :remove_profile_video, :thumb_x, :thumb_y, :thumb_w, :youtube_url,
-    :confirmed_at, :birth_date, :show_explicit_videos, :receive_email_updates,
-    :profile_photo
+  attr_accessible :email, :password, :password_confirmation, :player_name, :hometown,:gender,
+    :birth_date, :show_explicit_videos, :receive_email_updates, :profile_photo
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
@@ -25,7 +14,7 @@ class User < ActiveRecord::Base
   has_many :followed_entries, through: :follows, source: :entry
 
   validates :hometown, presence: true
-  validates :profile_name, presence: true
+  validates :player_name, presence: true
   validate :ensure_birth_date_is_at_13_years_ago
 
   def average_evaluation_score
@@ -34,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def display_name
-    self.profile_name.presence || self.email
+    self.player_name.presence || self.email
   end
 
   def evaluation_for(entry)
@@ -50,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def profile_complete?
-    profile_name? && hometown? && birth_date? && gender? && profile_photo?
+    player_name? && hometown? && birth_date? && gender? && profile_photo?
   end
 
   protected

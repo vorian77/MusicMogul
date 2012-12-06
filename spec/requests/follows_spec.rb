@@ -37,13 +37,13 @@ feature "follows" do
     current_path.should == follows_path
 
     Entry.find_each do |entry|
-      page.should have_no_content entry.community_name
+      page.should have_no_content entry.stage_name
     end
 
     entry = Entry.first
     FactoryGirl.create(:follow, user: user, entry: entry)
 
     visit follows_path
-    page.should have_content entry.community_name
+    page.should have_content entry.stage_name
   end
 end
