@@ -1,0 +1,13 @@
+.flash
+  - if notice
+    .notice
+      = notice
+      %a.close{:href => "#"}
+  - if alert
+    .alert
+      = alert
+      %a.close{:href => "#"}
+  - if defined?(resource) && resource.errors.present?
+    .alert
+      The form could not be saved.
+      %a.close{:href => "#"}

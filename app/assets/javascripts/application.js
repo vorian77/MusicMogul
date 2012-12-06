@@ -13,8 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require main
-//= require youtube
-//= require sliders
-//= require follows
 //= require_tree .
