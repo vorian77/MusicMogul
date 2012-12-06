@@ -7,8 +7,4 @@ class HomeController < ApplicationController
       @entries = Entry.order("random()")
     end
   end
-
-  def video
-    render 'video', :layout => 'basic'
-  end
 end

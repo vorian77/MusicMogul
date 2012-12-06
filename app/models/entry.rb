@@ -1,12 +1,13 @@
 class Entry < ActiveRecord::Base
-  belongs_to :contest
+  GENRES = ['Country','Electronic','Hip Hop','Pop','R&B','Rock']
+
   belongs_to :user
   has_many :evaluations, dependent: :destroy
   has_many :follows, dependent: :destroy
 
   validates :user, presence: true
   validates :community_name, presence: true
-  validates :genre, presence: true, inclusion: { in: Contest::GENRES }
+  validates :genre, presence: true, inclusion: { in: Entry::GENRES }
   validates :hometown, presence: true
   validates :song_title, presence: true
   validates :youtube_url, presence: true

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121119125648) do
+ActiveRecord::Schema.define(:version => 20121206193421) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -28,25 +28,7 @@ ActiveRecord::Schema.define(:version => 20121119125648) do
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
-  create_table "contacts", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "subject"
-    t.text     "message"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.boolean  "copy_sender"
-  end
-
-  create_table "contests", :force => true do |t|
-    t.string   "name"
-    t.time     "date"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "entries", :force => true do |t|
-    t.integer  "contest_id"
     t.integer  "user_id"
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
@@ -68,7 +50,6 @@ ActiveRecord::Schema.define(:version => 20121119125648) do
     t.boolean  "has_explicit_content", :default => false
   end
 
-  add_index "entries", ["contest_id"], :name => "index_entries_on_contest_id"
   add_index "entries", ["user_id"], :name => "index_entries_on_user_id"
 
   create_table "evaluations", :force => true do |t|
@@ -98,14 +79,14 @@ ActiveRecord::Schema.define(:version => 20121119125648) do
 
   create_table "users", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
-    t.string   "email",                   :default => "",    :null => false
-    t.string   "encrypted_password",      :default => "",    :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",           :default => 0
+    t.integer  "sign_in_count",          :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -114,35 +95,13 @@ ActiveRecord::Schema.define(:version => 20121119125648) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "zip"
-    t.string   "country"
-    t.boolean  "interview_status"
     t.string   "profile_name"
     t.string   "hometown"
-    t.string   "bio"
-    t.string   "profile_video"
-    t.string   "performance_video"
-    t.string   "profile_photo_square"
-    t.string   "profile_photo_landscape"
-    t.string   "facebook"
-    t.string   "twitter"
-    t.string   "phone"
-    t.string   "youtube"
-    t.string   "genre"
-    t.boolean  "admin",                   :default => false, :null => false
+    t.boolean  "admin",                  :default => false, :null => false
     t.string   "gender"
-    t.string   "birth_year"
-    t.integer  "thumb_x"
-    t.integer  "thumb_y"
-    t.integer  "thumb_w"
-    t.string   "youtube_url"
-    t.string   "provider"
-    t.string   "uid"
     t.date     "birth_date"
-    t.boolean  "show_explicit_videos",    :default => true
-    t.boolean  "receive_email_updates",   :default => true
+    t.boolean  "show_explicit_videos",   :default => true
+    t.boolean  "receive_email_updates",  :default => true
     t.string   "profile_photo"
   end
 

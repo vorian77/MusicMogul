@@ -2,7 +2,6 @@ require "spec_helper"
 
 describe Entry do
   describe "associations" do
-    it { should belong_to :contest }
     it { should belong_to :user }
     it { should have_many(:evaluations).dependent(:destroy) }
     it { should have_many(:follows).dependent(:destroy) }
@@ -16,7 +15,7 @@ describe Entry do
     it { should validate_presence_of :genre }
     it { should validate_presence_of :hometown }
     it { should validate_numericality_of(:points).only_integer }
-    it { should ensure_inclusion_of(:genre).in_array(Contest::GENRES) }
+    it { should ensure_inclusion_of(:genre).in_array(Entry::GENRES) }
     it { should have_valid(:youtube_url).when("http://youtu.be/sGE4HMvDe-Q") }
     it { should have_valid(:youtube_url).when("http://www.youtube.com/watch?v=sGE4HMvDe-Q&feature=relmfu") }
     it { should have_valid(:youtube_url).when("http://www.youtube.com/v/sGE4HMvDe-Q?version=3&autohide=1") }

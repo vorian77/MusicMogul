@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   
   def edit
     @user = current_user
-    @entry = current_user.entries.first || current_user.entries.new
   end
   
   def update

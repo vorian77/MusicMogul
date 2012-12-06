@@ -11,7 +11,7 @@ feature "entries" do
 
     within "form#new_entry" do
       fill_in "Stage name", with: Faker::HipsterIpsum.words.join(" ")
-      select Contest::GENRES.sample, from: "Genre"
+      select Entry::GENRES.sample, from: "Genre"
       fill_in "Hometown", with: Faker::Address.city
       fill_in "Bio", with: Faker::HipsterIpsum.paragraph
       fill_in "YouTube URL", with: "http://youtu.be/sGE4HMvDe-Q"
