@@ -4,7 +4,8 @@
 / Main Content
 #main-content.left
   .video-holder
-    %h3 #{@entry.community_name} - #{@entry.song_title}
+    %h3.left #{@entry.community_name} - #{@entry.song_title}
+    = render "follows/button", entry: @entry
     %iframe{:allowfullscreen => "", :frameborder => "0", :height => "363", :src => "http://www.youtube.com/embed/#{@entry.youtube_id}", :width => "640"}
     %a.flag-btn{:href => "#"}
       %span Flag as inappropiate

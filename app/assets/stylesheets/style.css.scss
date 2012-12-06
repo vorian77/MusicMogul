@@ -137,12 +137,12 @@ span.list-title { display:block; padding: 0 0 20px; font: 20px/24px "helvbold", 
 #content .box .text-holder { width: 713px; }
 #content .box a.title, span.title { float:left; display: inline; padding: 0 0 12px; font: 20px/24px "helvbold", arial, sans-serif; color:#2c79e5; }
 #content .box span.black-title { color:#333333; }
-#content .box a.red-follow { float:right; display: inline; width: 78px; height: 28px; background: image_url("sprite.png") no-repeat -150px -124px; font: 13px/28px "helvbold", arial, sans-serif; color:#fff; text-align:center;  }
-#content .box a.red-follow:hover { background-position: -150px -153px; text-decoration: none; }
-#content .box a.red-follow:active { background-position: -150px -182px;  }
-#content .box a.gray-follow {  float:right; display: inline; width: 66px; height: 28px; background: image_url("sprite.png") no-repeat -150px -232px; font: 13px/28px "helvbold", arial, sans-serif; color:#2f2f2f; text-align:center; text-shadow: 0 1px 1px #fff; }
-#content .box a.gray-follow:hover { background-position: -150px -261px; text-decoration: none; }
-#content .box a.gray-follow:active { background-position: -150px -290px;  }
+#content  a.red-follow { float:right; display: inline; width: 78px; height: 28px; background: image_url("sprite.png") no-repeat -150px -124px; font: 13px/28px "helvbold", arial, sans-serif; color:#fff; text-align:center;  }
+#content  a.red-follow:hover { background-position: -150px -153px; text-decoration: none; }
+#content  a.red-follow:active { background-position: -150px -182px;  }
+#content  a.gray-follow {  float:right; display: inline; width: 66px; height: 28px; background: image_url("sprite.png") no-repeat -150px -232px; font: 13px/28px "helvbold", arial, sans-serif; color:#2f2f2f; text-align:center; text-shadow: 0 1px 1px #fff; }
+#content  a.gray-follow:hover { background-position: -150px -261px; text-decoration: none; }
+#content  a.gray-follow:active { background-position: -150px -290px;  }
 
 #content .box .left-part { float:left; display:inline;  width: 235px; }
 #content .box .left-part span { float:left; display: inline; font: 14px/24px "helvrommedium", arial, sans-serif; color:#000; }
@@ -270,14 +270,10 @@ span.list-title { display:block; padding: 0 0 20px; font: 20px/24px "helvbold", 
 #main-content { width: 639px; padding-right: 19px;  }
 
 #main-content .video-holder iframe { margin-bottom: 5px;  }
-#main-content .video-holder a { float:right; display: inline; width: 127px; height: 22px; background: image_url("flag-sprite.png") no-repeat 0 0; font: 11px/22px "helvrommedium", helvetica, arial, sans-serif; color:#000; text-shadow: 0 1px 1px #fff; }
-#main-content .video-holder a span { float:left; display: inline; padding-left: 21px; background: image_url("flag.png") no-repeat 7px center; }
-#main-content .video-holder a:hover { background-position:0 center;  text-decoration: none; }
-#main-content .video-holder a:active { background-position:0 bottom;  }
-#main-content .video-holder a.follow-btn { width: 66px; height: 28px; margin: 0 0 15px; background: image_url("sprite.png") no-repeat -150px -232px; font:13px/28px "helvbold", arial, sans-serif; color:#2f2f2f; text-shadow: 0 1px 1px #fff; text-align:center;  }
-#main-content .video-holder a.follow-btn:hover { background-position:-150px -261px;  }
-#main-content .video-holder a.follow-btn:active { background-position:-150px -290px;  }
-
+#main-content .video-holder a.flag-btn { float:right; display: inline; width: 127px; height: 22px; background: image_url("flag-sprite.png") no-repeat 0 0; font: 11px/22px "helvrommedium", helvetica, arial, sans-serif; color:#000; text-shadow: 0 1px 1px #fff; }
+#main-content .video-holder a.flag-btn span { float:left; display: inline; padding-left: 21px; background: image_url("flag.png") no-repeat 7px center; }
+#main-content .video-holder a.flag-btn:hover { background-position:0 center;  text-decoration: none; }
+#main-content .video-holder a.flag-btn:active { background-position:0 bottom;  }
 
 #main-content .video-holder .stats { width: 500px; padding: 17px 0 30px; margin: 0 auto; }
 #main-content .video-holder .stats .stat-box { margin-bottom:10px;  }
