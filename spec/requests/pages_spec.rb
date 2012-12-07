@@ -14,4 +14,11 @@ feature "pages" do
     page.should have_content "Have a question? Drop us a line!"
     current_path.should == notices_path
   end
+
+  scenario "user visits privacy", js: true, driver: :selenium do
+    visit root_path
+    within("div#footer") { click_link "Privacy" }
+    page.should have_content "This privacy policy sets out"
+    current_path.should == notices_path
+  end
 end
