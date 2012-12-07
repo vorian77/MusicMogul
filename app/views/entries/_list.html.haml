@@ -1,7 +1,11 @@
 - entries.each do |entry|
   .box[entry]{class: cycle("", "box-white")}
     .img-holder
-      %img{:alt => "", :height => "186", :src => "#{entry.profile_photo.url(:medium)}", :width => "186"}/
+      - if user_signed_in?
+        = link_to entry do
+          %img{:alt => "", :height => "186", :src => "#{entry.profile_photo.url(:medium)}", :width => "186"}/
+      - else
+        %img{:alt => "", :height => "186", :src => "#{entry.profile_photo.url(:medium)}", :width => "186"}/
     .text-holder.left
       - if user_signed_in?
         = link_to entry.stage_name, entry, class: "title"
