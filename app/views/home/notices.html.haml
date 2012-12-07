@@ -72,21 +72,14 @@
       .cl  
 #contact.tab-box
   %p.title Have a question? Drop us a line!
-  %form{:action => "", :method => "post"}
+  = simple_form_for :contact, url: contacts_path, anchor: "contact" do |f|
+    = f.input :name, input_html: { class: "field" }, wrapper_html: { class: "row" }
+    = f.input :email, as: :email, input_html: { class: "field" }, wrapper_html: { class: "row" }
     .row
-      %label Name*
-      %input.field{:type => "text", :value => ""}/
-    .row
-      %label Email*
-      %input.field{:type => "text", :value => ""}/
-    .row
-      %input#check.check.ez-mark{:type => "checkbox", :value => ""}/
-      %label.check-label{:for => "check"} Send me a copy
-    .row
-      %label Subject*
-      %input.field{:type => "text", :value => ""}/
-    .row
-      %label Message*
-      %textarea{:cols => "5", :rows => "5"}
-    %input.submit{:type => "submit", :value => "Send"}/
+      %input{name: "contact[send_me_a_copy]", type: "hidden", value: "0"}/
+      %input#contact_send_me_a_copy.check.ez-mark{name: "contact[send_me_a_copy]", type: "checkbox", value: "1"}/
+      %label.check-label{:for => "contact_send_me_a_copy"} Send me a copy
+    = f.input :subject, input_html: { class: "field" }, wrapper_html: { class: "row" }
+    = f.input :message, as: :text, input_html: { class: "field" }, wrapper_html: { class: "row" }
+    = f.submit "Send", class: "submit"
     .cl  

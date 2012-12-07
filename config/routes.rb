@@ -15,6 +15,7 @@ Mvp2::Application.routes.draw do
   end
 
   resources :evaluations, only: [:index]
+  resources :contacts, only: [:create]
 
   match "leaderboard" => "entries#leaderboard", as: :leaderboard
   match "notices" => "home#notices"
