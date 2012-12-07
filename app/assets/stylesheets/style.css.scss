@@ -98,7 +98,7 @@ h1#logo a { display:block; height: 58px; background: image_url("logo.png") no-re
 #header .progress ul li { float:left; display: inline; }
 #header .progress ul li span { padding-right: 10px;  font: 14px/20px "helvbold", arial, sans-serif; color:#000; }
 #header .progress ul li span.white { padding-right: 15px;  color:#fff; font-size: 15px; text-shadow: 0 0 0;}
-#header .progress-bar { position:relative; overflow: hidden; float:left; display: inline; width: 365px; background: image_url("progress-white.png") repeat-x 0 0; border-radius: 10px; }
+#header .progress-bar { overflow: hidden; float:left; display: inline; width: 365px; background: image_url("progress-white.png") repeat-x 0 0; border-radius: 10px; }
 #header .progress-bar span { display:block; height: 23px; border-right: 1px solid #c8c3c3; border-radius: 10px 0 0 10px; background: image_url("progress-gray.png") repeat-x 0 0; text-shadow: 1px 1px 1px #fd0000; }
 
 #header #mogul span.left-text,
