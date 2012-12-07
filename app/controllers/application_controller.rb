@@ -28,6 +28,7 @@ class ApplicationController < ActionController::Base
   private
 
   def render_not_found(e)
+    Airbrake.notify e
     respond_to do |format|
       format.html { render template: "errors/404", status: 404 }
       format.all { render nothing: true, status: 404 }
@@ -36,6 +37,7 @@ class ApplicationController < ActionController::Base
   end
 
   def render_error(e)
+    Airbrake.notify e
     respond_to do |format|
       format.html { render template: "errors/500", status: 500 }
       format.all { render nothing: true, status: 500 }
