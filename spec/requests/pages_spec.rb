@@ -15,6 +15,13 @@ feature "pages" do
     current_path.should == notices_path
   end
 
+  scenario "user visits terms", js: true, driver: :selenium do
+    visit root_path
+    within("div#footer") { click_link "Terms" }
+    page.should have_content "The Website may change these Terms of Use"
+    current_path.should == notices_path
+  end
+
   scenario "user visits privacy", js: true, driver: :selenium do
     visit root_path
     within("div#footer") { click_link "Privacy" }
