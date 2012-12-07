@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   unless Rails.configuration.consider_all_requests_local
     rescue_from Exception, with: :render_error
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
+    rescue_from ActionController::RoutingError, with: :render_not_found
     rescue_from ActionController::UnknownController, with: :render_not_found
     rescue_from ActionController::UnknownAction, with: :render_not_found
   end
@@ -13,6 +14,10 @@ class ApplicationController < ActionController::Base
   def authenticate_admin!
     authenticate_user!
     redirect_to new_user_session_path unless current_user.admin?
+  end
+
+  def routing_error
+    raise ActionController::RoutingError.new(params[:path])
   end
 
   protected

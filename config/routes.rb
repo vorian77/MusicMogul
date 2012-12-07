@@ -21,4 +21,5 @@ Mvp2::Application.routes.draw do
   match "notices" => "home#notices"
 
   root :to => 'home#index'
+  match "*a", :to => "application#routing_error"
 end
