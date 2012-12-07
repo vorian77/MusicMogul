@@ -12,7 +12,7 @@ gem 'haml-rails'
 gem 'mime-types', require: 'mime/types'
 gem 'mini_magick'
 gem 'pg'
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.9'
 gem 'sendgrid'
 gem 'simple_form'
 
