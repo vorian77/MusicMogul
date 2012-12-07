@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :confirmable
 
   attr_accessible :email, :password, :password_confirmation, :player_name, :hometown,:gender,
-    :birth_date, :show_explicit_videos, :receive_email_updates, :profile_photo
+    :birth_date, :show_explicit_videos, :receive_email_updates, :profile_photo, :confirmed_at, :admin
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 

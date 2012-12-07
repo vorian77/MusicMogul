@@ -49,6 +49,28 @@
     %label.check{:for => "entry_has_explicit_content"} Has Explicit Content
     .cl  
   .line-title
+    %span
+      %strong Profile Photo
+    .cl  
+  .photo-upload
+    .img-holder
+      %img{:alt => "", :src => "#{f.object.profile_photo.url(:thumb)}"}/
+      %a.crop-text{:href => "#"} click to crop photo
+      %a.delete-photo delete photo
+    .text-holder
+      %input.file#entry_profile_photo{type: "file", name: "entry[profile_photo]"}/
+      %span.file-btn Choose File
+      %span.no-file No file chosen
+      .cl  
+      %p
+        You can upload a JPG, PNG, or GIF file
+        that is no more than 4MB (Do not upload pictures containing celebrities, nudity, artwork or images that you do not own or represent the copyright for.)
+      .photo-progress
+        %span.text Upload Progress:
+        .progress
+          %span{:style => "width: 34%;"}  
+    .cl  
+  .line-title
     %span.smaller
       %strong Social Accounts
       Allow community members to connect with you on your social networks
