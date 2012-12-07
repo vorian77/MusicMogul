@@ -10,7 +10,7 @@
           Points
           %strong #{entry.points}
       .img-holder
-        %a{:href => "#"}
+        %a{:href => "#{entry_path(entry)}"}
           %img{:alt => "", :height => "186", :src => "#{entry.profile_photo.url(:medium)}", :width => "186"}/
       .text-holder.left
         %a.title{:href => "#{entry_path(entry)}"} #{entry.stage_name}
