@@ -84,27 +84,38 @@
         .top-part
           %ul
             %li
-              %a{:href => "#"} Game Rules
+              %a{href: "#"} Game Rules
             %li
-              %a{:href => "#{notices_path(anchor: "about")}"} About Us
+              %a{href: "#{notices_path(anchor: "about")}"} About Us
             %li
-              %a{:href => "#{notices_path(anchor: "contact")}"} Contact Us
+              %a.suggestions{href: "#"} Suggestions
+            %li
+              %a{href: "#{notices_path(anchor: "contact")}"} Contact Us
           %a.right-link{:href => "#"} Musicians
           .cl  
         .bottom-part
           %ul.left
             %li
-              %a{:href => "#{notices_path(anchor: "terms")}"} Terms
+              %a{href: "#{notices_path(anchor: "terms")}"} Terms
             %li
-              %a{:href => "#{notices_path(anchor: "privacy")}"} Privacy
+              %a{href: "#{notices_path(anchor: "privacy")}"} Privacy
           %ul.right
             %li
-              %a{:href => "#"} Share
+              %a{href: "#"} Share
             %li
-              %a{:href => "#"} Follow
+              %a{href: "#"} Follow
           %span.copy 2012 Bright Lights Music Group, LLC
       / END Footer
 
     = javascript_include_tag "http://www.google.com/jsapi"
     :javascript
       google.load("swfobject", "2.1");
+    :plain
+      <script type="text/javascript">
+        var uvOptions = {};
+        (function() {
+          var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+          uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/eZhxHqSyLP9OLPsENsYSHg.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+        })();
+      </script>
