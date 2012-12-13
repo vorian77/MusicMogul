@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :entry do
+    contest
     user
     stage_name { Faker::HipsterIpsum.words.join(" ").titleize }
     title { Faker::HipsterIpsum.words.join(" ").titleize }

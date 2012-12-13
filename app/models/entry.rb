@@ -1,10 +1,12 @@
 class Entry < ActiveRecord::Base
   GENRES = ['Country','Electronic','Hip Hop','Pop','R&B','Rock']
 
+  belongs_to :contest
   belongs_to :user
   has_many :evaluations, dependent: :destroy
   has_many :follows, dependent: :destroy
 
+  validates :contest, presence: true
   validates :user, presence: true
   validates :stage_name, presence: true
   validates :genre, presence: true, inclusion: { in: Entry::GENRES }
@@ -19,6 +21,8 @@ class Entry < ActiveRecord::Base
                   :has_music, :has_vocals, :has_explicit_content, :user, :profile_photo
 
   mount_uploader :profile_photo, ProfilePhotoUploader
+
+  before_validation :set_contest
 
   scope :unexplicit, where(has_explicit_content: false)
   scope :unevaluated_by, lambda { |user|
@@ -66,5 +70,9 @@ class Entry < ActiveRecord::Base
   def ensure_youtube_url_is_valid
     return unless youtube_url?
     errors.add(:youtube_url, "is not valid") unless youtube_id.present?
+  end
+
+  def set_contest
+    self.contest = Contest.active || Contest.next
   end
 end
