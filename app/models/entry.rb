@@ -73,6 +73,6 @@ class Entry < ActiveRecord::Base
   end
 
   def set_contest
-    self.contest = Contest.active || Contest.next
+    self.contest = Contest.active || Contest.next || Contest.create(name: "My New Contest", start_date: Date.tomorrow, end_date: Date.tomorrow + 2.weeks) unless self.contest.present?
   end
 end
