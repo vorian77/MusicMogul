@@ -15,7 +15,10 @@ class User < ActiveRecord::Base
 
   validates :hometown, presence: true
   validates :player_name, presence: true
+  validates :referral_token, presence: true, uniqueness: true
   validate :ensure_birth_date_is_at_13_years_ago
+
+  before_validation :set_referral_token
 
   def average_evaluation_score
     return 0 unless evaluations.present?
@@ -42,6 +45,10 @@ class User < ActiveRecord::Base
     player_name? && hometown? && birth_date? && gender? && profile_photo?
   end
 
+  def referral_link
+    "http://#{ActionMailer::Base.default_url_options[:host]}/?referral_token=#{referral_token}"
+  end
+
   protected
 
   def ensure_birth_date_is_at_13_years_ago
@@ -49,5 +56,9 @@ class User < ActiveRecord::Base
     if birth_date.to_date > 13.years.ago.to_date
       errors.add(:birth_date, "must be at least 13 years old")
     end
+  end
+
+  def set_referral_token
+    self.referral_token = Digest::SHA1.hexdigest([Time.now, rand].join) unless self.referral_token.present?
   end
 end

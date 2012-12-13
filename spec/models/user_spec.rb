@@ -34,6 +34,15 @@ describe User do
     end
   end
 
+  describe "before_validation" do
+    it "should set referral token" do
+      user = FactoryGirl.build(:user, referral_token: nil)
+      lambda {
+        user.save
+      }.should change { user.referral_token }.from(nil)
+    end
+  end
+
   describe "#average_evaluation_score" do
     subject { user.average_evaluation_score }
     let(:user) { User.first }
@@ -58,5 +67,11 @@ describe User do
       before { Evaluation.destroy_all }
       it { should be_false }
     end
+  end
+
+  describe "#referral_link" do
+    subject { user.referral_link }
+    let(:user) { User.first }
+    it { should == "http://localhost/?referral_token=#{user.referral_token}"}
   end
 end

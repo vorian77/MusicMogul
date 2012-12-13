@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   layout :layout_by_resource
 
+  before_filter :set_referral_token
+
   unless Rails.configuration.consider_all_requests_local
     rescue_from Exception, with: :render_error
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
@@ -31,6 +33,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def set_referral_token
+    session[:referral_token] = params[:referral_token] if params[:referral_token].present?
+  end
 
   def render_not_found(e)
     Airbrake.notify e
