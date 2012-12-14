@@ -1,17 +1,22 @@
 .login-holder.login-holder2
   %span.sign-in-title Sign Up
+  %span.sign-in-subtitle Reserve your place as a contest judge
   = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-    = f.input :email, input_html: { class: "field" }
-    = f.input :password, input_html: { class: "field" }
-    = f.input :player_name, label: "Player Name", required: false, input_html: { class: "field" }
-    = f.input :hometown, required: false, input_html: { class: "field" }
-    .row
+    = f.input :email, label: "Email*", input_html: { class: "field" }
+    = f.input :password, label: "Password*", input_html: { class: "field" }
+    = f.input :player_name, label: "Username*", required: false, input_html: { class: "field" }
+    .row#compete-row
       %input#compete.check.ez-mark{:type => "checkbox", :value => ""}/
-      %label{:for => "compete"} I want to compete in the contest
+      %label#compete-label{:for => "compete"} I want to compete in the contest
     .cl  
-    = f.submit "Sign Up", class: "submit"
+    #submit= f.submit "Sign Up", class: "submit"
   .cl  
   .bottom-part
     %span
       Already registered?
-      %a{:href => "#{new_user_session_path}"} Sign in
+      %a#already-registered-sign-in{:href => "#{new_user_session_path}"} Sign in
+
+  #legal
+    &copy; 2012 Bright Lights Music Group, LLC 
+    = link_to "Terms", "/notices#terms"
+    = link_to "Privacy", "/notices#privacy"
