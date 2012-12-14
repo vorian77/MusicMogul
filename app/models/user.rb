@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   validates :referral_token, presence: true, uniqueness: true
   validate :ensure_birth_date_is_at_13_years_ago
 
-  before_validation :set_referral_token
+  before_validation :set_referral_token, :shorten_referral_link
 
   def average_evaluation_score
     return 0 unless evaluations.present?
@@ -60,5 +60,12 @@ class User < ActiveRecord::Base
 
   def set_referral_token
     self.referral_token = Digest::SHA1.hexdigest([Time.now, rand].join) unless self.referral_token.present?
+  end
+
+  def shorten_referral_link
+    return unless Rails.env.production?
+    Bitly.use_api_version_3
+    bitly = Bitly.new("mrhaddad", "R_83dd8224bba6e587008fb1e785793416")
+    self.shortened_referral_link = bitly.shorten(self.referral_link).short_url
   end
 end
