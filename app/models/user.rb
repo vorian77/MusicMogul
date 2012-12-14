@@ -7,9 +7,11 @@ class User < ActiveRecord::Base
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
+  belongs_to :inviter, class_name: "User"
   has_many :entries, dependent: :destroy
   has_many :follows, dependent: :destroy
   has_many :evaluations, dependent: :destroy
+  has_many :invited_users, class_name: "User", foreign_key: "inviter_id"
 
   has_many :followed_entries, through: :follows, source: :entry
 

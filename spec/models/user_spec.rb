@@ -2,10 +2,12 @@ require "spec_helper"
 
 describe User do
   describe "associations" do
+    it { should belong_to(:inviter).class_name("User") }
     it { should have_many(:entries).dependent(:destroy) }
     it { should have_many(:follows).dependent(:destroy) }
     it { should have_many(:evaluations).dependent(:destroy) }
     it { should have_many(:followed_entries).through(:follows) }
+    it { should have_many(:invited_users).class_name("User") }
   end
 
   describe "validations" do

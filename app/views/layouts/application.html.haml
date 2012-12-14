@@ -28,6 +28,9 @@
               %li
                 %a.my-evaluation{href: "#{evaluations_path}", class: "#{'my-evaluation-active' if current_page?(evaluations_path)}"}
                   My Evaluations
+              %li
+                %a.my-friends{href: "#{friends_path}", class: "#{'my-friends-active' if current_page?(friends_path)}"}
+                  My Friends
           / END Navigaiton
           .profile.right
             .drop-holder
