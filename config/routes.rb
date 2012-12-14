@@ -1,7 +1,7 @@
 Mvp2::Application.routes.draw do
   ActiveAdmin.routes(self)
 
-  devise_for :users
+  devise_for :users, controllers: {registrations: "registrations"}
 
   get '/account' => 'users#edit', :as => :account
   put '/account' => 'users#update'

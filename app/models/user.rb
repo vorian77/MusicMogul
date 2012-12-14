@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
+  attr_accessor :invitation_token
+
   belongs_to :inviter, class_name: "User"
   has_many :entries, dependent: :destroy
   has_many :follows, dependent: :destroy
@@ -21,6 +23,7 @@ class User < ActiveRecord::Base
   validate :ensure_birth_date_is_at_13_years_ago
 
   before_validation :set_referral_token, :shorten_referral_link
+  before_create :set_inviter
 
   def average_evaluation_score
     return 0 unless evaluations.present?
@@ -58,6 +61,10 @@ class User < ActiveRecord::Base
     if birth_date.to_date > 13.years.ago.to_date
       errors.add(:birth_date, "must be at least 13 years old")
     end
+  end
+
+  def set_inviter
+    self.inviter = User.find_by_referral_token(invitation_token) if invitation_token.present?
   end
 
   def set_referral_token
