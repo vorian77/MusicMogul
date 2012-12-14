@@ -399,15 +399,62 @@ span.list-title { display:block; padding: 0 0 20px; font: 20px/24px "helvbold", 
 .cont-log span.text strong { font-family: "helvbold", arial, sans-serif; font-weight: normal;  }
 
 .login-holder { width: 720px; padding: 20px 41px 20px 39px; margin: 0 auto 50px; background-color:#fff; border-radius: 10px; box-shadow: 0 3px 5px rgba(0,0,0,0.21); }
-.login-holder2 { width:325px;  }
+.login-holder2 { width:460px;  }
 .login-holder2 p { padding-bottom: 20px;  font: 16px/24px "helvrommedium", arial, sans-serif; color:#000; text-align:center;  }
 .login-holder span.top-title { display:block; padding-bottom: 20px;  font: 28px/46px "rockoflfbold", arial, sans-serif; color:#b8b8b8; text-align:center;  }
-.login-holder span.sign-in-title { display:block; padding: 0 0 20px; font: 25px/28px "helvrommedium", arial, sans-serif; color:#333333; text-align:center; }
-.login-holder form { padding: 0 0 25px; }
+
+.login-holder span.sign-in-title {
+  display:block;
+  padding: 12px 0 0 0 ;
+  font: 36px "Telex";
+  font-weight: 700;
+  color:#333333;
+  text-align:center;
+}
+
+.login-holder span.sign-in-subtitle {
+  display:block;
+  padding: 8px 0 20px;
+  font: 24px "Telex";
+  font-weight: 700;
+  color: #C00000;
+  text-align:center;
+}
+
+#compete-row {
+  margin-top: 12px;
+}
+
+#compete-label {
+  font: 19px "Telex" bold;
+  color: #333;
+}
+
+#submit {
+  margin: 8px 0 0 128px;
+}
+
+#legal {
+  font-size: 13px;
+  color: #666;
+  display: block;
+  width: 360px;
+  margin: 0 auto 0 auto;
+  text-align: center;
+}
+
+#legal a {
+  margin-left: 8px;
+}
+
+.login-holder form { padding: 8px 0 25px 62px; }
 .login-holder .col { width: 333px; }
-.login-holder .col span.title { display:block; padding: 0 0 18px; font: 15px/17px "helvbold", arial, sans-serif; color:#000; }
-.login-holder label { display:block; padding: 0 0 6px; font: 14px/18px "helvrommedium", arial, sans-serif; color:#000; }
-.login-holder input.field { width: 311px; height: 33px; margin: 0 0 15px; padding: 0 10px; background-color:#fff; border: 1px solid #e3e3e3; border-radius: 5px; }
+.login-holder .col span.title { display:block; padding: 0 0 18px; font: 15px/17px "Telex", arial, sans-serif; color:#000; }
+
+.login-holder label { display:block; padding: 0 0 6px; font: 15px "helvrommedium", arial, sans-serif; font-weight: bold; color:#000; }
+
+.login-holder input.field { width: 311px; height: 33px; font: "Telex"; font-size: 24px; font-weight: bold; margin: 0 0 15px; padding: 4px 12px; background-color:#ffffff; border: 1px solid #e3e3e3; border-radius: 5px; color: #333; }
+
 .login-holder input.smaller { width: 238px; float:left; display: inline; }
 .login-holder select { width: 167px; }
 .login-holder .col a.verify { float:left; display: inline; width: 66px; height: 35px; margin: 0 0 0 6px; background: image_url("verify.png") no-repeat; font: 14px/35px "helvrommedium", arial, sans-serif; color:#2d2d2d; text-shadow: 0 1px 1px #fff; text-align:center;  }
@@ -424,10 +471,18 @@ span.list-title { display:block; padding: 0 0 20px; font: 20px/24px "helvbold", 
 .login-holder input.submit3 { display:block; width: 252px; height: 35px; margin: 0 auto; background: image_url("submit-btn3.png") no-repeat 0 0; font-size:14px;  }
 .login-holder input.submit3:hover { background-position:0 center;  }
 .login-holder input.submit3:active { background-position:0 bottom;  }
-.login-holder .bottom-part { text-align:center; }
+
+.login-holder .bottom-part { text-align:center; margin-top: -4px; }
+
 .login-holder .bottom-part a.not { display:block;  color:#4680d6;  font: 16px/24px "helvrommedium", arial, sans-serif; }
 .login-holder .bottom-part span {  font: 16px/24px "helvbold", arial, sans-serif; }
 .login-holder .bottom-part span a { color:#4680d6;  font: 16px/24px "helvrommedium", arial, sans-serif;  }
+
+#already-registered-sign-in {
+  font-weight: bold;
+}
+
+
 
 /**
  * CSS File for ezMark jQuery Plugin
