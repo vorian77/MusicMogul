@@ -28,9 +28,6 @@
               %li
                 %a.my-evaluation{href: "#{evaluations_path}", class: "#{'my-evaluation-active' if current_page?(evaluations_path)}"}
                   My Evaluations
-              %li
-                %a.my-friends{href: "#{friends_path}", class: "#{'my-friends-active' if current_page?(friends_path)}"}
-                  My Friends
           / END Navigaiton
           .profile.right
             .drop-holder
@@ -56,6 +53,8 @@
                         %a{:href => "#{edit_entry_path(current_user.entries.first)}"} My Contestant Profile
                       %li
                         %a{:href => "#{entry_path(current_user.entries.first)}"} My Audition
+                    %li
+                      = link_to "My Friends", friends_path
                     - if current_user.admin?
                       %li
                         %a{:href => "#{admin_root_path}"} Administration
