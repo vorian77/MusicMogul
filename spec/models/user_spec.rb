@@ -57,7 +57,7 @@ describe User do
 
   describe "#has_evaluated?" do
     subject { user.has_evaluated?(entry) }
-    let(:user) { User.first }
+    let(:user) { User.invited.first }
     let(:entry) { Entry.first }
 
     context "when the user has evaluated the entry" do

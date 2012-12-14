@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
   before_validation :set_referral_token, :shorten_referral_link
   before_create :set_inviter
 
+  scope :invited, where("inviter_id is not null")
+
   def average_evaluation_score
     return 0 unless evaluations.present?
     evaluations.sum(:overall_score) / evaluations.count.to_f
@@ -52,6 +54,10 @@ class User < ActiveRecord::Base
 
   def referral_link
     "http://#{ActionMailer::Base.default_url_options[:host]}/?referral_token=#{referral_token}"
+  end
+
+  def uninvited?
+    !inviter.present?
   end
 
   protected

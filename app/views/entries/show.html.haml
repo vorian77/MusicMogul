@@ -10,7 +10,7 @@
     %a.flag-btn{:href => "#"}
       %span Flag as inappropiate
     .cl  
-    - if current_user.has_evaluated?(@entry)
+    - if current_user.has_evaluated?(@entry) || current_user.uninvited?
       .stats
         .left-part
           .stat-box
@@ -47,7 +47,7 @@
               %td #{number_with_precision @evaluation.overall_score, precision: 1}
               %td.last #{number_with_precision @entry.overall_score, precision: 1}
         .cl
-  - if current_user.has_evaluated?(@entry)
+  - if current_user.has_evaluated?(@entry) || current_user.uninvited?
     .bottom-list
       %ul
         - @entry.evaluations.includes(:user).order("created_at desc").each do |evaluation|
@@ -95,7 +95,7 @@
                   .ellipsis
                     %p #{evaluation.comment}
 
-  - unless current_user.has_evaluated?(@entry)
+  - else
     %h4 Watch the video and make an evaluation.
     .gray-box
       = simple_form_for [@entry, @evaluation] do |f|

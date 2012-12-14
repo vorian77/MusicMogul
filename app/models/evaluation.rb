@@ -11,6 +11,7 @@ class Evaluation < ActiveRecord::Base
   validates :vocals_score, numericality: {only_integer: true, greater_than: 0, less_than: 11, allow_nil: true}
   validates :presentation_score, numericality: {only_integer: true, greater_than: 0, less_than: 11}
   validates :overall_score, numericality: {greater_than: 0, less_than: 11}
+  validate :ensure_invited_user
 
   before_validation :calculate_overall_score
   after_save :calculate_entry_points
@@ -24,5 +25,10 @@ class Evaluation < ActiveRecord::Base
 
   def calculate_entry_points
     self.entry.update_attribute(:points, entry.evaluations.sum(:overall_score))
+  end
+
+  def ensure_invited_user
+    return unless user.present?
+    errors.add(:user, "must be invited") if user.uninvited?
   end
 end

@@ -28,7 +28,7 @@ describe Entry do
   describe "scopes" do
     describe ".unevaluated_by" do
       subject { Entry.unevaluated_by(user) }
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { FactoryGirl.create(:user, inviter: FactoryGirl.build(:user)) }
 
       context "when there are no evaluations" do
         before { Evaluation.destroy_all }
