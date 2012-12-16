@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_referral_token
   before_filter :redirect_entryless_musicians
+  before_filter :perform_basic_authentication if Rails.env.staging?
 
   unless Rails.configuration.consider_all_requests_local
     rescue_from Exception, with: :render_error
@@ -34,6 +35,12 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def perform_basic_authentication
+    authenticate_or_request_with_http_basic do |username, password|
+      username == "mogul" && password == "detroit1"
+    end
+  end
 
   def set_referral_token
     session[:referral_token] = params[:referral_token] if params[:referral_token].present?
