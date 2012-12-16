@@ -1,4 +1,10 @@
 class RegistrationsController < Devise::RegistrationsController
+  def new
+    resource = build_resource({})
+    resource.musician = params[:type] == "musician"
+    respond_with resource
+  end
+
   def create
     build_resource
     resource.invitation_token = session[:referral_token] if session[:referral_token].present?
@@ -16,5 +22,9 @@ class RegistrationsController < Devise::RegistrationsController
       clean_up_passwords resource
       respond_with resource
     end
+  end
+
+  def after_inactive_sign_up_path_for(resource)
+    verify_email_path
   end
 end

@@ -19,6 +19,7 @@ feature "entries" do
       check "Has Music"
       check "Has Vocals"
       check "Has Explicit Content"
+      attach_file "entry_profile_photo", "public/images/aretha.jpg"
       fill_in "Facebook", with: ""
       fill_in "Twitter", with: ""
       fill_in "YouTube", with: ""
@@ -29,13 +30,6 @@ feature "entries" do
       }.should change { Entry.count }.by(1)
     end
 
-    entry = Entry.order("created_at").last
-    current_path.should == edit_entry_path(entry)
-
-    within "form.edit_entry" do
-      click_button "Save"
-    end
-
-    current_path.should == edit_entry_path(entry)
+    current_path.should == root_path
   end
 end

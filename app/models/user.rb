@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :confirmable
 
   attr_accessible :email, :password, :password_confirmation, :username, :hometown,:gender,
-    :birth_date, :show_explicit_videos, :receive_email_updates, :profile_photo, :confirmed_at, :admin
+    :birth_date, :show_explicit_videos, :receive_email_updates, :profile_photo, :confirmed_at, :admin,
+    :musician
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
@@ -17,8 +18,7 @@ class User < ActiveRecord::Base
 
   has_many :followed_entries, through: :follows, source: :entry
 
-  validates :hometown, presence: true
-  validates :username, presence: true
+  validates :username, presence: true, uniqueness: true
   validates :referral_token, presence: true, uniqueness: true
   validate :ensure_birth_date_is_at_13_years_ago
 

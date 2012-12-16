@@ -17,7 +17,7 @@ class EntriesController < ApplicationController
   def create
     @entry = current_user.entries.new(params[:entry])
     if @entry.save
-      redirect_to edit_entry_path(@entry)
+      redirect_to root_path
     else
       render "entries/new"
     end
@@ -28,7 +28,7 @@ class EntriesController < ApplicationController
     if @entry.update_attributes(params[:entry])
       redirect_to edit_entry_path(@entry)
     else
-      render "entries/new"
+      render "entries/edit"
     end
   end
 

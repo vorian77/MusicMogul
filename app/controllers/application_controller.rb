@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
 
   before_filter :set_referral_token
+  before_filter :redirect_entryless_musicians
 
   unless Rails.configuration.consider_all_requests_local
     rescue_from Exception, with: :render_error
@@ -36,6 +37,13 @@ class ApplicationController < ActionController::Base
 
   def set_referral_token
     session[:referral_token] = params[:referral_token] if params[:referral_token].present?
+  end
+
+  def redirect_entryless_musicians
+    return if [new_entry_path, entries_path].include? request.fullpath
+    if user_signed_in? && current_user.confirmed? && current_user.musician? && current_user.entries.count == 0
+      redirect_to new_entry_path
+    end
   end
 
   def render_not_found(e)

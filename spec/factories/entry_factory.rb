@@ -7,5 +7,6 @@ FactoryGirl.define do
     genre { Entry::GENRES.sample }
     hometown { Faker::Address.city }
     bio { Faker::HipsterIpsum.paragraph }
+    profile_photo { File.open("public/images/aretha.jpg") }
   end
 end

@@ -11,6 +11,7 @@ class Entry < ActiveRecord::Base
   validates :stage_name, presence: true
   validates :genre, presence: true, inclusion: { in: Entry::GENRES }
   validates :hometown, presence: true
+  validates :profile_photo, presence: true
   validates :title, presence: true
   validates :youtube_url, presence: true
   validates :points, numericality: {only_integer: true, greater_than_or_equal_to: 0}

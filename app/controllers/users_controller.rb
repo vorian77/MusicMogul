@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, except: :reset_password
+  before_filter :authenticate_user!, except: [:reset_password, :verify_email]
   
   def edit
     @user = current_user

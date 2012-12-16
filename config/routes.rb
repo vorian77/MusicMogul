@@ -1,7 +1,8 @@
 Mvp2::Application.routes.draw do
   ActiveAdmin.routes(self)
 
-  devise_for :users, controllers: {registrations: "registrations"}
+  devise_for :users, controllers: {confirmations: "confirmations", registrations: "registrations"}
+  match "/users/verify_email" => "users#verify_email", as: :verify_email
 
   get '/account' => 'users#edit', :as => :account
   put '/account' => 'users#update'
