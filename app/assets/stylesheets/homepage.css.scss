@@ -1,0 +1,62 @@
+h2#heading {
+  color: #C00000;
+  font: 48px "Telex";
+  font-weight: bold;
+  width: 96%;
+  margin: 80px auto 0 auto;
+  text-align: center;
+}
+
+h4#subheading {
+  font: 24px "Telex";
+  letter-spacing: 1px;
+  font-weight: bold;
+  width: 80%;
+  line-height: 32px;
+  margin: 8px auto;
+  text-align: center;
+}
+
+h4#invited-by {
+  color: #C00000 - #333;
+  font: 24px "Telex";
+  font-weight: bold;
+  width: 96%;
+  margin: 80px auto 0 auto;
+  text-align: center;
+}
+
+h3#sign-up {
+  color: #222;
+  font: 60px "Telex";
+  font-weight: bold;
+  width: 96%;
+  margin: 8px auto;
+  text-align: center;
+}
+
+#sign-up-options {
+  width: 60%;
+  margin: 0 auto;
+  height: 40px;
+  text-align: center;
+}
+
+a.sign-up {
+  border: 1px solid #{#C00000 - #666}; 
+  width: 140px;
+  float: left;
+  display: block;
+  padding: 8px 24px;
+  color: white;
+  font: 28px "Telex";
+  font-weight: bold;
+  background: #C00000 - #444;
+  margin: 8px 40px;
+  text-align: center;
+}
+
+a.sign-up:hover {
+  text-decoration: none;
+  background: #C00000 - #222;
+}
