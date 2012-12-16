@@ -16,6 +16,7 @@ gem 'mini_magick'
 gem 'pg'
 gem 'rails', '3.2.9'
 gem 'simple_form'
+gem 'thin-rails'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
