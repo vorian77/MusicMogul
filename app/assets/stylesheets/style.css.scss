@@ -499,7 +499,18 @@ span.list-title { display:block; padding: 0 0 20px; font: 20px/24px "helvbold", 
 
 .login-holder label { display:block; padding: 0 0 6px; font: 15px "helvrommedium", arial, sans-serif; font-weight: bold; color:#000; }
 
-.login-holder input.field { width: 311px; height: 33px; font: "Telex"; font-size: 24px; font-weight: bold; margin: 0 0 15px; padding: 4px 12px; background-color:#ffffff; border: 1px solid #e3e3e3; border-radius: 5px; color: #333; }
+.login-holder input.field { width: 311px; height: 33px; font: "Telex"; font-size: 24px; font-weight: bold; margin: 0 0 15px; padding: 4px 12px; background-color:#ffffff; border: 1px solid #c3c3c3; border-radius: 2px; color: #333;
+
+background: rgb(255,255,255); /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(229,229,229,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C */
+
+}
 
 .login-holder input.smaller { width: 238px; float:left; display: inline; }
 .login-holder select { width: 167px; }
