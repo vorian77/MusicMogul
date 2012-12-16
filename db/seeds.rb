@@ -1,33 +1,33 @@
 User.create(email: "test@fanhelp.us",
             password: "password",
             confirmed_at: Date.today,
-            player_name: "tester",
+            username: "tester",
             hometown: "Detroit",
             admin: true)
 
 User.create(email: "phyl@fanhelp.us",
             password: "password",
             confirmed_at: Date.today,
-            player_name: "phyl",
+            username: "phyl",
             hometown: "Detroit",
             admin: true)
 
 morrison = User.create(email: "jim@morrison.com",
                        password: "password",
                        confirmed_at: Date.today,
-                       player_name: "JimMorrison",
+                       username: "JimMorrison",
                        hometown: "Melbourne")
 
 eminem = User.create(email: "slim@slimshady.com",
                      password: "password",
                      confirmed_at: Date.today,
-                     player_name: "SlimShady",
+                     username: "SlimShady",
                      hometown: "Detroit")
 
 aretha = User.create(email: "aretha@arethafranklin.com",
                      password: "password",
                      confirmed_at: Date.today,
-                     player_name: "Aretha",
+                     username: "Aretha",
                      hometown: "Detroit")
 
 Entry.create!(user: morrison,

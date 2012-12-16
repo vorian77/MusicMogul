@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :user do
     email { Faker::Internet.email }
     password { "password" }
-    player_name { Faker::Internet.user_name }
+    username { Faker::Internet.user_name }
     hometown { Faker::Address.city }
   end
 

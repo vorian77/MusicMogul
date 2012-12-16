@@ -56,7 +56,7 @@
               %a{:href => "#"}
                 %img{:alt => "", :height => "61", :src => "#{evaluation.user.profile_photo.url(:thumb)}", :width => "61"}/
             .text-holder.left
-              %a.title{:href => "#"}= evaluation.user.player_name.presence || "Anonymous"
+              %a.title{:href => "#"}= evaluation.user.username.presence || "Anonymous"
               .cl  
               .left-part
                 %span.left-text Hometown

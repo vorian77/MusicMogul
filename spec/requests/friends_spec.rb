@@ -10,6 +10,6 @@ feature "friends" do
     click_link "My Friends"
 
     current_path.should == friends_path
-    page.should have_content friend.player_name
+    page.should have_content friend.username
   end
 end

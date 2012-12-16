@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121214042647) do
+ActiveRecord::Schema.define(:version => 20121216171859) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(:version => 20121214042647) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.string   "player_name"
+    t.string   "username"
     t.string   "hometown"
     t.boolean  "admin",                   :default => false, :null => false
     t.string   "gender"
@@ -123,5 +123,6 @@ ActiveRecord::Schema.define(:version => 20121214042647) do
   add_index "users", ["inviter_id"], :name => "index_users_on_inviter_id"
   add_index "users", ["referral_token"], :name => "index_users_on_referral_token", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
 end

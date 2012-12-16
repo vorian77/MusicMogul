@@ -3,7 +3,7 @@
   = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
     = f.input :email, input_html: { class: "field" }
     = f.input :password, input_html: { class: "field" }
-    = f.input :player_name, label: "Player Name", required: false, input_html: { class: "field" }
+    = f.input :username, required: false, input_html: { class: "field" }
     = f.input :hometown, required: false, input_html: { class: "field" }
     .row
       %input#compete.check.ez-mark{:type => "checkbox", :value => ""}/

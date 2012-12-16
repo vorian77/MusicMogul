@@ -7,10 +7,10 @@ feature "sign up" do
     click_link "Sign Up"
     current_path.should == new_user_registration_path
 
-    player_name = Faker::Internet.user_name
+    username = Faker::Internet.user_name
     fill_in "Email", with: Faker::Internet.email
     fill_in "Password", with: "password"
-    fill_in "Player Name", with: player_name
+    fill_in "Username", with: username
     fill_in "Hometown", with: Faker::Address.city
 
     lambda {
@@ -32,10 +32,10 @@ feature "sign up" do
     click_link "Sign Up"
     current_path.should == new_user_registration_path
 
-    player_name = Faker::Internet.user_name
+    username = Faker::Internet.user_name
     fill_in "Email", with: Faker::Internet.email
     fill_in "Password", with: "password"
-    fill_in "Player Name", with: player_name
+    fill_in "Username", with: username
     fill_in "Hometown", with: Faker::Address.city
 
     lambda {

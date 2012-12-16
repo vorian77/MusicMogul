@@ -10,7 +10,7 @@ feature "profile" do
     current_path.should == account_path
 
     within "form.edit_user" do
-      fill_in "Player name", with: Faker::Internet.user_name
+      fill_in "Username", with: Faker::Internet.user_name
       fill_in "Email", with: Faker::Internet.email
       fill_in "Hometown", with: "Detroit"
       select "Male", from: "Gender"
