@@ -40,6 +40,10 @@ class User < ActiveRecord::Base
     evaluations.where(entry_id: entry.id).first
   end
 
+  def fan?
+    !musician?
+  end
+
   def follows?(entry)
     follows.where(entry_id: entry.id).count > 0
   end
