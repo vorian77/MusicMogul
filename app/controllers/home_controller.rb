@@ -5,6 +5,7 @@ class HomeController < ApplicationController
       @entries = @entries.unexplicit unless current_user.show_explicit_videos?
     else
       @entries = Entry.order("random()")
+      @inviter = User.find_by_referral_token(session[:referral_token]) if session[:referral_token].present?
     end
   end
 end

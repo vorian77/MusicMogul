@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
   def new
     resource = build_resource({})
-    resource.musician = params[:type] == "musician"
+    resource.musician = session[:musician] = params[:type] == "musician"
     respond_with resource
   end
 

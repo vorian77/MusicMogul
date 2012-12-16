@@ -68,8 +68,6 @@
         - else
           .btn-holder.right
             %a{:href => new_user_session_path} Sign In
-            = link_to "Musician", new_user_registration_path(type: "musician")
-            = link_to "Fan", new_user_registration_path(type: "fan")
         .cl  
         = content_for(:bottom_of_header)
       / END Header

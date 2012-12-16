@@ -1,18 +1,18 @@
 .login-holder.login-holder2
   %span.sign-in-title Sign Up
-  %span.sign-in-subtitle Reserve your place as a contestant
+  %span.sign-in-subtitle Reserve your place as a #{session[:musician] ? "contestant" : "contest judge"}
 
-  #progress-bar.thirds
-    .progress-item.inactive
+  #progress-bar{class: "#{'thirds' if session[:musician]}"}
+    .progress-item.active
       .circle 1
       .progress-label User Info
     .progress-item.inactive
       .circle 2
       .progress-label Verify Email
-    .progress-item.active
-      .circle 3
-      .progress-label Contestant Info
-
+    - if session[:musician]
+      .progress-item.inactive
+        .circle 3
+        .progress-label Contestant Info
   .clear
   
   = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|

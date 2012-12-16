@@ -20,11 +20,6 @@ feature "entries" do
       check "Has Vocals"
       check "Has Explicit Content"
       attach_file "entry_profile_photo", "public/images/aretha.jpg"
-      fill_in "Facebook", with: ""
-      fill_in "Twitter", with: ""
-      fill_in "YouTube", with: ""
-      fill_in "Pinterest", with: ""
-      fill_in "Website", with: ""
       lambda {
         click_button "Save"
       }.should change { Entry.count }.by(1)

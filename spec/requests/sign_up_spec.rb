@@ -4,9 +4,11 @@ feature "sign up" do
   scenario "musician signs up" do
     inviter = User.first
     visit root_path(referral_token: inviter.referral_token)
+    page.should have_content "Invited by #{inviter.username}"
 
-    within(".btn-holder") { click_link "Musician" }
+    within("div#sign-up-options") { click_link "Musician" }
     current_path.should == new_user_registration_path
+    page.should have_content "Reserve your place as a contestant"
 
     fill_in "Username", with: Faker::Internet.user_name
     fill_in "Email", with: Faker::Internet.email
@@ -20,14 +22,16 @@ feature "sign up" do
     user.inviter.should == inviter
     user.should be_musician
     current_path.should == verify_email_path
-    page.should have_content "Check Your Inbox For Our Verification Email"
+    page.should have_content "Reserve your place as a contestant"
+    page.should have_content "Almost there! Check your inbox for our verification email."
 
     visit user_confirmation_path(confirmation_token: user.confirmation_token)
-    user_should_be_logged_in user
-
     current_path.should == new_entry_path
+    page.should have_content "Reserve your place as a contestant"
+
     visit root_path
     current_path.should == new_entry_path
+    page.should have_content "Reserve your place as a contestant"
 
     within "form#new_entry" do
       fill_in "Stage name", with: Faker::HipsterIpsum.words.join(" ")
@@ -42,7 +46,7 @@ feature "sign up" do
       attach_file "entry_profile_photo", "public/images/aretha.jpg"
       lambda {
         click_button "Save"
-      }.should change { Entry.count }.by(1)
+      }.should change { user.entries.count }.by(1)
     end
 
     current_path.should == root_path
@@ -52,9 +56,11 @@ feature "sign up" do
   scenario "fan signs up" do
     inviter = User.first
     visit root_path(referral_token: inviter.referral_token)
+    page.should have_content "Invited by #{inviter.username}"
 
-    within(".btn-holder") { click_link "Fan" }
+    within("div#sign-up-options") { click_link "Fan" }
     current_path.should == new_user_registration_path
+    page.should have_content "Reserve your place as a contest judge"
 
     fill_in "Username", with: Faker::Internet.user_name
     fill_in "Email", with: Faker::Internet.email
@@ -68,7 +74,8 @@ feature "sign up" do
     user.inviter.should == inviter
     user.should be_fan
     current_path.should == verify_email_path
-    page.should have_content "Check Your Inbox For Our Verification Email"
+    page.should have_content "Reserve your place as a contest judge"
+    page.should have_content "Almost there! Check your inbox for our verification email."
 
     visit user_confirmation_path(confirmation_token: user.confirmation_token)
     current_path.should == root_path

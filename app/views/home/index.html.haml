@@ -1,25 +1,21 @@
--# = content_for(:bottom_of_header) do
--#   - if user_signed_in?
--#     = render "evaluations/progress"
--#   - else
--#     .red-box
--#       .left-side  
--#       %h2 Sign Up Or Sign In To Judge The Contest
--#       .right-side  
--#       .cl  
-
--# = render "entries/list", entries: @entries
-
-= stylesheet_link_tag "homepage"
+- if user_signed_in?
+  = content_for(:bottom_of_header) do
+    = render "evaluations/progress"
 
 %h2#heading A Music Talent Search Contest Controlled Entirely by Fans
 %h4#subheading
   $500 prize pool.  Open only to the first 25 contestants and 625 fans who register.  Begins 12/30/12.
   = link_to "Learn More", "/"
 
-%h4#invited-by Invited by Walter P. Reuther
-%h3#sign-up Sign Up!
+- unless user_signed_in?
+  - if @inviter
+    %h4#invited-by Invited by #{@inviter.username}
+  %h3#sign-up Sign Up!
 
-#sign-up-options
-  = link_to "Musician", "/", id: "sign-up-contestant", class: "sign-up"
-  = link_to "Fan", "/", id: "sign-up-fan", class: "sign-up"
+  #sign-up-options
+    = link_to "Musician", new_user_registration_path(type: "musician"), class: "sign-up"
+    = link_to "Fan", new_user_registration_path(type: "fan"), class: "sign-up"
+
+.cl
+
+= render "entries/list", entries: @entries
