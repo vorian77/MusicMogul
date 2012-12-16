@@ -13,5 +13,22 @@ production:
   app: music-mogul
   stack: cedar
   tag: production/*
-  config:
+  config: &default_config
+    RAILS_ENV: production
+    RACK_ENV: production
     BUNDLE_WITHOUT: "development:test"
+  addons:
+    - sendgrid:starter
+    - heroku-postgresql:dev
+
+staging:
+  app: music-mogul-staging
+  stack: cedar
+  tag: staging/*
+  config:
+    <<: *default_config
+    RAILS_ENV: staging
+    RACK_ENV: staging
+  addons:
+    - sendgrid:starter
+    - heroku-postgresql:dev
