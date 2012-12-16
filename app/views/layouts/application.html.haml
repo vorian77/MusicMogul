@@ -91,7 +91,7 @@
             %li
               %a{href: "#{notices_path(anchor: "about")}"} About Us
             %li
-              %a.suggestions{href: "#"} Suggestions
+              %a{href: "http://musicmogul.uservoice.com/forums/187106-general", target: "_blank"} Suggestions
             %li
               %a{href: "#{notices_path(anchor: "contact")}"} Contact Us
           %a.right-link{:href => "#"} Musicians
@@ -113,12 +113,3 @@
     = javascript_include_tag "http://www.google.com/jsapi"
     :javascript
       google.load("swfobject", "2.1");
-    :plain
-      <script type="text/javascript">
-        var uvOptions = {};
-        (function() {
-          var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
-          uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/eZhxHqSyLP9OLPsENsYSHg.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
-        })();
-      </script>
