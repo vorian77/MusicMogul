@@ -403,6 +403,7 @@ span.list-title { display:block; padding: 0 0 20px; font: 20px/24px "helvbold", 
 .login-holder2 p { padding-bottom: 20px;  font: 16px/24px "helvrommedium", arial, sans-serif; color:#000; text-align:center;  }
 .login-holder span.top-title { display:block; padding-bottom: 20px;  font: 28px/46px "rockoflfbold", arial, sans-serif; color:#b8b8b8; text-align:center;  }
 
+
 .login-holder span.sign-in-title {
   display:block;
   padding: 12px 0 0 0 ;
@@ -446,6 +447,51 @@ span.list-title { display:block; padding: 0 0 20px; font: 20px/24px "helvbold", 
 #legal a {
   margin-left: 8px;
 }
+
+#progress-bar {
+  width: 360px;
+  padding-left: 20px;
+  padding-right: 32px;
+  margin-left: 25px;
+  border-bottom: 1px dotted #999;
+  height: 15px;
+  color: #999;
+}
+
+.clear {
+  clear: both;
+}
+
+#progress-bar .circle {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px; 
+  padding: 8px 0 4px 12px;
+  color: white;
+  font: 14px "Telex" bold;
+  background: #999;
+  margin: 0 auto;
+}
+
+#progress-bar .progress-item {
+  float: left;
+  width: 80px;
+  margin: 0 50px 20px 50px;
+}
+
+#progress-bar .progress-label {
+  text-align: center;
+  font: 14px "Telex" bold;
+}
+
+#progress-bar .progress-item.active .circle {
+  background: #59AEE6;
+}
+
+#progress-bar .progress-item.active .progress-label {
+  color: #59AEE6;
+}
+
 
 .login-holder form { padding: 8px 0 25px 62px; }
 .login-holder .col { width: 333px; }
