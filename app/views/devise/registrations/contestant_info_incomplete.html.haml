@@ -16,10 +16,9 @@
   .clear
   
   = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-    = f.input :musician, as: :hidden
-    = f.input :username, input_html: { class: "field" }
-    = f.input :email, input_html: { class: "field" }
-    = f.input :password, input_html: { class: "field" }
+    = f.input :email, label: "Email*", input_html: { class: "field" }
+    = f.input :password, label: "Password*", input_html: { class: "field" }
+    = f.input :player_name, label: "Username*", required: false, input_html: { class: "field" }
     #submit= f.submit "Sign Up", class: "submit"
   .cl  
   .bottom-part

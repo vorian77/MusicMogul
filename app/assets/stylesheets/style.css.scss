@@ -422,6 +422,26 @@ span.list-title { display:block; padding: 0 0 20px; font: 20px/24px "helvbold", 
   text-align:center;
 }
 
+.login-holder span.sign-in-subtitle {
+  display:block;
+  padding: 8px 0 20px;
+  font: 24px "Telex";
+  font-weight: 700;
+  color: #C00000;
+  text-align:center;
+}
+
+#email-notice {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  font-family: "Telex", arial, sans;
+  margin-bottom: 32px;
+  margin-top: 12px;
+}
+
 #compete-row {
   margin-top: 12px;
 }
@@ -482,8 +502,9 @@ span.list-title { display:block; padding: 0 0 20px; font: 20px/24px "helvbold", 
 #progress-bar .progress-label {
   text-align: center;
   font: 14px "Telex" bold;
+  margin-top: 4px;
 }
-
+ 
 #progress-bar .progress-item.active .circle {
   background: #59AEE6;
 }
@@ -491,6 +512,30 @@ span.list-title { display:block; padding: 0 0 20px; font: 20px/24px "helvbold", 
 #progress-bar .progress-item.active .progress-label {
   color: #59AEE6;
 }
+
+
+#progress-bar .progress-item {
+  float: left;
+  width: 80px;
+  margin: 0 50px 20px 50px;
+}
+
+#progress-bar.thirds .progress-item {
+  margin: 0 26px 20px 26px;
+}
+
+#progress-bar.thirds {
+  width: 412px;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 25px;
+}
+
+#progress-bar .progress-label {
+  text-align: center;
+  font: 14px "Telex" bold;
+}
+
 
 
 .login-holder form { padding: 8px 0 25px 62px; }
