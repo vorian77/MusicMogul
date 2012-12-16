@@ -17,6 +17,9 @@ production:
     RAILS_ENV: production
     RACK_ENV: production
     BUNDLE_WITHOUT: "development:test"
+    AWS_ACCESS_KEY_ID: AKIAIAZHJIZGTW6R55AQ
+    AWS_SECRET_ACCESS_KEY: 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
+    AWS_BUCKET: music-mogul-production
   addons:
     - sendgrid:starter
     - heroku-postgresql:dev
@@ -29,6 +32,9 @@ staging:
     <<: *default_config
     RAILS_ENV: staging
     RACK_ENV: staging
+    AWS_ACCESS_KEY_ID: AKIAIAZHJIZGTW6R55AQ
+    AWS_SECRET_ACCESS_KEY: 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
+    AWS_BUCKET: music-mogul-staging
   addons:
     - sendgrid:starter
     - heroku-postgresql:dev
