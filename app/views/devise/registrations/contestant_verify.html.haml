@@ -6,21 +6,19 @@
     .progress-item.inactive
       .circle 1
       .progress-label User Info
-    .progress-item.inactive
+    .progress-item.active
       .circle 2
       .progress-label Verify Email
-    .progress-item.active
+    .progress-item.inactive
       .circle 3
       .progress-label Contestant Info
 
   .clear
-  
-  = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-    = f.input :email, label: "Email*", input_html: { class: "field" }
-    = f.input :password, label: "Password*", input_html: { class: "field" }
-    = f.input :player_name, label: "Username*", required: false, input_html: { class: "field" }
-    #submit= f.submit "Sign Up", class: "submit"
-  .cl  
+
+
+  #email-notice
+    Almost there!  Check your inbox for our verification email.
+
   .bottom-part
     %span
       Already registered?
