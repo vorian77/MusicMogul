@@ -1,11 +1,25 @@
-= content_for(:bottom_of_header) do
-  - if user_signed_in?
-    = render "evaluations/progress"
-  - else
-    .red-box
-      .left-side  
-      %h2 Sign Up Or Sign In To Judge The Contest
-      .right-side  
-      .cl  
+-# = content_for(:bottom_of_header) do
+-#   - if user_signed_in?
+-#     = render "evaluations/progress"
+-#   - else
+-#     .red-box
+-#       .left-side  
+-#       %h2 Sign Up Or Sign In To Judge The Contest
+-#       .right-side  
+-#       .cl  
 
-= render "entries/list", entries: @entries
+-# = render "entries/list", entries: @entries
+
+= stylesheet_link_tag "homepage"
+
+%h2#heading A Music Talent Search Contest Controlled Entirely by Fans
+%h4#subheading
+  $500 prize pool.  Open only to the first 25 contestants and 625 fans who register.  Begins 12/30/12.
+  = link_to "Learn More", "/"
+
+%h4#invited-by Invited by Walter P. Reuther
+%h3#sign-up Sign Up!
+
+#sign-up-options
+  = link_to "Musician", "/", id: "sign-up-contestant", class: "sign-up"
+  = link_to "Fan", "/", id: "sign-up-fan", class: "sign-up"
