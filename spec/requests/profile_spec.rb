@@ -6,7 +6,7 @@ feature "profile" do
     login_as user, scope: :user
 
     visit root_path
-    click_link "My Player Profile"
+    click_link "My Account"
     current_path.should == account_path
 
     within "form.edit_user" do

@@ -45,7 +45,7 @@
                 .right-part.right
                   %ul
                     %li
-                      %a{:href => "#{account_path}"} My Player Profile
+                      %a{:href => "#{account_path}"} My Account
                     - unless current_user.entries.count > 0
                       %li
                         %a{:href => "#{new_entry_path}"} Submit A Video
