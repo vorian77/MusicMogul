@@ -1,5 +1,5 @@
 class Entry < ActiveRecord::Base
-  GENRES = ['Country','Electronic','Hip Hop','Pop','R&B','Rock']
+  GENRES = ['Country', 'Electronic', 'Hip Hop', 'Pop', 'R&B', 'Rock']
 
   belongs_to :contest
   belongs_to :user
@@ -9,12 +9,13 @@ class Entry < ActiveRecord::Base
   validates :contest, presence: true
   validates :user, presence: true
   validates :stage_name, presence: true
-  validates :genre, presence: true, inclusion: { in: Entry::GENRES }
+  validates :genre, presence: true, inclusion: {in: Entry::GENRES}
   validates :hometown, presence: true
   validates :profile_photo, presence: true
   validates :title, presence: true
   validates :youtube_url, presence: true
   validates :points, numericality: {only_integer: true, greater_than_or_equal_to: 0}
+  validates :website, format: {with: URI::regexp(%w(http https)), allow_blank: true}
   validate :ensure_youtube_url_is_valid
 
   attr_accessible :genre, :stage_name, :title, :youtube_url, :hometown, :bio,
