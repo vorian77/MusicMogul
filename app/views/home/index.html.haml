@@ -4,7 +4,7 @@
 
 #heading-block
   %h2#heading
-    A Music Talent Search Contest Controlled Entirely by Fans.
+    A Music Talent Search Contest Judged Entirely by Fans.
   %h4#subheading
     Open only to the first 25 contestants
     and 625 fans who register.
@@ -14,28 +14,31 @@
   = image_tag "homepage/microphone.png", id: "microphone"
 .clear
 
-/ Countdown dashboard start
-#countdown_dashboard
-  .dash.weeks_dash
-    %span.dash_title weeks
-    .digit 0
-    .digit 0
-  .dash.days_dash
-    %span.dash_title days
-    .digit 0
-    .digit 0
-  .dash.hours_dash
-    %span.dash_title hours
-    .digit 0
-    .digit 0
-  .dash.minutes_dash
-    %span.dash_title minutes
-    .digit 0
-    .digit 0
-  .dash.seconds_dash
-    %span.dash_title seconds
-    .digit 0
-    .digit 0
+#countdown-block
+
+  / Countdown dashboard start
+  #countdown_dashboard
+    .dash.days_dash
+      %span.dash_title days
+      .digit 0
+      .digit 0
+    .dash.hours_dash
+      %span.dash_title hours
+      .digit 0
+      .digit 0
+    .dash.minutes_dash
+      %span.dash_title minutes
+      .digit 0
+      .digit 0
+    .dash.seconds_dash
+      %span.dash_title seconds
+      .digit 0
+      .digit 0
+
+  #contest-begins
+    The contest
+    %br
+    begins in...
 
 - unless user_signed_in?
   - if @inviter
