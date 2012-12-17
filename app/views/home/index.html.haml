@@ -2,10 +2,37 @@
   = content_for(:bottom_of_header) do
     = render "evaluations/progress"
 
-%h2#heading A Music Talent Search Contest Controlled Entirely by Fans
+%h2#heading
+  A Music Talent Search Contest Controlled
+  %br
+  Entirely by Fans
 %h4#subheading
-  $500 prize pool.  Open only to the first 25 contestants and 625 fans who register.  Begins 12/30/12.
+  $500 prize pool.  Open only to the first 25 contestants
+  and 625 fans who register.  Begins 12/30/12.
   = link_to "Learn More", "/"
+
+/ Countdown dashboard start
+#countdown_dashboard
+  .dash.weeks_dash
+    %span.dash_title weeks
+    .digit 0
+    .digit 0
+  .dash.days_dash
+    %span.dash_title days
+    .digit 0
+    .digit 0
+  .dash.hours_dash
+    %span.dash_title hours
+    .digit 0
+    .digit 0
+  .dash.minutes_dash
+    %span.dash_title minutes
+    .digit 0
+    .digit 0
+  .dash.seconds_dash
+    %span.dash_title seconds
+    .digit 0
+    .digit 0
 
 - unless user_signed_in?
   - if @inviter
