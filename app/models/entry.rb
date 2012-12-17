@@ -37,19 +37,19 @@ class Entry < ActiveRecord::Base
   end
 
   def overall_score
-    evaluations.sum(:overall_score) / evaluations.count.to_f
+    evaluations.count > 0 ? evaluations.sum(:overall_score) / evaluations.count.to_f : 0
   end
 
   def overall_music_score
-    evaluations.sum(:music_score) / evaluations.count.to_f
+    evaluations.count > 0 ? evaluations.sum(:music_score) / evaluations.count.to_f : 0
   end
 
   def overall_vocals_score
-    evaluations.sum(:vocals_score) / evaluations.count.to_f
+    evaluations.count > 0 ? evaluations.sum(:vocals_score) / evaluations.count.to_f : 0
   end
 
   def overall_presentation_score
-    evaluations.sum(:presentation_score) / evaluations.count.to_f
+    evaluations.count > 0 ? evaluations.sum(:presentation_score) / evaluations.count.to_f : 0
   end
 
   def rank
