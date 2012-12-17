@@ -102,9 +102,9 @@
               %a.notice{href: "#{notices_path(anchor: "privacy")}"} Privacy
           %ul.right
             %li
-              %a{href: "#"} Share
+              = link_to image_tag("facebook.png"), "#", target: "_blank"
             %li
-              %a{href: "#"} Follow
+              = link_to image_tag("twitter.png"), "#", target: "_blank"
           %span.copy Bright Lights Music Group, LLC &copy; 2012
       / END Footer
 
