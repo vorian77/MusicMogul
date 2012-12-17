@@ -29,7 +29,6 @@
   .row
     %label.larger{for: "entry_youtube_url"} YouTube URL*
     %input.field#entry_youtube_url{type: "text", value: @entry.youtube_url, name: "entry[youtube_url]"}/
-    %a.verify{:href => "#"} verify
     .cl  
   .row
     %label.larger{for: "entry_title"} Title*
@@ -77,23 +76,18 @@
     .cl  
   .row
     = f.input :facebook, input_html: { class: "field" }
-    %a.verify{:href => "#"} verify
     .cl  
   .row
     = f.input :pinterest, input_html: { class: "field" }
-    %a.verify{:href => "#"} verify
     .cl  
   .row
     = f.input :twitter, input_html: { class: "field" }
-    %a.verify{:href => "#"} verify
     .cl  
   .row
     = f.input :youtube, label: "YouTube", input_html: { class: "field" }
-    %a.verify{:href => "#"} verify
     .cl  
   .row
     = f.input :website, input_html: { class: "field" }
-    %a.verify{:href => "#"} verify
     .cl  
     %br/
   %hr/
