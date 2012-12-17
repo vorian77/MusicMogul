@@ -1,16 +1,18 @@
 require "spec_helper"
 
 feature "entries" do
-  scenario "user creates an entry" do
+  scenario "user edits an entry" do
     user = users(:confirmed_user)
+    entry = FactoryGirl.create(:entry, user: user)
     login_as user, scope: :user
 
     visit root_path
-    click_link "Submit A Video"
-    current_path.should == new_entry_path
+    click_link "My Video Submission"
+    current_path.should == edit_entry_path(entry)
 
-    within "form#new_entry" do
-      fill_in "Stage name", with: Faker::HipsterIpsum.words.join(" ")
+    new_stage_name = Faker::HipsterIpsum.words.join(" ")
+    within "form.edit_entry" do
+      fill_in "Stage name", with: new_stage_name
       select Entry::GENRES.sample, from: "Genre"
       fill_in "Hometown", with: Faker::Address.city
       fill_in "Bio", with: Faker::HipsterIpsum.paragraph
@@ -20,11 +22,9 @@ feature "entries" do
       check "Has Vocals"
       check "Has Explicit Content"
       attach_file "entry_profile_photo", "public/images/aretha.jpg"
-      lambda {
-        click_button "Save"
-      }.should change { Entry.count }.by(1)
+      click_button "Save"
     end
 
-    current_path.should == root_path
+    current_path.should == edit_entry_path(entry)
   end
 end
