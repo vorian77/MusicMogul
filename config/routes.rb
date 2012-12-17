@@ -21,6 +21,7 @@ Mvp2::Application.routes.draw do
 
   match "leaderboard" => "entries#leaderboard", as: :leaderboard
   match "notices" => "home#notices"
+  match "learn_more" => "home#learn_more"
 
   root :to => 'home#index'
   match "*a", :to => "application#routing_error"

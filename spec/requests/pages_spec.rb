@@ -28,4 +28,11 @@ feature "pages" do
     page.should have_content "This privacy policy sets out"
     current_path.should == notices_path
   end
+
+  scenario "user visis learn more" do
+    visit root_path
+    within("div#footer") { click_link "Learn More" }
+    current_path.should == learn_more_path
+    page.should have_content "Learn More"
+  end
 end
