@@ -41,11 +41,11 @@
                 .left-part.left
                   .img-box
                     %img{alt: "", height: "138", src: "#{current_user.profile_photo.url(:medium)}", width: "138"}/
-                  %a{href: "#{account_path}"} #{current_user.display_name}
+                  %a{href: "#{edit_user_path(current_user)}"} #{current_user.display_name}
                 .right-part.right
                   %ul
                     %li
-                      %a{:href => "#{account_path}"} My Account
+                      %a{:href => "#{edit_user_path(current_user)}"} My Account
                     - if current_user.entries.count > 0
                       %li
                         %a{:href => "#{edit_entry_path(current_user.entries.first)}"} My Video Submission
@@ -60,7 +60,7 @@
                       %a{:href => "#{destroy_user_session_path}", "data-method" => "delete"} Sign Out
               .cl  
             - unless current_user.profile_complete?
-              %a.complete{:href => "#{account_path}"} Complete your profile
+              %a.complete{:href => "#{edit_user_path(current_user)}"} Complete your profile
             .cl
         - else
           .btn-holder.right

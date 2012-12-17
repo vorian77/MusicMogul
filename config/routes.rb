@@ -4,10 +4,7 @@ Mvp2::Application.routes.draw do
   devise_for :users, controllers: {confirmations: "confirmations", registrations: "registrations"}
   match "/users/verify_email" => "users#verify_email", as: :verify_email
 
-  get '/account' => 'users#edit', :as => :account
-  put '/account' => 'users#update'
-  post '/reset_password' => 'users#reset_password', :as => :reset_password
-
+  resources :users, only: [:edit, :update]
   resources :follows, only: [:index]
   resources :friends, only: [:index]
 

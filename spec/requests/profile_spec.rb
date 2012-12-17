@@ -7,7 +7,7 @@ feature "profile" do
 
     visit root_path
     click_link "My Account"
-    current_path.should == account_path
+    current_path.should == edit_user_path(user)
 
     within "form.edit_user" do
       fill_in "Username", with: Faker::Internet.user_name
@@ -18,8 +18,8 @@ feature "profile" do
       click_button "Save"
     end
 
-    current_path.should == account_path
-    visit account_path
+    current_path.should == edit_user_path(user)
+    visit edit_user_path(user)
 
     within "form.edit_user" do
       find_field("user[show_explicit_videos]").should_not be_checked
