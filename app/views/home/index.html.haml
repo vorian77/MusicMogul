@@ -36,11 +36,17 @@
 - unless user_signed_in?
   - if @inviter
     %h4#invited-by Invited by #{@inviter.username}
-  %h3#sign-up Sign Up!
-
-  #sign-up-options
+  #sign-up
+    %h3 Sign Up!
     = link_to "Musician", new_user_registration_path(type: "musician"), class: "sign-up"
     = link_to "Fan", new_user_registration_path(type: "fan"), class: "sign-up"
+  .clear
+  %h5#sign-up-detail
+    Sign up as either a
+    %span.highlight musician
+    to compete in the contest, or a
+    %span.highlight fan
+    to judge it.
 
 .cl
 

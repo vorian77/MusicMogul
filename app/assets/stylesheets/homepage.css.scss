@@ -27,18 +27,32 @@ h4#invited-by {
   text-align: center;
 }
 
-h3#sign-up {
+#sign-up h3 {
   color: #111;
   font: 60px "Telex";
   font-weight: bold;
-  width: 96%;
-  margin: 42px auto 0 auto;
+  float: left;
+  margin: 42px 24px 0 52px;
+  padding-bottom: 0;
+}
+
+h5#sign-up-detail {
+  color: #333;
+  font: 18px "Telex";
+  width: 100%;
+  padding-top: 0;
+  margin: 4px auto 0 auto;
   text-align: center;
 }
 
-#sign-up-options {
-  width: 60%;
-  margin: 0 auto 0 240px;
+h5#sign-up-detail span.highlight {
+  font-weight: bold;
+  color: #111;
+}
+
+#sign-up {
+  width: 80%;
+  margin: 0 auto;
   height: 40px;
   text-align: center;
 }
@@ -54,7 +68,7 @@ a.sign-up {
   font: 22px "Telex";
   font-weight: bold;
   background: #E60000;
-  margin: 8px 28px;
+  margin: 54px 28px 8px 0;
   text-align: center;
   border-radius: 6px;
   /* border: 1px solid #{#C00000 - #777}; */
