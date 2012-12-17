@@ -73,7 +73,7 @@ class User < ActiveRecord::Base
   end
 
   def shorten_referral_link
-    return unless Rails.env.production? || self.shortened_referral_link?
+    return if Rails.env.development? || Rails.env.test? || self.shortened_referral_link?
     Bitly.use_api_version_3
     bitly = Bitly.new("mrhaddad", "R_83dd8224bba6e587008fb1e785793416")
     self.shortened_referral_link = bitly.shorten(self.referral_link).short_url
