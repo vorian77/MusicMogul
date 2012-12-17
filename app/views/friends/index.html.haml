@@ -1,3 +1,31 @@
+= content_for(:bottom_of_header) do
+  .red-box
+    .left-side
+    .cl
+    %span.friends My Friends
+    .cl
+    .right-side
+
+%h1 My Referral Link
+
+%input{type: "text", value: current_user.shortened_referral_link, disabled: "disabled"}
+
+%p
+  We're making our first few contests Invite Only to try to recruit fans and musicians that are dedicated to helping
+  us to get Music Mogul right.
+
+%p
+  We're building and refining lots of features and not everything will go perfectly.
+
+%p
+  Use this link to invite people who will not only benefit from and enjoy Music Mogul, but will also help us
+  to build the game and community.
+
+%p
+  Thanks!
+
+%h1 My Referrals
+
 %table
   %thead
     %tr
