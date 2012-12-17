@@ -2,13 +2,17 @@
   = content_for(:bottom_of_header) do
     = render "evaluations/progress"
 
-%h2#heading
-  A Music Talent Search Contest Controlled Entirely by Fans.
-%h4#subheading
-  $500 prize pool.  Open only to the first 25 contestants
-  and 625 fans who register.
-  Begins 12/30/12.
-  = link_to "Learn More", "/"
+#heading-block
+  %h2#heading
+    A Music Talent Search Contest Controlled Entirely by Fans.
+  %h4#subheading
+    Open only to the first 25 contestants
+    and 625 fans who register.
+    Begins 12/30/12.
+    = link_to "Learn More", "/"
+
+  = image_tag "homepage/microphone.png", id: "microphone"
+.clear
 
 / Countdown dashboard start
 #countdown_dashboard
