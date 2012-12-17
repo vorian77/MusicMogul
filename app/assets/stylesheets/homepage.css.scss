@@ -38,26 +38,26 @@ h4#invited-by {
 }
 
 #countdown-block {
+  background: #eeeeee;
   width: 84%;
-  background: #D7E9F2;
   height: 100px;
   margin-top: -54px;
-  border: 1px solid #{#D7E9F2 - #222};
+  border: 1px solid #ccc;
   border-right: 0;
   border-left: 0;
-  padding: 16px 13% 16px 3%;
+  padding: 16px 8% 16px 8%;
 }
 
 #contest-begins {
   float: right;
-  color: #165C82;
+  color: #222;
   font-family: "Lato", "Telex";
-  font-weight: bold;
-  font-size: 28px;
-  line-height: 35px;
+  font-weight: normal;
+  font-size: 34px;
+  line-height: 42px;
   text-align: right;
   margin-right: 12px;
-  margin-top: 14px;
+  margin-top: 8px;
 }
 
 #sign-up h3 {
@@ -88,6 +88,7 @@ h5#sign-up-detail span.highlight {
   margin: 0 auto;
   height: 40px;
   text-align: center;
+  margin-top: -20px;
 }
 
 a.sign-up {
