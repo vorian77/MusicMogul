@@ -84,7 +84,7 @@ $(function () {
         $("a[href=" + window.location.hash + "]").click()
     }
 
-    $("div#footer div.top-part ul li a").click(function () {
+    $("div#footer a.notice").click(function () {
         $("a[href=" + $(this)[0].hash + "]").click()
     });
 

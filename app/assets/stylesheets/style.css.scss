@@ -584,7 +584,9 @@ background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1
   font-weight: bold;
 }
 
-
+div#content > div.tabs {
+  margin-top: 50px;
+}
 
 /**
  * CSS File for ezMark jQuery Plugin
