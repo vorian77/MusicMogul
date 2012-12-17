@@ -7,6 +7,7 @@ jQuery(document).ready(function() {
 			'hour': 	00,
 			'min': 		0,
 			'sec': 		0
-		}
+		},
+    omitWeeks: true
 	});
 });
