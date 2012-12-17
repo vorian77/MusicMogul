@@ -11,14 +11,6 @@ module ApplicationHelper
     user_signed_in? && entry.has_explicit_content? && !current_user.show_explicit_videos?
   end
 
-  def birth_date_value(user)
-    if @user.birth_date?
-      @user.birth_date.strftime("%m/%d/%Y")
-    else
-      "        /         /"
-    end
-  end
-
   def show_social?(entry)
     entry.facebook? || entry.twitter? || entry.pinterest? || entry.youtube? || entry.website?
   end

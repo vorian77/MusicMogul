@@ -2,9 +2,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :confirmable
 
-  attr_accessible :email, :password, :password_confirmation, :username, :hometown,:gender,
-    :birth_date, :show_explicit_videos, :receive_email_updates, :profile_photo, :confirmed_at, :admin,
-    :musician
+  attr_accessible :email, :password, :password_confirmation, :username, :hometown, :show_explicit_videos,
+                  :receive_email_updates, :profile_photo, :confirmed_at, :admin, :musician
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
@@ -20,7 +19,6 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true, uniqueness: true
   validates :referral_token, presence: true, uniqueness: true
-  validate :ensure_birth_date_is_at_13_years_ago
 
   before_validation :set_referral_token, :shorten_referral_link
   before_create :set_inviter
@@ -53,7 +51,7 @@ class User < ActiveRecord::Base
   end
 
   def profile_complete?
-    username? && hometown? && birth_date? && gender? && profile_photo?
+    username? && hometown? && profile_photo?
   end
 
   def referral_link
@@ -65,13 +63,6 @@ class User < ActiveRecord::Base
   end
 
   protected
-
-  def ensure_birth_date_is_at_13_years_ago
-    return unless birth_date?
-    if birth_date.to_date > 13.years.ago.to_date
-      errors.add(:birth_date, "must be at least 13 years old")
-    end
-  end
 
   def set_inviter
     self.inviter = User.find_by_referral_token(invitation_token) if invitation_token.present?

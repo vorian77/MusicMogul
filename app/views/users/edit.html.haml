@@ -38,15 +38,6 @@
     .row
       = f.input :password_confirmation, input_html: { class: "field" }
       .cl  
-    .row
-      %label{for: "user_birth_date"} Birth date
-      %input.field.datepicker#user_birth_date{title: "        /         /", type: "text", value: birth_date_value(@user), name: "user[birth_date]"}/
-      .cl  
-    .row
-      %label{for: "user_gender"} Gender
-      %select.select.smaller#user_gender{name: "user[gender]"}
-        = options_for_select(["", "Male", "Female"], selected: @user.gender)
-      .cl  
     .row.check-row2
       %input{name: "user[show_explicit_videos]", type: "hidden", value: "0"}
       %input#show_explicit_videos.check.ez-mark{type: "checkbox", value: "1", checked: @user.show_explicit_videos?, name: "user[show_explicit_videos]"}/

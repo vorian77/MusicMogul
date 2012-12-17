@@ -13,27 +13,6 @@ describe User do
   describe "validations" do
     it { should validate_presence_of :username }
     it { should validate_uniqueness_of :username }
-
-    describe "birth date" do
-      context "when it is nil" do
-        it "should be valid" do
-          FactoryGirl.build(:user, birth_date: nil).should be_valid
-        end
-      end
-
-      context "when it is present" do
-        context "and at least 13 years ago"
-        it "should be valid" do
-          FactoryGirl.build(:user, birth_date: 13.years.ago).should be_valid
-        end
-
-        context "and less than the 13 years ago" do
-          it "should be valid" do
-            FactoryGirl.build(:user, birth_date: 12.years.ago).should_not be_valid
-          end
-        end
-      end
-    end
   end
 
   describe "before_validation" do
