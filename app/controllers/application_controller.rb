@@ -15,6 +15,11 @@ class ApplicationController < ActionController::Base
     rescue_from ActionController::UnknownAction, with: :render_not_found
   end
 
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:failure] = exception.message
+    redirect_to main_app.root_url
+  end
+
   def authenticate_admin!
     authenticate_user!
     redirect_to new_user_session_path unless current_user.admin?
