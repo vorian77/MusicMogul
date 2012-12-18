@@ -57,13 +57,19 @@ textarea { overflow: auto; }
 */
 #header { position:relative; height:100%;  z-index: 10; margin: 0 0 24px; }
 
-h1#logo { float:left; display: inline; width: 273px; padding: 19px 0 11px; font-size: 0; line-height: 0; text-indent: -4000px;  }
-h1#logo a { display:block; height: 58px; background: image_url("logo.png") no-repeat 0 0;  }
+h1#logo { float:left; display: inline; width: 452px; padding: 19px 0 11px; font-size: 0; line-height: 0; text-indent: -4000px;  }
+h1#logo a {
+  display:block;
+  height: 100px;
+  background: image_url("logo/music-mogul-logo-sm.png") no-repeat 0 0;
+  margin-left: -6px;
+  margin-top: 36px;
+}
 
 #sign-logo { width: 408px; margin: 30px auto; font-size: 0; line-height: 0; text-indent: -4000px;  }
 #sign-logo a { display:block; height: 87px; background: image_url("big-logo.png") no-repeat 0 0;  }
 
-#header .btn-holder { padding: 32px 0 31px; }
+#header .btn-holder { padding: 20px 0 31px; }
 #header .btn-holder a { float:right; display: inline; width: 77px; height: 30px; margin: 0 0 0 4px; background: image_url("sprite.png") no-repeat -311px -122px; font: 15px/30px "helvbold", arial, sans-serif; color:#fff; text-shadow: 0 1px 1px #9b0000; text-align:center;  }
 #header .btn-holder a:hover { background-position: -311px -153px; text-decoration: none; }
 #header .btn-holder a:active { background-position: -311px -184px;  }
