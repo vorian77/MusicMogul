@@ -150,24 +150,17 @@ a.sign-up:hover {
   padding-bottom: 20px;
 }
 
-
-#contestant-photos {
-  margin-top: 20px;
-}
-
 #contestant-heading {
-  border-bottom: 1px dotted #bbb;
-  padding-bottom: 16px;
 }
 
 #contestant-heading h2 {
   font-family: "Lato", "Telex", sans;
   color: #ee0000 - #333;
   font-weight:bold;
-  font-size: 36px;
+  font-size: 32px;
   text-transform: uppercase;
   letter-spacing: 12px;
-  text-align: right;
+  text-align: center;
   padding-bottom: 0;
   margin-bottom: 0;
 }
@@ -175,41 +168,34 @@ a.sign-up:hover {
 #contestant-heading h5 {
   font-family: "Lato", "Telex", sans;
   color: #555;
-  font-size: 19px;
+  font-size: 16px;
   letter-spacing: 4px;
-  text-align: right;
-  margin-top: -6px;
+  text-align: center;
+  margin-top: -12px;
+}
+
+
+#contestant-photos {
+  margin-top: 16px;
+  overflow: hidden;
 }
 
 .photobox {
-  width: 200px;
+  width: 216px;
   margin: 10px;
-  height: 300px;
   background: white;
   border: 1px solid #ccc;
-  padding: 20px 8px 40px 8px;
+  padding: 20px 0 0 0;
   float: left;
 }
 
-.photobox.short {
-  height: 140px;
-}
-
-.photobox.medium {
-  height: 210px;
-}
-
-.photobox.tall {
-  height: 320px;
-}
-
-.photobox .photo {
+.photobox img {
   width: 100%;
-  height: 100%;
+  height: auto;
   margin-top: 4px;
   display: block;
   background: #ccc;
-  border: 1px solid #aaa;
+  border-top: 1px solid #ccc;
 }
 
 .photobox .artist {
@@ -217,4 +203,5 @@ a.sign-up:hover {
   font-weight: bold;
   color: #333;
   font-family: "Telex", "Lato", sans;
+  margin-left: 8px;
 }

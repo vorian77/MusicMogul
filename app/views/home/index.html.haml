@@ -59,51 +59,46 @@
 
 #contestant-block
   #contestant-heading
-    %h2 Contestants
-    %h5 Check out who's already in the contest
+    %h2 The Contestants
+    %h5 Check out who's already signed up
+  .clear
 
   #contestant-photos
-    .photobox.short
+    .photobox
       .artist Edgar Beavermouse
-      .photo
-    .photobox.tall
+      = image_tag "pinterest-test/test1.jpg"
+    .photobox
       .artist Paolo Milkwhistler
-      .photo
-    .photobox.medium
+      = image_tag "pinterest-test/test2.jpg"
+    .photobox
       .artist The Anklets
-      .photo
-    .photobox.medium
+      = image_tag "pinterest-test/test3.jpg"
+    .photobox
       .artist The Wrists
-      .photo
-    .photobox.short
+      = image_tag "pinterest-test/test4.jpg"
+    .photobox
       .artist Milton Crabsmasher
-      .photo
-    .photobox.tall
+      = image_tag "pinterest-test/test5.jpg"
+    .photobox
       .artist Beesnatcher Calvert
-      .photo
-    .photobox.tall
+      = image_tag "pinterest-test/test6.jpg"
+    .photobox
       .artist Firehouse Walton
-      .photo
-    .photobox.short
+      = image_tag "pinterest-test/test7.jpg"
+    .photobox
       .artist Whiffleball Jones
-      .photo
-    .photobox.tall
+      = image_tag "pinterest-test/test8.jpg"
+    .photobox
       .artist Horace Beestrangler
-      .photo
-    .photobox.medium
-      .artist Monkey Badgerman
-      .photo
-    .photobox.medium
-      .artist Wilson Jordan
-      .photo
-    .photobox.short
-      .artist The Badgers
-      .photo
-    .photobox.tall
-      .artist The Waffles
-      .photo
-    .photobox.tall
-      .artist The Snakes
-      .photo
+      = image_tag "pinterest-test/test9.jpg"
+    .photobox
+      .artist Milton Crabsmasher
+      = image_tag "pinterest-test/test5.jpg"
+    .photobox
+      .artist Beesnatcher Calvert
+      = image_tag "pinterest-test/test6.jpg"
+    .photobox
+      .artist Firehouse Walton
+      = image_tag "pinterest-test/test7.jpg"
 
 = render "entries/list", entries: @entries
