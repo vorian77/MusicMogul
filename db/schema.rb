@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121217160656) do
+ActiveRecord::Schema.define(:version => 20121218184619) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(:version => 20121217160656) do
 
   create_table "entries", :force => true do |t|
     t.integer  "user_id"
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.datetime "created_at",                                                    :null => false
+    t.datetime "updated_at",                                                    :null => false
     t.string   "stage_name"
     t.string   "title"
     t.string   "youtube_url"
@@ -48,11 +48,11 @@ ActiveRecord::Schema.define(:version => 20121217160656) do
     t.text     "bio"
     t.string   "profile_photo"
     t.integer  "points",               :default => 0
-    t.string   "facebook"
-    t.string   "twitter"
-    t.string   "youtube"
-    t.string   "pinterest"
-    t.string   "website"
+    t.string   "facebook",             :default => "http://www.facebook.com/"
+    t.string   "twitter",              :default => "http://www.twitter.com/"
+    t.string   "youtube",              :default => "http://www.youtube.com/"
+    t.string   "pinterest",            :default => "http://www.pinterest.com/"
+    t.string   "website",              :default => "http://"
     t.boolean  "has_music",            :default => true
     t.boolean  "has_vocals",           :default => true
     t.boolean  "has_explicit_content", :default => false

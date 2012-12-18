@@ -136,21 +136,21 @@
   - if show_social?(@entry)
     .social-holder
       %ul
-        - if @entry.facebook?
+        - if @entry.facebook != Entry.columns_hash["facebook"].default
           %li
-            %a.facebook{:href => "#{@entry.facebook}"}  
-        - if @entry.twitter?
+            %a.facebook{href: "#{@entry.facebook}", target: "_blank"}  
+        - if @entry.twitter != Entry.columns_hash["twitter"].default
           %li
-            %a.twitter{:href => "#{@entry.twitter}"}  
-        - if @entry.pinterest?
+            %a.twitter{href: "#{@entry.twitter}", target: "_blank"}  
+        - if @entry.pinterest != Entry.columns_hash["pinterest"].default
           %li
-            %a.pinterest{:href => "#{@entry.pinterest}"}  
-        - if @entry.youtube?
+            %a.pinterest{href: "#{@entry.pinterest}", target: "_blank"}  
+        - if @entry.youtube != Entry.columns_hash["youtube"].default
           %li
-            %a.youtube{:href => "#{@entry.youtube}"}  
-        - if @entry.website?
+            %a.youtube{href: "#{@entry.youtube}", target: "_blank"}  
+        - if @entry.website? != Entry.columns_hash["website"].default
           %li
-            %a.global{:href => "#{@entry.website}"}  
+            %a.global{href: "#{@entry.website}", target: "_blank"}  
       .cl  
 / END Sidebar
 .cl  

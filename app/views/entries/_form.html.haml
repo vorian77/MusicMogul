@@ -75,19 +75,19 @@
       Allow community members to connect with you on your social networks
     .cl  
   .row
-    = f.input :facebook, input_html: { class: "field" }
+    = f.input :facebook, input_html: { class: "field", "data-default-prefix" => Entry.columns_hash["facebook"].default }
     .cl  
   .row
-    = f.input :pinterest, input_html: { class: "field" }
+    = f.input :pinterest, input_html: { class: "field", "data-default-prefix" => Entry.columns_hash["pinterest"].default }
     .cl  
   .row
-    = f.input :twitter, input_html: { class: "field" }
+    = f.input :twitter, input_html: { class: "field", "data-default-prefix" => Entry.columns_hash["twitter"].default }
     .cl  
   .row
-    = f.input :youtube, label: "YouTube", input_html: { class: "field" }
+    = f.input :youtube, label: "YouTube", input_html: { class: "field", "data-default-prefix" => Entry.columns_hash["youtube"].default }
     .cl  
   .row
-    = f.input :website, input_html: { class: "field" }
+    = f.input :website, input_html: { class: "field", "data-default-prefix" => Entry.columns_hash["website"].default }
     .cl  
     %br/
   %hr/
