@@ -1,13 +1,13 @@
 #countdown_dashboard {
 	height: 90px;
-  margin: 0 40px 0 0;
+  margin: 4px 40px 0 0;
   padding: 0;
   float: right;
 }
 
 .dash {
-	width: 110px;
-	height: 100px;
+	width: 100px;
+	height: 90px;
   border-radius: 8px;
   background: #45484d; /* Old browsers */
   background: -moz-linear-gradient(top,  #45484d 0%, #000000 100%); /* FF3.6+ */
@@ -24,14 +24,14 @@
 }
 
 .dash .digit {
-	font-size: 50pt;
+	font-size: 42pt;
 	font-weight: bold;
 	float: left;
 	width: 52px;
 	text-align: center;
 	font-family: "Telex", "Lato";
 	color: #eee;
-  margin-right: -4px;
+  margin-right: -12px;
 	position: relative;
 }
 
