@@ -5,10 +5,10 @@
 
 h2#heading {
   color: #EE0000 - #222;
-  font: 54px "Lato", "Telex";
+  font: 56px "Lato", "Telex";
   font-weight: bold;
   width: 80%;
-  margin: 0 24px 0 0;
+  margin: 0 0 0 0;
   text-align: left;
   float: left;
 }
@@ -26,6 +26,7 @@ h4#subheading {
 }
 
 #microphone {
+  margin-left: 60px;
 }
   
 h4#invited-by {
@@ -38,7 +39,7 @@ h4#invited-by {
 }
 
 #countdown-block {
-  background: #eeeeee;
+  background: #ffffff;
   width: 84%;
   height: 100px;
   margin-top: -54px;
