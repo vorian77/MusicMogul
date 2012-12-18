@@ -37,11 +37,11 @@
             %tr
               %td.first Vocals
               %td #{@entry.has_vocals? ? @evaluation.vocals_score : "N/A"}
-              %td.last #{@entry.has_music? ? number_with_precision(@entry.overall_vocals_score, precision: 1) : "N/A"}
+              %td.last #{@entry.has_vocals? ? number_with_precision(@entry.overall_vocals_score, precision: 1) : "N/A"}
             %tr.even
               %td.first Presentation
               %td #{@evaluation.presentation_score}
-              %td.last #{@entry.has_music? ? number_with_precision(@entry.overall_presentation_score, precision: 1) : "N/A"}
+              %td.last #{number_with_precision(@entry.overall_presentation_score, precision: 1)}
             %tr.last
               %td.first Average
               %td #{number_with_precision @evaluation.overall_score, precision: 1}
