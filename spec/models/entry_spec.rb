@@ -24,6 +24,9 @@ describe Entry do
     it { should_not have_valid(:youtube_url).when("http://youtu.be/") }
     it { should_not have_valid(:youtube_url).when("http://www.bootynonstop.com") }
     it { should_not have_valid(:youtube_url).when("http://www.youtube.com/watch?feature=relmfu") }
+    it { should have_valid(:facebook).when("http://www.facebook.com/") }
+    it { should have_valid(:facebook).when("http://www.facebook.com/zuck") }
+    it { should_not have_valid(:facebook).when("http://www.acebook.com/zuck") }
   end
 
   describe "scopes" do
