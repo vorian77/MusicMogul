@@ -39,16 +39,17 @@ h4#invited-by {
 }
 
 #countdown-block {
-  background: rgb(255,255,255); /* Old browsers */
-  background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(237,237,237,1) 23%, rgba(237,237,237,1) 77%, rgba(255,255,255,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,1)), color-stop(23%,rgba(237,237,237,1)), color-stop(77%,rgba(237,237,237,1)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(237,237,237,1) 23%,rgba(237,237,237,1) 77%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(237,237,237,1) 23%,rgba(237,237,237,1) 77%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(237,237,237,1) 23%,rgba(237,237,237,1) 77%,rgba(255,255,255,1) 100%); /* IE10+ */
-  background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(237,237,237,1) 23%,rgba(237,237,237,1) 77%,rgba(255,255,255,1) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+  // background: rgb(255,255,255); /* Old browsers */
+  // background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(237,237,237,1) 23%, rgba(237,237,237,1) 77%, rgba(255,255,255,1) 100%); /* FF3.6+ */
+  // background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,1)), color-stop(23%,rgba(237,237,237,1)), color-stop(77%,rgba(237,237,237,1)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+  // background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(237,237,237,1) 23%,rgba(237,237,237,1) 77%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
+  // background: -o-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(237,237,237,1) 23%,rgba(237,237,237,1) 77%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
+  // background: -ms-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(237,237,237,1) 23%,rgba(237,237,237,1) 77%,rgba(255,255,255,1) 100%); /* IE10+ */
+  // background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(237,237,237,1) 23%,rgba(237,237,237,1) 77%,rgba(255,255,255,1) 100%); /* W3C */
+  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
 
 
+  background: white;
   width: 84%;
   height: 100px;
   margin-top: -54px;
@@ -63,7 +64,7 @@ h4#invited-by {
   color: #222;
   font-family: "Lato", "Telex";
   font-weight: normal;
-  font-size: 34px;
+  font-size: 32px;
   line-height: 42px;
   text-align: right;
   margin-right: 12px;
@@ -142,4 +143,78 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e60000', end
 a.sign-up:hover {
   text-decoration: none;
   background: #C00000 - #222;
+}
+
+#contestant-block {
+  margin-top: 60px;
+  padding-bottom: 20px;
+}
+
+
+#contestant-photos {
+  margin-top: 20px;
+}
+
+#contestant-heading {
+  border-bottom: 1px dotted #bbb;
+  padding-bottom: 16px;
+}
+
+#contestant-heading h2 {
+  font-family: "Lato", "Telex", sans;
+  color: #ee0000 - #333;
+  font-weight:bold;
+  font-size: 36px;
+  text-transform: uppercase;
+  letter-spacing: 12px;
+  text-align: right;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+#contestant-heading h5 {
+  font-family: "Lato", "Telex", sans;
+  color: #555;
+  font-size: 19px;
+  letter-spacing: 4px;
+  text-align: right;
+  margin-top: -6px;
+}
+
+.photobox {
+  width: 200px;
+  margin: 10px;
+  height: 300px;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 20px 8px 40px 8px;
+  float: left;
+}
+
+.photobox.short {
+  height: 140px;
+}
+
+.photobox.medium {
+  height: 210px;
+}
+
+.photobox.tall {
+  height: 320px;
+}
+
+.photobox .photo {
+  width: 100%;
+  height: 100%;
+  margin-top: 4px;
+  display: block;
+  background: #ccc;
+  border: 1px solid #aaa;
+}
+
+.photobox .artist {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  font-family: "Telex", "Lato", sans;
 }
