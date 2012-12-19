@@ -354,6 +354,7 @@ DEPENDENCIES
   poltergeist
   rails (= 3.2.9)
   rspec-rails
+  sass
   sass-rails (~> 3.2.3)
   shoulda
   simple_form

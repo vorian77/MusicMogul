@@ -40,7 +40,17 @@
     %br
     begins in...
 
-- unless user_signed_in?
+- if user_signed_in?
+
+  #referral-block  
+    #referral-text
+      - if current_user.musician
+        Invite your followers!
+      - else
+        Invite your friends!
+    .referral-button Click to copy referral link
+
+- else
   - if @inviter
     %h4#invited-by Invited by #{@inviter.username}
   #sign-up
@@ -54,6 +64,8 @@
     to compete in the contest, or a
     %span.highlight fan
     to judge it.
+
+
 
 .cl
 
