@@ -228,7 +228,7 @@ a.sign-up:hover {
 }
 
 #referrals {
-  margin: 42px 20px 20px 100px;
+  margin: 48px 20px 20px 100px;
   text-align: center;
 }
 
@@ -253,7 +253,7 @@ a.sign-up:hover {
 
 #referral-text {
   width: 400px;
-  margin-left: 40px;
+  margin-left: 52px;
   margin-top: 4px;
   font-size: 21px;
   font-family: "Telex", "Lato", Arial, sans;
@@ -261,6 +261,10 @@ a.sign-up:hover {
   font-weight: normal;
   text-align: left;
   line-height: 32px;
+}
+
+#referral-text.musician {
+  margin-top: -11px;
 }
 
 img.question-mark {
@@ -289,4 +293,9 @@ img.question-mark {
 
 
     border: 1px solid #black;
+}
+
+a.complete {
+  margin-top: -20px;
+  margin-right: 28px;
 }

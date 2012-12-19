@@ -14,21 +14,22 @@
       #header
         %h1#logo
           %a{:href => root_path} Music Mogul
-        - if user_signed_in? and contest_started?
-          #navigation.left
-            %ul
-              %li
-                %a.audition{href: "#{root_path}", class: "#{'audition-active' if current_page?(root_path)}"}
-                  Audition
-              %li
-                %a.follow{href: "#{follows_path}", class: "#{'follow-active' if current_page?(follows_path)}"}
-                  Following
-              %li
-                %a.board{href: "#{leaderboard_path}", class: "#{'board-active' if current_page?(leaderboard_path)}"}
-                  Leader Board
-              %li
-                %a.my-evaluation{href: "#{evaluations_path}", class: "#{'my-evaluation-active' if current_page?(evaluations_path)}"}
-                  My Evaluations
+        - if user_signed_in?
+          - if contest_started?
+            #navigation.left
+              %ul
+                %li
+                  %a.audition{href: "#{root_path}", class: "#{'audition-active' if current_page?(root_path)}"}
+                    Audition
+                %li
+                  %a.follow{href: "#{follows_path}", class: "#{'follow-active' if current_page?(follows_path)}"}
+                    Following
+                %li
+                  %a.board{href: "#{leaderboard_path}", class: "#{'board-active' if current_page?(leaderboard_path)}"}
+                    Leader Board
+                %li
+                  %a.my-evaluation{href: "#{evaluations_path}", class: "#{'my-evaluation-active' if current_page?(evaluations_path)}"}
+                    My Evaluations
           / END Navigaiton
           .profile.right
             .drop-holder
