@@ -1,0 +1,14 @@
+#referrals  
+  #button-block
+    %h4
+      - if current_user.musician
+        Invite your followers!
+      - else
+        Invite your friends!
+    #referral-button.homepage-button Click to copy referral link
+  #referral-text
+    - if current_user.musician
+      Make the contest better!  Use the referral link to invite a few friends.  The first 5 to register can also judge the contest.
+    - else
+      Invite your friends!
+      

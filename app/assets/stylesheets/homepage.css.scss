@@ -206,7 +206,7 @@ a.sign-up:hover {
   margin-left: 8px;
 }
 
-.referral-button {
+.homepage-button {
 	-moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
 	box-shadow:inset 0px 1px 0px 0px #bbdaf7;
@@ -221,8 +221,9 @@ a.sign-up:hover {
 	display:inline-block;
 	color:#ffffff;
 	font-family: "Lato", "Telex", Arial, sans;
-	font-size:21px;
-	font-weight:bold;
+	font-size:18px;
+  font-weight: bold;
+  letter-spacing: 0px;
 	padding:6px 44px;
 	text-decoration:none;
 	text-shadow:1px 1px 0px #528ecc;
@@ -236,11 +237,37 @@ a.sign-up:hover {
 	top:1px;
 }
 
-#referral-block {
-  margin: 20px;
+#referrals {
+  margin: 42px 20px 20px 100px;
+  text-align: center;
+}
+
+#referral-button {
+  margin-top: 23px;
+}
+
+#referrals h4 {
+  font-size: 36px;
+  color: #333;
+  font-weight: bold;
+  font-family: "Lato", "Telex", Arial, sans;
+}
+
+#button-block, #referral-text {
+  float: left;
+}
+
+#button-block {
+  margin-top: 6px;
 }
 
 #referral-text {
-  font-size: 36px;
-  font-weight: bold;
+  width: 400px;
+  margin-left: 40px;
+  margin-top: 4px;
+  font-size: 21px;
+  font-family: "Telex", "Lato", Arial, sans;
+  color: #444;
+  font-weight: normal;
+  text-align: left;
 }

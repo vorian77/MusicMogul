@@ -18,33 +18,13 @@
 = render "countdown"
 
 - if user_signed_in? and contest_pending?
-
-  #referral-block  
-    #referral-text
-      - if current_user.musician
-        Invite your followers!
-      - else
-        Invite your friends!
-    .referral-button Click to copy referral link
-
+  // The block that allows users to refer friends
+  = render "referrals"
 - else
-  - if @inviter
-    %h4#invited-by Invited by #{@inviter.username}
-  #sign-up
-    %h3 Sign Up!
-    = link_to "Musician", new_user_registration_path(type: "musician"), class: "sign-up"
-    = link_to "Fan", new_user_registration_path(type: "fan"), class: "sign-up"
-  .clear
-  %h5#sign-up-detail
-    Sign up as either a
-    %span.highlight musician
-    to compete in the contest, or a
-    %span.highlight fan
-    to judge it.
+  // The sign-up links
+  = render "sign-up"
+.clear
 
-
-
-.cl
 // Pinterest-Style Contestant Photos
 = render "contestant_photos"
 
