@@ -14,4 +14,16 @@ module ApplicationHelper
   def show_social?(entry)
     entry.facebook? || entry.twitter? || entry.pinterest? || entry.youtube? || entry.website?
   end
+
+  def contest_started?
+    Time.now > contest_start_date
+  end
+
+  def contest_pending?
+    Time.now < contest_start_date
+  end
+
+  def contest_start_date
+    Date.parse("12/30/2012")
+  end
 end

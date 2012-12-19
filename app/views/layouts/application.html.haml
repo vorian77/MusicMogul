@@ -14,7 +14,7 @@
       #header
         %h1#logo
           %a{:href => root_path} Music Mogul
-        - if user_signed_in?
+        - if user_signed_in? and contest_started?
           #navigation.left
             %ul
               %li
