@@ -128,16 +128,6 @@ background: -ms-linear-gradient(top,  #e60000 0%,#840000 100%); /* IE10+ */
 background: linear-gradient(to bottom,  #e60000 0%,#840000 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e60000', endColorstr='#840000',GradientType=0 ); /* IE6-9 */
 
-
-// background: #930202; /* Old browsers */
-// background: -moz-linear-gradient(top,  #930202 0%, #540008 100%); /* FF3.6+ */
-// background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#930202), color-stop(100%,#540008)); /* Chrome,Safari4+ */
-// background: -webkit-linear-gradient(top,  #930202 0%,#540008 100%); /* Chrome10+,Safari5.1+ */
-// background: -o-linear-gradient(top,  #930202 0%,#540008 100%); /* Opera 11.10+ */
-// background: -ms-linear-gradient(top,  #930202 0%,#540008 100%); /* IE10+ */
-// background: linear-gradient(to bottom,  #930202 0%,#540008 100%); /* W3C */
-// filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#930202', endColorstr='#540008',GradientType=0 ); /* IE6-9 */
-
 }
 
 a.sign-up:hover {
@@ -270,4 +260,33 @@ a.sign-up:hover {
   color: #444;
   font-weight: normal;
   text-align: left;
+  line-height: 32px;
+}
+
+img.question-mark {
+  display: inline;
+  margin-left: 4px;
+}
+
+.tooltipsy
+{
+    padding: 16px 18px 16px 24px;
+    max-width: 360px;
+    color: white;
+    line-height: 23px;
+    font-family: Lato, Telex, Arial, sans;
+    font-size: 15px;
+    border-radius: 4px;
+
+    background: #222; /* Old browsers */
+    background: -moz-linear-gradient(top,  #222 0%, #000000 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#222), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #222 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #222 0%,#000000 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #222 0%,#000000 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #222 0%,#000000 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+
+
+    border: 1px solid #black;
 }
