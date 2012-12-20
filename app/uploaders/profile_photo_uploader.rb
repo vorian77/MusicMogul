@@ -23,6 +23,10 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [50, 50]
   end
 
+  version :masonry do
+    process resize_to_fit: [250, 800]
+  end
+
   def default_url
     "/assets/fallback/" + [version_name, "default.png"].compact.join('-')
   end
