@@ -5,12 +5,10 @@ feature "homepage" do
     visit root_path
 
     Entry.count.should > 0
-    within("div#content") do
+    within("#contestant-photos") do
       Entry.find_each do |entry|
         page.should have_content entry.stage_name
-        page.should have_content entry.genre
-        page.should have_content entry.hometown
-        page.should have_content entry.bio
+        page.should have_content entry.profile_photo.masonry
       end
     end
   end
