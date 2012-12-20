@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
   before_create :set_inviter
 
   scope :invited, where("inviter_id is not null")
+  scope :complete, where("username is not null and profile_photo is not null and hometown is not null")
+  scope :musician, where("musician = ?", true)
 
   def average_evaluation_score
     return 0 unless evaluations.present?
