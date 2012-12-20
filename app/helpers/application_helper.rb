@@ -16,14 +16,10 @@ module ApplicationHelper
   end
 
   def contest_started?
-    Time.now > contest_start_date
+    Contest.active.present?
   end
 
   def contest_pending?
-    Time.now < contest_start_date
-  end
-
-  def contest_start_date
-    Date.parse("12/30/2012")
+    !contest_started?
   end
 end

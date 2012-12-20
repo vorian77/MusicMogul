@@ -6,7 +6,6 @@ class Entry < ActiveRecord::Base
   has_many :evaluations, dependent: :destroy
   has_many :follows, dependent: :destroy
 
-  validates :contest, presence: true
   validates :user, presence: true
   validates :stage_name, presence: true
   validates :genre, presence: true, inclusion: {in: Entry::GENRES}
@@ -79,6 +78,6 @@ class Entry < ActiveRecord::Base
   end
 
   def set_contest
-    self.contest = Contest.active || Contest.next || Contest.create(name: "My New Contest", start_date: Date.tomorrow, end_date: Date.tomorrow + 2.weeks) unless self.contest.present?
+    self.contest = Contest.active || Contest.next
   end
 end
