@@ -6,7 +6,7 @@ feature "sign up" do
     visit root_path(referral_token: inviter.referral_token)
     page.should have_content "Invited by #{inviter.username}"
 
-    within("div#sign-up-options") { click_link "Musician" }
+    within("div#sign-up") { click_link "Musician" }
     current_path.should == new_user_registration_path
     page.should have_content "Reserve your place as a contestant"
 
@@ -58,7 +58,7 @@ feature "sign up" do
     visit root_path(referral_token: inviter.referral_token)
     page.should have_content "Invited by #{inviter.username}"
 
-    within("div#sign-up-options") { click_link "Fan" }
+    within("div#sign-up") { click_link "Fan" }
     current_path.should == new_user_registration_path
     page.should have_content "Reserve your place as a contest judge"
 
