@@ -5,39 +5,7 @@
   .clear
 
   #contestant-photos
-    .photobox
-      .artist Edgar Beavermouse
-      = image_tag "pinterest-test/test1.jpg"
-    .photobox
-      .artist Paolo Milkwhistler
-      = image_tag "pinterest-test/test2.jpg"
-    .photobox
-      .artist The Anklets
-      = image_tag "pinterest-test/test3.jpg"
-    .photobox
-      .artist The Wrists
-      = image_tag "pinterest-test/test4.jpg"
-    .photobox
-      .artist Milton Crabsmasher
-      = image_tag "pinterest-test/test5.jpg"
-    .photobox
-      .artist Beesnatcher Calvert
-      = image_tag "pinterest-test/test6.jpg"
-    .photobox
-      .artist Firehouse Walton
-      = image_tag "pinterest-test/test7.jpg"
-    .photobox
-      .artist Whiffleball Jones
-      = image_tag "pinterest-test/test8.jpg"
-    .photobox
-      .artist Horace Beestrangler
-      = image_tag "pinterest-test/test9.jpg"
-    .photobox
-      .artist Milton Crabsmasher
-      = image_tag "pinterest-test/test5.jpg"
-    .photobox
-      .artist Beesnatcher Calvert
-      = image_tag "pinterest-test/test6.jpg"
-    .photobox
-      .artist Firehouse Walton
-      = image_tag "pinterest-test/test7.jpg"
+    - @entries.each do |entry|
+      .photobox
+        = image_tag entry.profile_photo.url(:masonry)
+        .artist= entry.stage_name
