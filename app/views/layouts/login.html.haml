@@ -15,7 +15,10 @@
         tomorrow's music stars
         %br>/
         discovered by fans
-      %a.sign-in-btn.button{:href => "#{new_user_session_path}"} Sign In
+      - if user_signed_in?
+        = render "layouts/profile"
+      - else
+        %a.sign-in-btn.button{:href => "#{new_user_session_path}"} Sign In
       .cl
     #block
       .shell

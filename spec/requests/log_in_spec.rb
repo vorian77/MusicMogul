@@ -6,9 +6,7 @@ feature "log in" do
 
     visit root_path
 
-    within "div.btn-holder" do
-      click_link "Sign In"
-    end
+    click_link "Sign In"
 
     current_path.should == new_user_session_path
 

@@ -1,0 +1,30 @@
+#holder
+  .head
+    %h4
+      Contest begins
+      %strong 12/30/12
+  .body
+    = render "home/countdown"
+    - if user_signed_in?
+      = render "home/referrals"
+    - else
+      .info
+        %p
+          Open to
+          %span 626 judges
+          and
+          %span 25 contestants.
+          %a{:href => "#{learn_more_path}"} Learn more »
+        - if @inviter
+          %h4 Invited by #{@inviter.username}
+        .buttons
+          %ul
+            %li
+              %a.button{:href => "#{new_user_registration_path(type: "fan")}"} Fans
+              %span Sign Up to judge
+            %li
+              %a.button{:href => "#{new_user_registration_path(type: "musician")}"} Musicians
+              %span Sign Up to compete
+          .cl  
+
+= render "home/contestant_photos"

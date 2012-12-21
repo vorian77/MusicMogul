@@ -31,38 +31,7 @@
                   %a.my-evaluation{href: "#{evaluations_path}", class: "#{'my-evaluation-active' if current_page?(evaluations_path)}"}
                     My Evaluations
           / END Navigaiton
-          .profile.right
-            .drop-holder
-              .avatar
-                %img{src: "#{current_user.profile_photo.url(:thumb)}", width: "23", height: "23", alt: ""}
-              %a.name{href: "#"} #{current_user.display_name}
-              .cl  
-              .drop-down
-                %span.arrow-drop  
-                .left-part.left
-                  .img-box
-                    %img{alt: "", height: "138", src: "#{current_user.profile_photo.url(:medium)}", width: "138"}/
-                  %a{href: "#{edit_user_path(current_user)}"} #{current_user.display_name}
-                .right-part.right
-                  %ul
-                    %li
-                      %a{:href => "#{edit_user_path(current_user)}"} My Account
-                    - if current_user.entries.count > 0
-                      %li
-                        %a{:href => "#{edit_entry_path(current_user.entries.first)}"} My Video Submission
-                      %li
-                        %a{:href => "#{entry_path(current_user.entries.first)}"} My Audition
-                    %li
-                      = link_to "My Friends", friends_path
-                    - if current_user.admin?
-                      %li
-                        %a{:href => "#{admin_root_path}"} Administration
-                    %li.last
-                      %a{:href => "#{destroy_user_session_path}", "data-method" => "delete"} Sign Out
-              .cl  
-            - unless current_user.profile_complete?
-              %a.complete{:href => "#{edit_user_path(current_user)}"} Complete your profile
-            .cl
+          = render "layouts/profile"
         - else
           .btn-holder.right
             %a{:href => new_user_session_path} Sign In

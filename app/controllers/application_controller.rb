@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def layout_by_resource
-    if devise_controller? || !user_signed_in? || [verify_email_path, new_entry_path, entries_path].include?(request.fullpath)
+    if devise_controller? || [verify_email_path, new_entry_path, entries_path].include?(request.fullpath)
       "login"
     else
       "application"

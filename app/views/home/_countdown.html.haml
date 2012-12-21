@@ -1,25 +1,38 @@
-#countdown-block
-
-  / Countdown dashboard start
-  #countdown_dashboard
-    .dash.days_dash
-      %span.dash_title days
-      .digit 0
-      .digit 0
-    .dash.hours_dash
-      %span.dash_title hours
-      .digit 0
-      .digit 0
-    .dash.minutes_dash
-      %span.dash_title minutes
-      .digit 0
-      .digit 0
-    .dash.seconds_dash
-      %span.dash_title seconds
-      .digit 0
-      .digit 0
-
-  #contest-begins
-    The contest
-    %br
-    begins in...
+.clock{"data-end-date" => (Time.zone.parse("12/30/2012")).to_i, "data-now" => Time.now.to_i, "data-seconds" => Time.now.strftime("%S")}
+  / Days
+  .clock_days.clock_box
+    .bgLayer
+      .topLayer
+      %canvas#canvas_days{:height => "188", :width => "188"}
+      .text
+        %p.val 0
+        %p.type_days Days
+  / Days
+  / Hours
+  .clock_hours.clock_box
+    .bgLayer
+      .topLayer
+      %canvas#canvas_hours{:height => "188", :width => "188"}
+      .text
+        %p.val 0
+        %p.type_hours Hours
+  / Hours
+  / Minutes
+  .clock_minutes.clock_box
+    .bgLayer
+      .topLayer
+      %canvas#canvas_minutes{:height => "188", :width => "188"}
+      .text
+        %p.val 0
+        %p.type_minutes Minutes
+  / Minutes
+  / Seconds
+  .clock_seconds.clock_box
+    .bgLayer
+      .topLayer
+      %canvas#canvas_seconds{:height => "188", :width => "188"}
+      .text
+        %p.val 0
+        %p.type_seconds Seconds
+  / Seconds
+  .cl  
