@@ -5,15 +5,18 @@
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-type"}/
     %link{:href => "css/images/favicon.ico", :rel => "shortcut icon"}/
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Telex", :media => "all", :rel => 'stylesheet', :type => 'text/css'
-    -# = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Rambla:400,700|Average+Sans|Anaheim|Monda|Gafata|Julius+Sans+One|Titillium+Web:400,700italic,600italic|Telex|Signika", :media => "all", :rel => 'stylesheet', :type => 'text/css'
     = stylesheet_link_tag "application", :media => "all", :rel => "stylesheet", :type => "text/css"
     = javascript_include_tag "application"
-  %body.login
-    %br/
-    %br/
-    %br/
-    .shell
-      #sign-logo
+  %body#landing.login
+    #header
+      %h1#logo
         %a{:href => "#{root_path}"} MusicMogul
-      %br/
-      = yield
+      %span.slogan
+        tomorrow's music stars
+        %br>/
+        discovered by fans
+      %a.sign-in-btn.button{:href => "#{new_user_session_path}"} Sign In
+      .cl
+    #block
+      .shell
+        = yield

@@ -18,8 +18,4 @@ module ApplicationHelper
   def contest_started?
     Contest.active.present?
   end
-
-  def contest_pending?
-    !contest_started?
-  end
 end

@@ -1,11 +1,11 @@
 $ ->
-  if $("#countdown_dashboard").length
-    $('#countdown_dashboard').countDown
-      targetDate:
-        'day':30
-        'month':12
-        'year':2012
-        'hour':"00"
-        'min':0
-        'sec':0
-      omitWeeks:true
+  if $("div.clock").length
+    JBCountDown
+      secondsColor: "#d20300"
+      minutesColor: "#d20300"
+      hoursColor: "#d20300"
+      daysColor: "#d20300"
+
+      endDate: $("[data-end-date]").data("end-date")
+      now: $("[data-now]").data("now")
+      seconds:$("[data-seconds]").data("seconds")
