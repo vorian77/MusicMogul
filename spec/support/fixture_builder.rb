@@ -9,5 +9,6 @@ FixtureBuilder.configure do |config|
     config.name :confirmed_user, FactoryGirl.create(:confirmed_user, inviter: FactoryGirl.build(:user))
     FactoryGirl.create_list(:entry, 3)
     FactoryGirl.create(:evaluation, user: User.invited.first, entry: Entry.all.sample)
+    FactoryGirl.create(:contest, start_date: Date.yesterday, end_date: Date.yesterday + 2.weeks)
   end
 end

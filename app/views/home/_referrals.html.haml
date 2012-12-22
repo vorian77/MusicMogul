@@ -6,7 +6,7 @@
       - else
         Invite your friends!
     %input.referral_link{type: "text", value: current_user.shortened_referral_link.presence || current_user.referral_link, disabled: "disabled"}
-    #referral-button.homepage-button Click to copy referral link
+    %button#referral-button.homepage-button{"data-clipboard-text" => current_user.shortened_referral_link.presence || current_user.referral_link} Click to copy referral link
 
   - if current_user.musician
     #referral-text.musician
