@@ -1,112 +1,30 @@
--##holder
--#  .head
--#    %h4
--#      Contest begins
--#      %strong 12/30/12
--#  .body
--#    = render "home/countdown"
--#    - if user_signed_in?
--#      = render "home/referrals"
--#    - else
--#      .info
--#        %p
--#          Open to
--#          %span 626 judges
--#          and
--#          %span 25 contestants.
--#          %a{:href => "#{learn_more_path}"} Learn more »
--#        - if @inviter
--#          %h4 Invited by #{@inviter.username}
--#        .buttons
--#          %ul
--#            %li
--#              %a.button{:href => "#{new_user_registration_path(type: "fan")}"} Fans
--#              %span Sign Up to judge
--#            %li
--#              %a.button{:href => "#{new_user_registration_path(type: "musician")}"} Musicians
--#              %span Sign Up to compete
--#          .cl  
--#
--#= render "home/contestant_photos"
+#holder
+  .head
+    %h4
+      Contest begins
+      %strong 12/30/12
+  .body
+    = render "home/countdown"
+    - if user_signed_in?
+      = render "home/referrals"
+    - else
+      .info
+        %p
+          Open to
+          %span 626 judges
+          and
+          %span 25 contestants.
+          %a{:href => "#{learn_more_path}"} Learn more »
+        - if @inviter
+          %h4 Invited by #{@inviter.username}
+        .buttons
+          %ul
+            %li
+              %a.button{:href => "#{new_user_registration_path(type: "fan")}"} Fans
+              %span Sign Up to judge
+            %li
+              %a.button{:href => "#{new_user_registration_path(type: "musician")}"} Musicians
+              %span Sign Up to compete
+          .cl  
 
-.home_top_box
-  %span.curv
-    = image_tag("common/home_topbox_top_curve.png")
-  .home_top_box_details
-    %h3 Contest Starts 1/13/12
-    .home_top_row
-      = render "home/countdown"
-      -#.col
-      -#  %strong 6
-      -#  %small DAYS
-      -#.col.second
-      -#  %strong 6
-      -#  %small HOURS
-      -#.col.third
-      -#  %strong 43
-      -#  %small MINUTES
-      -#.col.four
-      -#  %strong 17
-      -#  %small SECONDS
-    .home_middle_row
-      %p
-        Open to
-        %span.red 625 fan judges
-        and
-        %span.red 25 contestants.
-        %a{:href => "#{learn_more_path}"} Learn more
-      - if @inviter
-        %strong
-          Invited By
-          %span.red ( #{@inviter.username} )
-    .home_bottom_row
-      .col
-        %span.btn
-          %a{:href => "#{new_user_registration_path(type: "fan")}"} Fans
-        %span.sign
-          %a{:href => "#{new_user_registration_path(type: "fan")}"} Sign up to judge
-      .col
-        %span.btn
-          %a{:href => "#{new_user_registration_path(type: "musician")}"} Musicians
-        %span.sign
-          %a{:href => "#{new_user_registration_path(type: "musician")}"} Sign up to compete
-  %span.curv
-    = image_tag("common/home_topbox_bottom_curve.png")
-.registered_box
-  .registered_box_details
-    .registered_box_top_bg
-      .registered_box_contant
-        %h3 Registered Contestants
-        #contestant-photos
-          - @entries.each do |entry|
-            .photobox
-              = image_tag entry.profile_photo.url(:masonry)
-              .artist= entry.stage_name
-        -#.row
-        -#  .col
-        -#    .pic_box
-        -#    .pic_details Aretha Franklin
-        -#  .col.second
-        -#    .pic_box.second
-        -#    .pic_details.second Aretha Franklin
-        -#  .col.third
-        -#    .pic_box.third
-        -#    .pic_details.third Aretha Franklin
-        -#  .col.last
-        -#    .pic_box.four
-        -#    .pic_details Aretha Franklin
-        -#.row
-        -#  .col.five
-        -#    .pic_box.five
-        -#    .pic_details.five Aretha Franklin
-        -#  .col.second.top
-        -#    .pic_box.second
-        -#    .pic_details.second Aretha Franklin
-        -#  .col.third.secon_top
-        -#    .pic_box.six
-        -#    .pic_details.third Aretha Franklin
-        -#  .col.last.last_col
-        -#    .pic_box.four
-        -#    .pic_details Aretha Franklin
-  %span.curv
-    = image_tag("common/registerd_bottom_bg.jpg")
+= render "home/contestant_photos"
