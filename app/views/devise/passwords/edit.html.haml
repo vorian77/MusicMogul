@@ -1,11 +1,15 @@
-.sign-up-steps
-  %h2 Reset Password
-  %p.meta Enter your new password.
+.main.shell
+  .main-t
+  .main-c
+    .sign-up-steps
+      %h2 Reset Password
+      %p.meta Enter your new password.
 
-  .form-section.pwd-reset
-    = simple_form_for resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, :class => 'change-password-form' } do |f|
-      = devise_error_messages!
-      = f.input :reset_password_token, as: :hidden
-      = f.input :password, label: "New Password", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
-      = f.input :password_confirmation, label: "Confirm New Password", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
-      = f.submit "Change Password", class: "btn reset-pwd"
+      .form-section.pwd-reset
+        = simple_form_for resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, :class => 'change-password-form' } do |f|
+          = devise_error_messages!
+          = f.input :reset_password_token, as: :hidden
+          = f.input :password, label: "New Password", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+          = f.input :password_confirmation, label: "Confirm New Password", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+          = f.submit "Change Password", class: "btn reset-pwd"
+  .main-b

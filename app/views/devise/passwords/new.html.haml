@@ -1,9 +1,13 @@
-.sign-up-steps
-  %h2 Forgot Password?
-  %p.meta
-    Enter the email you used to sign up. We’ll send<br />instructions to reset your password.
+.main.shell
+  .main-t
+  .main-c
+    .sign-up-steps
+      %h2 Forgot Password?
+      %p.meta
+        Enter the email you used to sign up. We’ll send<br />instructions to reset your password.
 
-  .form-section.signin-form
-    = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
-      = f.input :email, wrapper_html: { class: "form-row clearfix"}, input_html: { class: "field" }
-      = f.submit "Send Password Reset Instructions", class: "btn reset-pwd"
+      .form-section.signin-form
+        = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+          = f.input :email, wrapper_html: { class: "form-row clearfix"}, input_html: { class: "field" }
+          = f.submit "Send Password Reset Instructions", class: "btn reset-pwd"
+  .main-b
