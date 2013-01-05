@@ -1,25 +1,84 @@
+-#!!!
+-#%html{:dir => "ltr", :lang => "en-US", :xmlns => "http://www.w3.org/1999/xhtml"}
+-#  %head
+-#    %title MusicMogul
+-#    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-type"}/
+-#    %link{:href => "css/images/favicon.ico", :rel => "shortcut icon"}/
+-#    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Telex", :media => "all", :rel => 'stylesheet', :type => 'text/css'
+-#    = stylesheet_link_tag "application", :media => "all", :rel => "stylesheet", :type => "text/css"
+-#    = javascript_include_tag "application"
+-#  %body#landing.login
+-#    #header
+-#      %h1#logo
+-#        %a{:href => "#{root_path}"} MusicMogul
+-#      %span.slogan
+-#        tomorrow's music stars
+-#        %br>/
+-#        discovered by fans
+-#      - if user_signed_in?
+-#        = render "layouts/profile"
+-#      - else
+-#        %a.sign-in-btn.button{:href => "#{new_user_session_path}"} Sign In
+-#      .cl
+-#    #block
+-#      .shell
+-#        = yield
+
 !!!
 %html{:dir => "ltr", :lang => "en-US", :xmlns => "http://www.w3.org/1999/xhtml"}
   %head
     %title MusicMogul
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-type"}/
     %link{:href => "css/images/favicon.ico", :rel => "shortcut icon"}/
-    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Telex", :media => "all", :rel => 'stylesheet', :type => 'text/css'
     = stylesheet_link_tag "application", :media => "all", :rel => "stylesheet", :type => "text/css"
     = javascript_include_tag "application"
-  %body#landing.login
-    #header
-      %h1#logo
-        %a{:href => "#{root_path}"} MusicMogul
-      %span.slogan
-        tomorrow's music stars
-        %br>/
-        discovered by fans
-      - if user_signed_in?
-        = render "layouts/profile"
-      - else
-        %a.sign-in-btn.button{:href => "#{new_user_session_path}"} Sign In
-      .cl
-    #block
-      .shell
-        = yield
+  %body
+    / page wrapper
+    .wrapper
+      / header
+      .header
+        .shell.clearfix
+          %h1#logo.left
+            %a.notext{:href => "#{root_path}"} MusicMogul
+            %span
+              Tomorrow's music stars<br/>discovered by fans
+          - if user_signed_in?
+            = render "layouts/profile"
+          - else
+            %a.btn.right{:href => "#{new_user_session_path}"} Sign In
+        .header-shadow
+      / end header
+      / main content area
+      .main.shell
+        .main-t
+        .main-c
+          = yield
+        .main-b
+      / end main content area
+      .push
+      / footer push
+    / end page wrapper
+    / footer
+    .footer.shell
+      .footer-top.clearfix
+        #navigation.left
+          %ul.main-nav.clearfix
+            %li
+              %a{:href => "#{notices_path(anchor: "about")}"} About Us
+            %li
+              %a{:href => "#"} Contest Rules
+            %li
+              %a{:href => "#{notices_path(anchor: "contact")}"} Contact Us
+            %li
+              %a{:href => "http://suggestions.musicmogul.com"} Suggestions
+          %ul.sub-nav.clearfix
+            %li
+              %a{:href => "#{notices_path(anchor: "privacy")}"} Privacy
+            %li
+              %a{:href => "#{notices_path(anchor: "terms")}"} Terms
+        .socials.right
+          %a.ico.fb-ico{:href => "http://www.facebook.com/MyMusicMogul"}
+          %a.ico.tw-ico{:href => "http://www.twitter.com/MyMusicMogul"}
+      .footer-bottom
+        %p © 2013 Bright Lights Music Group, LLC
+    / end footer
