@@ -5,11 +5,17 @@
   .main-c
     .contestants
       %h3 Registered Contestants
-      .contestants-list.clearfix
-        - @entries.each do |entry|
-          .col
-            .contestant-entry
-              %a{href: "#"}
-                = image_tag entry.profile_photo.url(:masonry)
-                %span= entry.stage_name
+      #largeImage.largeContainer
+      #foo
+        %ul#tiles
+          - @entries.each do |entry|
+            %li{"data-large" => entry.profile_photo.url(:masonry)}
+              .front
+                = image_tag entry.profile_photo.url(:masonry), width: "210", height: "210"
+                %p= entry.stage_name
+              .back
+                %h4= entry.stage_name
+                %p= entry.genre
+                %p= entry.hometown
+                %p= entry.bio
   .main-b
