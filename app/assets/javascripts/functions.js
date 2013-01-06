@@ -148,7 +148,7 @@ $(function() {
     // copy to clipboard
     if( $('.referal-link-holder a.copy').length ) {
         $('.referal-link-holder a.copy').zclip( {
-            path: 'js/ZeroClipboard.swf',
+            path: 'swfs/ZeroClipboard.swf',
             copy: $('.referal-link-holder input.field').val()
         });
     }

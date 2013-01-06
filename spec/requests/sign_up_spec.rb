@@ -53,6 +53,7 @@ feature "sign up" do
 
     current_path.should == root_path
     user_should_be_logged_in user
+    page.should have_content "Increase your chance of winning the $250 first prize!"
   end
 
   scenario "fan signs up" do
@@ -82,5 +83,6 @@ feature "sign up" do
     visit user_confirmation_path(confirmation_token: user.confirmation_token)
     current_path.should == root_path
     user_should_be_logged_in user
+    page.should have_content "Make the contest better!"
   end
 end

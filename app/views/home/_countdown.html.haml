@@ -68,16 +68,42 @@
             %p.type_days Seconds
 
     .info
-      %p
-        Open to <span>625 judges</span> and <span>25 contestants</span>.
-        = link_to "Learn more &gt;&gt;".html_safe, learn_more_path
-      - if @inviter
-        %h3 Invited by <span>( #{@inviter.username} )</span>
-      .sign-up-options.clearfix
-        .sign-up-option
-          = link_to "Fans", new_user_registration_path(type: "fan"), class: "btn"
-          %p Sign up to judge
-        .sign-up-option
-          = link_to "Musicians", new_user_registration_path(type: "musician"), class: "btn"
-          %p Sign up to compete
+      - if user_signed_in?
+        - if current_user.musician?
+          .referal-link.clearfix
+            %h3 Increase your chance of winning the $250 first prize!
+            .referal-info
+              %p Use your referral link to invite your followers. The first 25 to register can judge the contest.
+              %a.learn-more{href: "#{learn_more_path}"} Learn More >>
+            .referal-link-holder
+              %input.field{type: "text", value: current_user.shortened_referral_link.presence || current_user.referral_link, disabled: "disabled"}/
+              %a.btn.copy{href: "#"} Copy referral link to clipboard
+              %p
+                Invites Accepted/Available
+                %span 6/9
+        - else
+          .referal-link.clearfix
+            %h3 Make the contest better!
+            .referal-info
+              %p Use your referral link to invite 5 friends to judge the contest.
+              %a.learn-more{href: "#{learn_more_path}"} Learn More >>
+            .referal-link-holder
+              %input.field{type: "text", value: current_user.shortened_referral_link.presence || current_user.referral_link, disabled: "disabled"}/
+              %a.btn.copy{href: "#"} Copy referral link to clipboard
+              %p
+                Invites Accepted/Available
+                %span 3/2
+      - else
+        %p
+          Open to <span>625 judges</span> and <span>25 contestants</span>.
+          = link_to "Learn more &gt;&gt;".html_safe, learn_more_path
+        - if @inviter
+          %h3 Invited by <span>( #{@inviter.username} )</span>
+        .sign-up-options.clearfix
+          .sign-up-option
+            = link_to "Fans", new_user_registration_path(type: "fan"), class: "btn"
+            %p Sign up to judge
+          .sign-up-option
+            = link_to "Musicians", new_user_registration_path(type: "musician"), class: "btn"
+            %p Sign up to compete
   .countdown-b
