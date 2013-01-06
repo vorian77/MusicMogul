@@ -24,8 +24,8 @@ feature "sign up" do
     user.inviter.should == inviter
     user.should be_musician
     current_path.should == verify_email_path
-    page.should have_content "Reserve your place as a contestant"
-    page.should have_content "Almost there! Check your inbox for our verification email."
+    page.should have_content "Reserve Your Place As A Contestant"
+    page.should have_content "Check Your Inbox"
 
     visit user_confirmation_path(confirmation_token: user.confirmation_token)
     current_path.should == new_entry_path
@@ -76,8 +76,8 @@ feature "sign up" do
     user.inviter.should == inviter
     user.should be_fan
     current_path.should == verify_email_path
-    page.should have_content "Reserve your place as a contest judge"
-    page.should have_content "Almost there! Check your inbox for our verification email."
+    page.should have_content "Reserve Your Place As A Contest Judge"
+    page.should have_content "Check Your Inbox"
 
     visit user_confirmation_path(confirmation_token: user.confirmation_token)
     current_path.should == root_path

@@ -1,29 +1,34 @@
-.login-holder.login-holder2
-  %span.sign-in-title Sign Up
-  %span.sign-in-subtitle Reserve your place as a #{session[:musician] ? "contestant" : "contest judge"}
-
-  #progress-bar{class: "#{'thirds' if session[:musician]}"}
-    .progress-item.inactive
-      .circle 1
-      .progress-label User Info
-    .progress-item.active
-      .circle 2
-      .progress-label Verify Email
-    - if session[:musician]
-      .progress-item.inactive
-        .circle 3
-        .progress-label Contestant Info
-  .clear
-
-  #email-notice
-    Almost there! Check your inbox for our verification email.
-
-  .bottom-part
-    %span
-      Already registered?
-      %a#already-registered-sign-in{:href => "#{new_user_session_path}"} Sign in
-
-  #legal
-    &copy; 2012 Bright Lights Music Group, LLC 
-    = link_to "Terms", "/notices#terms"
-    = link_to "Privacy", "/notices#privacy"
+.main.shell
+  .main-t
+  .main-c
+    .sign-up-steps
+      %h2 Sign Up
+      %p.meta Reserve Your Place As A #{session[:musician] ? "Contestant" : "Contest Judge"}
+      .steps-nav.clearfix
+        %ul
+          %li
+            %small.number 1
+            %span
+              User
+              %br>/
+              Info
+          %li.active
+            %small.number 2
+            %span
+              Verify
+              %br>/
+              Email
+          - if session[:musician]
+            %li
+              %small.number 3
+              %span
+                Contestant
+                %br>/
+                Info
+      .email-verify
+        %h2
+          Check Your Inbox For
+          = succeed "Our" do
+            %br/
+          Verification Email
+  .main-b
