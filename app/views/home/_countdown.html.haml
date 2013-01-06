@@ -1,38 +1,83 @@
-.clock{"data-end-date" => (Time.zone.parse("12/30/2012")).to_i, "data-now" => Time.now.to_i, "data-seconds" => Time.now.strftime("%S")}
-  / Days
-  .clock_days.clock_box
-    .bgLayer
-      .topLayer
-      %canvas#canvas_days{:height => "188", :width => "188"}
-      .text
-        %p.val 0
-        %p.type_days Days
-  / Days
-  / Hours
-  .clock_hours.clock_box
-    .bgLayer
-      .topLayer
-      %canvas#canvas_hours{:height => "188", :width => "188"}
-      .text
-        %p.val 0
-        %p.type_hours Hours
-  / Hours
-  / Minutes
-  .clock_minutes.clock_box
-    .bgLayer
-      .topLayer
-      %canvas#canvas_minutes{:height => "188", :width => "188"}
-      .text
-        %p.val 0
-        %p.type_minutes Minutes
-  / Minutes
-  / Seconds
-  .clock_seconds.clock_box
-    .bgLayer
-      .topLayer
-      %canvas#canvas_seconds{:height => "188", :width => "188"}
-      .text
-        %p.val 0
-        %p.type_seconds Seconds
-  / Seconds
-  .cl  
+-#.clock{"data-end-date" => (Time.zone.parse("12/30/2012")).to_i, "data-now" => Time.now.to_i, "data-seconds" => Time.now.strftime("%S")}
+-#  / Days
+-#  .clock_days.clock_box
+-#    .bgLayer
+-#      .topLayer
+-#      %canvas#canvas_days{:height => "188", :width => "188"}
+-#      .text
+-#        %p.val 0
+-#        %p.type_days Days
+-#  / Days
+-#  / Hours
+-#  .clock_hours.clock_box
+-#    .bgLayer
+-#      .topLayer
+-#      %canvas#canvas_hours{:height => "188", :width => "188"}
+-#      .text
+-#        %p.val 0
+-#        %p.type_hours Hours
+-#  / Hours
+-#  / Minutes
+-#  .clock_minutes.clock_box
+-#    .bgLayer
+-#      .topLayer
+-#      %canvas#canvas_minutes{:height => "188", :width => "188"}
+-#      .text
+-#        %p.val 0
+-#        %p.type_minutes Minutes
+-#  / Minutes
+-#  / Seconds
+-#  .clock_seconds.clock_box
+-#    .bgLayer
+-#      .topLayer
+-#      %canvas#canvas_seconds{:height => "188", :width => "188"}
+-#      .text
+-#        %p.val 0
+-#        %p.type_seconds Seconds
+-#  / Seconds
+-#  .cl  
+
+.countdown{"data-end-date" => (Time.zone.parse("12/30/2012")).to_i, "data-now" => Time.now.to_i, "data-seconds" => Time.now.strftime("%S")}
+  .countdown-t
+  .countdown-c
+    %h2 Contest Starts 1/13/12
+    .clock.clearfix
+      .clock_days.clock_box
+        .bgLayer
+          %canvas#canvas_days{width: 133, height: 133}
+          .text
+            %p.val 0
+            %p.type_days Days
+      .clock_hours.clock_box
+        .bgLayer
+          %canvas#canvas_hours{width: 133, height: 133}
+          .text
+            %p.val 0
+            %p.type_hours Hours
+      .clock_minutes.clock_box
+        .bgLayer
+          %canvas#canvas_minutes{width: 133, height: 133}
+          .text
+            %p.val 0
+            %p.type_minutes Minutes
+      .clock_seconds.clock_box
+        .bgLayer
+          %canvas#canvas_seconds{width: 133, height: 133}
+          .text
+            %p.val 0
+            %p.type_days Seconds
+
+    .info
+      %p
+        Open to <span>625 judges</span> and <span>25 contestants</span>.
+        = link_to "Learn more &gt;&gt;".html_safe, learn_more_path
+      - if @inviter
+        %h3 Invited by <span>( #{@inviter.username} )</span>
+      .sign-up-options.clearfix
+        .sign-up-option
+          = link_to "Fans", new_user_registration_path(type: "fan"), class: "btn"
+          %p Sign up to judge
+        .sign-up-option
+          = link_to "Musicians", new_user_registration_path(type: "musician"), class: "btn"
+          %p Sign up to compete
+  .countdown-b

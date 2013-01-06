@@ -1,5 +1,5 @@
 $ ->
-  if $("div.clock").length
+  if $("div.countdown").length
     JBCountDown
       secondsColor: "#d20300"
       minutesColor: "#d20300"

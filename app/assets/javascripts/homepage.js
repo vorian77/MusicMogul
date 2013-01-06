@@ -1,9 +1,9 @@
 $(function(){
-  var $container = $('#contestant-photos');
+  var $container = $('.contestants-list');
 
   $container.imagesLoaded( function(){
     $container.masonry({
-      itemSelector : '.photobox',
+      itemSelector : '.contestant-entry',
       columnWidth : 240
     });
   });
