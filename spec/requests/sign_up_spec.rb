@@ -29,25 +29,25 @@ feature "sign up" do
 
     visit user_confirmation_path(confirmation_token: user.confirmation_token)
     current_path.should == new_entry_path
-    page.should have_content "Reserve your place as a contestant"
+    page.should have_content "Reserve Your Place As A Contestant"
 
     visit root_path
     current_path.should == new_entry_path
-    page.should have_content "Reserve your place as a contestant"
+    page.should have_content "Reserve Your Place As A Contestant"
 
     within "form#new_entry" do
       fill_in "Stage name", with: Faker::HipsterIpsum.words.join(" ")
       fill_in "Hometown", with: Faker::Address.city
       select Entry::GENRES.sample, from: "entry[genre]"
       fill_in "Bio", with: Faker::HipsterIpsum.paragraph
-      fill_in "YouTube URL", with: "http://youtu.be/sGE4HMvDe-Q"
+      fill_in "Youtube URL", with: "http://youtu.be/sGE4HMvDe-Q"
       fill_in "Title", with: Faker::HipsterIpsum.words.join(" ")
       check "Has Music"
       check "Has Vocals"
       check "Has Explicit Content"
       attach_file "entry_profile_photo", "public/images/aretha.jpg"
       lambda {
-        click_button "Save"
+        click_button "Sign Up"
       }.should change { user.entries.count }.by(1)
     end
 

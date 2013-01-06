@@ -20,7 +20,7 @@ module HelperMethods
   end
 
   def user_should_be_logged_in(user)
-    within("a.name") do
+    within("div.account") do
       page.should have_content user.username? ? user.username : user.email
     end
   end

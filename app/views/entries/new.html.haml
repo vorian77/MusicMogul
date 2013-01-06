@@ -1,80 +1,77 @@
-.login-holder.login-holder2
-  %span.sign-in-title Sign Up
-  %span.sign-in-subtitle Reserve your place as a contestant
-
-  #progress-bar.thirds
-    .progress-item.inactive
-      .circle 1
-      .progress-label User Info
-    .progress-item.inactive
-      .circle 2
-      .progress-label Verify Email
-    .progress-item.active
-      .circle 3
-      .progress-label Contestant Info
-  .clear
-
-  = simple_form_for @entry, html: {multipart: true} do |f|
-    .row
-      = f.input :stage_name, input_html: { class: "field" }
-      .cl  
-    .row
-      %label{for: "entry_genre"} Genre*
-      %select.select#entry_genre{name: "entry[genre]"}
-        = options_for_select([" "] + Entry::GENRES, selected: @entry.genre)
-      .cl  
-    .row
-      = f.input :hometown, input_html: { class: "field" }
-      .cl  
-    .row
-      %label{for: "entry_bio"} Bio
-      .textarea-holder.scrollpane
-        %textarea#entry_bio{:cols => "5", :rows => "5", name: "entry[bio]"}
-          = @entry.bio
-      .cl  
-    .row
-      %label.larger{for: "entry_youtube_url"} YouTube URL*
-      %input.field#entry_youtube_url{type: "text", value: @entry.youtube_url, name: "entry[youtube_url]"}/
-      .cl  
-    .row
-      %label.larger{for: "entry_title"} Title*
-      %input.field#entry_title{type: "text", value: @entry.title, name: "entry[title]"}/
-      .cl  
-    .row.check-row
-      %input{name: "entry[has_music]", type: "hidden", value: "0"}
-      %input#entry_has_music.check.ez-mark{type: "checkbox", value: "1", checked: @entry.has_music?, name: "entry[has_music]"}/
-      %label.check{:for => "entry_has_music"} Has Music
-
-      %input{name: "entry[has_vocals]", type: "hidden", value: "0"}
-      %input#entry_has_vocals.check.ez-mark{type: "checkbox", value: "1", checked: @entry.has_vocals?, name: "entry[has_vocals]"}/
-      %label.check{:for => "entry_has_vocals"} Has Vocals
-
-      %input{name: "entry[has_explicit_content]", type: "hidden", value: "0"}
-      %input#entry_has_explicit_content.check.ez-mark{type: "checkbox", value: "1", checked: @entry.has_explicit_content?, name: "entry[has_explicit_content]"}/
-      %label.check{:for => "entry_has_explicit_content"} Has Explicit Content
-      .cl  
-    .line-title
-      %span
-        %strong Profile Photo
-      .cl  
-    .photo-upload
-      .img-holder
-        %img{:alt => "", :src => "#{f.object.profile_photo.url(:thumb)}"}/
-        %a.crop-text{:href => "#"} click to crop photo
-        %a.delete-photo delete photo
-      .text-holder
-        %input.file#entry_profile_photo{type: "file", name: "entry[profile_photo]"}/
-        %span.file-btn Choose File
-        %span.no-file No file chosen
-        .cl  
-        %p
-          You can upload a JPG, PNG, or GIF file
-          that is no more than 4MB (Do not upload pictures containing celebrities, nudity, artwork or images that you do not own or represent the copyright for.)
-      .cl  
-    %input.submit{:type => "submit", :value => "Save"}/
-    .cl  
-
-  #legal
-    &copy; 2012 Bright Lights Music Group, LLC 
-    = link_to "Terms", "/notices#terms"
-    = link_to "Privacy", "/notices#privacy"
+.main.shell
+  .main-t
+  .main-c
+    .sign-up-steps
+      %h2 Sign Up
+      %p.meta Reserve Your Place As A Contestant
+      .steps-nav.clearfix
+        %ul
+          %li
+            %small.number 1
+            %span
+              User
+              %br>/
+              Info
+          %li
+            %small.number 2
+            %span
+              Verify
+              %br>/
+              Email
+          %li.active
+            %small.number 3
+            %span Contestant Info
+      .form-section
+        = simple_form_for @entry, html: {multipart: true} do |f|
+          .inner-form-section
+            %h3 Contestant Information
+            = f.input :stage_name, required: false, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            = f.input :genre, required: false, collection: Entry::GENRES, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            = f.input :hometown, required: false, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            .form-row.clearfix
+              %label{:for => "entry_bio"} Bio
+              .textarea-holder
+                %textarea#entry_bio.field{:name => "entry[bio]"}
+          .inner-form-section
+            %h3 Performance Video
+            = f.input :title, required: false, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            = f.input :youtube_url, required: false, label: "Youtube URL", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            .form-row.clearfix
+              .labels
+                %label.check
+                  %input{name: "entry[has_music]", type: "hidden", value: "0"}
+                  %input{type: "checkbox", value: "1", checked: @entry.has_music?, name: "entry[has_music]"}/
+                  %span
+                  Has Music
+                %label.check
+                  %input{name: "entry[has_vocals]", type: "hidden", value: "0"}
+                  %input{type: "checkbox", value: "1", checked: @entry.has_vocals?, name: "entry[has_vocals]"}/
+                  %span
+                  Has Vocals
+                %label.check
+                  %input{name: "entry[has_explicit_content]", type: "hidden", value: "0"}
+                  %input{type: "checkbox", value: "1", checked: @entry.has_explicit_content?, name: "entry[has_explicit_content]"}/
+                  %span
+                  Has Explicit Content
+          .inner-form-section.clearfix
+            %h3 Album cover photo
+            .cover-image
+            .custom-upload
+              .upload-button
+                %input.upload-field#entry_profile_photo{:type => "file", name: "entry[profile_photo]"}
+                  .fake-upload
+                    %p Choose File
+                  %input.field.upload-value{:title => "No file chosen", :type => "text", :value => "No file chosen"}/
+              .upload-info
+                %p
+                  You can upload a JPG, PNG, or GIF file that is no
+                  %br>/
+                  more that 4MB. (Do not upload pictures
+                  %br>/
+                  containing celebrities, nudity, artwork or images
+                  = succeed "that" do
+                    %br/
+                  you do not own or represent the copyright for.)
+          %input.btn{:type => "submit", :value => "Sign Up"}/
+  .main-b
+-
