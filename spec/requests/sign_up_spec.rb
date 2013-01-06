@@ -6,18 +6,18 @@ feature "sign up" do
   scenario "musician signs up" do
     inviter = User.first
     visit root_path(referral_token: inviter.referral_token)
-    page.should have_content "Invited by #{inviter.username}"
+    page.should have_content "Invited by ( #{inviter.username} )"
 
-    within("div.buttons") { click_link "Musician" }
+    within("div.sign-up-options") { click_link "Musician" }
     current_path.should == new_user_registration_path
-    page.should have_content "Reserve your place as a contestant"
+    page.should have_content "Reserve Your Place As A Contestant"
 
     fill_in "Username", with: Faker::Internet.user_name
     fill_in "Email", with: Faker::Internet.email
     fill_in "Password", with: "password"
 
     lambda {
-      click_button "Sign Up"
+      click_button "Next"
     }.should change { User.count }.by(1)
 
     user = User.order("created_at").last
@@ -58,18 +58,18 @@ feature "sign up" do
   scenario "fan signs up" do
     inviter = User.first
     visit root_path(referral_token: inviter.referral_token)
-    page.should have_content "Invited by #{inviter.username}"
+    page.should have_content "Invited by ( #{inviter.username} )"
 
-    within("div.buttons") { click_link "Fan" }
+    within("div.sign-up-options") { click_link "Fan" }
     current_path.should == new_user_registration_path
-    page.should have_content "Reserve your place as a contest judge"
+    page.should have_content "Reserve Your Place As A Contest Judge"
 
     fill_in "Username", with: Faker::Internet.user_name
     fill_in "Email", with: Faker::Internet.email
     fill_in "Password", with: "password"
 
     lambda {
-      click_button "Sign Up"
+      click_button "Next"
     }.should change { User.count }.by(1)
 
     user = User.order("created_at").last

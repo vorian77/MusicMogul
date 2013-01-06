@@ -1,33 +1,43 @@
-.login-holder.login-holder2
-  %span.sign-in-title Sign Up
-  %span.sign-in-subtitle Reserve your place as a #{session[:musician] ? "contestant" : "contest judge"}
+.main.shell
+  .main-t
+  .main-c
+    .sign-up-steps
+      %h2 Sign Up
+      %p.meta Reserve Your Place As A #{session[:musician] ? "Contestant" : "Contest Judge"}
+      .steps-nav.clearfix
+        %ul
+          %li.active
+            %small.number 1
+            %span
+              User
+              %br>/
+              Info
+          %li
+            %small.number 2
+            %span
+              Verify
+              %br>/
+              Email
+          - if session[:musician]
+            %li
+              %small.number 3
+              %span
+                Contestant
+                %br>/
+                Info
 
-  #progress-bar{class: "#{'thirds' if session[:musician]}"}
-    .progress-item.active
-      .circle 1
-      .progress-label User Info
-    .progress-item.inactive
-      .circle 2
-      .progress-label Verify Email
-    - if session[:musician]
-      .progress-item.inactive
-        .circle 3
-        .progress-label Contestant Info
-  .clear
-  
-  = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-    = f.input :musician, as: :hidden
-    = f.input :username, input_html: { class: "field" }
-    = f.input :email, input_html: { class: "field" }
-    = f.input :password, input_html: { class: "field" }
-    #submit= f.submit "Sign Up", class: "submit"
-  .cl  
-  .bottom-part
-    %span
-      Already registered?
-      %a#already-registered-sign-in{:href => "#{new_user_session_path}"} Sign in
-
-  #legal
-    &copy; 2012 Bright Lights Music Group, LLC 
-    = link_to "Terms", "/notices#terms"
-    = link_to "Privacy", "/notices#privacy"
+      .form-section
+        = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+          = f.input :musician, as: :hidden
+          = f.input :username, required: false, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+          = f.input :email, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+          = f.input :password, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+          = f.input :password_confirmation, label: "Confirm password", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+          .form-row.clearfix
+            %label.check
+              %input{:type => "checkbox"}/
+              %span
+              I agree with the
+              %a{href: "/notices#terms"} Music Mogul terms of service
+          = f.submit "Next", class: "submit"
+  .main-b
