@@ -11,7 +11,9 @@
         %a{:href => "#{edit_user_path(current_user)}"} My Personal Profile
       - if current_user.entries.count > 0
         %li
-          %a{:href => "#{entry_path(current_user.entries.first)}"} My Contestant Profile
+          %a{:href => "#{edit_entry_path(current_user.entries.first)}"} My Video Submission
+        %li
+          %a{:href => "#{entry_path(current_user.entries.first)}"} My Audition
       %li
         %a{:href => "#{evaluations_path}"} My Evaluations
       %li
