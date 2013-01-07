@@ -1,42 +1,3 @@
--#.clock{"data-end-date" => (Time.zone.parse("12/30/2012")).to_i, "data-now" => Time.now.to_i, "data-seconds" => Time.now.strftime("%S")}
--#  / Days
--#  .clock_days.clock_box
--#    .bgLayer
--#      .topLayer
--#      %canvas#canvas_days{:height => "188", :width => "188"}
--#      .text
--#        %p.val 0
--#        %p.type_days Days
--#  / Days
--#  / Hours
--#  .clock_hours.clock_box
--#    .bgLayer
--#      .topLayer
--#      %canvas#canvas_hours{:height => "188", :width => "188"}
--#      .text
--#        %p.val 0
--#        %p.type_hours Hours
--#  / Hours
--#  / Minutes
--#  .clock_minutes.clock_box
--#    .bgLayer
--#      .topLayer
--#      %canvas#canvas_minutes{:height => "188", :width => "188"}
--#      .text
--#        %p.val 0
--#        %p.type_minutes Minutes
--#  / Minutes
--#  / Seconds
--#  .clock_seconds.clock_box
--#    .bgLayer
--#      .topLayer
--#      %canvas#canvas_seconds{:height => "188", :width => "188"}
--#      .text
--#        %p.val 0
--#        %p.type_seconds Seconds
--#  / Seconds
--#  .cl  
-
 .countdown{"data-end-date" => (Time.zone.parse("1/13/2013")).to_i, "data-now" => Time.now.to_i, "data-seconds" => Time.now.strftime("%S")}
   .countdown-t
   .countdown-c
@@ -80,7 +41,7 @@
               %a.btn.copy{href: "#"} Copy referral link to clipboard
               %p
                 Invites Accepted/Available
-                %span 6/9
+                %span #{current_user.invited_users.count}/#{current_user.invitation_limit}
         - else
           .referal-link.clearfix
             %h3 Make the contest better!
@@ -92,7 +53,7 @@
               %a.btn.copy{href: "#"} Copy referral link to clipboard
               %p
                 Invites Accepted/Available
-                %span 3/2
+                %span #{current_user.invited_users.count}/#{current_user.invitation_limit}
       - else
         %p
           Open to <span>625 judges</span> and <span>25 contestants</span>.

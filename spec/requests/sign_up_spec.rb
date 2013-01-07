@@ -54,6 +54,7 @@ feature "sign up" do
     current_path.should == root_path
     user_should_be_logged_in user
     page.should have_content "Increase your chance of winning the $250 first prize!"
+    page.should have_content "0/25"
   end
 
   scenario "fan signs up" do
@@ -84,5 +85,6 @@ feature "sign up" do
     current_path.should == root_path
     user_should_be_logged_in user
     page.should have_content "Make the contest better!"
+    page.should have_content "0/5"
   end
 end

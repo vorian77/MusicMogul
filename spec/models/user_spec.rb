@@ -50,6 +50,33 @@ describe User do
     end
   end
 
+  describe "#late_adopter?" do
+    subject { user.late_adopter? }
+
+    context "when they are uninvited" do
+      let(:user) { FactoryGirl.create(:user, inviter: nil) }
+      it { should be_false }
+    end
+
+    context "when they adopted early" do
+      let(:inviter) { FactoryGirl.create(:user) }
+      let(:user) { FactoryGirl.create(:user, inviter: inviter) }
+      before do
+        (inviter.invitation_limit - 1).times { FactoryGirl.create(:user, inviter: inviter) }
+      end
+      it { should be_false }
+    end
+
+    context "when they adopted late" do
+      let(:inviter) { FactoryGirl.create(:user) }
+      let(:user) { FactoryGirl.create(:user, inviter: inviter) }
+      before do
+        (inviter.invitation_limit).times { FactoryGirl.create(:user, inviter: inviter) }
+      end
+      it { should be_true }
+    end
+  end
+
   describe "#referral_link" do
     subject { user.referral_link }
     let(:user) { User.first }

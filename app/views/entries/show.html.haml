@@ -10,7 +10,7 @@
     %a.flag-btn{:href => "#"}
       %span Flag as inappropiate
     .cl  
-    - if current_user.has_evaluated?(@entry) || current_user.uninvited?
+    - if current_user.has_evaluated?(@entry) || current_user.observer?
       .stats
         .left-part
           .stat-box
@@ -47,7 +47,7 @@
               %td #{number_with_precision @evaluation.overall_score, precision: 1}
               %td.last #{number_with_precision @entry.overall_score, precision: 1}
         .cl
-  - if current_user.has_evaluated?(@entry) || current_user.uninvited?
+  - if current_user.has_evaluated?(@entry) || current_user.observer?
     .bottom-list
       %ul
         - @entry.evaluations.includes(:user).order("created_at desc").each do |evaluation|

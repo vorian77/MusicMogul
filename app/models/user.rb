@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  MUSICIAN_INVITATION_LIMIT = 25
+  FAN_INVITATION_LIMIT = 5
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :confirmable
 
@@ -52,6 +55,18 @@ class User < ActiveRecord::Base
     evaluation_for(entry).present?
   end
 
+  def invitation_limit
+    musician? ? MUSICIAN_INVITATION_LIMIT : FAN_INVITATION_LIMIT
+  end
+
+  def late_adopter?
+    inviter && !inviter.invited_users.order("created_at").limit(inviter.invitation_limit).include?(self)
+  end
+
+  def observer?
+    uninvited? || late_adopter?
+  end
+
   def profile_complete?
     username? && hometown? && profile_photo?
   end
@@ -64,7 +79,7 @@ class User < ActiveRecord::Base
     !inviter.present?
   end
 
-  protected
+  private
 
   def set_inviter
     self.inviter = User.find_by_referral_token(invitation_token) if invitation_token.present?
