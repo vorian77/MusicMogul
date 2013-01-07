@@ -15,7 +15,11 @@ module ApplicationHelper
     entry.facebook? || entry.twitter? || entry.pinterest? || entry.youtube? || entry.website?
   end
 
+  def contest_pending?
+    !contest_started?
+  end
+
   def contest_started?
-    Contest.active.present?
+    Time.now >= Time.zone.parse(Contest::FIRST_START_DATE)
   end
 end

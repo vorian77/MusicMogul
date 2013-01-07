@@ -1,4 +1,6 @@
 class Contest < ActiveRecord::Base
+  FIRST_START_DATE = "1/20/13 9:00AM"
+
   attr_accessible :name, :start_date, :end_date
 
   has_many :entries, dependent: :nullify
