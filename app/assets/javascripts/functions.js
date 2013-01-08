@@ -30,40 +30,54 @@ $(function() {
     });
 
     // form validate
-    $(".form-section:not(.signin-form) form").submit(function() {
-        $('.error').hide();
-
-        var field = $(".field").val(),
-            password = $("input#password").val(),
-            passConfirm = $("input#password-confirm").val(),
-            error = false;
-
-        $('.field').each(function() {
-            var field = $(this).val();
-
-            if ( field.length < 3 ) {
-                $(this).parent().find('.error').show();
-                $(this).focus();
-
-                error = true;
-
-                return false;
-            }
-        });
-
-        if ( passConfirm != password ) {
-            $("#password-confirm").parent().find('.error').show();
-            $("input#password-confirm").focus();
-
-            error = true;
-
-            return false;
-        }
-
-        if ( error ) {
-            return false;
-        }
-    });
+//    $(".form-section:not(.signin-form) form").submit(function() {
+//        $('.error').hide();
+//
+//        var field = $(".field").val(),
+//            select = $(this).find('.c2-sb-text').text();
+//        password = $(this).find(".password-field").val(),
+//            passConfirm = $(this).find(".password-confirm-field").val(),
+//            error = false;
+//
+//        $('.field').each(function() {
+//            var field = $(this).val();
+//
+//            if ( field.length < 3 ) {
+//                $(this).parent().find('.error').show();
+//                $(this).focus();
+//
+//                console.log(1)
+//
+//                error = true;
+//
+//                return false;
+//            }
+//        });
+//
+//        if ( passConfirm != password ) {
+//            $(".password-confirm-field").parent().find('.error').show();
+//            $(".password-confirm-field").focus();
+//
+//            error = true;
+//
+//            return false;
+//        }
+//
+//        if ( select == 'Select' ) {
+//            $(this).find('input').blur();
+//            $(this).find('.error').hide();
+//            $(this).find('.c2-sb-button').trigger('click');
+//            $(this).find('select').parents('.form-row').find('.error').show();
+//
+//            error = true;
+//
+//            return false;
+//        }
+//
+//        if ( error ) {
+//            return false;
+//        }
+//    });
 
     $('.signin-form form').submit(function() {
         if ( $('.error-msg').length ) {
@@ -102,7 +116,7 @@ $(function() {
     });
 
     // scrollable textarea
-    var txt = $('#bio'),
+    var txt = $('.textarea-holder textarea'),
         hiddenDiv = $(document.createElement('div')),
         content = null;
 
@@ -152,4 +166,10 @@ $(function() {
             copy: $('.referal-link-holder input.field').val()
         });
     }
+
+    // add some even classes
+    $('.table-holder table tr:even').addClass('even');
+
+    // custom select field
+    $('select').c2Selectbox();
 });

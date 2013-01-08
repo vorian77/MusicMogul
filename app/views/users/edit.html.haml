@@ -1,70 +1,63 @@
-= content_for(:bottom_of_header) do
-  .red-box
-    .left-side  
-    .cl  
-    %span.contest-profile My Account
-    .cl  
-    .right-side  
-
-.main-form
-  = simple_form_for @user, url: user_path(current_user), html: {multipart: true} do |f|
-    %input.submit{:type => "submit", :value => "Save"}/
-    .cl  
-    .line-title
-      %span.smaller
-        %strong Public Info
-        This information is displayed throughout the site
-      .cl  
-    .row
-      = f.input :username, input_html: { class: "field" }
-      .cl  
-    .row
-      = f.input :hometown, input_html: { class: "field" }
-      .cl  
-    .line-title
-      %span.smaller
-        %strong Private Info
-        This information is not shown anywhere on the site
-      .cl  
-    .row
-      = f.input :email, input_html: { class: "field" }
-      .cl  
-    .row
-      = f.input :password, input_html: { class: "field" }
-      .cl  
-    .row
-      = f.input :password_confirmation, input_html: { class: "field" }
-      .cl  
-    .row.check-row2
-      %input{name: "user[show_explicit_videos]", type: "hidden", value: "0"}
-      %input#show_explicit_videos.check.ez-mark{type: "checkbox", value: "1", checked: @user.show_explicit_videos?, name: "user[show_explicit_videos]"}/
-      %label.check{:for => "show_explicit_videos"} Show videos with explicit content
-      .cl  
-      %input{name: "user[receive_email_updates]", type: "hidden", value: "0"}
-      %input#receive_email_updates.check.ez-mark{type: "checkbox", value: "1", checked: @user.receive_email_updates?, name: "user[receive_email_updates]"}/
-      %label.check{:for => "receive_email_updates"} Send me contest updates via email
-      .cl  
-    .line-title
-      %span
-        %strong Profile Photo
-      .cl  
-    .photo-upload
-      .img-holder
-        %img{:alt => "", :src => "#{current_user.profile_photo.url(:thumb)}"}/
-        %a.crop-text{:href => "#"} click to crop photo
-        %a.delete-photo delete photo
-      .text-holder
-        %input.file#user_profile_photo{type: "file", name: "user[profile_photo]"}/
-        %span.file-btn Choose File
-        %span.no-file No file chosen
-        .cl  
-        %p
-          You can upload a JPG, PNG, or GIF file
-          that is no more than 4MB (Do not upload pictures containing celebrities, nudity, artwork or images that you do not own or represent the copyright for.)
-        .photo-progress
-          %span.text Upload Progress:
-          .progress
-            %span{:style => "width: 34%;"}  
-      .cl  
-    %input.submit{:type => "submit", :value => "Save"}/
-    .cl  
+.main.shell
+  .account-nav.clearfix
+    %h3 Account
+    %ul
+      %li.active
+        %a{href: "#{edit_user_path(current_user)}"} Personal Profile
+      - if current_user.entries.count > 0
+        %li
+          %a{href: "#{edit_entry_path(current_user.entries.first)}"} Contestant Profile
+      %li
+        %a{href: "#{friends_path}"} Friends
+  .main-t
+  .main-c
+    .sign-up-steps.account-edit
+      %h3 Edit your personal profile
+      .form-section
+        = simple_form_for @user, url: user_path(current_user), html: {multipart: true} do |f|
+          .inner-form-section
+            %h3 Personal Information
+            = f.input :username, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            = f.input :email, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            = f.input :hometown, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            .form-row.clearfix.labels-row
+              %label.check
+                %input{name: "user[show_explicit_videos]", type: "hidden", value: "0"}
+                %input{name: "user[show_explicit_videos]", value: "1", checked: @user.show_explicit_videos?, type: "checkbox"}/
+                %span
+                Show videos with explicit content
+            .form-row.clearfix.labels-row
+              %label.check
+                %input{name: "user[receive_email_updates]", type: "hidden", value: "0"}
+                %input{name: "user[receive_email_updates]", value: "1", checked:  @user.receive_email_updates?, type: "checkbox"}/
+                %span
+                Send me contest updates via email
+          .inner-form-section.clearfix
+            %h3 Profile photo
+            - if current_user.profile_photo?
+              = image_tag(current_user.profile_photo.url(:medium), class: "cover-image")
+            - else
+              .cover-image
+            .custom-upload
+              .upload-button
+                %input.upload-field{type: "file", name: "user[profile_photo]"}
+                  .fake-upload
+                    %p Choose File
+                  %input.field.upload-value{:title => "No file chosen", :type => "text", :value => "No file chosen"}/
+              .upload-info
+                %p
+                  %em
+                    You can upload a JPG, PNG, or GIF file that is no
+                    %br>/
+                    more that 4MB. (Do not upload pictures
+                    %br>/
+                    containing celebrities, nudity, artwork or images
+                    = succeed "that" do
+                      %br/
+                    you do not own or represent the copyright for.)
+          .inner-form-section
+            %h3 Change your password
+            = f.input :password, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            = f.input :password_confirmation, label: "Confirm password", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+          %input.btn{:type => "submit", :value => "Save Profile"}/
+  .main-b

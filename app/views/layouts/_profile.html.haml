@@ -8,10 +8,10 @@
     = image_tag current_user.profile_photo.url(:medium), class: "user-image"
     %ul
       %li
-        %a{:href => "#{edit_user_path(current_user)}"} My Account
+        %a{:href => "#{edit_user_path(current_user)}"} My Personal Profile
       - if current_user.entries.count > 0
         %li
-          %a{:href => "#{edit_entry_path(current_user.entries.first)}"} My Video Submission
+          %a{:href => "#{edit_entry_path(current_user.entries.first)}"} My Contestant Profile
         - unless contest_pending?
           %li
             %a{:href => "#{entry_path(current_user.entries.first)}"} My Audition
