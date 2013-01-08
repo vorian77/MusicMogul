@@ -16,19 +16,22 @@ morrison = User.create(email: "jim@morrison.com",
                        password: "password",
                        confirmed_at: Date.today,
                        username: "JimMorrison",
-                       hometown: "Melbourne")
+                       hometown: "Melbourne",
+                       musician: true)
 
 eminem = User.create(email: "slim@slimshady.com",
                      password: "password",
                      confirmed_at: Date.today,
                      username: "SlimShady",
-                     hometown: "Detroit")
+                     hometown: "Detroit",
+                     musician: true)
 
 aretha = User.create(email: "aretha@arethafranklin.com",
                      password: "password",
                      confirmed_at: Date.today,
                      username: "Aretha",
-                     hometown: "Detroit")
+                     hometown: "Detroit",
+                     musician: true)
 
 Entry.create!(user: morrison,
               stage_name: "The Doors",
