@@ -37,6 +37,7 @@ class ApplicationController < ActionController::Base
     else
       "application"
     end
+    "login"
   end
 
   private

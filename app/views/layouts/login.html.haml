@@ -1,29 +1,3 @@
--#!!!
--#%html{:dir => "ltr", :lang => "en-US", :xmlns => "http://www.w3.org/1999/xhtml"}
--#  %head
--#    %title MusicMogul
--#    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-type"}/
--#    %link{:href => "css/images/favicon.ico", :rel => "shortcut icon"}/
--#    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Telex", :media => "all", :rel => 'stylesheet', :type => 'text/css'
--#    = stylesheet_link_tag "application", :media => "all", :rel => "stylesheet", :type => "text/css"
--#    = javascript_include_tag "application"
--#  %body#landing.login
--#    #header
--#      %h1#logo
--#        %a{:href => "#{root_path}"} MusicMogul
--#      %span.slogan
--#        tomorrow's music stars
--#        %br>/
--#        discovered by fans
--#      - if user_signed_in?
--#        = render "layouts/profile"
--#      - else
--#        %a.sign-in-btn.button{:href => "#{new_user_session_path}"} Sign In
--#      .cl
--#    #block
--#      .shell
--#        = yield
-
 !!!
 %html{:dir => "ltr", :lang => "en-US", :xmlns => "http://www.w3.org/1999/xhtml"}
   %head
@@ -59,7 +33,7 @@
         #navigation.left
           %ul.main-nav.clearfix
             %li
-              %a{:href => "#{notices_path(anchor: "about")}"} About Us
+              = link_to "About Us", about_us_path
             %li
               %a{:href => "#"} Contest Rules
             %li

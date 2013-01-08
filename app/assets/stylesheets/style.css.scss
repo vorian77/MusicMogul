@@ -1,34 +1,34 @@
 @font-face {
-    font-family: 'Atilla-Font';
-    src: font_url('atilla_normal-webfont.eot');
-    src: font_url('atilla_normal-webfont.eot?#iefix') format('embedded-opentype'),
-         font_url('atilla_normal-webfont.woff') format('woff'),
-         font_url('atilla_normal-webfont.ttf') format('truetype'),
-         font_url('atilla_normal-webfont.svg#atillanormal') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Atilla-Font';
+  src: font_url('atilla_normal-webfont.eot');
+  src: font_url('atilla_normal-webfont.eot?#iefix') format('embedded-opentype'),
+  font_url('atilla_normal-webfont.woff') format('woff'),
+  font_url('atilla_normal-webfont.ttf') format('truetype'),
+  font_url('atilla_normal-webfont.svg#atillanormal') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Atilla-Font';
-    src: font_url('atilla_bold-webfont.eot');
-    src: font_url('atilla_bold-webfont.eot?#iefix') format('embedded-opentype'),
-         font_url('atilla_bold-webfont.woff') format('woff'),
-         font_url('atilla_bold-webfont.ttf') format('truetype'),
-         font_url('atilla_bold-webfont.svg#atillabold') format('svg');
-    font-weight: bold;
-    font-style: normal;
+  font-family: 'Atilla-Font';
+  src: font_url('atilla_bold-webfont.eot');
+  src: font_url('atilla_bold-webfont.eot?#iefix') format('embedded-opentype'),
+  font_url('atilla_bold-webfont.woff') format('woff'),
+  font_url('atilla_bold-webfont.ttf') format('truetype'),
+  font_url('atilla_bold-webfont.svg#atillabold') format('svg');
+  font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: 'MyriadPro-Regular';
-	src: font_url('myriadpro-regular.eot');
-	src: font_url('myriadpro-regular.eot?#iefix') format('embedded-opentype'),
-		 font_url('myriadpro-regular.woff') format('woff'),
-		 font_url('myriadpro-regular.ttf') format('truetype'),
-		 font_url('myriadpro-regular.svg#myriadpro-regular') format('svg');
-	font-weight: normal;
-	font-style: normal;
+  font-family: 'MyriadPro-Regular';
+  src: font_url('myriadpro-regular.eot');
+  src: font_url('myriadpro-regular.eot?#iefix') format('embedded-opentype'),
+  font_url('myriadpro-regular.woff') format('woff'),
+  font_url('myriadpro-regular.ttf') format('truetype'),
+  font_url('myriadpro-regular.svg#myriadpro-regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 * { margin: 0; padding: 0; outline: 0; }
@@ -36,12 +36,12 @@
 body, html { height: 100%; }
 
 body {
-    font-size: 15px;
-    line-height: 1.3;
-    font-family: 'Atilla-Font', Arial, Helvetica, sans-serif;
-    color: #000;
-    background: #fff;
-    min-width: 945px;
+  font-size: 15px;
+  line-height: 1.3;
+  font-family: 'Atilla-Font', Arial, Helvetica, sans-serif;
+  color: #000;
+  background: #fff;
+  min-width: 945px;
 }
 
 a { color: #f21e1b; text-decoration: none; cursor: pointer; }
@@ -126,6 +126,7 @@ h3 { font-size: 19px; line-height: 22px; color: #f21e1b; font-weight: normal; }
 .steps-nav ul li.active small.number { background-image: image_url("ico02.png"); }
 
 .form-section .form-row { padding-bottom: 23px; }
+.form-section .labels-row { padding-bottom: 0; }
 .form-section label { font-size: 15px; line-height: 37px; color: #000; font-weight: bold; width: 196px; float: left; display: inline; }
 .form-section input.field { width: 313px; height: 27px; background: #f8f8f8; border: 1px solid #e6e7e7; border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px; -o-border-radius: 1px; padding: 5px 10px; float: left; display: inline; margin-right: 21px; }
 .form-section span.error { font-size: 12px; line-height: 24px; color: #000; background: #ff9c00 image_url("tooltip-l.png") no-repeat 0 0; padding: 0 15px 0 20px; float: left; display: none; margin-top: 7px; }
@@ -137,6 +138,8 @@ h3 { font-size: 19px; line-height: 22px; color: #f21e1b; font-weight: normal; }
 .form-section input.submit:hover { opacity: 0.9; -moz-opacity: 0.9; filter:alpha(opacity=90); }
 .form-section input.btn { font-size: 14px; line-height: 37px; height: 37px; display: block; background-image: image_url("btn2.png"); border: 0; padding: 0 15px; margin-top: 25px; cursor: pointer; }
 .form-section input.reset-pwd { font-size: 17px; margin-bottom: 0; }
+.form-section small.shorten-url { font-size: 14px; line-height: 36px; color: #bababa; width: 114px; float: left; display: inline; }
+.form-section select { width: 334px; }
 
 .email-verify { padding: 15px 0; }
 .email-verify h2 { font-size: 41px; line-height: 46px; color: #000; }
@@ -146,8 +149,9 @@ h3 { font-size: 19px; line-height: 22px; color: #f21e1b; font-weight: normal; }
 
 .textarea-holder { width: 333px; height: 140px; background: #f8f8f8; border: 1px solid #e6e7e7; border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px; -o-border-radius: 1px; float: left; display: inline; position: relative; cursor: text; }
 .textarea-holder textarea { width: 303px; min-height: 50px; padding: 10px; display: block; background: transparent; border: 0; resize: none; overflow: hidden; }
+.textarea-holder span.error { float: none; position: absolute; right: -190px; top: 0; }
 
-.hiddendiv { font-size: 14px; line-height: 19px; color: #000; display: none; white-space: pre-wrap; word-wrap: break-word; width: 313px; min-height: 50px; } 
+.hiddendiv { font-size: 14px; line-height: 19px; color: #000; display: none; white-space: pre-wrap; word-wrap: break-word; width: 313px; min-height: 50px; }
 
 .labels { padding-left: 196px; }
 .labels label.check { font-size: 13px; line-height: 18px; font-weight: bold; margin: 0; padding: 0 15px 0 24px; }
@@ -257,3 +261,70 @@ h3 { font-size: 19px; line-height: 22px; color: #f21e1b; font-weight: normal; }
 .countdown .referal-link-holder a.copy { font-size: 17px; width: 295px; margin: 0 auto; display: block; margin-bottom: 3px; }
 .countdown .referal-link-holder p { font-size: 15px; line-height: 20px; font-weight: bold; }
 .countdown .referal-link-holder p span { color: #f21e1b; }
+
+.account-edit > h3 { font-size: 21px; color: #000; padding-bottom: 22px; }
+
+.account-nav { padding: 10px 53px 40px; }
+.account-nav h3 { font-size: 21px; line-height: 30px; color: #000; font-weight: bold; float: left; display: inline; padding-right: 36px; }
+.account-nav ul { list-style: none outside; float: left; display: inline; }
+.account-nav ul li { float: left; display: inline; padding-right: 10px; }
+.account-nav ul li a { font-size: 15px; line-height: 30px; color: #000; display: block; padding: 0 8px; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; }
+.account-nav ul li a:hover,
+.account-nav ul li.active a { background: image_url("btn.png") repeat-x; color: #fff; text-decoration: none; }
+.account-nav ul li.active a:hover { background-position: 0 bottom; }
+
+.social-section h3 { padding-bottom: 5px; }
+.social-section > p { font-size: 13px; line-height: 16px; color: #000; padding-bottom: 15px; }
+
+
+.form-section .yt-row input.field { width: 200px; }
+.form-section .social-row input.field { width: 115px; }
+
+.social-section small.shorten-url { width: 197px; }
+
+.account-edit h3 { padding-bottom: 20px; }
+.account-edit .referal-link { padding-bottom: 25px; }
+.account-edit .referal-link p { font-size: 13px; line-height: 16px; color: #000; padding-bottom: 15px; }
+.account-edit .referal-link-holder { padding-bottom: 20px; }
+.account-edit .referal-link-holder input.field { font-size: 14px; color: #a9a9a9; width: 313px; height: 25px; background: #f8f8f8; border: 1px solid #e6e7e7; border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px; -o-border-radius: 1px; padding: 5px 10px; float: left; display: inline; margin-right: 10px; }
+.account-edit .referal-link-holder a.copy { font-size: 14px; line-height: 37px; height: 37px; background-image: image_url("btn2.png"); float: left; display: inline; padding: 0 11px; }
+
+.friends-list { padding-bottom: 20px; }
+.friends-list h3 { padding-bottom: 10px; }
+.friends-list p { font-size: 13px; line-height: 16px; color: #000; padding-bottom: 10px; }
+.friends-list p span.count { color: #f21e1b; }
+.friends-list .table-holder { width: 492px; padding-bottom: 10px; }
+.friends-list table { font-size: 14px; line-height: 18px; color: #000; border: 1px solid #b3b3b3; background: #eee; }
+.friends-list table th { padding: 13px 8px; background: #ccc; border-left: 1px solid #bfbfbf; text-align: left; }
+.friends-list table th:first-child { border: 0; text-align: center; }
+.friends-list table td { padding: 8px; border-left: 1px solid #bfbfbf; }
+.friends-list table td:first-child { border: 0; text-align: center; }
+.friends-list table tr.even td { background: #fff; }
+
+.referals-list .table-holder { width: 681px; }
+
+.about h2 { font-size: 54px; line-height: 60px; padding-bottom: 25px; }
+.about p { font-size: 14px; line-height: 18px; color: #000; padding-bottom: 15px; }
+
+.about-listing { padding-top: 18px; }
+
+.about-entry { padding: 15px 0 15px 132px; border-top: 1px solid #dedede; position: relative; height: 100%; min-height: 110px; }
+.about-entry img { width: 116px; height: 107px; display: block; border: 1px solid #e6e7e7; border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px; -o-border-radius: 1px; position: absolute; top: 15px; left: 0; }
+.about-entry h4 { font-size: 15px; line-height: 17px; color: #f21e1b; padding-bottom: 5px; }
+.about-entry p { color: #5a5a5a; }
+
+.person-details { font-size: 12px; line-height: 18px; color: #000; }
+.person-details em { padding-right: 14px; position: relative; height: 100%; float: left; display: inline; }
+.person-details em small.ico { height: 18px; display: block; font-size: 0; line-height: 0; text-indent: -4000px; background-image: image_url("icos.png"); background-repeat: no-repeat; position: absolute; top: 50%; left: 0; margin-top: -9px; }
+.person-details em.city { padding-left: 16px; min-width: 137px; }
+.person-details em.city small.ico { width: 12px; background-position: 0 center; }
+.person-details em.email { padding-left: 26px; min-width: 74px; }
+.person-details em.email small.ico { width: 20px; background-position: -16px center; }
+.person-details em.twitter { padding-left: 27px; min-width: 80px; }
+.person-details em.twitter small.ico { width: 22px; background-position: -37px center; margin-top: -10px; }
+.person-details em.website { padding-left: 27px; min-width: 100px; }
+.person-details em.website small.ico { width: 18px; background-position: -62px center; }
+
+.contact-form h5 { font-size: 22px; line-height: 25px; color: #000; padding-bottom: 20px; font-weight: normal; }
+.contact-form .form-section .labels-row { position: relative; top: -11px; }
+.contact-form .form-section input.btn { font-size: 14px; margin: 0 0 0 470px; }
