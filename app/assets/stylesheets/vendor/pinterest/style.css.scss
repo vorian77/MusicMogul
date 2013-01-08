@@ -6,7 +6,7 @@
 	position: absolute;
 	top: -13px;
 	z-index: 1001;
-	background: url(../images/assets/close.png) no-repeat;
+	background: image_url("pinterest/close.png") no-repeat;
 	width: 25px;
 	height: 25px;
 }
@@ -18,14 +18,14 @@
 	z-index: 1003;
 }
 #arrowButton .prevArrow{
-    background: url(../images/assets/prev.png) no-repeat;
+    background: image_url("pinterest/prev.png") no-repeat;
     width: 40px;
     height: 80px;
 	position: absolute;
 	left: 20px;
 }
 #arrowButton .nextArrow{
-    background: url(../images/assets/next.png) no-repeat;
+    background: image_url("pinterest/next.png") no-repeat;
     width: 40px;
     height: 80px;
 	position: absolute;
@@ -76,7 +76,7 @@ div.front p, div.back p {
 
 
 .largeContainer{
-	background: url(../images/assets/loading.gif) center center no-repeat;
+	background: image_url("pinterest/loading.gif") center center no-repeat;
 	top: 0;
 	left: 0;
 	position: fixed;
