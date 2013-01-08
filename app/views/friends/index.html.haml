@@ -1,40 +1,86 @@
-= content_for(:bottom_of_header) do
-  .red-box
-    .left-side
-    .cl
-    %span.friends My Friends
-    .cl
-    .right-side
+.main.shell
+  .account-nav.clearfix
+    %h3 Account
+    %ul
+      %li
+        %a{href: "#{edit_user_path(current_user)}"} Personal Profile
+      - if current_user.entries.count > 0
+        %li
+          %a{href: "#{edit_entry_path(current_user.entries.first)}"} Contestant Profile
+      %li.active
+        %a{href: "#{friends_path}"} Friends
+  .main-t
+  .main-c
+    .sign-up-steps.account-edit
+      .referal-link
+        %h3 My Referal Link
+        .referal-link-holder.clearfix
+          %input.field{type: "text", value: current_user.shortened_referral_link.presence || current_user.referral_link, disabled: "disabled"}/
+          %a.btn.copy{href: "#"} Copy to clipboard
+        %p
+          Our first contests will be
+          = succeed "." do
+            %strong Invite Only
+          We want to build an exculsive community of
+          %br>/
+          fans and musicans that are dedicated to helping us make Music Mogul great.
+        %p
+          Use this link to invite people who not only benefit from and enjoy Music Mogul,
+          = succeed "but" do
+            %br/
+          who will also help us build the community and refine the features of the contest.
+        %p Thanks!
+      .friends-list.referals-list
+        %h3
+          My Referrals (
+          %span> #{@invited_users.count}
+          )
+        %p
+          Players who have accepted my invitation to Music Mogul.
+          %br>/
+          Referrals Remaining This Contest:
+          %span.count #{current_user.invitation_limit - @invited_users.count}
+        - if @invited_users.count > 0
+          .table-holder
+            %table{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
+              %tr
+                %th{width: "17"} #
+                %th{width: "118"} Registration<br/>Date
+                %th{width: "47"} Picture
+                %th{width: "70"} Username
+                %th{width: "87"} Stage Name
+                %th{width: "77"} Role
+                %th{width: "145"} Evaluations<br/>Given Or Recieved
+              - @invited_users.each_with_index do |user, index|
+                %tr
+                  %td= index + 1
+                  %td= user.created_at.strftime("%m/%d/%y")
+                  %td= image_tag(user.profile_photo.url(:thumb))
+                  %td= user.username
+                  %td= user.entries.present? ? user.entries.first.stage_name : ""
+                  %td= user.musician? ? "Contestant" : "Judge"
+                  %td= user.musician? ? user.entries.first.evaluations.count + user.evaluations.count : user.evaluations.count
 
-%h1 My Referral Link
-
-%input{type: "text", value: current_user.shortened_referral_link, disabled: "disabled"}
-
-%p
-  We're making our first few contests Invite Only to try to recruit fans and musicians that are dedicated to helping
-  us to get Music Mogul right.
-
-%p
-  We're building and refining lots of features and not everything will go perfectly.
-
-%p
-  Use this link to invite people who will not only benefit from and enjoy Music Mogul, but will also help us
-  to build the game and community.
-
-%p
-  Thanks!
-
-%h1 My Referrals
-
-%table
-  %thead
-    %tr
-      %th #
-      %th Date
-      %th Username
-  %tbody
-    - @invited_users.each_with_index do |user, index|
-      %tr
-        %td= index
-        %td= user.created_at
-        %td= user.username
+      - if current_user.entries.count > 0
+        .friends-list.followers-list
+          %h3
+            My Followers (
+            %span> #{current_user.entries.first.users.count}
+            )
+          - if current_user.entries.first.users.count > 0
+            .table-holder
+              %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                %tr
+                  %th #
+                  %th Registration Date
+                  %th Picture
+                  %th Username
+                  %th Evaluations Given Or Recieved
+                - current_user.entries.first.users.each_with_index do |user, index|
+                  %tr
+                    %td= index + 1
+                    %td= user.created_at.strftime("%m/%d/%y")
+                    %td= image_tag(user.profile_photo.url(:thumb))
+                    %td= user.username
+                    %td= user.musician? ? user.entries.first.evaluations.count + user.evaluations.count : user.evaluations.count
+  .main-b
