@@ -1,18 +1,18 @@
 require "spec_helper"
 
 feature "pages" do
-  scenario "user visits about us", js: true, driver: :selenium do
+  scenario "user visits about us" do
     visit root_path
     within("div.footer") { click_link "About Us" }
+    current_path.should == about_us_path
     page.should have_content "Our mission is to help unheralded singers and bands to advance their career in professional music."
-    current_path.should == notices_path
   end
 
-  scenario "user visits contact us", js: true, driver: :selenium do
+  scenario "user visits contact us" do
     visit root_path
     within("div.footer") { click_link "Contact Us" }
-    page.should have_content "Have a question? Drop us a line!"
-    current_path.should == notices_path
+    current_path.should == contact_us_path
+    page.should have_content "Have a question? Send us a note!"
   end
 
   scenario "user visits terms", js: true, driver: :selenium do
