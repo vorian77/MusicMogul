@@ -40,7 +40,7 @@ feature "sign up" do
       fill_in "Hometown", with: Faker::Address.city
       select Entry::GENRES.sample, from: "entry[genre]"
       fill_in "Bio", with: Faker::HipsterIpsum.paragraph
-      fill_in "Youtube URL", with: "http://youtu.be/sGE4HMvDe-Q"
+      fill_in "YouTube URL", with: "http://youtu.be/sGE4HMvDe-Q"
       fill_in "Title", with: Faker::HipsterIpsum.words.join(" ")
       check "Has Music"
       check "Has Vocals"

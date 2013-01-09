@@ -28,14 +28,11 @@
             = f.input :stage_name, required: false, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
             = f.input :genre, required: false, collection: Entry::GENRES, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
             = f.input :hometown, required: false, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
-            .form-row.clearfix
-              %label{:for => "entry_bio"} Bio
-              .textarea-holder
-                %textarea#entry_bio.field{:name => "entry[bio]"}
+            = f.input :bio, required: false, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
           .inner-form-section
             %h3 Performance Video
             = f.input :title, required: false, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
-            = f.input :youtube_url, required: false, label: "Youtube URL", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            = f.input :youtube_url, required: false, label: "YouTube URL", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
             .form-row.clearfix
               .labels
                 %label.check

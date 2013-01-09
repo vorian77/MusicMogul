@@ -1,10 +1,73 @@
-= content_for(:bottom_of_header) do
-  .red-box
-    .left-side  
-    .cl  
-    %span.contest-profile My Video Submission
-    .cl  
-    .right-side  
-
-.main-form
-  = render "entries/form"
+.main.shell
+  .account-nav.clearfix
+    %h3 Account
+    %ul
+      %li
+        %a{href: "#{edit_user_path(current_user)}"} Personal Profile
+      %li.active
+        %a{href: "#{edit_entry_path(current_user.entries.first)}"} Contestant Profile
+      %li
+        %a{href: "#{friends_path}"} Friends
+  .main-t
+  .main-c
+    .sign-up-steps.account-edit
+      %h3 Edit your contestant profile
+      .form-section
+        = simple_form_for @entry, html: {multipart: true} do |f|
+          .inner-form-section
+            %h3 Contestant Information
+            = f.input :stage_name, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            .form-row.clearfix
+              %label{for: "entry_genre"} Genre
+              %select#entry_genre.field{name: "entry[genre]"}
+                = options_for_select([" "] + Entry::GENRES, selected: @entry.genre)
+              %span.error Genre is required
+            = f.input :hometown, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            = f.input :bio, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+          .inner-form-section
+            %h3 Performance Video
+            = f.input :title, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            = f.input :youtube_url, label: "YouTube URL", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            .form-row.clearfix
+              .labels
+                %label.check
+                  %input{type: "checkbox", value: "1", checked: @entry.has_music?, name: "entry[has_music]"}/
+                  %span
+                  Has Music
+                %label.check
+                  %input{type: "checkbox", value: "1", checked: @entry.has_vocals?, name: "entry[has_vocals]"}/
+                  %span
+                  Has Vocals
+                %label.check
+                  %input{type: "checkbox", value: "1", checked: @entry.has_explicit_content?, name: "entry[has_explicit_content]"}/
+                  %span
+                  Has Explicit Content
+          .inner-form-section.clearfix
+            %h3 Performer photo
+            .cover-image
+            .custom-upload
+              .upload-button
+                %input.upload-field#entry_profile_photo{type: "file", name: "entry[profile_photo]"}
+                  .fake-upload
+                    %p Choose File
+                  %input.field.upload-value{title: "No file chosen", type: "text", value: "No file chosen"}/
+              .upload-info
+                %p
+                  You can upload a JPG, PNG, or GIF file that is no
+                  %br>/
+                  more that 4MB. (Do not upload pictures
+                  %br>/
+                  containing celebrities, nudity, artwork or images
+                  = succeed "that" do
+                    %br/
+                  you do not own or represent the copyright for.)
+          .inner-form-section.social-section
+            %h3 Social Account
+            %p Allow fans to connect with you on your social networks.
+            = f.input :facebook, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field", "data-default-prefix" => Entry.columns_hash["facebook"].default }
+            = f.input :pinterest, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field", "data-default-prefix" => Entry.columns_hash["pinterest"].default }
+            = f.input :twitter, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field", "data-default-prefix" => Entry.columns_hash["twitter"].default }
+            = f.input :youtube, label: "YouTube", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field", "data-default-prefix" => Entry.columns_hash["youtube"].default }
+            = f.input :website, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field", "data-default-prefix" => Entry.columns_hash["website"].default }
+          %input.btn{:type => "submit", :value => "Save Profile"}/
+  .main-b

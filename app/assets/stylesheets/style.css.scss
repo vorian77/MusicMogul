@@ -129,6 +129,7 @@ h3 { font-size: 19px; line-height: 22px; color: #f21e1b; font-weight: normal; }
 .form-section .labels-row { padding-bottom: 0; }
 .form-section label { font-size: 15px; line-height: 37px; color: #000; font-weight: bold; width: 196px; float: left; display: inline; }
 .form-section input.field { width: 313px; height: 27px; background: #f8f8f8; border: 1px solid #e6e7e7; border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px; -o-border-radius: 1px; padding: 5px 10px; float: left; display: inline; margin-right: 21px; }
+.form-section textarea { width: 313px; height: 140px; background: #f8f8f8; border: 1px solid #e6e7e7; border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px; -o-border-radius: 1px; padding: 5px 10px; float: left; display: inline; margin-right: 21px; resize:none; }
 .form-section span.error { font-size: 12px; line-height: 24px; color: #000; background: #ff9c00 image_url("tooltip-l.png") no-repeat 0 0; padding: 0 15px 0 20px; float: left; display: none; margin-top: 7px; }
 .form-section label.check { font-weight: normal; width: auto; padding-left: 33px; margin-left: 196px; position: relative; }
 .form-section label.check input { display: none; }

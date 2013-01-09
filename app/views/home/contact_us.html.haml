@@ -7,11 +7,11 @@
       .form-section
         = simple_form_for :contact, url: contacts_path, anchor: "contact" do |f|
           .form-row.clearfix
-            %label{:for => "contact-name"} Name*
+            %label{:for => "contact-name"} Name
             %input#contact-username.field{name: "contact[name]", type: "text", value: ""}/
             %span.error Name is required
           .form-row.clearfix
-            %label{:for => "contact-email"} Email*
+            %label{:for => "contact-email"} Email
             %input#contact-email.field{name: "contact[email]", type: "text", value: ""}/
             %span.error Email is required
           .form-row.clearfix.labels-row
@@ -21,13 +21,9 @@
               %span
               Send me a copy
           .form-row.clearfix
-            %label{:for => "contact-subject"} Subject*
+            %label{:for => "contact-subject"} Subject
             %input#contact-subject.field{:name => "contact[subject]", :type => "text", :value => ""}/
             %span.error Please enter a subject
-          .form-row.clearfix
-            %label{:for => "message-field"} Message*
-            .textarea-holder
-              %textarea#message-field.field{:name => "contact[message]"}
-              %span.error Please enter a message
+          = f.input :message, required: false, as: :text, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
           %input.btn{:type => "submit", :value => "Send"}/
   .main-b
