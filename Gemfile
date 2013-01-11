@@ -16,7 +16,7 @@ gem 'sass'
 gem 'mime-types', require: 'mime/types'
 gem 'mini_magick'
 gem 'pg'
-gem 'rails', '3.2.9'
+gem 'rails', '3.2.11'
 gem 'simple_form'
 gem 'thin-rails'
 
