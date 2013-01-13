@@ -10,7 +10,7 @@ describe ContactMailer do
 
     subject { ContactMailer.contact(params).deliver }
 
-    its(:to) { should == ["phyl@fanhelp.us"] }
+    its(:to) { should == ["contact@musicmogul.com"] }
     its(:cc) { should be_nil }
     its(:from) { should == [from] }
     its(:subject) { should == "Contact Us: #{subj}" }
