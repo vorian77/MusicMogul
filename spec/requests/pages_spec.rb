@@ -21,7 +21,7 @@ feature "pages" do
     fill_in "Message", with: Faker::HipsterIpsum.paragraph
     click_button "Send"
 
-    page.should have_content "Successfully sent!"
+    page.should have_content "Your message was sent, thanks!"
     current_path.should == contact_us_path
   end
 
