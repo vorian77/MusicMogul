@@ -56,7 +56,7 @@
                 %span #{current_user.invited_users.count}/#{current_user.invitation_limit}
       - else
         %p
-          Open to <span>625 judges</span> and <span>25 contestants</span>.
+          Open to <span>1250 judges</span> and <span>50 contestants</span>.
           = link_to "Learn more &gt;&gt;".html_safe, learn_more_path
         - if @inviter
           %h3 Invited by <span>( #{@inviter.username} )</span>
