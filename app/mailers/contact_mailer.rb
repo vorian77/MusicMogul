@@ -5,7 +5,7 @@ class ContactMailer < ActionMailer::Base
     @subject = params[:subject]
     @message = params[:message]
 
-    options = {to: "contact@musicmogul.com",
+    options = {to: "contact@MusicMogul.com",
                from: @from,
                subject: "Contact Us: #{@subject}"}
     options[:cc] = @from if params[:send_me_a_copy] == "1"
