@@ -3,8 +3,7 @@
   .main-c
     .sign-up-steps
       %h2 Sign In
-
-      .error-msg
+      .error-msg{style: "#{'display: block' if flash[:alert] == ""}"}
         %p Incorrect email or password
 
       .form-section.signin-form

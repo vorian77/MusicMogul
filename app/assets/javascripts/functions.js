@@ -1,11 +1,11 @@
-$(function() {
+$(function () {
     // blink fields
-    $(document).on('focusin', '.field, textarea', function() {
-        if(this.title==this.value) {
+    $(document).on('focusin', '.field, textarea',function () {
+        if (this.title == this.value) {
             this.value = '';
         }
-    }).on('focusout', '.field, textarea', function(){
-            if(this.value=='') {
+    }).on('focusout', '.field, textarea', function () {
+            if (this.value == '') {
                 this.value = this.title;
             }
         });
@@ -15,8 +15,8 @@ $(function() {
 
     // custom checkboxes
     $('label.check input:checked').closest('label').addClass('checked');
-    $(document).on('click', 'label.check', function(){
-        if( $(this).find('input').is(':checked') ){
+    $(document).on('click', 'label.check', function () {
+        if ($(this).find('input').is(':checked')) {
             $(this).find('input').attr('checked', false);
             $(this).removeClass('checked');
         } else {
@@ -25,7 +25,7 @@ $(function() {
         }
 
         $(this).find('input').trigger('change');
-        if(!$(this).text().match(/terms of service/)) {
+        if (!$(this).text().match(/terms of service/)) {
             return false;
         }
     });
@@ -80,38 +80,36 @@ $(function() {
 //        }
 //    });
 
-    $('.signin-form form').submit(function() {
-        if ( $('.error-msg').length ) {
+    $('.signin-form form').submit(function () {
+        if ($('.error-msg').length) {
             $('.error-msg').hide();
 
             var field = $('.field').val(),
                 error = false;
 
-            $('.field').each(function() {
-                if ( field.length < 3 ) {
+            $('.field').each(function () {
+                if (field.length < 3) {
                     $('.error-msg').fadeIn('fast');
-
                     error = true;
-
                     return false;
                 }
             });
 
-            if ( error ) {
+            if (error) {
                 return false;
             }
         }
     });
 
     // fake upload field
-    $(document).on('change', '.upload-button .upload-field', function() {
+    $(document).on('change', '.upload-button .upload-field', function () {
         var val = $(this).val(),
             newVal = val.split('\\').pop();
         $(this).parent().find('.upload-value').val(newVal);
         return false;
     });
 
-    $(document).on('focusin', '.upload-value', function() {
+    $(document).on('focusin', '.upload-value', function () {
         $(this).parent().find('.upload-field').click();
         return false;
     });
@@ -126,7 +124,7 @@ $(function() {
 
     $('body').append(hiddenDiv);
 
-    txt.on('keyup', function (){
+    txt.on('keyup', function () {
         content = $(this).val();
 
         content = content.replace(/\n/g, '<br>');
@@ -136,35 +134,35 @@ $(function() {
     });
 
     var reinit = true;
-    $(window).on('blur', function() {
+    $(window).on('blur',function () {
         reinit = false;
-    }).on('focus', function() {
+    }).on('focus', function () {
             reinit = true;
         });
 
     var pane = txt.parent();
     pane.jScrollPane({
-        showArrows: true,
-        animateScroll: true,
-        autoReinitialise: reinit,
-        verticalDragMaxHeight: 80
+        showArrows:true,
+        animateScroll:true,
+        autoReinitialise:reinit,
+        verticalDragMaxHeight:80
     });
 
-    $(document).on('click', '.textarea-holder', function() {
+    $(document).on('click', '.textarea-holder', function () {
         $(this).find('textarea').focus();
         return false;
     });
 
     // fix text fields for IE
-    if ( $.browser.msie ) {
+    if ($.browser.msie) {
         $('.field').css('line-height', '29px');
     }
 
     // copy to clipboard
-    if( $('.referal-link-holder a.copy').length ) {
-        $('.referal-link-holder a.copy').zclip( {
-            path: 'swfs/ZeroClipboard.swf',
-            copy: $('.referal-link-holder input.field').val()
+    if ($('.referal-link-holder a.copy').length) {
+        $('.referal-link-holder a.copy').zclip({
+            path:'swfs/ZeroClipboard.swf',
+            copy:$('.referal-link-holder input.field').val()
         });
     }
 
