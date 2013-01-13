@@ -34,8 +34,9 @@
           = f.input :password, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
           = f.input :password_confirmation, label: "Confirm password", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
           .form-row.clearfix
+            = f.input :tos, as: :hidden, input_html: { value: "0" }
             %label.check
-              %input{:type => "checkbox"}/
+              %input{type: "checkbox", name: "user[tos]", value: "1"}/
               %span
               I agree with the
               %a{href: "#{terms_path}", target: "_blank"} Music Mogul terms of service

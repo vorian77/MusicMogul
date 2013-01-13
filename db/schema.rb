@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121218184619) do
+ActiveRecord::Schema.define(:version => 20130113203749) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20121218184619) do
     t.string   "shortened_referral_link"
     t.integer  "inviter_id"
     t.boolean  "musician",                :default => false
+    t.boolean  "tos"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

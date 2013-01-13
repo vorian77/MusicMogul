@@ -4,6 +4,7 @@ FactoryGirl.define do
     password { "password" }
     username { Faker::Internet.user_name }
     hometown { Faker::Address.city }
+    tos true
   end
 
   factory :confirmed_user, parent: :user do

@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :confirmable
 
   attr_accessible :email, :password, :password_confirmation, :username, :hometown, :show_explicit_videos,
-                  :receive_email_updates, :profile_photo, :confirmed_at, :admin, :musician
+                  :receive_email_updates, :profile_photo, :confirmed_at, :admin, :musician, :tos
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true, uniqueness: true
   validates :referral_token, presence: true, uniqueness: true
+  validates :tos, acceptance: { accept: true, allow_nil: false }
 
   before_validation :set_referral_token, :shorten_referral_link
   before_create :set_inviter
