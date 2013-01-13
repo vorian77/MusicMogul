@@ -25,8 +25,9 @@ $(function() {
         }
 
         $(this).find('input').trigger('change');
-
-        return false;
+        if(!$(this).text().match(/terms of service/)) {
+            return false;
+        }
     });
 
     // form validate
