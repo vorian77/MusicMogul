@@ -45,4 +45,11 @@ feature "pages" do
     current_path.should == learn_more_path
     page.should have_content "Learn More"
   end
+
+  scenario "user visis contest rules" do
+    visit root_path
+    click_link "Contest Rules"
+    current_path.should == contest_rules_path
+    page.should have_content "Contest Rules"
+  end
 end

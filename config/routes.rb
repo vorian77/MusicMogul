@@ -20,6 +20,7 @@ Mvp2::Application.routes.draw do
   match "notices" => "home#notices"
   match "about_us" => "home#about_us"
   match "contact_us" => "home#contact_us"
+  match "contest_rules" => "home#contest_rules"
   match "learn_more" => "home#learn_more"
 
   root :to => 'home#index'
