@@ -43,9 +43,9 @@
               %a{:href => "http://suggestions.musicmogul.com", target: "_blank"} Suggestions
           %ul.sub-nav.clearfix
             %li
-              %a{:href => "#{notices_path(anchor: "privacy")}"} Privacy
+              = link_to "Privacy", privacy_path
             %li
-              %a{:href => "#{notices_path(anchor: "terms")}"} Terms
+              = link_to "Terms", terms_path
         .socials.right
           %a.ico.fb-ico{:href => "http://www.facebook.com/MyMusicMogul", target: "_blank"}
           %a.ico.tw-ico{:href => "http://www.twitter.com/MyMusicMogul", target: "_blank"}

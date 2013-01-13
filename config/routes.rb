@@ -17,10 +17,11 @@ Mvp2::Application.routes.draw do
   resources :contacts, only: [:create]
 
   match "leaderboard" => "entries#leaderboard", as: :leaderboard
-  match "notices" => "home#notices"
   match "about_us" => "home#about_us"
   match "contact_us" => "home#contact_us"
   match "contest_rules" => "home#contest_rules"
+  match "terms" => "home#terms"
+  match "privacy" => "home#privacy"
   match "learn_more" => "home#learn_more"
 
   root :to => 'home#index'

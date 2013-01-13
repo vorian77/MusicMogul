@@ -25,18 +25,18 @@ feature "pages" do
     current_path.should == contact_us_path
   end
 
-  scenario "user visits terms", js: true, driver: :selenium do
+  scenario "user visits terms" do
     visit root_path
     within("div.footer") { click_link "Terms" }
-    page.should have_content "The Website may change these Terms of Use"
-    current_path.should == notices_path
+    page.should have_content "Agreement between user and MusicMogul.com"
+    current_path.should == terms_path
   end
 
-  scenario "user visits privacy", js: true, driver: :selenium do
+  scenario "user visits privacy" do
     visit root_path
     within("div.footer") { click_link "Privacy" }
     page.should have_content "This privacy policy sets out"
-    current_path.should == notices_path
+    current_path.should == privacy_path
   end
 
   scenario "user visis learn more" do
