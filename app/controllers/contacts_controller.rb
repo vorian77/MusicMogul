@@ -2,9 +2,9 @@ class ContactsController < ApplicationController
   def create
     if contact_complete?
       ContactMailer.contact(params[:contact]).deliver
-      redirect_to notices_path(anchor: "contact"), notice: "Successfully sent!"
+      redirect_to contact_us_path, notice: "Successfully sent!"
     else
-      redirect_to notices_path(anchor: "contact"), notice: "Could not send."
+      redirect_to contact_us_path, notice: "Could not send."
     end
   end
 

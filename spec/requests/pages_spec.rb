@@ -11,8 +11,18 @@ feature "pages" do
   scenario "user visits contact us" do
     visit root_path
     within("div.footer") { click_link "Contact Us" }
+
     current_path.should == contact_us_path
     page.should have_content "Have a question? Send us a note!"
+
+    fill_in "Name", with: Faker::Name.name
+    fill_in "Email", with: Faker::Internet.email
+    fill_in "Subject", with: Faker::HipsterIpsum.sentence
+    fill_in "Message", with: Faker::HipsterIpsum.paragraph
+    click_button "Send"
+
+    page.should have_content "Successfully sent!"
+    current_path.should == contact_us_path
   end
 
   scenario "user visits terms", js: true, driver: :selenium do

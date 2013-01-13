@@ -8,7 +8,7 @@
         = simple_form_for :contact, url: contacts_path, anchor: "contact" do |f|
           .form-row.clearfix
             %label{:for => "contact-name"} Name
-            %input#contact-username.field{name: "contact[name]", type: "text", value: ""}/
+            %input#contact-name.field{name: "contact[name]", type: "text", value: ""}/
             %span.error Name is required
           .form-row.clearfix
             %label{:for => "contact-email"} Email
