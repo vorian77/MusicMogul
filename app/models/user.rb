@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   validates :email, presence: { message: "Email is required" }, uniqueness: { message: "Email has already been registered" }
   validates :password, on: :create, presence: { message: "Password is required" }
   validates :referral_token, presence: true, uniqueness: true
-  validates :tos, acceptance: { accept: true, allow_nil: false }
+  validates :tos, acceptance: { accept: true, message: "You must agree to Terms to register", allow_nil: false }
   validates_confirmation_of :password, message: "Passwords do not match"
 
   before_validation :set_referral_token, :shorten_referral_link
