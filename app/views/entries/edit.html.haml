@@ -17,11 +17,7 @@
           .inner-form-section
             %h3 Contestant Information
             = f.input :stage_name, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
-            .form-row.clearfix
-              %label{for: "entry_genre"} Genre
-              %select#entry_genre.field{name: "entry[genre]"}
-                = options_for_select([" "] + Entry::GENRES, selected: @entry.genre)
-              %span.error Genre is required
+            = f.input :genre, collection: Entry::GENRES, wrapper_html: { class: "form-row clearfix genre" }, input_html: { class: "field" }
             = f.input :hometown, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
             = f.input :bio, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
           .inner-form-section
