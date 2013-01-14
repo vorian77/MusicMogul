@@ -2,11 +2,11 @@
   - if notice.present?
     .notice
       = notice
-      %a.close{:href => "#"}
+      %a.close{href: "#"} X
   - if alert.present?
     .alert
       = alert
-      %a.close{:href => "#"}
+      %a.close{href: "#"} X
   -#- if defined?(resource) && resource.errors.present?
   -#  .alert
   -#    The form could not be saved.
