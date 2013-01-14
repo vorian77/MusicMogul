@@ -28,12 +28,12 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
   end
 
   def width
-    image = MiniMagick::Image.open(@file.send(:file))
+    image = MiniMagick::Image.open(@file.respond_to?(:public_url) ? @file.public_url : @file.file)
     image[:width]
   end
 
   def height
-    image = MiniMagick::Image.open(@file.send(:file))
+    image = MiniMagick::Image.open(@file.respond_to?(:public_url) ? @file.public_url : @file.file)
     image[:height]
   end
 
