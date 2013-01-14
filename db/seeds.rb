@@ -3,35 +3,40 @@ User.create(email: "test@fanhelp.us",
             confirmed_at: Date.today,
             username: "tester",
             hometown: "Detroit",
-            admin: true)
+            admin: true,
+            tos: true)
 
 User.create(email: "phyl@fanhelp.us",
             password: "password",
             confirmed_at: Date.today,
             username: "phyl",
             hometown: "Detroit",
-            admin: true)
+            admin: true,
+            tos: true)
 
 morrison = User.create(email: "jim@morrison.com",
                        password: "password",
                        confirmed_at: Date.today,
                        username: "JimMorrison",
                        hometown: "Melbourne",
-                       musician: true)
+                       musician: true,
+                       tos: true)
 
 eminem = User.create(email: "slim@slimshady.com",
                      password: "password",
                      confirmed_at: Date.today,
                      username: "SlimShady",
                      hometown: "Detroit",
-                     musician: true)
+                     musician: true,
+                     tos: true)
 
 aretha = User.create(email: "aretha@arethafranklin.com",
                      password: "password",
                      confirmed_at: Date.today,
                      username: "Aretha",
                      hometown: "Detroit",
-                     musician: true)
+                     musician: true,
+                     tos: true)
 
 Entry.create!(user: morrison,
               stage_name: "The Doors",
