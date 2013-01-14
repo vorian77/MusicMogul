@@ -24,6 +24,9 @@
             %label{:for => "contact-subject"} Subject
             %input#contact-subject.field{:name => "contact[subject]", :type => "text", :value => ""}/
             %span.error Please enter a subject
-          = f.input :message, as: :text, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+          .form-row.clearfix
+            %label{for: "contact-message"} Message
+            %textarea.field{id: "contact-message", name: "contact[message]"}
+            %span.error Please enter a message
           %input.btn{:type => "submit", :value => "Send"}/
   .main-b
