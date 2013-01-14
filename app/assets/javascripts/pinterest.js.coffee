@@ -6,4 +6,4 @@ $ ->
       autoResize: true
       container: $('#foo')
       offset: 8
-      itemWidth: 210
+      itemWidth: 200

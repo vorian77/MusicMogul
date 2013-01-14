@@ -24,7 +24,17 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :masonry do
-    process resize_to_fit: [250, 800]
+    process resize_to_fit: [200, 800]
+  end
+
+  def width
+    image = MiniMagick::Image.open(@file.file)
+    image[:width]
+  end
+
+  def height
+    image = MiniMagick::Image.open(@file.file)
+    image[:height]
   end
 
   def default_url
