@@ -15,6 +15,7 @@ feature "sign up" do
     fill_in "Username", with: Faker::Internet.user_name
     fill_in "Email", with: Faker::Internet.email
     fill_in "Password", with: "password"
+    fill_in "Confirm password", with: "password"
     check "I agree"
 
     lambda {
@@ -71,6 +72,7 @@ feature "sign up" do
     fill_in "Username", with: Faker::Internet.user_name
     fill_in "Email", with: Faker::Internet.email
     fill_in "Password", with: "password"
+    fill_in "Confirm password", with: "password"
     check "I agree"
 
     lambda {

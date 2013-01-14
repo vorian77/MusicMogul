@@ -20,9 +20,12 @@ class User < ActiveRecord::Base
 
   has_many :followed_entries, through: :follows, source: :entry
 
-  validates :username, presence: true, uniqueness: true
+  validates :username, presence: { message: "Username is required" }, uniqueness: true
+  validates :email, presence: { message: "Email is required" }
+  validates :password, on: :create, presence: { message: "Password is required" }
   validates :referral_token, presence: true, uniqueness: true
   validates :tos, acceptance: { accept: true, allow_nil: false }
+  validates_confirmation_of :password, message: "Passwords do not match"
 
   before_validation :set_referral_token, :shorten_referral_link
   before_create :set_inviter

@@ -15,6 +15,8 @@ feature "profile" do
       fill_in "Hometown", with: "Detroit"
       uncheck "Show videos with explicit content"
       uncheck "Send me contest updates via email"
+      fill_in "Password", with: "password1"
+      fill_in "Confirm password", with: "password1"
       click_button "Save"
     end
 
@@ -25,5 +27,13 @@ feature "profile" do
       find_field("user[show_explicit_videos]").should_not be_checked
       find_field("user[receive_email_updates]").should_not be_checked
     end
+
+    click_link "Sign Out"
+    visit new_user_session_path
+    fill_in "Email", with: user.email
+    fill_in "Password", with: "password1"
+    click_button "Sign In"
+    current_path.should == root_path
+    user_should_be_logged_in user.reload
   end
 end

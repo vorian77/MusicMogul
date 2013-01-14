@@ -29,11 +29,11 @@
       .form-section
         = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
           = f.input :musician, as: :hidden
-          = f.input :username, required: false, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+          = f.input :username, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
           = f.input :email, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
           = f.input :password, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
           = f.input :password_confirmation, label: "Confirm password", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
-          .form-row.clearfix
+          .form-row.clearfix.tos
             = f.input :tos, as: :hidden, input_html: { value: "0" }
             %label.check
               %input{type: "checkbox", name: "user[tos]", value: "1"}/
