@@ -13,7 +13,7 @@ class Entry < ActiveRecord::Base
   validates :hometown, presence: true
   validates :profile_photo, presence: true
   validates :title, presence: true
-  validates :youtube_url, presence: true
+  validates :youtube_url, presence: { message: "YouTube URL is required" }
   validates :points, numericality: {only_integer: true, greater_than_or_equal_to: 0}
   validates :facebook, format: { with: /^#{Entry.columns_hash["facebook"].default}/ }
   validates :twitter, format: { with: /^#{Entry.columns_hash["twitter"].default}/ }
@@ -75,7 +75,7 @@ class Entry < ActiveRecord::Base
 
   def ensure_youtube_url_is_valid
     return unless youtube_url?
-    errors.add(:youtube_url, "is not valid") unless youtube_id.present?
+    errors.add(:youtube_url, "is not a valid YouTube URL") unless youtube_id.present?
   end
 
   def set_contest

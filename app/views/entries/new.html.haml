@@ -25,14 +25,14 @@
         = simple_form_for @entry, html: {multipart: true} do |f|
           .inner-form-section
             %h3 Contestant Information
-            = f.input :stage_name, required: false, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
-            = f.input :genre, required: false, collection: Entry::GENRES, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
-            = f.input :hometown, required: false, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
-            = f.input :bio, required: false, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            = f.input :stage_name, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            = f.input :genre, collection: Entry::GENRES, wrapper_html: { class: "form-row clearfix genre" }, input_html: { class: "field" }
+            = f.input :hometown, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            = f.input :bio, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
           .inner-form-section
             %h3 Performance Video
-            = f.input :title, required: false, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
-            = f.input :youtube_url, required: false, label: "YouTube URL", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            = f.input :title, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            = f.input :youtube_url, label: "YouTube URL", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
             .form-row.clearfix
               .labels
                 %label.check
