@@ -40,7 +40,10 @@
                   Has Explicit Content
           .inner-form-section.clearfix
             %h3 Performer photo
-            .cover-image
+            - if @entry.profile_photo?
+              = image_tag(@entry.profile_photo.url(:medium), class: "cover-image")
+            - else
+              .cover-image
             .custom-upload
               .upload-button
                 %input.upload-field#entry_profile_photo{type: "file", name: "entry[profile_photo]"}
