@@ -1,7 +1,12 @@
 Mvp2::Application.routes.draw do
   ActiveAdmin.routes(self)
 
-  devise_for :users, controllers: {confirmations: "confirmations", registrations: "registrations"}
+  devise_for :users, controllers: {confirmations: "confirmations",
+                                   passwords: "passwords",
+                                   registrations: "registrations"}
+  devise_scope :user do
+    match "/users/passwords/reset" => "passwords#reset", as: :password_reset
+  end
   match "/users/verify_email" => "users#verify_email", as: :verify_email
 
   resources :users, only: [:edit, :update]
