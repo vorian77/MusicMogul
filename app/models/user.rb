@@ -20,8 +20,8 @@ class User < ActiveRecord::Base
 
   has_many :followed_entries, through: :follows, source: :entry
 
-  validates :username, presence: { message: "Username is required" }, uniqueness: true
-  validates :email, presence: { message: "Email is required" }
+  validates :username, presence: { message: "Username is required" }, uniqueness: { message: "Username has already been registered" }
+  validates :email, presence: { message: "Email is required" }, uniqueness: { message: "Email has already been registered" }
   validates :password, on: :create, presence: { message: "Password is required" }
   validates :referral_token, presence: true, uniqueness: true
   validates :tos, acceptance: { accept: true, allow_nil: false }
