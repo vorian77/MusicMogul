@@ -27,6 +27,7 @@ feature "sign up" do
     current_path.should == verify_email_path
     page.should have_content "Reserve Your Place As A Contestant"
     page.should have_content "Check Your Inbox"
+    page.should have_no_css "div.notice"
 
     visit user_confirmation_path(confirmation_token: user.confirmation_token)
     current_path.should == new_entry_path
@@ -82,6 +83,7 @@ feature "sign up" do
     current_path.should == verify_email_path
     page.should have_content "Reserve Your Place As A Contest Judge"
     page.should have_content "Check Your Inbox"
+    page.should have_no_css "div.notice"
 
     visit user_confirmation_path(confirmation_token: user.confirmation_token)
     current_path.should == root_path
