@@ -36,7 +36,7 @@
           .form-row.clearfix.tos
             = f.input :tos, as: :hidden, input_html: { value: "0" }
             %label.check
-              %input{type: "checkbox", name: "user[tos]", value: "1"}/
+              %input{type: "checkbox", name: "user[tos]", value: "1", checked: resource.tos?}/
               %span
               I agree with the
               %a{href: "#{terms_path}", target: "_blank"} Music Mogul terms of service
