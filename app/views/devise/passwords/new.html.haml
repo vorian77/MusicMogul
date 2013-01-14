@@ -5,7 +5,8 @@
       %h2 Forgot Password?
       %p.meta
         Enter the email you used to sign up. We’ll send<br />instructions to reset your password.
-
+      .error-msg{style: "#{'display: block' if resource.errors.has_key?(:email)}"}
+        %p Email not found. Try a different email.
       .form-section.signin-form
         = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
           = f.input :email, wrapper_html: { class: "form-row clearfix"}, input_html: { class: "field" }
