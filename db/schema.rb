@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130113203749) do
+ActiveRecord::Schema.define(:version => 20130114180226) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(:version => 20130113203749) do
     t.boolean  "has_vocals",           :default => true
     t.boolean  "has_explicit_content", :default => false
     t.integer  "contest_id"
+    t.integer  "masonry_width"
+    t.integer  "masonry_height"
   end
 
   add_index "entries", ["contest_id"], :name => "index_entries_on_contest_id"

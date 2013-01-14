@@ -11,7 +11,7 @@
           - @entries.each do |entry|
             %li{"data-large" => entry.profile_photo.url(:masonry)}
               .front
-                = image_tag entry.profile_photo.url(:masonry), width: entry.profile_photo.masonry.width, height: entry.profile_photo.masonry.height
+                = image_tag entry.profile_photo.url(:masonry), width: entry.masonry_width, height: entry.masonry_height
                 %p= entry.stage_name
               .back
                 %h4= entry.stage_name

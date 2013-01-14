@@ -29,6 +29,7 @@ class Entry < ActiveRecord::Base
   mount_uploader :profile_photo, ProfilePhotoUploader
 
   before_validation :set_contest
+  before_save :cache_masonry_width_and_height
 
   scope :unexplicit, where(has_explicit_content: false)
   scope :unevaluated_by, lambda { |user|
@@ -72,6 +73,13 @@ class Entry < ActiveRecord::Base
   end
 
   private
+
+  def cache_masonry_width_and_height
+    if profile_photo_changed?
+      self.masonry_width = profile_photo.masonry.width
+      self.masonry_height = profile_photo.masonry.height
+    end
+  end
 
   def ensure_youtube_url_is_valid
     return unless youtube_url?
