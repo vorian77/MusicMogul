@@ -3,7 +3,8 @@ Mvp2::Application.routes.draw do
 
   devise_for :users, controllers: {confirmations: "confirmations",
                                    passwords: "passwords",
-                                   registrations: "registrations"}
+                                   registrations: "registrations",
+                                   sessions: "sessions"}
   devise_scope :user do
     match "/users/passwords/reset" => "passwords#reset", as: :password_reset
   end
