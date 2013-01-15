@@ -6,9 +6,9 @@ describe Contest do
   end
 
   describe "validations" do
-    it { should validate_presence_of :name }
-    it { should validate_presence_of :start_date }
-    it { should validate_presence_of :end_date }
+    it { should validate_presence_of(:name).with_message("Name is required") }
+    it { should validate_presence_of(:start_date).with_message("Start date is required") }
+    it { should validate_presence_of(:end_date).with_message("End date is required") }
 
     describe "#start_date" do
       before do

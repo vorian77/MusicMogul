@@ -10,13 +10,13 @@ describe Entry do
   end
 
   describe "validations" do
-    it { should validate_presence_of :user }
-    it { should validate_presence_of :stage_name }
-    it { should validate_presence_of :title }
-    it { should validate_presence_of :youtube_url }
-    it { should validate_presence_of :genre }
-    it { should validate_presence_of :hometown }
-    it { should validate_presence_of :profile_photo }
+    it { should validate_presence_of(:user).with_message("User is required") }
+    it { should validate_presence_of(:stage_name).with_message("Stage name is required") }
+    it { should validate_presence_of(:title).with_message("Title is required") }
+    it { should validate_presence_of(:youtube_url).with_message("YouTube URL is required") }
+    it { should validate_presence_of(:genre).with_message("Genre is required") }
+    it { should validate_presence_of(:hometown).with_message("Hometown is required") }
+    it { should validate_presence_of(:profile_photo).with_message("Profile photo is required") }
     it { should validate_numericality_of(:points).only_integer }
     it { should ensure_inclusion_of(:genre).in_array(Entry::GENRES) }
     it { should have_valid(:youtube_url).when("http://youtu.be/sGE4HMvDe-Q") }

@@ -11,8 +11,8 @@ describe User do
   end
 
   describe "validations" do
-    it { should validate_presence_of :username }
-    it { should validate_uniqueness_of :username }
+    it { should validate_presence_of(:username).with_message("Username is required") }
+    it { should validate_uniqueness_of(:username).with_message("Username has already been registered") }
   end
 
   describe "before_validation" do

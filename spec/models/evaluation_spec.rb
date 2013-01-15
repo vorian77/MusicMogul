@@ -7,8 +7,8 @@ describe Evaluation do
   end
 
   describe "validations" do
-    it { should validate_presence_of :entry }
-    it { should validate_presence_of :user }
+    it { should validate_presence_of(:entry).with_message("Entry is required") }
+    it { should validate_presence_of(:user).with_message("User is required") }
 
     it { should validate_numericality_of(:music_score).only_integer }
     it { should validate_numericality_of(:vocals_score).only_integer }
