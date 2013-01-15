@@ -12,7 +12,7 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :large do
-    process resize_to_fill: [400, 400]
+    process resize_to_fit: [640, 480]
   end
 
   version :medium do
