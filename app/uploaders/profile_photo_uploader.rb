@@ -24,7 +24,7 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :masonry do
-    process resize_to_fit: [200, 800]
+    process resize_to_fit: [220, 800]
   end
 
   def width

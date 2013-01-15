@@ -209,7 +209,9 @@ h3 { font-size: 19px; line-height: 22px; color: #f21e1b; font-weight: normal; }
 
 .contestants .col { float: left; display: inline; }
 .contestants .col + .col { padding-left: 12px; }
-.contestants h3 { font-size: 23px; line-height: 30px; color: #f21e1b; text-align: center; padding-bottom: 15px; position: relative; height: 100%; top: -21px; }
+//.contestants h3 { font-size: 23px; line-height: 30px; color: #f21e1b; text-align: center; padding-bottom: 15px; position: relative; height: 100%; top: -21px; }
+.contestants h3 { font-size: 23px; color: #f21e1b; text-align: center; margin-bottom: 12px; }
+.main-c.contestants { padding: 10px; }
 
 .contestants-list { width: 960px; height: 100%; position: relative; margin: -25px -12px -35px -28px; }
 

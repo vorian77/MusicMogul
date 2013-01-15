@@ -38,6 +38,22 @@ aretha = User.create(email: "aretha@arethafranklin.com",
                      musician: true,
                      tos: true)
 
+azealia = User.create(email: "azealia@azealiabanks.com",
+                      password: "password",
+                      confirmed_at: Date.today,
+                      username: "azealia",
+                      hometown: "New York",
+                      musician: true,
+                      tos: true)
+
+cash = User.create(email: "johnny@johnnycash.com",
+                   password: "password",
+                   confirmed_at: Date.today,
+                   username: "jcash",
+                   hometown: "Kingsland",
+                   musician: true,
+                   tos: true)
+
 Entry.create!(user: morrison,
               stage_name: "The Doors",
               hometown: "Los Angeles",
@@ -64,3 +80,21 @@ Entry.create!(user: aretha,
               title: "I Say a Little Prayer",
               profile_photo: File.open("public/images/aretha.jpg"),
               bio: %Q{Aretha Louise Franklin (born March 25, 1942) is an American musician, singer, songwriter, and pianist. In a recording career that has spanned over half a century, Franklin's repertoire has included gospel, jazz, blues, R&B, pop, rock and funk.})
+
+Entry.create!(user: azealia,
+              stage_name: "Azealia Banks",
+              hometown: "New York",
+              genre: "Hip Hop",
+              youtube_url: "http://www.youtube.com/watch?v=i3Jv9fNPjgk",
+              title: "212",
+              profile_photo: File.open("public/images/azealia.jpg"),
+              bio: %Q{Azealia Amanda Banks (born May 31, 1991) is an American rapper and singer. Originally from Harlem, New York, Banks at a young age pursued an interest in musical theatre before eventually becoming interested in a career as a recording artist.})
+
+Entry.create!(user: cash,
+              stage_name: "Johnny Cash",
+              hometown: "Kingsland",
+              genre: "Country",
+              youtube_url: "http://www.youtube.com/watch?v=k7K4jH7NqUw",
+              title: "I Walk the Line",
+              profile_photo: File.open("public/images/cash.jpg"),
+              bio: %Q{John R. "Johnny" Cash (February 26, 1932 - September 12, 2003), was an American singer-songwriter, actor, and author, who has been called one of the most influential musicians of the 20th century.})
