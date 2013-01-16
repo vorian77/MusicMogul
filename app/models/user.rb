@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   MUSICIAN_INVITATION_LIMIT = 25
   FAN_INVITATION_LIMIT = 5
 
+  INVITED_USER_POINT_VALUE = 500
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :confirmable
 
@@ -69,6 +71,10 @@ class User < ActiveRecord::Base
 
   def observer?
     uninvited? || late_adopter?
+  end
+
+  def points
+    invited_users.count * INVITED_USER_POINT_VALUE
   end
 
   def profile_complete?

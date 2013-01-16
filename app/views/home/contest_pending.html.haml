@@ -19,3 +19,10 @@
                 %p= entry.hometown
                 %p= entry.bio
   .main-b
+
+- if current_user.musician?
+  .main.shell
+    .main-t
+    .main-c
+      %p Points: #{current_user.points}
+    .main-b
