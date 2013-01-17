@@ -85,7 +85,8 @@ class Entry < ActiveRecord::Base
   def copy_photo_to_user
     if profile_photo? && !user.profile_photo?
       user.profile_photo = self.profile_photo.file
-      user.save!
+      user.save
+      true
     end
   end
 
