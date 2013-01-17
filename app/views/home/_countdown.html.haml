@@ -42,6 +42,9 @@
               %p
                 Invites Accepted/Available
                 %span #{current_user.invited_users.count}/#{current_user.invitation_limit}
+              %p
+                Invitee Points
+                %span #{current_user.points}
         - else
           .referal-link.clearfix
             %h3 Make the contest better!
@@ -54,6 +57,9 @@
               %p
                 Invites Accepted/Available
                 %span #{current_user.invited_users.count}/#{current_user.invitation_limit}
+              %p
+                Invitee Points
+                %span #{current_user.points}
       - else
         %p
           Open to <span>1250 judges</span> and <span>50 contestants</span>.
