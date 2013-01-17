@@ -20,7 +20,7 @@
                 %p= entry.bio
   .main-b
 
-- if current_user.try(:musician?)
+- if user_signed_in?
   .main.shell
     .main-t
     .main-c
