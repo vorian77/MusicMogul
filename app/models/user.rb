@@ -74,6 +74,12 @@ class User < ActiveRecord::Base
     uninvited? || late_adopter?
   end
 
+  def photo
+    return profile_photo if profile_photo?
+    return entries.first.profile_photo if entries.present? && entries.first.profile_photo?
+    profile_photo
+  end
+
   def points
     invited_users.count * (self.musician? ? MUSICIAN_INVITED_USER_POINT_VALUE : FAN_INVITED_USER_POINT_VALUE)
   end

@@ -1,11 +1,11 @@
 .account
   %a{:href => "#"}
-    %img{:alt => "", :src => "#{current_user.profile_photo.url(:thumb)}"}>/
+    %img{:alt => "", :src => "#{current_user.photo.url(:thumb)}"}>/
     #{current_user.display_name}
     %span.dd-toggle
   .acc-dd.clearfix
     %span.dd-arr
-    = image_tag current_user.profile_photo.url(:medium), class: "user-image"
+    = image_tag current_user.photo.url(:medium), class: "user-image"
     %ul
       %li
         %a{:href => "#{edit_user_path(current_user)}"} My Personal Profile

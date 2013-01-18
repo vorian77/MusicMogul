@@ -30,7 +30,6 @@ class Entry < ActiveRecord::Base
 
   before_validation :set_contest
   before_save :cache_masonry_width_and_height
-  after_save :copy_photo_to_user
 
   scope :unexplicit, where(has_explicit_content: false)
   scope :unevaluated_by, lambda { |user|
@@ -79,14 +78,6 @@ class Entry < ActiveRecord::Base
     if profile_photo_changed?
       self.masonry_width = profile_photo.masonry.width
       self.masonry_height = profile_photo.masonry.height
-    end
-  end
-
-  def copy_photo_to_user
-    if profile_photo? && !user.profile_photo?
-      user.profile_photo = self.profile_photo.file
-      user.save
-      true
     end
   end
 

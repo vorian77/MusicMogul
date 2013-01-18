@@ -34,8 +34,8 @@
                 Send me contest updates via email
           .inner-form-section.clearfix
             %h3 Profile photo
-            - if current_user.profile_photo?
-              = image_tag(current_user.profile_photo.url(:medium), class: "cover-image")
+            - if current_user.photo.present?
+              = image_tag(current_user.photo.url(:medium), class: "cover-image")
             - else
               .cover-image
             .custom-upload

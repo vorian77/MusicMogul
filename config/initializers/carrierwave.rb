@@ -5,9 +5,7 @@ CarrierWave.configure do |config|
     :aws_secret_access_key  => ENV['AWS_SECRET_ACCESS_KEY'],
   }
   config.fog_directory  = ENV['AWS_BUCKET']
-  if Rails.env.development?
-    config.storage = :file
-  elsif Rails.env.test?
+  if Rails.env.test?
     config.storage = :file
     config.enable_processing = false
   else
