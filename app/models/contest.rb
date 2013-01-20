@@ -1,5 +1,5 @@
 class Contest < ActiveRecord::Base
-  FIRST_START_DATE = "1/20/13 9:00AM"
+  FIRST_START_DATE = "2/3/13 12:00PM"
 
   attr_accessible :name, :start_date, :end_date
 
