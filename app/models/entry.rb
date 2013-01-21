@@ -8,18 +8,18 @@ class Entry < ActiveRecord::Base
   has_many :users, through: :follows
 
   validates :user, presence: true
-  validates :stage_name, presence: true
-  validates :genre, presence: true, inclusion: {in: Entry::GENRES}
-  validates :hometown, presence: true
-  validates :profile_photo, presence: true
-  validates :title, presence: true
-  validates :youtube_url, presence: { message: "YouTube URL is required" }
+  validates :stage_name, presence: {on: :update}
+  validates :genre, presence: {on: :update}, inclusion: {in: Entry::GENRES, on: :update}
+  validates :hometown, presence: {on: :update}
+  validates :profile_photo, presence: {on: :update}
+  validates :title, presence: {on: :update}
+  validates :youtube_url, presence: {on: :update, message: "YouTube URL is required"}
   validates :points, numericality: {only_integer: true, greater_than_or_equal_to: 0}
-  validates :facebook, format: { with: /^#{Entry.columns_hash["facebook"].default}/ }
-  validates :twitter, format: { with: /^#{Entry.columns_hash["twitter"].default}/ }
-  validates :youtube, format: { with: /^#{Entry.columns_hash["youtube"].default}/ }
-  validates :pinterest, format: { with: /^#{Entry.columns_hash["pinterest"].default}/ }
-  validates :website, format: {with: URI::regexp(%w(http https)) }
+  validates :facebook, format: {with: /^#{Entry.columns_hash["facebook"].default}/}
+  validates :twitter, format: {with: /^#{Entry.columns_hash["twitter"].default}/}
+  validates :youtube, format: {with: /^#{Entry.columns_hash["youtube"].default}/}
+  validates :pinterest, format: {with: /^#{Entry.columns_hash["pinterest"].default}/}
+  validates :website, format: {with: URI::regexp(%w(http https))}
   validate :ensure_youtube_url_is_valid
 
   attr_accessible :genre, :stage_name, :title, :youtube_url, :hometown, :bio,
@@ -31,6 +31,7 @@ class Entry < ActiveRecord::Base
   before_validation :set_contest
   before_save :cache_masonry_width_and_height
 
+  scope :finished, where("stage_name <> '' and genre <> '' and hometown <> '' and profile_photo <> '' and title <> '' and youtube_url <> ''")
   scope :unexplicit, where(has_explicit_content: false)
   scope :unevaluated_by, lambda { |user|
     joins("LEFT OUTER JOIN evaluations on entries.id = evaluations.entry_id AND evaluations.user_id = #{user.id}").
@@ -39,6 +40,12 @@ class Entry < ActiveRecord::Base
 
   def component_count
     (has_music? ? 1 : 0) + (has_vocals? ? 1 : 0) + 1
+  end
+
+  def finished?
+    [:user_id, :stage_name, :genre, :hometown, :profile_photo, :title, :youtube_url].all? do |attribute|
+      send("#{attribute}?")
+    end
   end
 
   def overall_score

@@ -24,6 +24,24 @@ describe User do
     end
   end
 
+  describe "after_create" do
+    context "when the user is a fan" do
+      it "should not create an entry" do
+        lambda {
+          FactoryGirl.create(:user, musician: false)
+        }.should_not change { Entry.count }
+      end
+    end
+
+    context "when the user is a musician" do
+      it "should create an entry" do
+        lambda {
+          FactoryGirl.create(:user, musician: true)
+        }.should change { Entry.count }.by(1)
+      end
+    end
+  end
+
   describe "#average_evaluation_score" do
     subject { user.average_evaluation_score }
     let(:user) { User.first }

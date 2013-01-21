@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
 
   before_validation :set_referral_token, :shorten_referral_link
   before_create :set_inviter
+  after_create :create_first_entry, if: :musician?
 
   scope :invited, where("inviter_id is not null")
   scope :complete, where("username is not null and profile_photo is not null and hometown is not null")
@@ -97,6 +98,10 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def create_first_entry
+    entries.create
+  end
 
   def set_inviter
     self.inviter = User.find_by_referral_token(invitation_token) if invitation_token.present?

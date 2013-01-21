@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def layout_by_resource
-    if devise_controller? || [verify_email_path, new_entry_path, entries_path].include?(request.fullpath)
+    if devise_controller? || [verify_email_path, finish_entry_path].include?(request.fullpath)
       "login"
     else
       "application"
@@ -53,9 +53,9 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_entryless_musicians
-    return if [new_entry_path, entries_path].include? request.fullpath
-    if user_signed_in? && current_user.confirmed? && current_user.musician? && current_user.entries.count == 0
-      redirect_to new_entry_path
+    return if [finish_entry_path].include? request.fullpath
+    if user_signed_in? && current_user.confirmed? && current_user.musician? && current_user.entries.finished.count == 0
+      redirect_to finish_entry_path
     end
   end
 

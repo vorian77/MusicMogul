@@ -9,12 +9,13 @@ Mvp2::Application.routes.draw do
     match "/users/passwords/reset" => "passwords#reset", as: :password_reset
   end
   match "/users/verify_email" => "users#verify_email", as: :verify_email
+  match "/users/finish" => "entries#finish", as: :finish_entry
 
   resources :users, only: [:edit, :update]
   resources :follows, only: [:index]
   resources :friends, only: [:index]
 
-  resources :entries, only: [:new, :edit, :show, :create, :update] do
+  resources :entries, only: [:edit, :show, :update] do
     resources :evaluations, only: [:create]
     resource :follows, only: [:create, :destroy]
   end

@@ -22,7 +22,7 @@
             %small.number 3
             %span Contestant Info
       .form-section
-        = simple_form_for @entry, html: {multipart: true} do |f|
+        = simple_form_for @entry, url: finish_entry_path, html: {multipart: true} do |f|
           .inner-form-section
             %h3 Contestant Information
             = f.input :stage_name, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
@@ -52,7 +52,10 @@
                   Has Explicit Content
           .inner-form-section.clearfix
             %h3 Album cover photo
-            .cover-image
+            - if @entry.profile_photo?
+              = image_tag(@entry.profile_photo.url(:medium), class: "cover-image")
+            - else
+              .cover-image
             .custom-upload
               .upload-button
                 %input.upload-field#entry_profile_photo{:type => "file", name: "entry[profile_photo]"}
@@ -71,4 +74,3 @@
                   you do not own or represent the copyright for.)
           %input.btn{:type => "submit", :value => "Sign Up"}/
   .main-b
--

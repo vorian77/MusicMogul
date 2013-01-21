@@ -1,0 +1,12 @@
+form.edit_entry {
+  div.cover-image {
+    text-align: center;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 175px;
+
+    &.processing {
+      font-size: 26px;
+    }
+  }
+}
