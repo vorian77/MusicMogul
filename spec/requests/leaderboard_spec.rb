@@ -8,6 +8,8 @@ feature "leaderboard" do
     FactoryGirl.create(:evaluation, entry: Entry.all.sample)
 
     visit root_path
+    pending "contest start flow"
+
     click_link "Leader Board"
     current_path.should == leaderboard_path
 

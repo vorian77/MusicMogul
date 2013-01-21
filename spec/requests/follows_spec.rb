@@ -33,6 +33,8 @@ feature "follows" do
     login_as user, scope: :user
 
     visit root_path
+    pending "contest start flow"
+
     click_link "Following"
     current_path.should == follows_path
 
