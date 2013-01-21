@@ -32,10 +32,14 @@ class EntriesController < ApplicationController
   end
 
   def update
-    if @entry.update_attributes(params[:entry])
-      redirect_to edit_entry_path(@entry)
-    else
-      render "entries/edit"
+    respond_to do |format|
+      if @entry.update_attributes(params[:entry])
+        format.html { redirect_to edit_entry_path(@entry) }
+        format.js { render json: @entry }
+      else
+        format.html { render "entries/edit" }
+        format.js { render json: @entry.errors }
+      end
     end
   end
 
