@@ -102,14 +102,14 @@ $(function () {
     });
 
     // fake upload field
-    $(document).on('change', '.upload-button .upload-field', function () {
-        var val = $(this).val(),
-            newVal = val.split('\\').pop();
-        $(this).parent().find('.upload-value').val(newVal);
-        return false;
-    });
+//    $(document).on('change', '.upload-button .upload-field', function () {
+//        var val = $(this).val(),
+//            newVal = val.split('\\').pop();
+//        $(this).parent().find('.upload-value').val(newVal);
+//        return false;
+//    });
 
-    $(document).on('focusin', '.upload-value', function () {
+    $(document).on('click', '.upload-value', function () {
         $(this).parent().find('.upload-field').click();
         return false;
     });

@@ -15,6 +15,8 @@ $ ->
       else
         $("div.cover-image").html(progress + "%")
     done: (e, data) ->
+      $("div.fake-upload > p").html("Change File")
+      $("input.upload-value").val(data.result.profile_photo.url.split("/").pop())
       url = data.result.profile_photo.medium.url
       if $("div.cover-image").length
         $("div.cover-image").after("<img class='cover-image' src='" + url + "'/>")

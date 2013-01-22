@@ -48,8 +48,12 @@
               .upload-button
                 %input.upload-field#entry_profile_photo{type: "file", name: "entry[profile_photo]"}
                   .fake-upload
-                    %p Choose File
-                  %input.field.upload-value{title: "No file chosen", type: "text", value: "No file chosen"}/
+                    %p
+                      - if @entry.profile_photo?
+                        Change File
+                      - else
+                        Choose File
+                  %input.field.upload-value{type: "text", value: "#{@entry.profile_photo? ? @entry.profile_photo.file.filename : "No file chosen"}", readonly: "readonly"}/
               .upload-info
                 %p
                   You can upload a JPG, PNG, or GIF file that is no
