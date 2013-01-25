@@ -1,7 +1,6 @@
 class Entry < ActiveRecord::Base
   GENRES = ['Country', 'Electronic', 'Hip Hop', 'Pop', 'R&B', 'Rock']
 
-  belongs_to :contest
   belongs_to :user
   has_many :evaluations, dependent: :destroy
   has_many :follows, dependent: :destroy
@@ -28,7 +27,6 @@ class Entry < ActiveRecord::Base
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
-  before_validation :set_contest
   before_save :cache_masonry_width_and_height
 
   scope :finished, where("stage_name <> '' and genre <> '' and hometown <> '' and profile_photo <> '' and title <> '' and youtube_url <> ''")
@@ -91,9 +89,5 @@ class Entry < ActiveRecord::Base
   def ensure_youtube_url_is_valid
     return unless youtube_url?
     errors.add(:youtube_url, "is not a valid YouTube URL") unless youtube_id.present?
-  end
-
-  def set_contest
-    self.contest = Contest.active || Contest.next
   end
 end

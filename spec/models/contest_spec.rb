@@ -1,10 +1,6 @@
 require "spec_helper"
 
 describe Contest do
-  describe "associations" do
-    it { should have_many(:entries).dependent(:nullify) }
-  end
-
   describe "validations" do
     it { should validate_presence_of(:start_date).with_message("Start date is required") }
     it { should validate_presence_of(:end_date).with_message("End date is required") }
