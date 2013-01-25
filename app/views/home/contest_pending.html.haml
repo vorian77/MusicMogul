@@ -10,7 +10,7 @@
       #foo
         %ul#tiles
           - @entries.each do |entry|
-            %li{"data-large" => entry.profile_photo.url(:large)}
+            %li{"data-large" => entry.profile_photo.url(:large), "data-entry-id" => entry.id}
               .front
                 = image_tag entry.profile_photo.url(:masonry), width: entry.masonry_width, height: entry.masonry_height
                 %p= entry.stage_name

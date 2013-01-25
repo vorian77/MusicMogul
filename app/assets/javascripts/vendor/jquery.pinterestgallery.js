@@ -227,7 +227,8 @@
 								
 			  	$(this).on('mouseover', {target:$(this), root:_this}, overCard);
 				$(this).on('mouseleave', {target:$(this), root:_this}, outCard);				
-				$(this).on('click', {target:$(this), root:_this}, clickCard);								
+
+                $(this).on('click', {target:$(this), root:_this}, function() { $(this).trigger("cardClicked") });
 				$(this).find('.back').css('height', $(this).find('.front').outerHeight())				
 			});
 			_this.data('itemArr', _itemArr);			
