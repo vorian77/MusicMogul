@@ -171,4 +171,33 @@ $(function () {
 
     // custom select field
     $('select').c2Selectbox();
+
+    // contestant songs slideshow
+    $('.contestant-songs').flexslider({
+        controlNav: false,
+        animation: 'slide'
+    });
+
+    // evaluation sliders
+    $('.jq-slider').each(function() {
+        var valueNumber = 5;
+
+        $(this).slider({
+            value: valueNumber,
+            min: 0,
+            max: 10,
+            step: 0.5,
+            slide: function( event, ui ) {
+                $(this).find('.ui-slider-handle').text(ui.value);
+                $(this).find('.grade').width(ui.value*10+'%');
+                $(this).closest("div.evaluation-slider").find("input.hidden:first").val(ui.value);
+            },
+            create: function( event, ui ) {
+                var val = $(this).slider("option", "value");
+                $(this).find('.ui-slider-handle').text(val);
+                $(this).closest("div.evaluation-slider").find("input.hidden:first").val(val);
+                $(this).find('.grade').width(val*10+'%');
+            }
+        });
+    });
 });

@@ -1,28 +1,9 @@
-.progress-box
+.evaluation-slider
   = form.input "#{type}_score".to_sym, as: :hidden
-  %h5 #{type.to_s.titleize}
-  .red-progress
-    .inner-progress
-      .red-line
-        %span.arrow  
-    %ul
-      %li
-        %a{:href => "#"} 1
-      %li
-        %a{:href => "#"} 2
-      %li
-        %a{:href => "#"} 3
-      %li
-        %a{:href => "#"} 4
-      %li
-        %a{:href => "#"} 5
-      %li
-        %a{:href => "#"} 6
-      %li
-        %a{:href => "#"} 7
-      %li
-        %a{:href => "#"} 8
-      %li
-        %a{:href => "#"} 9
-      %li
-        %a{:href => "#"} 10
+  %h4 #{type.to_s.titleize}
+  .scale
+    %span.null 0
+    %span.mid 5
+    %span.high 10
+  .jq-slider
+    %span.grade

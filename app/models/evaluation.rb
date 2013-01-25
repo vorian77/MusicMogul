@@ -7,11 +7,11 @@ class Evaluation < ActiveRecord::Base
   validates :entry, presence: true
   validates :user, presence: true
 
-  validates :music_score, numericality: {only_integer: true, greater_than: 0, less_than: 11, allow_nil: true}
-  validates :vocals_score, numericality: {only_integer: true, greater_than: 0, less_than: 11, allow_nil: true}
-  validates :presentation_score, numericality: {only_integer: true, greater_than: 0, less_than: 11}
+  validates :music_score, numericality: {greater_than: 0, less_than: 11, allow_nil: true}
+  validates :vocals_score, numericality: {greater_than: 0, less_than: 11, allow_nil: true}
+  validates :presentation_score, numericality: {greater_than: 0, less_than: 11}
   validates :overall_score, numericality: {greater_than: 0, less_than: 11}
-  validate :ensure_invited_user
+  #validate :ensure_invited_user
 
   before_validation :calculate_overall_score
   after_save :calculate_entry_points
