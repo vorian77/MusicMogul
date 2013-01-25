@@ -5,11 +5,10 @@ class Contest < ActiveRecord::Base
 
   has_many :entries, dependent: :nullify
 
-  validates :name, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
   validate :ensure_end_date_is_after_start_date
-  validate :ensure_contests_are_not_overlapping
+  #validate :ensure_contests_are_not_overlapping
 
   class << self
     def active
@@ -27,10 +26,10 @@ class Contest < ActiveRecord::Base
     return unless start_date? && end_date?
     errors.add(:end_date, "must be after start date") if end_date < start_date
   end
-
-  def ensure_contests_are_not_overlapping
-    last_contest = Contest.order("start_date").last
-    return unless start_date? && last_contest
-    errors.add(:start_date, "cannot overlap with existing contests") if start_date < last_contest.end_date
-  end
+  #
+  #def ensure_contests_are_not_overlapping
+  #  last_contest = Contest.order("start_date").last
+  #  return unless start_date? && last_contest
+  #  errors.add(:start_date, "cannot overlap with existing contests") if start_date < last_contest.end_date
+  #end
 end

@@ -8,6 +8,6 @@ class HomeController < ApplicationController
       @inviter = User.find_by_referral_token(session[:referral_token]) if session[:referral_token].present?
     end
 
-    render "contest_pending", layout: "login" unless Time.now >= Time.zone.parse(Contest::FIRST_START_DATE)
+    render "contest_pending", layout: "login" #unless Contest.active.present?
   end
 end

@@ -6,7 +6,6 @@ describe Contest do
   end
 
   describe "validations" do
-    it { should validate_presence_of(:name).with_message("Name is required") }
     it { should validate_presence_of(:start_date).with_message("Start date is required") }
     it { should validate_presence_of(:end_date).with_message("End date is required") }
 
@@ -17,7 +16,7 @@ describe Contest do
       end
 
       it { should have_valid(:start_date).when(Date.tomorrow + 1.day) }
-      it { should_not have_valid(:start_date).when(Date.today) }
+      #it { should_not have_valid(:start_date).when(Date.today) }
     end
 
     describe "#end_date" do

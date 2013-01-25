@@ -1,0 +1,36 @@
+.c2-sb-wrap { position: relative; display: inline; float: left; margin-right: 21px; }
+.c2-sb-inner-wrap { position: relative; height: 35px; padding-left: 10px; background: #f8f8f8; border: 1px solid #e6e7e7; }
+.c2-sb-wrap .c2-sb-text { position: relative; display: inline; float: left; height: 19px; overflow: hidden; padding: 8px 0px; border: 0 none; color: #bababa; font-size: 14px; line-height: 18px; cursor: pointer; background: transparent; white-space: nowrap; }
+.c2-sb-wrap .c2-sb-button { position: relative; display: inline; float: left; width: 32px; height: 35px; font-size: 0px; line-height: 0px; text-indent: -4000px; background: #fff; cursor: pointer; border-left: 1px solid #e6e7e7; }
+.c2-sb-wrap .c2-sb-button span { width: 0; height: 0; display: block; font-size: 0; line-height: 0; text-indent: -4000px; border-top: 7px solid #9e9e9e; border-right: 6px solid transparent; border-left: 6px solid transparent; position: absolute; top: 50%; left: 50%; margin: -3px 0 0 -5px; }
+.c2-sb-wrap .c2-sb-list-wrap { display: none; position: absolute; left: 0px; top: 100%; border: 1px solid #e6e7e7; background: #FFFFFF; min-width: 100%; max-height: 170px; overflow-x: hidden; }
+.c2-sb-wrap .c2-sb-list-wrap .c2-sb-list { display: block; position: relative; list-style-type: none; padding: 0px; margin: 0px; display: block; overflow-x: hidden; }
+.c2-sb-wrap .c2-sb-list-wrap .c2-sb-list .c2-sb-list-item { display: block; width: 100%; padding: 0px; margin: 0px; }
+.c2-sb-wrap .c2-sb-list-wrap .c2-sb-list .c2-sb-list-item .c2-sb-list-item-link { display: block; padding: 5px; margin: 0px; height: 18px; line-height: 18px; white-space: nowrap; text-decoration: none; color: #bababa; font-size: 14px; }
+.c2-sb-wrap .c2-sb-list-wrap .c2-sb-list .c2-sb-list-item .c2-sb-list-item-link:hover,
+.c2-sb-wrap .c2-sb-list-wrap .c2-sb-list .c2-sb-list-item .c2-sb-list-item-link-active { background: #f3f3f3; }
+
+.c2-sb-wrap .c2-sb-list-wrap .c2-sb-list .c2-sb-list-item .c2-sb-list-item-group { display: block; padding: 5px; margin: 0px; height: 18px; line-height: 18px; white-space: nowrap; text-decoration: none; color: #bababa; font-size: 14px; font-weight: bold; }
+.c2-sb-wrap .c2-sb-list-wrap .c2-sb-list .c2-sb-list-item .c2-sb-list-item-link:hover {  }
+
+/* States */
+.c2-sb-wrap,
+.c2-sb-wrap .c2-sb-inner-wrap,
+.c2-sb-wrap .c2-sb-text,
+.c2-sb-wrap .c2-sb-button { z-index: 10; }
+.c2-sb-wrap .c2-sb-list-wrap { z-index: 6; }
+
+.c2-sb-closing,
+.c2-sb-closing .c2-sb-inner-wrap,
+.c2-sb-closing .c2-sb-text,
+.c2-sb-closing .c2-sb-button { z-index: 15; }
+.c2-sb-closing .c2-sb-list-wrap { z-index: 11; }
+
+.c2-sb-open,
+.c2-sb-open .c2-sb-inner-wrap,
+.c2-sb-open .c2-sb-text,
+.c2-sb-open .c2-sb-button { z-index: 20; }
+.c2-sb-open .c2-sb-list-wrap { z-index: 16; }
+
+/* jScroll Pane overrides */
+.c2-sb-wrap .jspVerticalBar .jspArrowDown { top: 100%; margin-top: -13px; }

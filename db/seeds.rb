@@ -1,3 +1,6 @@
+Contest.create!(start_date: 1.week.from_now,
+                end_date: 3.weeks.from_now)
+
 User.create(email: "test@fanhelp.us",
             password: "password",
             confirmed_at: Date.today,

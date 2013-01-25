@@ -12,3 +12,13 @@
  *= require_tree .
  *= require_self
  */
+
+.signin-support a.sign-up-link { text-decoration: none; }
+.signin-support a.sign-up-link:hover { text-decoration: underline; }
+.main-c.contestants { padding: 10px; }
+.contestants h3 { font-size: 23px; color: #f21e1b; text-align: center; margin-bottom: 12px; }
+.form-section textarea { width: 313px; height: 140px; background: #f8f8f8; border: 1px solid #e6e7e7; border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px; -o-border-radius: 1px; padding: 5px 10px; float: left; display: inline; margin-right: 21px; resize:none; }
+.form-section span.error { font-size: 12px; line-height: 24px; color: #000; background: #ff9c00 image_url("tooltip-l.png") no-repeat 0 0; padding: 0 15px 0 20px; float: left; margin-top: 7px; }
+.form-row.tos span.error { float: right; margin-right: 44px; }
+.contact-form span.error { display: none; }
+.acc-dd { z-index: 2000; }

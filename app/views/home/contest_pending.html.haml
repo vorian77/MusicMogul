@@ -1,4 +1,5 @@
-= render "home/countdown"
+- unless Contest.active.present?
+  = render "home/countdown"
 
 .main.shell
   .main-t

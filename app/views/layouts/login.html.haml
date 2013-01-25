@@ -19,6 +19,21 @@
               Tomorrow's music stars<br/>discovered by fans
           - if user_signed_in?
             = render "layouts/profile"
+            - if Contest.active.present?
+              #header-nav
+                %ul
+                  %li.auditions{class: "#{'active' if current_page?(root_path)}"}
+                    %a{href: "#{root_path}"}
+                      Auditions
+                      %span.ico
+                  %li.evaluations{class: "#{'active' if current_page?(evaluations_path)}"}
+                    %a{href: "#{evaluations_path}"}
+                      My Evaluations
+                      %span.ico
+                  %li.leader-board{class: "#{'active' if current_page?(leaderboard_path)}"}
+                    %a{href: "#{leaderboard_path}"}
+                      Leader Board
+                      %span.ico
           - else
             %a.btn.right{:href => "#{new_user_session_path}"} Sign In
         .header-shadow
