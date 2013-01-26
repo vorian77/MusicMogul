@@ -16,7 +16,7 @@
           %h1#logo.left
             %a.notext{:href => "#{root_path}"} MusicMogul
             %span
-              Tomorrow's music stars<br/>discovered by fans
+              Tomorrow's music stars<br/>discovered by today's music fans
           - if user_signed_in?
             = render "layouts/profile"
             - if Contest.active.present?
