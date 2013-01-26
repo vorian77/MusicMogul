@@ -1,9 +1,9 @@
 .evaluation-slider
-  = form.input "#{type}_score".to_sym, as: :hidden
+  = form.input "#{type}_score".to_sym, as: :hidden if defined?(form)
   %h4 #{type.to_s.titleize}
   .scale
     %span.null 0
     %span.mid 5
     %span.high 10
-  .jq-slider
+  .jq-slider{"data-value" => @evaluation.send("#{type}_score"), "data-disabled" => defined?(disabled)}
     %span.grade

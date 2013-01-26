@@ -1,160 +1,3 @@
--#= content_for(:bottom_of_header) do
--#  = render "evaluations/progress"
--#
--#/ Main Content
--##main-content.left
--#  .video-holder
--#    %h3.left #{@entry.stage_name} - #{@entry.title}
--#    = render "follows/button", entry: @entry
--#    %iframe{:allowfullscreen => "", :frameborder => "0", :height => "363", :src => "http://www.youtube.com/embed/#{@entry.youtube_id}", :width => "640"}
--#    %a.flag-btn{:href => "#"}
--#      %span Flag as inappropiate
--#    .cl  
--#    - if current_user.has_evaluated?(@entry) || current_user.observer?
--#      .stats
--#        .left-part
--#          .stat-box
--#            .heading
--#              %span Rank
--#            %span.number#rank #{@entry.rank}
--#          .cl  
--#          .stat-box
--#            .heading
--#              %span Points
--#            %span.number#points #{@entry.points}
--#        .right-part
--#          %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
--#            %tr
--#              %th.first{:style => "width:128px;"} Evaluations
--#              %th{:style => "width:114px;"}
--#                %span.me Me
--#              %th.last{:style => "width:114px;"}
--#                %span.all Community
--#            %tr.even
--#              %td.first Music
--#              %td #{@entry.has_music? ? @evaluation.music_score : "N/A"}
--#              %td.last #{@entry.has_music? ? number_with_precision(@entry.overall_music_score, precision: 1) : "N/A"}
--#            %tr
--#              %td.first Vocals
--#              %td #{@entry.has_vocals? ? @evaluation.vocals_score : "N/A"}
--#              %td.last #{@entry.has_vocals? ? number_with_precision(@entry.overall_vocals_score, precision: 1) : "N/A"}
--#            %tr.even
--#              %td.first Presentation
--#              %td #{@evaluation.presentation_score}
--#              %td.last #{number_with_precision(@entry.overall_presentation_score, precision: 1)}
--#            %tr.last
--#              %td.first Average
--#              %td #{number_with_precision @evaluation.overall_score, precision: 1}
--#              %td.last #{number_with_precision @entry.overall_score, precision: 1}
--#        .cl
--#  - if current_user.has_evaluated?(@entry) || current_user.observer?
--#    .bottom-list
--#      %ul
--#        - @entry.evaluations.includes(:user).order("created_at desc").each do |evaluation|
--#          %li.box
--#            .img-holder
--#              %a{:href => "#"}
--#                %img{:alt => "", :height => "61", :src => "#{evaluation.user.profile_photo.url(:thumb)}", :width => "61"}/
--#            .text-holder.left
--#              %a.title{:href => "#"}= evaluation.user.username.presence || "Anonymous"
--#              .cl  
--#              .left-part
--#                %span.left-text Hometown
--#                %span.right-text #{evaluation.user.hometown.presence || "Unspecified"}
--#                .cl  
--#                %span.left-text Evaluations
--#                %span.right-text #{evaluation.user.evaluations.count}
--#                .cl  
--#                %span.left-text Avg. Score
--#                %span.right-text #{number_with_precision evaluation.user.average_evaluation_score, precision: 1}
--#                .cl  
--#              .right-part
--#                %ul
--#                  %li
--#                    %span.red #{evaluation.created_at.strftime("%m/%d/%y")}
--#                  %li
--#                    %span.red #{evaluation.created_at.strftime("%H:%M")}
--#                  - if @entry.has_music?
--#                    %li
--#                      %span
--#                        Music
--#                        %span.red #{evaluation.music_score}
--#                  - if @entry.has_vocals?
--#                    %li
--#                      %span
--#                        Vocals
--#                        %span.red #{evaluation.vocals_score}
--#                  %li
--#                    %span
--#                      Presentation
--#                      %span.red #{evaluation.presentation_score}
--#                - if evaluation.user.follows?(@entry)
--#                  %a.red-star{:href => "#"}
--#                .cl  
--#                - if evaluation.comment?
--#                  .ellipsis
--#                    %p #{evaluation.comment}
--#
--#  - else
--#    %h4 Watch the video and make an evaluation.
--#    .gray-box
--#      = simple_form_for [@entry, @evaluation] do |f|
--#        .top-part
--#          - if @entry.has_music?
--#            = render "evaluations/slider", form: f, type: :music
--#          - if @entry.has_vocals?
--#            = render "evaluations/slider", form: f, type: :vocals
--#          = render "evaluations/slider", form: f, type: :presentation
--#          .cl  
--#        .comment-box
--#          %h5 Comments
--#          = f.input :comment, label: false, input_html: { rows: "5", cols: "5" }, wrapper_html: { class: "textarea-holder scrollpane" }
--#        = f.submit "Submit", class: "submit"
--#        .cl  
--#  / END Main Content
--#/ Sidebar
--##sidebar.right
--#  - if entry = Entry.unevaluated_by(current_user).where("entries.id != ?", @entry.id).order("random()").first
--#    %a.next{:href => "#{entry_path(entry)}"} Next Audition
--#  - else
--#    %div.next
--#  .cl  
--#  .img-box
--#    %img{:alt => "", :height => "260", :src => "#{@entry.profile_photo.url(:medium)}", :width => "274"}/
--#  %h5
--#    Genre:
--#    %span= @entry.genre
--#  %h5
--#    Hometown:
--#    %span= @entry.hometown
--#  %h5
--#    Followers:
--#    %span= @entry.follows.count
--#  .cl  
--#  .ellipsis
--#    %p= @entry.bio
--#  - if show_social?(@entry)
--#    .social-holder
--#      %ul
--#        - if @entry.facebook != Entry.columns_hash["facebook"].default
--#          %li
--#            %a.facebook{href: "#{@entry.facebook}", target: "_blank"}  
--#        - if @entry.twitter != Entry.columns_hash["twitter"].default
--#          %li
--#            %a.twitter{href: "#{@entry.twitter}", target: "_blank"}  
--#        - if @entry.pinterest != Entry.columns_hash["pinterest"].default
--#          %li
--#            %a.pinterest{href: "#{@entry.pinterest}", target: "_blank"}  
--#        - if @entry.youtube != Entry.columns_hash["youtube"].default
--#          %li
--#            %a.youtube{href: "#{@entry.youtube}", target: "_blank"}  
--#        - if @entry.website? != Entry.columns_hash["website"].default
--#          %li
--#            %a.global{href: "#{@entry.website}", target: "_blank"}  
--#      .cl  
--#/ END Sidebar
--#.cl  
-
 .shell.interior
   .main
     .main-t
@@ -170,6 +13,14 @@
             %p.genre #{@entry.genre}
             %p.city #{@entry.hometown}
           .right-info
+            - unless @evaluation.new_record?
+              .social-icos
+                - if @entry.facebook != Entry.columns_hash["facebook"].default
+                  %a.ico.fb-ico{href: "#{@entry.facebook}", target: "_blank"}
+                - if @entry.twitter != Entry.columns_hash["twitter"].default
+                  %a.ico.tw-ico{href: "#{@entry.twitter}", target: "_blank"}
+                - if @entry.youtube != Entry.columns_hash["youtube"].default
+                  %a.ico.yt-ico{href: "#{@entry.youtube}", target: "_blank"}
             %p #{@entry.bio}
     .main-b.main-b-edit
   .main
@@ -182,7 +33,23 @@
             .slide
               %iframe{:allowfullscreen => "", :frameborder => "0", :height => "363", :src => "http://www.youtube.com/embed/#{@entry.youtube_id}", :width => "640"}
     .main-b.main-b-edit
-  - unless current_user.has_evaluated?(@entry)
+  - if current_user.has_evaluated?(@entry)
+    .main
+      .main-t
+      .main-c
+        .evaluations
+          %h3 Watch the video and make your evaluations
+          .evaluation-sliders.clearfix
+            - if @entry.has_vocals?
+              = render "evaluations/slider", type: :vocals, disabled: true
+            - if @entry.has_music?
+              = render "evaluations/slider", type: :music, disabled: true
+            = render "evaluations/slider", type: :presentation, disabled: true
+          .evaluation-comment
+            %label{:for => "eval-comment-field"} Comment
+            %p= @evaluation.comment
+      .main-b.main-b-edit
+  - else
     .main
       .main-t
       .main-c

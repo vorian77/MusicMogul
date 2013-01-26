@@ -76,7 +76,7 @@
                   = succeed "Avg." do
                     %br/
                   Score
-                  %span #{evaluation.entry.overall_score}
+                  %span #{number_with_precision(evaluation.entry.overall_score, precision: 1)}
               .right-info
                 .stats
                   %p

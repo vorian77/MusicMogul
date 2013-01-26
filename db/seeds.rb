@@ -83,7 +83,10 @@ Entry.create!(user: aretha,
               youtube_url: "http://www.youtube.com/watch?v=STKkWj2WpWM",
               title: "I Say a Little Prayer",
               profile_photo: File.open("public/images/aretha.jpg"),
-              bio: %Q{Aretha Louise Franklin (born March 25, 1942) is an American musician, singer, songwriter, and pianist. In a recording career that has spanned over half a century, Franklin's repertoire has included gospel, jazz, blues, R&B, pop, rock and funk.})
+              bio: %Q{Aretha Louise Franklin (born March 25, 1942) is an American musician, singer, songwriter, and pianist. In a recording career that has spanned over half a century, Franklin's repertoire has included gospel, jazz, blues, R&B, pop, rock and funk.},
+              facebook: "http://www.facebook.com/arethafranklin",
+              twitter: "http://www.twitter.com/ArethaFranklin",
+              youtube: "http://www.youtube.com/ArethaFranklinVEVO")
 
 Entry.create!(user: azealia,
               stage_name: "Azealia Banks",

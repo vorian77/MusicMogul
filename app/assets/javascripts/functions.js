@@ -180,13 +180,14 @@ $(function () {
 
     // evaluation sliders
     $('.jq-slider').each(function() {
-        var valueNumber = 5;
-
+        var valueNumber = $(this).data("value") || 5;
+        var disabled = $(this).data("disabled");
         $(this).slider({
             value: valueNumber,
             min: 0,
             max: 10,
             step: 0.5,
+            disabled: disabled,
             slide: function( event, ui ) {
                 $(this).find('.ui-slider-handle').text(ui.value);
                 $(this).find('.grade').width(ui.value*10+'%');
