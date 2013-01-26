@@ -200,4 +200,15 @@ $(function () {
             }
         });
     });
+
+    // show/hide moguls info
+    $(document).on('click', '.list-handle', function() {
+        var hiddenRows = $(this).parent().find('.hidden-row');
+
+        if ( hiddenRows.length ) {
+            hiddenRows.stop(true,true).slideToggle('fast');
+
+            return false;
+        }
+    });
 });

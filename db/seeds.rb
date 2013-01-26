@@ -57,6 +57,7 @@ cash = User.create(email: "johnny@johnnycash.com",
                    musician: true,
                    tos: true)
 
+Entry.destroy_all
 Entry.create!(user: morrison,
               stage_name: "The Doors",
               hometown: "Los Angeles",

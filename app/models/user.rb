@@ -43,6 +43,13 @@ class User < ActiveRecord::Base
     evaluations.sum(:overall_score) / evaluations.count.to_f
   end
 
+  [:music, :vocals, :presentation].each do |type|
+    define_method "average_#{type}_score" do
+      return 0 unless evaluations.where("#{type}_score is not null").present?
+      evaluations.sum("#{type}_score") / evaluations.where("#{type}_score is not null").count.to_f
+    end
+  end
+
   def display_name
     self.username.presence || self.email
   end

@@ -22,4 +22,16 @@ module ApplicationHelper
   def contest_started?
     Time.now >= Time.zone.parse(Contest::FIRST_START_DATE)
   end
+
+  def evaluation_datetime(created_at)
+    date = if created_at.to_date == Date.today
+      "Today"
+           elsif created_at.to_date == Date.yesterday
+      "Yesterday"
+           else
+      created_at.strftime("%b %d, %Y")
+           end
+    time = created_at.strftime("%I:%M%p")
+    [date, time].join(", ")
+  end
 end

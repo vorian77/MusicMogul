@@ -1,56 +1,97 @@
-= content_for(:bottom_of_header) do
-  = render "evaluations/progress"
-
-- @evaluations.each do |evaluation|
-  - entry = evaluation.entry
-  .box
-    .img-holder
-      %a{:href => "#{entry_path(entry)}"}
-        %img{:alt => "", :height => "186", :src => "#{entry.profile_photo.url(:medium)}", :width => "186"}/
-    .text-holder.left
-      = link_to entry.stage_name, entry, class: "title"
-      = render "follows/button", entry: entry
-      .cl  
-      .left-part
-        %span.left-text Genre
-        %span.right-text #{entry.genre || "Unspecified"}
-        .cl  
-        %span.left-text Hometown
-        %span.right-text #{entry.hometown  || "Unspecified"}
-        %span.left-text Place/Points
-        %span.right-text #{entry.rank}/#{entry.points}
-        .cl  
-        %span.left-text Evaluations
-        %span.right-text #{entry.evaluations.count}
-        .cl  
-        %span.left-text Avg. Eval.
-        %span.right-text #{number_with_precision entry.overall_score, precision: 1}
-        .cl  
-        %span.left-text Followers
-        %span.right-text #{entry.follows.count}
-        .cl  
-      .right-part
-        %ul
-          %li
-            %span.red #{evaluation.created_at.strftime("%m/%d/%y")}
-          %li
-            %span.red #{evaluation.created_at.strftime("%H:%M")}
-          - if entry.has_music?
-            %li
-              %span
-                Music
-                %span.red #{evaluation.music_score}
-          - if entry.has_vocals?
-            %li
-              %span
-                Vocal
-                %span.red #{evaluation.vocals_score}
-          %li
-            %span
-              Presentation
-              %span.red #{evaluation.presentation_score}
-        .cl  
-        - if evaluation.comment?
-          .ellipsis
-            %p= evaluation.comment
-    .cl
+.mogul-info-box.contestant-info-box
+  .info-row.clearfix
+    %ul.head-row.clearfix
+      %li.title
+        %h3 My Score
+      %li
+        %h3 Rank
+        %strong
+          9
+          %small /#{User.where(musician: false).count}
+      %li
+        %h3 Points
+        %strong #{current_user.points}
+  .info-row.clearfix.hidden-row
+    %h3 Auditions
+    %ul.small-list.auduitions-list.clearfix
+      %li
+        Evaluations
+        %span #{current_user.evaluations.count}
+      %li
+        Music
+        %span #{number_with_precision(current_user.average_music_score, precision: 1)}
+      %li
+        Vocals
+        %span #{number_with_precision(current_user.average_vocals_score, precision: 1)}
+      %li
+        Presentation
+        %span #{number_with_precision(current_user.average_presentation_score, precision: 1)}
+      %li
+        Avg
+        %span #{number_with_precision(current_user.average_evaluation_score, precision: 1)}
+      %li
+        Points
+        %strong 31875
+  .info-row.clearfix.hidden-row
+    %h3 Invitess
+    %ul.small-list.invitees-list.clearfix
+      %li
+        %strong> 21
+        \/25
+      %li
+        Points
+        %span 10500
+  .info-row.clearfix.hidden-row
+    %ul.small-list.followers-list.clearfix
+      %li
+        %h3 Followers
+        %strong 1011
+      %li
+        %h3 Contracts
+        %strong 465
+  %a.list-handle{:href => "#"}
+    %span
+/ end info box
+/ main content area
+.shell.interior
+  .main
+    .main-t
+    .main-c
+      .moguls-list.clearfix
+        - @evaluations.each do |evaluation|
+          .contestant-info.following-contestant
+            %a{:href => "#{entry_path(evaluation.entry)}"}
+              %img{:alt => "", :src => "#{evaluation.entry.profile_photo.url(:medium)}"}/
+            %a.follow-btn.btn{:href => "#", :rel => "Follow"} Following
+            %a.sign-btn{:href => "#"}
+            .contestant-info-inner.clearfix
+              .left-info
+                %h3
+                  %a{:href => "#{entry_path(evaluation.entry)}"}= evaluation.entry.stage_name
+                %p
+                  #{evaluation.entry.hometown}
+                  %br>/
+                  Evaluations
+                  %span #{evaluation.entry.evaluations.count}
+                  = succeed "Avg." do
+                    %br/
+                  Score
+                  %span #{evaluation.entry.overall_score}
+              .right-info
+                .stats
+                  %p
+                    Score
+                    = succeed "Music" do
+                      %span #{number_with_precision(evaluation.overall_score, precision: 1)}
+                    = succeed "Vocals" do
+                      %span #{number_with_precision(evaluation.music_score, precision: 1)}
+                    = succeed "Presentation" do
+                      %span #{number_with_precision(evaluation.vocals_score, precision: 1)}
+                    %span #{number_with_precision(evaluation.presentation_score, precision: 1)}
+                    %strong.date #{evaluation_datetime(evaluation.created_at)}
+                - if evaluation.comment?
+                  %p= evaluation.comment
+    .main-b.main-b-edit
+/ end main content area
+.loading-more
+  %p Loading More Contestants...
