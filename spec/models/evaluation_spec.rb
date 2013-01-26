@@ -10,9 +10,9 @@ describe Evaluation do
     it { should validate_presence_of(:entry).with_message("Entry is required") }
     it { should validate_presence_of(:user).with_message("User is required") }
 
-    it { should validate_numericality_of(:music_score).only_integer }
-    it { should validate_numericality_of(:vocals_score).only_integer }
-    it { should validate_numericality_of(:presentation_score).only_integer }
+    it { should validate_numericality_of(:music_score) }
+    it { should validate_numericality_of(:vocals_score) }
+    it { should validate_numericality_of(:presentation_score) }
     it { should validate_numericality_of(:overall_score) }
 
     it { should have_valid(:music_score).when(nil) }

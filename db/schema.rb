@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130125213409) do
+ActiveRecord::Schema.define(:version => 20130126163822) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -67,9 +67,9 @@ ActiveRecord::Schema.define(:version => 20130125213409) do
     t.datetime "updated_at",         :null => false
     t.integer  "entry_id"
     t.text     "comment"
-    t.integer  "music_score"
-    t.integer  "presentation_score"
-    t.integer  "vocals_score"
+    t.float    "music_score"
+    t.float    "presentation_score"
+    t.float    "vocals_score"
     t.float    "overall_score"
   end
 
