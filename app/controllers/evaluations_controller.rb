@@ -2,7 +2,14 @@ class EvaluationsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @evaluations = current_user.evaluations.includes(:entry).order("created_at desc")
+    if current_user.musician?
+      @entry = current_user.entries.first
+      @evaluations = @entry.evaluations.includes(:user).order("created_at desc")
+      render "musician"
+    else
+      @evaluations = current_user.evaluations.includes(:entry).order("created_at desc")
+      render "mogul"
+    end
   end
 
   def create

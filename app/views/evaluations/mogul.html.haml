@@ -1,0 +1,75 @@
+/ info box
+.mogul-info-box
+  .info-row.clearfix
+    %ul.head-row.clearfix
+      %li.title
+        %h3 My Score
+      %li
+        %h3 Rank
+        %strong
+          \--
+          %small /#{User.where("musician = false").count}
+      %li
+        %h3 Points
+        %strong #{current_user.points}
+  .info-row.clearfix.hidden-row
+    %h3 Signees
+    %ul.small-list.rating-list.clearfix
+      %li.rating-cell
+        %p.rating
+          %span{:style => "width: 85%;"}
+      %li
+        Points
+        %span --
+  .info-row.clearfix.hidden-row
+    %h3 Auditions
+    %ul.small-list.auduitions-list.clearfix
+      %li
+        Contestants
+        %span #{Entry.finished.count}
+      %li
+        Evaluated
+        %span #{current_user.evaluations.count}
+      %li
+        Remaining
+        %span #{Entry.finished.count - current_user.evaluations.count}
+      %li
+        Points
+        %span --
+  .info-row.clearfix.hidden-row
+    %h3 Invitess
+    %ul.small-list.invitees-list.clearfix
+      %li
+        %strong> #{current_user.invited_users.count}
+        \/#{current_user.invitation_limit}
+      %li
+        Points
+        %span --
+  %a.list-handle{:href => "#"}
+    %span
+/ end info box
+/ main content area
+.shell.interior
+  .main
+    .main-t
+    .main-c
+      .moguls-list.clearfix
+        - @evaluations.each do |evaluation|
+          .mogul-entry
+            %a{:href => "#{entry_path(evaluation.entry)}"}
+              %img{:alt => "", :src => "#{evaluation.entry.profile_photo.url(:medium)}"}/
+            %h3
+              %a{:href => "#{entry_path(evaluation.entry)}"}= evaluation.entry.stage_name
+            %p
+              %span.style> #{evaluation.entry.genre}
+              #{evaluation.entry.hometown}
+              %br>/
+              My Evaluation
+              %span.grade #{number_with_precision(evaluation.overall_score, precision: 1)}
+            .eval-buttons.clearfix
+              %a.follow-btn.btn{:href => "#", :rel => "Following"} Follow
+              %a.sign-btn{:href => "#"}
+    .main-b.main-b-edit
+/ end main content area
+.loading-more
+  %p Loading More Contestants...
