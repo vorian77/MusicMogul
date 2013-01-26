@@ -58,9 +58,8 @@ h2 { font-size: 40px; line-height: 48px; color: #f21e1b; font-weight: normal; }
 h3 { font-size: 19px; line-height: 22px; color: #f21e1b; font-weight: normal; }
 
 a.follow-btn { color: #000; line-height: 36px; width: 76px; height: 36px; display: block; position: absolute; bottom: 0; left: 209px; background: image_url("btnFollow.png") no-repeat 0 0; }
-a.follow-btn:hover,
-.following-contestant a.follow-btn { color: #fff; background-position: -83px 0; }
-a.follow-btn:active { background-position: right 0; }
+a.follow-btn.following { color: #fff; background-position: -83px 0; }
+//a.follow-btn:active { background-position: right 0; }
 
 a.sign-btn { width: 36px; height: 36px; font-size: 0; line-height: 0; text-indent: -4000px; background: image_url("sprite.png") no-repeat -121px -31px; }
 .signed-contestant a.sign-btn,

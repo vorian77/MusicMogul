@@ -1,4 +1,4 @@
 - if current_user.follows?(entry)
-  = link_to "Following", entry_follows_path(entry), method: :delete, remote: true, class: "red-follow"
+  = link_to "Following", entry_follows_path(entry), method: :delete, remote: true, class: "btn follow-btn following"
 - else
-  = link_to "Follow", entry_follows_path(entry), method: :post, remote: true, class: "gray-follow"
+  = link_to "Follow", entry_follows_path(entry), method: :post, remote: true, class: "btn follow-btn"
