@@ -1,9 +1,8 @@
 require "spec_helper"
 
 feature "evaluations" do
-  before { pending "contest start flow" }
-
   scenario "user creates an evaluation", js: true do
+    pending "contest start flow"
     user = users(:confirmed_user)
     sign_in_as user
 
@@ -35,6 +34,7 @@ feature "evaluations" do
   end
 
   scenario "uninvited user cannot create an evaluation" do
+    pending "contest start flow"
     user = FactoryGirl.create(:confirmed_user, inviter: nil)
     sign_in_as user
 
@@ -57,7 +57,7 @@ feature "evaluations" do
     click_link "My Evaluations"
     current_path.should == evaluations_path
 
-    within("div.box") do
+    within("div.evaluation") do
       page.should have_content evaluation.entry.stage_name
     end
   end
