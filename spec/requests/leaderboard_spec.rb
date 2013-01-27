@@ -8,7 +8,6 @@ feature "leaderboard" do
     FactoryGirl.create(:evaluation, entry: Entry.all.sample)
 
     visit root_path
-    pending "contest start flow"
 
     click_link "Leader Board"
     current_path.should == leaderboard_path
@@ -18,8 +17,8 @@ feature "leaderboard" do
       if entry.points > 0
         within "div#entry_#{entry.id}" do
           page.should have_content entry.stage_name if user.has_evaluated? entry
-          within("span.place") { page.should have_content "#{entry.rank}" }
-          within("span.points") { page.should have_content "#{entry.points}" }
+          within("strong.rank") { page.should have_content "#{entry.rank}" }
+          within("strong.points") { page.should have_content "#{entry.points}" }
         end
       else
         page.should have_no_css "div#entry_#{entry.id}"

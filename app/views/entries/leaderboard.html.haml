@@ -12,7 +12,7 @@
     .main-c.tabs
       .tab
         - @entries.each do |entry|
-          .contestant-info.clearfix
+          .contestant-info.clearfix[entry]
             .contestant-info-inner.left
               %a{:href => "#{entry_path(entry)}"}
                 %img{:alt => "", :src => "#{entry.profile_photo.url(:medium)}"}/
@@ -32,10 +32,10 @@
                 %ul.clearfix
                   %li
                     Rank
-                    %strong= entry.rank
+                    %strong.rank= entry.rank
                   %li
                     Points
-                    %strong= entry.points
+                    %strong.points= entry.points
               .stats-bottom.clearfix
                 %ul
                   %li
