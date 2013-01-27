@@ -7,7 +7,8 @@
           %img{:alt => "", :src => "#{@entry.profile_photo.url(:medium)}"}/
         %h3
           %a{:href => "#"} #{@entry.stage_name}
-        = render "follows/button", entry: @entry
+        - unless @evaluation.new_record?
+          = render "follows/button", entry: @entry
         .contestant-info-inner.clearfix
           .left-info
             %p.genre #{@entry.genre}
