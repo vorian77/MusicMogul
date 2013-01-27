@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
 
   scope :invited, where("inviter_id is not null")
   scope :complete, where("username is not null and profile_photo is not null and hometown is not null")
+  scope :fan, where("musician = ?", false)
   scope :musician, where("musician = ?", true)
 
   def average_evaluation_score
@@ -58,6 +59,10 @@ class User < ActiveRecord::Base
     evaluations.where(entry_id: entry.id).first
   end
 
+  def evaluation_points
+    evaluations.count * Evaluation::POINT_VALUE
+  end
+
   def fan?
     !musician?
   end
@@ -72,6 +77,10 @@ class User < ActiveRecord::Base
 
   def invitation_limit
     musician? ? MUSICIAN_INVITATION_LIMIT : FAN_INVITATION_LIMIT
+  end
+
+  def invitation_points
+    invited_users.count * (self.musician? ? MUSICIAN_INVITED_USER_POINT_VALUE : FAN_INVITED_USER_POINT_VALUE)
   end
 
   def late_adopter?
@@ -89,11 +98,15 @@ class User < ActiveRecord::Base
   end
 
   def points
-    invited_users.count * (self.musician? ? MUSICIAN_INVITED_USER_POINT_VALUE : FAN_INVITED_USER_POINT_VALUE)
+    evaluation_points + invitation_points
   end
 
   def profile_complete?
     username? && hometown? && profile_photo?
+  end
+
+  def rank
+    self.class.fan.map(&:points).uniq.sort.reverse.index(self.points) + 1
   end
 
   def referral_link

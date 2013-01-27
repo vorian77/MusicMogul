@@ -7,8 +7,8 @@
       %li
         %h3 Rank
         %strong
-          \--
-          %small /#{User.where("musician = false").count}
+          \#{current_user.rank}
+          %small /#{User.fan.count}
       %li
         %h3 Points
         %strong #{current_user.points}
@@ -35,16 +35,16 @@
         %span #{Entry.finished.count - current_user.evaluations.count}
       %li
         Points
-        %span --
+        %span #{current_user.evaluation_points}
   .info-row.clearfix.hidden-row
-    %h3 Invitess
+    %h3 Invitees
     %ul.small-list.invitees-list.clearfix
       %li
         %strong> #{current_user.invited_users.count}
         \/#{current_user.invitation_limit}
       %li
         Points
-        %span --
+        %span #{current_user.invitation_points}
   %a.list-handle{:href => "#"}
     %span
 / end info box

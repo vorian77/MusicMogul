@@ -1,4 +1,6 @@
 class Evaluation < ActiveRecord::Base
+  POINT_VALUE = 1000
+
   belongs_to :entry
   belongs_to :user, include: :evaluations
 
