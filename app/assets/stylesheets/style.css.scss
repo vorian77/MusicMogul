@@ -462,7 +462,7 @@ a.consider-btn:active { background-position: -81px -72px; }
 .mogul-info-box .info-row ul.rating-list li { float: right; width: auto; padding: 0 25px 3px 25px; background: image_url("separator.png") no-repeat 0 bottom; }
 .mogul-info-box .info-row ul.rating-list li:first-child { background: transparent; }
 .mogul-info-box .info-row ul.rating-list li.rating-cell { float: left; padding: 0 14px; }
-.mogul-info-box .info-row ul.rating-list li.rating-cell p.rating { width: 222px; height: 31px; font-size: 0; line-height: 0; text-indent: -4000px; background: image_url("signees.png") no-repeat 0 bottom; position: relative; }
+.mogul-info-box .info-row ul.rating-list li.rating-cell p.rating { width: image_width("signees.png"); height: 31px; font-size: 0; line-height: 0; text-indent: -4000px; background: image_url("signees.png") no-repeat 0 bottom; position: relative; }
 .mogul-info-box .info-row ul.rating-list li.rating-cell p.rating span { height: 31px; display: block; background: image_url("signees.png") no-repeat; position: absolute; top: 0; left: 0; }
 
 .mogul-info-box .info-row ul.auduitions-list { padding-top: 5px; }

@@ -34,4 +34,8 @@ module ApplicationHelper
     time = created_at.strftime("%I:%M%p")
     [date, time].join(", ")
   end
+
+  def signee_width_percentage
+    %w(0% 18% 39% 59% 80% 100%)[current_user.contracts.count]
+  end
 end
