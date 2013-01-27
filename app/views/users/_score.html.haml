@@ -1,0 +1,104 @@
+- if current_user.fan?
+  .mogul-info-box
+    .info-row.clearfix
+      %ul.head-row.clearfix
+        %li.title
+          %h3 My Score
+        %li
+          %h3 Rank
+          %strong
+            \#{current_user.rank}
+            %small /#{User.fan.count}
+        %li
+          %h3 Points
+          %strong #{current_user.points}
+    .info-row.clearfix.hidden-row
+      %h3 Signees
+      %ul.small-list.rating-list.clearfix
+        %li.rating-cell
+          %p.rating
+            %span{:style => "width: #{signee_width_percentage};"}
+        %li
+          Points
+          %span --
+    .info-row.clearfix.hidden-row
+      %h3 Auditions
+      %ul.small-list.auduitions-list.clearfix
+        %li
+          Contestants
+          %span #{Entry.finished.count}
+        %li
+          Evaluated
+          %span #{current_user.evaluations.count}
+        %li
+          Remaining
+          %span #{Entry.finished.count - current_user.evaluations.count}
+        %li
+          Points
+          %span #{current_user.evaluation_points}
+    .info-row.clearfix.hidden-row
+      %h3 Invitees
+      %ul.small-list.invitees-list.clearfix
+        %li
+          %strong> #{current_user.invited_users.count}
+          \/#{current_user.invitation_limit}
+        %li
+          Points
+          %span #{current_user.invitation_points}
+    %a.list-handle{:href => "#"}
+      %span
+- else
+  - entry = current_user.entries.first
+  .mogul-info-box.contestant-info-box
+    .info-row.clearfix
+      %ul.head-row.clearfix
+        %li.title
+          %h3 My Score
+        %li
+          %h3 Rank
+          %strong
+            #{entry.rank}
+            %small /#{Entry.count}
+        %li
+          %h3 Points
+          %strong #{entry.points}
+    .info-row.clearfix.hidden-row
+      %h3 Auditions
+      %ul.small-list.auduitions-list.clearfix
+        %li
+          Evaluations
+          %span #{entry.evaluations.count}
+        %li
+          Music
+          %span #{number_with_precision(entry.overall_music_score, precision: 1)}
+        %li
+          Vocals
+          %span #{number_with_precision(entry.overall_vocals_score, precision: 1)}
+        %li
+          Presentation
+          %span #{number_with_precision(entry.overall_presentation_score, precision: 1)}
+        %li
+          Avg
+          %span #{number_with_precision(entry.overall_score, precision: 1)}
+        %li
+          Points
+          %strong --
+    .info-row.clearfix.hidden-row
+      %h3 Invitess
+      %ul.small-list.invitees-list.clearfix
+        %li
+          %strong> #{current_user.invited_users.count}
+          \/#{current_user.invitation_limit}
+        %li
+          Points
+          %span #{current_user.invitation_points}
+    .info-row.clearfix.hidden-row
+      %ul.small-list.followers-list.clearfix
+        %li
+          %h3 Followers
+          %strong #{entry.followers.count}
+        %li
+          %h3 Contracts
+          %strong #{entry.signers.count}
+    %a.list-handle{:href => "#"}
+      %span

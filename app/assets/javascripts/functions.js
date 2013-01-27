@@ -174,42 +174,62 @@ $(function () {
 
     // contestant songs slideshow
     $('.contestant-songs').flexslider({
-        controlNav: false,
-        animation: 'slide'
+        controlNav:false,
+        animation:'slide'
     });
 
     // evaluation sliders
-    $('.jq-slider').each(function() {
+    $('.jq-slider').each(function () {
         var valueNumber = $(this).data("value") || 5;
         var disabled = $(this).data("disabled");
         $(this).slider({
-            value: valueNumber,
-            min: 0,
-            max: 10,
-            step: 0.5,
-            disabled: disabled,
-            slide: function( event, ui ) {
+            value:valueNumber,
+            min:0,
+            max:10,
+            step:0.5,
+            disabled:disabled,
+            slide:function (event, ui) {
                 $(this).find('.ui-slider-handle').text(ui.value);
-                $(this).find('.grade').width(ui.value*10+'%');
+                $(this).find('.grade').width(ui.value * 10 + '%');
                 $(this).closest("div.evaluation-slider").find("input.hidden:first").val(ui.value);
             },
-            create: function( event, ui ) {
+            create:function (event, ui) {
                 var val = $(this).slider("option", "value");
                 $(this).find('.ui-slider-handle').text(val);
                 $(this).closest("div.evaluation-slider").find("input.hidden:first").val(val);
-                $(this).find('.grade').width(val*10+'%');
+                $(this).find('.grade').width(val * 10 + '%');
             }
         });
     });
 
     // show/hide moguls info
-    $(document).on('click', '.list-handle', function() {
+    $(document).on('click', '.list-handle', function () {
         var hiddenRows = $(this).parent().find('.hidden-row');
 
-        if ( hiddenRows.length ) {
-            hiddenRows.stop(true,true).slideToggle('fast');
+        if (hiddenRows.length) {
+            hiddenRows.stop(true, true).slideToggle('fast');
 
             return false;
         }
+    });
+
+    if ($('.moguls-leader-board').length) {
+        $('.tabs-section .tabs .tab').eq(1).show();
+        $('.tabs-section .tabs-nav ul li').eq(1).addClass('active');
+    } else {
+        $('.tabs-section .tabs .tab').eq(0).show();
+        $('.tabs-section .tabs-nav ul li').eq(0).addClass('active');
+    }
+
+    $(document).on('click', '.tabs-nav ul li a', function () {
+        var parent = $(this).parent(),
+            idx = parent.index(),
+            tab = $(this).closest('.tabs-section').find('.tab');
+
+        parent.addClass('active').siblings().removeClass('active');
+        tab.hide();
+        tab.eq(idx).stop(true, true).fadeIn('fast');
+
+        return false;
     });
 });
