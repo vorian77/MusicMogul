@@ -59,10 +59,13 @@
     .main-c
       .moguls-list.clearfix
         - @evaluations.each do |evaluation|
-          .contestant-info.following-contestant
+          .contestant-info
             %a{:href => "#"}
               %img{:alt => "", :src => "#{evaluation.user.profile_photo.url(:medium)}"}/
-            %a.follow-btn.btn{:href => "#", :rel => "Follow"} Following
+            - if evaluation.user.follows?(evaluation.entry)
+              %a.follow-btn.following.btn{href: "#", disabled: "disabled"} Following
+            - else
+              %a.follow-btn.btn{href: "#", disabled: "disabled"} Follow
             %a.sign-btn{:href => "#"}
             .contestant-info-inner.clearfix
               .left-info

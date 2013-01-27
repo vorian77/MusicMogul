@@ -1,5 +1,8 @@
 $ ->
-  follow_links = $("a.follow-btn")
+  $("a[href='#']").on "click", (e) ->
+    e.preventDefault()
+
+  follow_links = $("a.follow-btn").filter -> $(this).attr("href") != "#"
   follow_links.on "click", () ->
     link = $(this)
     return false if link.attr("disabled") == "disabled"
