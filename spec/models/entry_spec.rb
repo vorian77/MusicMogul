@@ -5,7 +5,9 @@ describe Entry do
     it { should belong_to :user }
     it { should have_many(:evaluations).dependent(:destroy) }
     it { should have_many(:follows).dependent(:destroy) }
-    it { should have_many(:users).through(:follows) }
+    it { should have_many(:followers).through(:follows) }
+    it { should have_many(:contracts).dependent(:destroy) }
+    it { should have_many(:signers).through(:contracts) }
   end
 
   describe "validations" do

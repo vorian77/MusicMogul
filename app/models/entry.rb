@@ -4,7 +4,9 @@ class Entry < ActiveRecord::Base
   belongs_to :user
   has_many :evaluations, dependent: :destroy
   has_many :follows, dependent: :destroy
-  has_many :users, through: :follows
+  has_many :followers, through: :follows, source: :user
+  has_many :contracts, dependent: :destroy
+  has_many :signers, through: :contracts, source: :user
 
   validates :user, presence: true
   validates :stage_name, presence: {on: :update}

@@ -40,15 +40,15 @@
         \/#{current_user.invitation_limit}
       %li
         Points
-        %span --
+        %span #{current_user.invitation_points}
   .info-row.clearfix.hidden-row
     %ul.small-list.followers-list.clearfix
       %li
         %h3 Followers
-        %strong #{@entry.users.count}
+        %strong #{@entry.followers.count}
       %li
         %h3 Contracts
-        %strong --
+        %strong #{@entry.signers.count}
   %a.list-handle{:href => "#"}
     %span
 / end info box
@@ -66,7 +66,7 @@
               %a.follow-btn.following.btn{href: "#", disabled: "disabled"} Following
             - else
               %a.follow-btn.btn{href: "#", disabled: "disabled"} Follow
-            %a.sign-btn{:href => "#"}
+            %a.sign-btn{href: "#", class: "#{'signed' if evaluation.user.signed?(evaluation.entry)}"}
             .contestant-info-inner.clearfix
               .left-info
                 %h3
