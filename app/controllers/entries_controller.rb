@@ -44,6 +44,6 @@ class EntriesController < ApplicationController
   end
 
   def leaderboard
-    @entries = Entry.where("points > 0").order("points desc")
+    @entries = Entry.where("points > 0").includes(:user).order("points desc")
   end
 end

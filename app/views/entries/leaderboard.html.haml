@@ -63,8 +63,6 @@
 -#      .cl  
 
 = render "users/score"
-
-/ main content area
 .shell.interior
   .main.tabs-section
     .main-t.tabs-nav
@@ -77,212 +75,48 @@
           %span.overlay
     .main-c.tabs
       .tab
-        .contestant-info.clearfix
-          .contestant-info-inner.left
-            %a{:href => "#"}
-              %img{:alt => "", :src => "css/images/photo01.png"}/
-            %a.follow-btn.btn{:href => "#", :rel => "Following"} Follow
-            %a.sign-btn{:href => "#"}
-            %h3
-              %a{:href => "#"} Contestant Name
-            %p
-              %span.genre> Rock
-              San Francisco, CA
-              %br>/
-              My Evaluation
-              %span 9.5
-          .contestant-info-stats.right
-            .stats-top
-              %ul.clearfix
-                %li
-                  Rank
-                  %strong 1
-                %li
-                  Points
-                  %strong 34678
-            .stats-bottom.clearfix
-              %ul
-                %li
-                  Evaluations
-                  %span 3750
-                %li
-                  Avg. Eval
-                  %span 8.9
-              %ul
-                %li
-                  Followers
-                  %span 1011
-                %li
-                  Contracts
-                  %span 465
-                %li
-                  Invitees
-                  %span 21
-        .contestant-info.clearfix
-          .contestant-info-inner.left.following-contestant.signed-contestant
-            %a{:href => "#"}
-              %img{:alt => "", :src => "css/images/photo02.png"}/
-            %a.follow-btn.btn{:href => "#", :rel => "Follow"} Following
-            %a.sign-btn{:href => "#"}
-            %h3
-              %a{:href => "#"} Contestant Name
-            %p
-              %span.genre> Rock
-              San Francisco, CA
-              %br>/
-              My Evaluation
-              %span 9.5
-          .contestant-info-stats.right
-            .stats-top
-              %ul.clearfix
-                %li
-                  Rank
-                  %strong 2
-                %li
-                  Points
-                  %strong 34678
-            .stats-bottom.clearfix
-              %ul
-                %li
-                  Evaluations
-                  %span 3750
-                %li
-                  Avg. Eval
-                  %span 8.9
-              %ul
-                %li
-                  Followers
-                  %span 1011
-                %li
-                  Contracts
-                  %span 465
-                %li
-                  Invitees
-                  %span 21
-        .contestant-info.clearfix
-          .contestant-info-inner.left
-            %a{:href => "#"}
-              %img{:alt => "", :src => "css/images/photo03.png"}/
-            %span.explicit
-              %small.ico>
-              Contains Explicit Content
-            %h3
-              %a{:href => "#"} Contestant Name
-            %p
-              %span.genre> Rock
-              San Francisco, CA
-              %br>/
-              My Evaluation
-              %span 9.5
-          .contestant-info-stats.right
-            .stats-top
-              %ul.clearfix
-                %li
-                  Rank
-                  %strong 2
-                %li
-                  Points
-                  %strong 34678
-            .stats-bottom.clearfix
-              %ul
-                %li
-                  Evaluations
-                  %span 3750
-                %li
-                  Avg. Eval
-                  %span 8.9
-              %ul
-                %li
-                  Followers
-                  %span 1011
-                %li
-                  Contracts
-                  %span 465
-                %li
-                  Invitees
-                  %span 21
-        .contestant-info.clearfix
-          .contestant-info-inner.left.following-contestant
-            %a{:href => "#"}
-              %img{:alt => "", :src => "css/images/photo04.png"}/
-            %a.follow-btn.btn{:href => "#", :rel => "Follow"} Following
-            %a.sign-btn{:href => "#"}
-            %h3
-              %a{:href => "#"} Contestant Name
-            %p
-              %span.genre> Rock
-              San Francisco, CA
-              %br>/
-              My Evaluation
-              %span 9.5
-          .contestant-info-stats.right
-            .stats-top
-              %ul.clearfix
-                %li
-                  Rank
-                  %strong 1
-                %li
-                  Points
-                  %strong 34678
-            .stats-bottom.clearfix
-              %ul
-                %li
-                  Evaluations
-                  %span 3750
-                %li
-                  Avg. Eval
-                  %span 8.9
-              %ul
-                %li
-                  Followers
-                  %span 1011
-                %li
-                  Contracts
-                  %span 465
-                %li
-                  Invitees
-                  %span 21
-        .contestant-info.clearfix
-          .contestant-info-inner.left
-            %a{:href => "#"}
-              %img{:alt => "", :src => "css/images/photo05.png"}/
-            %a.follow-btn.btn{:href => "#", :rel => "Following"} Follow
-            %a.sign-btn{:href => "#"}
-            %h3
-              %a{:href => "#"} Contestant Name
-            %p
-              %span.genre> Rock
-              San Francisco, CA
-              %br>/
-              My Evaluation
-              %span 9.5
-          .contestant-info-stats.right
-            .stats-top
-              %ul.clearfix
-                %li
-                  Rank
-                  %strong 5
-                %li
-                  Points
-                  %strong 34678
-            .stats-bottom.clearfix
-              %ul
-                %li
-                  Evaluations
-                  %span 3750
-                %li
-                  Avg. Eval
-                  %span 8.9
-              %ul
-                %li
-                  Followers
-                  %span 1011
-                %li
-                  Contracts
-                  %span 465
-                %li
-                  Invitees
-                  %span 21
+        - @entries.each do |entry|
+          .contestant-info.clearfix
+            .contestant-info-inner.left
+              %a{:href => "#{entry_path(entry)}"}
+                %img{:alt => "", :src => "#{entry.profile_photo.url(:medium)}"}/
+              = render "follows/button", entry: entry
+              = render "contracts/button", entry: entry
+              %h3
+                %a{:href => "#{entry_path(entry)}"}= entry.stage_name
+              %p
+                %span.genre> #{entry.genre}
+                #{entry.hometown}
+                %br>/
+                My Evaluation
+                %span= number_with_precision current_user.evaluation_for(entry).overall_score, precision: 1
+            .contestant-info-stats.right
+              .stats-top
+                %ul.clearfix
+                  %li
+                    Rank
+                    %strong= entry.rank
+                  %li
+                    Points
+                    %strong= entry.points
+              .stats-bottom.clearfix
+                %ul
+                  %li
+                    Evaluations
+                    %span= entry.evaluations.count
+                  %li
+                    Avg. Eval
+                    %span= number_with_precision entry.overall_score, precision: 1
+                %ul
+                  %li
+                    Followers
+                    %span= entry.follows.count
+                  %li
+                    Contracts
+                    %span= entry.contracts.count
+                  %li
+                    Invitees
+                    %span= entry.user.invited_users.count
       .tab.leader-board
         .contestant-info.clearfix
           .contestant-info-inner.left
