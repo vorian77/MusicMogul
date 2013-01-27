@@ -12,10 +12,10 @@
       - if current_user.entries.count > 0
         %li
           %a{:href => "#{edit_entry_path(current_user.entries.first)}"} My Contestant Profile
-        - unless contest_pending?
+        - if contest_running?
           %li
             %a{:href => "#{entry_path(current_user.entries.first)}"} My Audition
-      - unless contest_pending?
+      - if contest_running?
         %li
           %a{:href => "#{evaluations_path}"} My Evaluations
       %li

@@ -24,29 +24,4 @@ feature "homepage" do
 
     page.should have_no_css "form.follow"
   end
-
-  scenario "user views audition progress bar" do
-    Evaluation.destroy_all
-
-    user = users(:confirmed_user)
-    login_as(user, scope: :user)
-
-    visit root_path
-    pending "contest start flow"
-    within "div.red-box" do
-      page.should have_content "Contestants 3"
-      page.should have_content "# Evaluated 0"
-      page.should have_content "% Evaluated 0"
-    end
-
-    FactoryGirl.create(:evaluation, entry: Entry.first, user: user)
-
-    visit root_path
-
-    within "div.red-box" do
-      page.should have_content "Contestants 3"
-      page.should have_content "# Evaluated 1"
-      page.should have_content "% Evaluated 33"
-    end
-  end
 end

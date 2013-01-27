@@ -12,7 +12,6 @@ Mvp2::Application.routes.draw do
   match "/users/finish" => "entries#finish", as: :finish_entry
 
   resources :users, only: [:edit, :update]
-  resources :follows, only: [:index]
   resources :friends, only: [:index]
 
   resources :entries, only: [:edit, :show, :update] do

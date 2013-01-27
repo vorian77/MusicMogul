@@ -7,7 +7,5 @@ class HomeController < ApplicationController
       @entries = Entry.finished.order("random()")
       @inviter = User.find_by_referral_token(session[:referral_token]) if session[:referral_token].present?
     end
-
-    render "contest_pending", layout: "login" #unless Contest.active.present?
   end
 end

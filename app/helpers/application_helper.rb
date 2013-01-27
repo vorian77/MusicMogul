@@ -16,11 +16,11 @@ module ApplicationHelper
   end
 
   def contest_pending?
-    !contest_started?
+    !contest_running?
   end
 
-  def contest_started?
-    Time.now >= Time.zone.parse(Contest::FIRST_START_DATE)
+  def contest_running?
+    Contest.active.present?
   end
 
   def evaluation_datetime(created_at)

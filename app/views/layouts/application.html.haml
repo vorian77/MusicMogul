@@ -5,77 +5,65 @@
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-type"}/
     %link{:href => image_path("favicon.ico"), :rel => "shortcut icon"}/
     = stylesheet_link_tag "application", :media => "all", :rel => "stylesheet", :type => "text/css"
-    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Telex", :media => "all", :rel => 'stylesheet', :type => 'text/css'
     = javascript_include_tag "application"
   %body
     = render "layouts/flash"
-    .shell
-      / Header
-      #header
-        %h1#logo
-          %a{:href => root_path} Music Mogul
-        - if user_signed_in?
-          - if contest_started?
-            #navigation.left
-              %ul
-                %li
-                  %a.audition{href: "#{root_path}", class: "#{'audition-active' if current_page?(root_path)}"}
-                    Audition
-                %li
-                  %a.follow{href: "#{follows_path}", class: "#{'follow-active' if current_page?(follows_path)}"}
-                    Following
-                %li
-                  %a.board{href: "#{leaderboard_path}", class: "#{'board-active' if current_page?(leaderboard_path)}"}
-                    Leader Board
-                %li
-                  %a.my-evaluation{href: "#{evaluations_path}", class: "#{'my-evaluation-active' if current_page?(evaluations_path)}"}
-                    My Evaluations
-          / END Navigaiton
-          = render "layouts/profile"
-        - else
-          .btn-holder.right
-            %a{:href => new_user_session_path} Sign In
-        .cl  
-        = content_for(:bottom_of_header)
-      / END Header
-      / Content
-      #content
-        = yield
-        .cl  
-        %br/
-        %br/
-        %br/
-        %br/
-        %br/
-      / END Content
-      / Footer
-      #footer
-        .top-part
-          %ul
+    / page wrapper
+    .wrapper
+      / header
+      .header
+        .shell.clearfix
+          %h1#logo.left
+            %a.notext{:href => "#{root_path}"} MusicMogul
+            %span
+              Tomorrow's music stars<br/>discovered by today's music fans
+          - if user_signed_in?
+            = render "layouts/profile"
+            - if contest_running?
+              #header-nav
+                %ul
+                  %li.auditions{class: "#{'active' if current_page?(root_path)}"}
+                    %a{href: "#{root_path}"}
+                      Auditions
+                      %span.ico
+                  %li.evaluations{class: "#{'active' if current_page?(evaluations_path)}"}
+                    %a{href: "#{evaluations_path}"}
+                      My Evaluations
+                      %span.ico
+                  %li.leader-board{class: "#{'active' if current_page?(leaderboard_path)}"}
+                    %a{href: "#{leaderboard_path}"}
+                      Leader Board
+                      %span.ico
+          - else
+            %a.btn.right{:href => "#{new_user_session_path}"} Sign In
+        .header-shadow
+      / end header
+      / main content area
+      = yield
+      .push
+      / footer push
+    / end page wrapper
+    / footer
+    .footer.shell
+      .footer-top.clearfix
+        #navigation.left
+          %ul.main-nav.clearfix
             %li
-              %a{href: "#{learn_more_path}"} Learn More
+              = link_to "About Us", about_us_path
             %li
-              %a.notice{href: "#{about_us_path}"} About Us
+              = link_to "Contest Rules", contest_rules_path
             %li
-              %a{href: "http://suggestions.musicmogul.com", target: "_blank"} Suggestions
+              = link_to "Contact Us", contact_us_path
             %li
-              %a.notice{href: "#{notices_path(anchor: "contact")}"} Contact Us
-          .cl  
-        .bottom-part
-          %ul.left
+              %a{:href => "http://suggestions.musicmogul.com", target: "_blank"} Suggestions
+          %ul.sub-nav.clearfix
             %li
-              %a.notice{href: "#{notices_path(anchor: "terms")}"} Terms
+              = link_to "Privacy", privacy_path
             %li
-              %a.notice{href: "#{notices_path(anchor: "privacy")}"} Privacy
-          %ul.right
-            %li
-              = link_to image_tag("facebook.png"), "http://www.facebook.com/MyMusicMogul", target: "_blank"
-            %li
-              = link_to image_tag("twitter.png"), "http://www.twitter.com/MyMusicMogul", target: "_blank"
-          %span.copy Bright Lights Music Group, LLC &copy; 2012
-      / END Footer
-
-    = javascript_include_tag "http://www.google.com/jsapi"
-    :javascript
-      google.load("swfobject", "2.1");
-
+              = link_to "Terms", terms_path
+        .socials.right
+          %a.ico.fb-ico{:href => "http://www.facebook.com/MyMusicMogul", target: "_blank"}
+          %a.ico.tw-ico{:href => "http://www.twitter.com/MyMusicMogul", target: "_blank"}
+      .footer-bottom
+        %p © 2013 Bright Lights Music Group, LLC
+    / end footer

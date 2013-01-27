@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  layout :layout_by_resource
-
   before_filter :set_referral_token
   before_filter :redirect_entryless_musicians
   before_filter :perform_basic_authentication if Rails.env.staging?
@@ -27,17 +25,6 @@ class ApplicationController < ActionController::Base
 
   def routing_error
     raise ActionController::RoutingError.new(params[:path])
-  end
-
-  protected
-
-  def layout_by_resource
-    if devise_controller? || [verify_email_path, finish_entry_path].include?(request.fullpath)
-      "login"
-    else
-      "application"
-    end
-    "login"
   end
 
   private
