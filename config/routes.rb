@@ -17,6 +17,7 @@ Mvp2::Application.routes.draw do
 
   resources :entries, only: [:edit, :show, :update] do
     resources :evaluations, only: [:create]
+    resource :contracts, only: [:create, :destroy]
     resource :follows, only: [:create, :destroy]
   end
 

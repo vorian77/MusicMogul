@@ -1,0 +1,4 @@
+- if current_user.signed?(entry)
+  = link_to "", entry_contracts_path(entry), method: :delete, remote: true, class: "sign-btn signed"
+- else
+  = link_to "", entry_contracts_path(entry), method: :post, remote: true, class: "sign-btn"

@@ -62,9 +62,8 @@ a.follow-btn.following { color: #fff; background-position: -83px 0; }
 //a.follow-btn:active { background-position: right 0; }
 
 a.sign-btn { width: 36px; height: 36px; font-size: 0; line-height: 0; text-indent: -4000px; background: image_url("sprite.png") no-repeat -121px -31px; }
-.signed-contestant a.sign-btn,
-a.sign-btn:hover { background-position: -161px -31px; }
-a.sign-btn:active { background-position: -201px -31px; }
+a.sign-btn.signed { background-position: -161px -31px; }
+//a.sign-btn:active { background-position: -201px -31px; }
 
 a.pass-btn { width: 36px; height: 36px; display: block; font-size: 0; line-height: 0; text-indent: -4000px; background: image_url("sprite.png") no-repeat -1px -31px; }
 a.pass-btn:hover { background-position: -41px -31px; }

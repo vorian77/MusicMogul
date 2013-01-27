@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   attr_accessor :invitation_token
 
   belongs_to :inviter, class_name: "User"
+  has_many :contracts, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_many :follows, dependent: :destroy
   has_many :evaluations, dependent: :destroy
@@ -111,6 +112,10 @@ class User < ActiveRecord::Base
 
   def referral_link
     "http://#{ActionMailer::Base.default_url_options[:host]}/?referral_token=#{referral_token}"
+  end
+
+  def signed?(entry)
+    contracts.where(entry_id: entry.id).count > 0
   end
 
   def uninvited?

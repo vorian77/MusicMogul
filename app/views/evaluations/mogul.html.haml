@@ -68,7 +68,7 @@
               %span.grade #{number_with_precision(evaluation.overall_score, precision: 1)}
             .eval-buttons.clearfix
               = render "follows/button", entry: evaluation.entry
-              %a.sign-btn{:href => "#"}
+              = render "contracts/button", entry: evaluation.entry
     .main-b.main-b-edit
 / end main content area
 .loading-more
