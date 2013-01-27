@@ -1,5 +1,5 @@
 $ ->
-  contract_links = $("a.sign-btn").filter -> $(this).attr("href") != "#"
+  contract_links = $("a.sign-btn:not(.signed)").filter -> $(this).attr("href") != "#"
   contract_links.on "click", () ->
     link = $(this)
     return false if link.attr("disabled") == "disabled"
@@ -9,19 +9,15 @@ $ ->
     link.toggleClass("signed")
 
   contract_links.on "mouseenter", () ->
-    $(this).removeAttr("data-changed")
-    toggleLink($(this))
+    unless $(this).hasClass("signed")
+      $(this).removeAttr("data-changed")
+      toggleLink($(this))
 
   contract_links.on "mouseleave", () ->
-    unless $(this).attr("data-changed")
+    unless $(this).attr("data-changed") || $(this).hasClass("signed")
       toggleLink($(this))
 
   contract_links.on "ajax:success", () ->
     link = $(this)
-    if link.data("method") == "post"
-      link.data("method", "delete")
-      link.addClass("signed")
-    else
-      link.data("method", "post")
-      link.removeClass("signed")
-    link.removeAttr("disabled")
+    link.attr("href", "#")
+    link.addClass("signed")
