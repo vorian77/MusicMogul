@@ -52,10 +52,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def display_name
-    self.username.presence || self.email
-  end
-
   def evaluation_for(entry)
     evaluations.where(entry_id: entry.id).first
   end
@@ -100,10 +96,6 @@ class User < ActiveRecord::Base
 
   def points
     evaluation_points + invitation_points
-  end
-
-  def profile_complete?
-    username? && hometown? && profile_photo?
   end
 
   def rank
