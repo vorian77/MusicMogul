@@ -6,7 +6,7 @@
     .main-c
       .moguls-list.clearfix
         - @evaluations.each do |evaluation|
-          .mogul-entry
+          .mogul-entry[evaluation]
             %a{:href => "#{entry_path(evaluation.entry)}"}
               %img{:alt => "", :src => "#{evaluation.entry.profile_photo.url(:medium)}"}/
             %h3
