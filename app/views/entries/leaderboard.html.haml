@@ -1,67 +1,3 @@
--#= content_for(:bottom_of_header) do
--#  = render "evaluations/progress"
--#
--#- @entries.each do |entry|
--#  - if current_user.has_evaluated?(entry)
--#    .box.box-edit[entry]{class: cycle("", "box-white")}
--#      .place-holder
--#        %span.place #{entry.rank}
--#        %span.points
--#          Points
--#          %strong #{entry.points}
--#      .img-holder
--#        %a{:href => "#{entry_path(entry)}"}
--#          %img{:alt => "", :height => "186", :src => "#{entry.profile_photo.url(:medium)}", :width => "186"}/
--#      .text-holder.left
--#        %a.title{:href => "#{entry_path(entry)}"} #{entry.stage_name}
--#        = render "follows/button", entry: entry
--#        .cl  
--#        .left-part
--#          %span.left-text Genre
--#          %span.right-text #{entry.genre}
--#          .cl  
--#          %span.left-text Hometown
--#          %span.right-text #{entry.hometown}
--#          %span.left-text My Evaluation
--#          %span.right-text= number_with_precision current_user.evaluation_for(entry).overall_score, precision: 1
--#          .cl  
--#          %span.left-text Evaluations
--#          %span.right-text #{entry.evaluations.count}
--#          .cl  
--#          %span.left-text Avg. Eval.
--#          %span.right-text= number_with_precision entry.overall_score, precision: 1
--#          .cl  
--#          %span.left-text Followers
--#          %span.right-text #{entry.follows.count}
--#          .cl  
--#        .right-part
--#          .ellipsis
--#            %p #{entry.bio}
--#      .cl
--#  - else
--#    .box.box-edit[entry]{class: cycle("", "box-white")}
--#      .place-holder
--#        %span.place #{entry.rank}
--#        %span.points
--#          Points
--#          %strong #{entry.points}
--#      .img-holder
--#        .img-text
--#          %span
--#            You haven’t
--#            %br/
--#            evaluated this
--#            %br/
--#            contestant yet
--#          %span
--#            Try to discover
--#            %br/
--#            them in the
--#            %br/
--#            %a{:href => "#{root_path}"} Auditions
--#            list!
--#      .cl  
-
 = render "users/score"
 .shell.interior
   .main.tabs-section
@@ -88,8 +24,9 @@
                 %span.genre> #{entry.genre}
                 #{entry.hometown}
                 %br>/
-                My Evaluation
-                %span= number_with_precision current_user.evaluation_for(entry).overall_score, precision: 1
+                - if evaluation = current_user.evaluation_for(entry)
+                  My Evaluation
+                  %span= number_with_precision evaluation.overall_score, precision: 1
             .contestant-info-stats.right
               .stats-top
                 %ul.clearfix
@@ -118,235 +55,38 @@
                     Invitees
                     %span= entry.user.invited_users.count
       .tab.leader-board
-        .contestant-info.clearfix
-          .contestant-info-inner.left
-            %a{:href => "#"}
-              %img{:alt => "", :src => "css/images/photo01.png"}/
-            %a.follow-btn.btn{:href => "#", :rel => "Following"} Follow
-            %a.sign-btn{:href => "#"}
-            %h3
-              %a{:href => "#"} Mogul Name
-            %p
-              San Francisco, CA
-              %br>/
-              Evaluations
-              %span 9.5
-              = succeed "Following" do
-                %br/
-              %span 39
-              = succeed "Invitess" do
-                %br/
-              %span 5
-          .contestant-info-stats.right
-            .stats-top
-              %ul.clearfix
-                %li
-                  Rank
-                  %strong 1
-                %li
-                  Points
-                  %strong 275675
-            .stats-bottom.clearfix
-              .contestant-images.clearfix
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo11.png"}/
-                  Contestant Name
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo12.png"}/
-                  Contestant Name
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo13.png"}/
-                  Contestant Name
-                  %span.explicit Explicit Content
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo14.png"}/
-                  Contestant Name
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo15.png"}/
-                  Contestant Name
-        .contestant-info.clearfix
-          .contestant-info-inner.left.following-contestant.signed-contestant
-            %a{:href => "#"}
-              %img{:alt => "", :src => "css/images/photo02.png"}/
-            %a.follow-btn.btn{:href => "#", :rel => "Follow"} Following
-            %a.sign-btn{:href => "#"}
-            %h3
-              %a{:href => "#"} Mogul Name
-            %p
-              San Francisco, CA
-              %br>/
-              Evaluations
-              %span 9.5
-              = succeed "Following" do
-                %br/
-              %span 39
-              = succeed "Invitess" do
-                %br/
-              %span 5
-          .contestant-info-stats.right
-            .stats-top
-              %ul.clearfix
-                %li
-                  Rank
-                  %strong 2
-                %li
-                  Points
-                  %strong 275675
-            .stats-bottom.clearfix
-              .contestant-images.clearfix
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo11.png"}/
-                  Contestant Name
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo12.png"}/
-                  Contestant Name
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo13.png"}/
-                  Contestant Name
-                  %span.explicit Explicit Content
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo14.png"}/
-                  Contestant Name
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo15.png"}/
-                  Contestant Name
-        .contestant-info.clearfix
-          .contestant-info-inner.left
-            %a{:href => "#"}
-              %img{:alt => "", :src => "css/images/photo03.png"}/
-            %a.follow-btn.btn{:href => "#", :rel => "Follow"} Following
-            %a.sign-btn{:href => "#"}
-            %h3
-              %a{:href => "#"} Mogul Name
-            %p
-              San Francisco, CA
-              %br>/
-              Evaluations
-              %span 9.5
-              = succeed "Following" do
-                %br/
-              %span 39
-              = succeed "Invitess" do
-                %br/
-              %span 5
-          .contestant-info-stats.right
-            .stats-top
-              %ul.clearfix
-                %li
-                  Rank
-                  %strong 3
-                %li
-                  Points
-                  %strong 275675
-            .stats-bottom.clearfix
-              .contestant-images.clearfix
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo11.png"}/
-                  Contestant Name
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo12.png"}/
-                  Contestant Name
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo13.png"}/
-                  Contestant Name
-                  %span.explicit Explicit Content
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo14.png"}/
-                  Contestant Name
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo15.png"}/
-                  Contestant Name
-        .contestant-info.clearfix
-          .contestant-info-inner.left.following-contestant
-            %a{:href => "#"}
-              %img{:alt => "", :src => "css/images/photo04.png"}/
-            %a.follow-btn.btn{:href => "#", :rel => "Follow"} Following
-            %a.sign-btn{:href => "#"}
-            %h3
-              %a{:href => "#"} Mogul Name
-            %p
-              San Francisco, CA
-              %br>/
-              Evaluations
-              %span 9.5
-              = succeed "Following" do
-                %br/
-              %span 39
-              = succeed "Invitess" do
-                %br/
-              %span 5
-          .contestant-info-stats.right
-            .stats-top
-              %ul.clearfix
-                %li
-                  Rank
-                  %strong 4
-                %li
-                  Points
-                  %strong 275675
-            .stats-bottom.clearfix
-              .contestant-images.clearfix
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo11.png"}/
-                  Contestant Name
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo12.png"}/
-                  Contestant Name
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo13.png"}/
-                  Contestant Name
-                  %span.explicit Explicit Content
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo14.png"}/
-                  Contestant Name
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo15.png"}/
-                  Contestant Name
-        .contestant-info.clearfix
-          .contestant-info-inner.left
-            %a{:href => "#"}
-              %img{:alt => "", :src => "css/images/photo01.png"}/
-            %a.follow-btn.btn{:href => "#", :rel => "Following"} Follow
-            %a.sign-btn{:href => "#"}
-            %h3
-              %a{:href => "#"} Mogul Name
-            %p
-              San Francisco, CA
-              %br>/
-              Evaluations
-              %span 9.5
-              = succeed "Following" do
-                %br/
-              %span 39
-              = succeed "Invitess" do
-                %br/
-              %span 5
-          .contestant-info-stats.right
-            .stats-top
-              %ul.clearfix
-                %li
-                  Rank
-                  %strong 5
-                %li
-                  Points
-                  %strong 275675
-            .stats-bottom.clearfix
-              .contestant-images.clearfix
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo11.png"}/
-                  Contestant Name
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo12.png"}/
-                  Contestant Name
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo13.png"}/
-                  Contestant Name
-                  %span.explicit Explicit Content
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo14.png"}/
-                  Contestant Name
-                %a{:href => "#"}
-                  %img{:alt => "", :src => "css/images/photo15.png"}/
-                  Contestant Name
+        - @users.each do |user|
+          .contestant-info.clearfix
+            .contestant-info-inner.left
+              %a{:href => "#"}
+                %img{:alt => "", :src => "#{user.profile_photo.url(:medium)}"}/
+              %h3
+                %a{:href => "#"}= user.username
+              %p
+                #{user.hometown}
+                %br>/
+                Evaluations
+                %span= user.evaluations.count
+                = succeed "Following" do
+                  %br/
+                %span= user.follows.count
+                = succeed "Invitees" do
+                  %br/
+                %span= user.invited_users.count
+            .contestant-info-stats.right
+              .stats-top
+                %ul.clearfix
+                  %li
+                    Rank
+                    %strong= user.rank
+                  %li
+                    Points
+                    %strong= user.points
+              .stats-bottom.clearfix
+                .contestant-images.clearfix
+                  - user.evaluations.order("created_at desc").includes(:entry).each do |evaluation|
+                    %a{:href => "#{entry_path(evaluation.entry)}"}
+                      %img{:alt => "", :src => "#{evaluation.entry.profile_photo.url(:medium)}"}/
+                      #{evaluation.entry.stage_name}
     .main-b.main-b-edit
 / end main content area

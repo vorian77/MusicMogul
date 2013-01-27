@@ -45,5 +45,6 @@ class EntriesController < ApplicationController
 
   def leaderboard
     @entries = Entry.where("points > 0").includes(:user).order("points desc")
+    @users = User.fan.sort_by(&:points).reverse
   end
 end
