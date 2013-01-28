@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   has_many :evaluations, dependent: :destroy
   has_many :invited_users, class_name: "User", foreign_key: "inviter_id"
   has_many :followed_entries, through: :follows, source: :entry
+  has_many :signed_entries, through: :contracts, source: :entry
 
   accepts_nested_attributes_for :entries, limit: 1
 
@@ -52,6 +53,10 @@ class User < ActiveRecord::Base
       return 0 unless evaluations.where("#{type}_score is not null").present?
       evaluations.sum("#{type}_score") / evaluations.where("#{type}_score is not null").count.to_f
     end
+  end
+
+  def contract_points
+    signed_entries.sum(:points)
   end
 
   def evaluation_for(entry)
@@ -97,7 +102,7 @@ class User < ActiveRecord::Base
   end
 
   def points
-    evaluation_points + invitation_points
+    evaluation_points + contract_points + invitation_points
   end
 
   def rank

@@ -8,6 +8,7 @@ describe User do
     it { should have_many(:follows).dependent(:destroy) }
     it { should have_many(:evaluations).dependent(:destroy) }
     it { should have_many(:followed_entries).through(:follows) }
+    it { should have_many(:signed_entries).through(:contracts) }
     it { should have_many(:invited_users).class_name("User") }
   end
 

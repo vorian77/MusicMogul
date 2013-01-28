@@ -20,7 +20,7 @@
             %span{:style => "width: #{signee_width_percentage};"}
         %li
           Points
-          %span --
+          %span #{current_user.contract_points}
     .info-row.clearfix.hidden-row
       %h3 Auditions
       %ul.small-list.auduitions-list.clearfix
@@ -61,7 +61,7 @@
             %small /#{Entry.count}
         %li
           %h3 Points
-          %strong #{entry.points}
+          %strong #{entry.points + entry.user.invitation_points}
     .info-row.clearfix.hidden-row
       %h3 Auditions
       %ul.small-list.auduitions-list.clearfix
@@ -82,7 +82,7 @@
           %span #{number_with_precision(entry.overall_score, precision: 1)}
         %li
           Points
-          %strong --
+          %strong #{number_with_precision(entry.points, precision: 1)}
     .info-row.clearfix.hidden-row
       %h3 Invitees
       %ul.small-list.invitees-list.clearfix
