@@ -20,7 +20,7 @@
           = f.simple_fields_for :entries do |entry_fields|
             - next unless entry_fields.object == f.object.entries.first
             .inner-form-section
-              %h3 Contestant Information
+              %h3 Performer Information
               = entry_fields.input :stage_name, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
               = entry_fields.input :genre, collection: Entry::GENRES, wrapper_html: { class: "form-row clearfix genre" }, input_html: { class: "field" }
               = entry_fields.input :hometown, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
