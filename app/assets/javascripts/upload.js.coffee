@@ -1,5 +1,5 @@
 $ ->
-  $('input#entry_profile_photo').fileupload
+  $('input#entry_profile_photo, input#user_profile_photo').fileupload
     dataType: 'json'
     add: (e, data) ->
       if $("img.cover-image").length

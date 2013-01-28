@@ -3,16 +3,12 @@
     %h3 Account
     %ul
       %li.active
-        %a{href: "#{edit_user_path(current_user)}"} Personal Profile
-      - if current_user.entries.count > 0
-        %li
-          %a{href: "#{edit_entry_path(current_user.entries.first)}"} Contestant Profile
+        %a{href: "#{edit_user_path(current_user)}"} Mogul Profile
       %li
         %a{href: "#{friends_path}"} Friends
   .main-t
   .main-c
     .sign-up-steps.account-edit
-      %h3 Edit your personal profile
       .form-section
         = simple_form_for @user, url: user_path(current_user), html: {multipart: true} do |f|
           .inner-form-section
@@ -22,16 +18,16 @@
             = f.input :hometown, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
             .form-row.clearfix.labels-row
               %label.check
-                %input{name: "user[show_explicit_videos]", type: "hidden", value: "0"}
-                %input{name: "user[show_explicit_videos]", value: "1", checked: @user.show_explicit_videos?, type: "checkbox"}/
-                %span
-                Show videos with explicit content
-            .form-row.clearfix.labels-row
-              %label.check
                 %input{name: "user[receive_email_updates]", type: "hidden", value: "0"}
                 %input{name: "user[receive_email_updates]", value: "1", checked:  @user.receive_email_updates?, type: "checkbox"}/
                 %span
                 Send me contest updates via email
+            .form-row.clearfix.labels-row
+              %label.check
+                %input{name: "user[show_explicit_videos]", type: "hidden", value: "0"}
+                %input{name: "user[show_explicit_videos]", value: "1", checked: @user.show_explicit_videos?, type: "checkbox"}/
+                %span
+                Show videos with explicit content
           .inner-form-section.clearfix
             %h3 Profile photo
             - if current_user.photo.present?
@@ -40,16 +36,16 @@
               .cover-image
             .custom-upload
               .upload-button
-                %input.upload-field{type: "file", name: "user[profile_photo]"}
+                %input.upload-field#user_profile_photo{type: "file", name: "user[profile_photo]"}
                   .fake-upload
                     %p Choose File
-                  %input.field.upload-value{:title => "No file chosen", :type => "text", :value => "No file chosen"}/
+                  %input.field.upload-value{title: "No file chosen", type: "text", value: "No file chosen"}/
               .upload-info
                 %p
                   %em
                     You can upload a JPG, PNG, or GIF file that is no
                     %br>/
-                    more that 4MB. (Do not upload pictures
+                    more that 2MB. (Do not upload pictures
                     %br>/
                     containing celebrities, nudity, artwork or images
                     = succeed "that" do
