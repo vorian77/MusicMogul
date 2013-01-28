@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!, except: [:verify_email]
   load_and_authorize_resource except: [:verify_email]
 
+  def edit
+    render current_user.fan? ? "mogul" : "musician"
+  end
+
   def update
     respond_to do |format|
       format.html do
@@ -13,14 +17,14 @@ class UsersController < ApplicationController
           sign_in(@user, :bypass => true)
           redirect_to edit_user_path(current_user)
         else
-          render :edit
+          render current_user.fan? ? "mogul" : "musician"
         end
       end
 
       format.js do
         @user.assign_attributes(params[:user])
         if @user.save(validate: false)
-          render json: @user
+          render json: @user.as_json(include: :entries)
         else
           render json: @user.errors
         end

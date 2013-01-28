@@ -2,27 +2,32 @@ require "spec_helper"
 
 feature "entries" do
   scenario "user edits an entry" do
-    user = users(:confirmed_user)
-    entry = FactoryGirl.create(:entry, user: user)
+    user = FactoryGirl.create(:confirmed_user, musician: true)
+    entry = user.entries.first
+    entry.update_attributes(stage_name: Faker::HipsterIpsum.words.join(" "),
+                            hometown: Faker::Address.city,
+                            title: Faker::HipsterIpsum.words.join(" "),
+                            youtube_url: "http://youtu.be/sGE4HMvDe-Q",
+                            profile_photo: File.open("public/images/aretha.jpg"),
+                            genre: Entry::GENRES.sample)
     login_as user, scope: :user
 
     visit root_path
-    click_link "My Contestant Profile"
-    current_path.should == edit_entry_path(entry)
+    click_link "Contestant Profile"
+    current_path.should == edit_user_path(user)
 
     new_stage_name = Faker::HipsterIpsum.words.join(" ")
-    within "form.edit_entry" do
+    within "form.edit_user" do
       fill_in "Stage name", with: new_stage_name
       select Entry::GENRES.sample, from: "Genre"
-      fill_in "Hometown", with: Faker::Address.city
+      fill_in "user_entries_attributes_0_hometown", with: Faker::Address.city
       fill_in "Bio", with: Faker::HipsterIpsum.paragraph
       fill_in "YouTube URL", with: "http://youtu.be/sGE4HMvDe-Q"
       fill_in "Title", with: Faker::HipsterIpsum.words.join(" ")
       check "Has Music"
       check "Has Vocals"
       check "Has Explicit Content"
-      attach_file "entry_profile_photo", "public/images/aretha.jpg"
-
+      attach_file "user[entries_attributes][0][profile_photo]", "public/images/aretha.jpg"
       within ".social-section" do
         fill_in "Facebook", with: "http://www.facebook.com/foobar"
         fill_in "Pinterest", with: "http://www.pinterest.com/foobar"
@@ -32,10 +37,10 @@ feature "entries" do
       end
 
       lambda {
-        click_button "Save"
+        click_button "Save Profile"
       }.should change { entry.reload.stage_name }.to(new_stage_name)
     end
 
-    current_path.should == edit_entry_path(entry)
+    current_path.should == edit_user_path(user)
   end
 end

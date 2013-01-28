@@ -32,18 +32,6 @@ class EntriesController < ApplicationController
     @evaluation = current_user.evaluations.where(entry_id: @entry.id).first || @entry.evaluations.new
   end
 
-  def update
-    respond_to do |format|
-      if @entry.update_attributes(params[:entry])
-        format.html { redirect_to edit_entry_path(@entry) }
-        format.js { render json: @entry }
-      else
-        format.html { render "entries/edit" }
-        format.js { render json: @entry.errors }
-      end
-    end
-  end
-
   def leaderboard
     @entries = Entry.where("points > 0").includes(:user).order("points desc")
     @users = User.fan.sort_by(&:points).reverse

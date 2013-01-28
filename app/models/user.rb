@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :confirmable
 
   attr_accessible :email, :password, :password_confirmation, :username, :hometown, :show_explicit_videos,
-                  :receive_email_updates, :profile_photo, :confirmed_at, :admin, :musician, :tos, :time_zone
+                  :receive_email_updates, :profile_photo, :confirmed_at, :admin, :musician, :tos, :time_zone,
+                  :entries_attributes
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
@@ -21,14 +22,15 @@ class User < ActiveRecord::Base
   has_many :follows, dependent: :destroy
   has_many :evaluations, dependent: :destroy
   has_many :invited_users, class_name: "User", foreign_key: "inviter_id"
-
   has_many :followed_entries, through: :follows, source: :entry
 
-  validates :username, presence: { message: "Username is required" }, uniqueness: { message: "Username has already been registered" }
-  validates :email, presence: { message: "Email is required" }, uniqueness: { message: "Email has already been registered" }
-  validates :password, on: :create, presence: { message: "Password is required" }
+  accepts_nested_attributes_for :entries, limit: 1
+
+  validates :username, presence: {message: "Username is required"}, uniqueness: {message: "Username has already been registered"}
+  validates :email, presence: {message: "Email is required"}, uniqueness: {message: "Email has already been registered"}
+  validates :password, on: :create, presence: {message: "Password is required"}
   validates :referral_token, presence: true, uniqueness: true
-  validates :tos, acceptance: { accept: true, message: "You must agree to Terms to register", allow_nil: false }
+  validates :tos, acceptance: {accept: true, message: "You must agree to Terms to register", allow_nil: false}
   validates_confirmation_of :password, message: "Passwords do not match"
 
   before_validation :set_referral_token, :shorten_referral_link

@@ -1,5 +1,5 @@
 $ ->
-  $('input#entry_profile_photo, input#user_profile_photo').fileupload
+  $('input.upload-field').fileupload
     dataType: 'json'
     add: (e, data) ->
       if $("img.cover-image").length
@@ -16,8 +16,12 @@ $ ->
         $("div.cover-image").html(progress + "%")
     done: (e, data) ->
       $("div.fake-upload > p").html("Change File")
-      $("input.upload-value").val(data.result.profile_photo.url.split("/").pop())
-      url = data.result.profile_photo.medium.url
+      profile_photo = if data.result.entries.length
+        data.result.entries[0].profile_photo
+      else
+        data.result.profile_photo
+      $("input.upload-value").val(profile_photo.url.split("/").pop())
+      url = profile_photo.medium.url
       if $("div.cover-image").length
         $("div.cover-image").after("<img class='cover-image' src='" + url + "'/>")
         $("div.cover-image").remove()

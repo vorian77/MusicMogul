@@ -3,10 +3,7 @@
     %h3 Account
     %ul
       %li
-        %a{href: "#{edit_user_path(current_user)}"} Personal Profile
-      - if current_user.entries.count > 0
-        %li
-          %a{href: "#{edit_entry_path(current_user.entries.first)}"} Contestant Profile
+        %a{href: "#{edit_user_path(current_user)}"} #{current_user.fan? ? "Mogul" : "Contestant"} Profile
       %li.active
         %a{href: "#{friends_path}"} Friends
   .main-t
@@ -65,9 +62,9 @@
         .friends-list.followers-list
           %h3
             My Followers (
-            %span> #{current_user.entries.first.users.count}
+            %span> #{current_user.entries.first.followers.count}
             )
-          - if current_user.entries.first.users.count > 0
+          - if current_user.entries.first.followers.count > 0
             .table-holder
               %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
                 %tr

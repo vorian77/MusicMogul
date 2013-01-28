@@ -1,0 +1,80 @@
+.main.shell
+  .account-nav.clearfix
+    %h3 Account
+    %ul
+      %li.active
+        %a{href: "#{edit_user_path(current_user)}"} #{current_user.fan? ? "Mogul" : "Contestant"} Profile
+      %li
+        %a{href: "#{friends_path}"} Friends
+  .main-t
+  .main-c
+    .sign-up-steps.account-edit
+      .form-section
+        = simple_form_for @user, url: user_path(current_user), html: {multipart: true} do |f|
+          .inner-form-section
+            %h3 Personal Information
+            = f.input :username, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            = f.input :email, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            = f.input :hometown, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            = f.input :time_zone, :priority => /US/, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+          = f.simple_fields_for :entries do |entry_fields|
+            - next unless entry_fields.object == f.object.entries.first
+            .inner-form-section
+              %h3 Contestant Information
+              = entry_fields.input :stage_name, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+              = entry_fields.input :genre, collection: Entry::GENRES, wrapper_html: { class: "form-row clearfix genre" }, input_html: { class: "field" }
+              = entry_fields.input :hometown, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+              = entry_fields.input :bio, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            .inner-form-section
+              %h3 Performance Video
+              = entry_fields.input :title, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+              = entry_fields.input :youtube_url, label: "YouTube URL", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+              .form-row.clearfix
+                .labels
+                  %label.check
+                    %input{name: "user[entries_attributes][0][has_music]", type: "hidden", value: "0"}
+                    %input{type: "checkbox", value: "1", checked: entry_fields.object.has_music?, name: "user[entries_attributes][0][has_music]"}/
+                    %span
+                    Has Music
+                  %label.check
+                    %input{name: "user[entries_attributes][0][has_vocals]", type: "hidden", value: "0"}
+                    %input{type: "checkbox", value: "1", checked: entry_fields.object.has_vocals?, name: "user[entries_attributes][0][has_vocals]"}/
+                    %span
+                    Has Vocals
+                  %label.check
+                    %input{name: "user[entries_attributes][0][has_explicit_content]", type: "hidden", value: "0"}
+                    %input{type: "checkbox", value: "1", checked: entry_fields.object.has_explicit_content?, name: "user[entries_attributes][0][has_explicit_content]"}/
+                    %span
+                    Has Explicit Content
+            .inner-form-section.clearfix
+              %h3 Performer photo
+              - if entry_fields.object.profile_photo?
+                = image_tag(entry_fields.object.profile_photo.url(:medium), class: "cover-image")
+              - else
+                .cover-image
+              .custom-upload
+                .upload-button
+                  %input.upload-field{type: "file", name: "user[entries_attributes][0][profile_photo]"}
+                    .fake-upload
+                      %p #{entry_fields.object.profile_photo? ? "Change File" : "Choose File"}
+                    %input.field.upload-value{type: "text", value: "#{entry_fields.object.profile_photo? ? entry_fields.object.profile_photo.file.filename : "No file chosen"}", readonly: "readonly"}/
+                .upload-info
+                  %p
+                    You can upload a JPG, PNG, or GIF file that is no
+                    %br>/
+                    more that 2MB. (Do not upload pictures
+                    %br>/
+                    containing celebrities, nudity, artwork or images
+                    = succeed "that" do
+                      %br/
+                    you do not own or represent the copyright for.)
+            .inner-form-section.social-section
+              %h3 Social Accounts
+              %p Allow fans to connect with you on your social networks.
+              = entry_fields.input :facebook, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field", "data-default-prefix" => Entry.columns_hash["facebook"].default }
+              = entry_fields.input :pinterest, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field", "data-default-prefix" => Entry.columns_hash["pinterest"].default }
+              = entry_fields.input :twitter, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field", "data-default-prefix" => Entry.columns_hash["twitter"].default }
+              = entry_fields.input :youtube, label: "YouTube", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field", "data-default-prefix" => Entry.columns_hash["youtube"].default }
+              = entry_fields.input :website, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field", "data-default-prefix" => Entry.columns_hash["website"].default }
+          %input.btn{:type => "submit", :value => "Save Profile"}/
+  .main-b
