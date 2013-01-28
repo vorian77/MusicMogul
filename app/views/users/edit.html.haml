@@ -16,6 +16,7 @@
             = f.input :username, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
             = f.input :email, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
             = f.input :hometown, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+            = f.input :time_zone, :priority => /US/, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
             .form-row.clearfix.labels-row
               %label.check
                 %input{name: "user[receive_email_updates]", type: "hidden", value: "0"}

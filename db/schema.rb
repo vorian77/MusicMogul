@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127173147) do
+ActiveRecord::Schema.define(:version => 20130128010950) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -98,10 +98,10 @@ ActiveRecord::Schema.define(:version => 20130127173147) do
 
   create_table "users", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
-    t.string   "email",                   :default => "",    :null => false
-    t.string   "encrypted_password",      :default => "",    :null => false
+    t.datetime "created_at",                                                        :null => false
+    t.datetime "updated_at",                                                        :null => false
+    t.string   "email",                   :default => "",                           :null => false
+    t.string   "encrypted_password",      :default => "",                           :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(:version => 20130127173147) do
     t.string   "unconfirmed_email"
     t.string   "username"
     t.string   "hometown"
-    t.boolean  "admin",                   :default => false, :null => false
+    t.boolean  "admin",                   :default => false,                        :null => false
     t.boolean  "show_explicit_videos",    :default => true
     t.boolean  "receive_email_updates",   :default => true
     t.string   "profile_photo"
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(:version => 20130127173147) do
     t.integer  "inviter_id"
     t.boolean  "musician",                :default => false
     t.boolean  "tos"
+    t.string   "time_zone",               :default => "Eastern Time (US & Canada)"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
