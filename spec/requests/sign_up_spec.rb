@@ -49,10 +49,9 @@ feature "sign up" do
       check "Has Vocals"
       check "Has Explicit Content"
       attach_file "entry_profile_photo", "public/images/aretha.jpg"
-      pending "fix this spec"
       lambda {
         click_button "Sign Up"
-      }.should change { user.entries.count }.by(1)
+      }.should change { user.entries.finished.count }.by(1)
     end
 
     current_path.should == root_path
