@@ -1,5 +1,5 @@
 class Entry < ActiveRecord::Base
-  GENRES = ['Country', 'Electronic', 'Hip Hop', 'Pop', 'R&B', 'Rock']
+  GENRES = ['Alternative', 'Country', 'Electronic', 'Gospel', 'Hip Hop', 'Pop', 'R&B', 'Rock', 'Other']
 
   belongs_to :user
   has_many :evaluations, dependent: :destroy
