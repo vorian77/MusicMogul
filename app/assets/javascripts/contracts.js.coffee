@@ -9,13 +9,11 @@ $ ->
     link.toggleClass("signed")
 
   contract_links.on "mouseenter", () ->
-    unless $(this).hasClass("signed")
-      $(this).removeAttr("data-changed")
-      toggleLink($(this))
+    $(this).addClass("signed")
 
   contract_links.on "mouseleave", () ->
-    unless $(this).attr("data-changed") || $(this).hasClass("signed")
-      toggleLink($(this))
+    unless $(this).attr("data-changed")
+      $(this).removeClass("signed")
 
   contract_links.on "ajax:success", () ->
     link = $(this)

@@ -2,13 +2,14 @@
   .main
     .main-t
     .main-c
-      .contestant-info
+      .contestant-info[@entry]
         %a{:href => "#"}
           %img{:alt => "", :src => "#{@entry.profile_photo.url(:medium)}"}/
         %h3
           %a{:href => "#"} #{@entry.stage_name}
         - unless @evaluation.new_record?
           = render "follows/button", entry: @entry
+          = render "contracts/button", entry: @entry
         .contestant-info-inner.clearfix
           .left-info
             %p.genre #{@entry.genre}
