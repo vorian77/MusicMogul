@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :ensure_contest_running!, except: [:finish]
   load_and_authorize_resource
 
   def finish

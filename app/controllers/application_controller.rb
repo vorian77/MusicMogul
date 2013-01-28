@@ -29,6 +29,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def ensure_contest_running!
+    redirect_to root_path unless Contest.active.present?
+  end
+
   def perform_basic_authentication
     authenticate_or_request_with_http_basic do |username, password|
       username == "mogul" && password == "detroit1"

@@ -1,5 +1,6 @@
 class EvaluationsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :ensure_contest_running!
 
   def index
     if current_user.musician?
