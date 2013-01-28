@@ -34,37 +34,38 @@
             .slide
               %iframe{:allowfullscreen => "", :frameborder => "0", :height => "363", :src => "http://www.youtube.com/embed/#{@entry.youtube_id}", :width => "640"}
     .main-b.main-b-edit
-  - if current_user.has_evaluated?(@entry)
-    .main
-      .main-t
-      .main-c
-        .evaluations
-          %h3 Watch the video and make your evaluations
-          .evaluation-sliders.clearfix
-            - if @entry.has_vocals?
-              = render "evaluations/slider", type: :vocals, disabled: true
-            - if @entry.has_music?
-              = render "evaluations/slider", type: :music, disabled: true
-            = render "evaluations/slider", type: :presentation, disabled: true
-          .evaluation-comment
-            %label{:for => "eval-comment-field"} Comment
-            %p= @evaluation.comment
-      .main-b.main-b-edit
-  - else
-    .main
-      .main-t
-      .main-c
-        .evaluations
-          = simple_form_for [@entry, @evaluation] do |f|
+  - if current_user.fan?
+    - if current_user.has_evaluated?(@entry)
+      .main
+        .main-t
+        .main-c
+          .evaluations
             %h3 Watch the video and make your evaluations
             .evaluation-sliders.clearfix
               - if @entry.has_vocals?
-                = render "evaluations/slider", form: f, type: :vocals
+                = render "evaluations/slider", type: :vocals, disabled: true
               - if @entry.has_music?
-                = render "evaluations/slider", form: f, type: :music
-              = render "evaluations/slider", form: f, type: :presentation
+                = render "evaluations/slider", type: :music, disabled: true
+              = render "evaluations/slider", type: :presentation, disabled: true
             .evaluation-comment
               %label{:for => "eval-comment-field"} Comment
-              %textarea#eval-comment-field.field{:name => "evaluation[comment]", :title => "Write something encouraging or constructive to the contestant..."} Write something encouraging or constructive to the contestant...
-              %input.submit.btn{:type => "submit", :value => "Submit"}/
-      .main-b.main-b-edit
+              %p= @evaluation.comment
+        .main-b.main-b-edit
+    - else
+      .main
+        .main-t
+        .main-c
+          .evaluations
+            = simple_form_for [@entry, @evaluation] do |f|
+              %h3 Watch the video and make your evaluations
+              .evaluation-sliders.clearfix
+                - if @entry.has_vocals?
+                  = render "evaluations/slider", form: f, type: :vocals
+                - if @entry.has_music?
+                  = render "evaluations/slider", form: f, type: :music
+                = render "evaluations/slider", form: f, type: :presentation
+              .evaluation-comment
+                %label{:for => "eval-comment-field"} Comment
+                %textarea#eval-comment-field.field{:name => "evaluation[comment]", :title => "Write something encouraging or constructive to the contestant..."} Write something encouraging or constructive to the contestant...
+                %input.submit.btn{:type => "submit", :value => "Submit"}/
+        .main-b.main-b-edit

@@ -14,6 +14,7 @@ class Evaluation < ActiveRecord::Base
   validates :presentation_score, numericality: {greater_than: 0, less_than: 11}
   validates :overall_score, numericality: {greater_than: 0, less_than: 11}
   #validate :ensure_invited_user
+  validate :ensure_fan
 
   before_validation :calculate_overall_score
   after_save :calculate_entry_points
@@ -27,6 +28,11 @@ class Evaluation < ActiveRecord::Base
 
   def calculate_entry_points
     self.entry.update_attribute(:points, entry.evaluations.sum(:overall_score))
+  end
+
+  def ensure_fan
+    return unless user.present?
+    errors.add(:user, "cannot be a contestant") if user.musician?
   end
 
   def ensure_invited_user
