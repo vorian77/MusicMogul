@@ -23,8 +23,8 @@ $ ->
   $(".sign-buttons a.confirm").live "click", () ->
     id = $(this).closest("[data-entry-id]").data("entry-id")
     link = $("a#sign_entry_" + id)
-    link.addClass("signed")
     link.prev("a.follow-btn:not(.following)").click()
+    link.addClass("signed")
     $.colorbox.close()
 
   $(".sign-buttons a.btn-grey").live "click", () ->

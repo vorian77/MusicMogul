@@ -1,19 +1,20 @@
 $ ->
-  $("a[href='#']").on "click", (e) ->
-    e.preventDefault()
-
   follow_links = $("a.follow-btn").filter -> $(this).attr("href") != "#"
   follow_links.on "click", () ->
     link = $(this)
-    return false if link.attr("disabled") == "disabled"
-    link.attr("disabled", "disabled").attr("data-changed", "true")
+    return false if link.attr("disabled") || signed(link)
+    link.attr("disabled", "disabled").attr("data-changed", "changed")
 
   toggleLink = (link) ->
-    link.toggleClass("following")
-    if link.html() == "Follow"
-      link.html("Following")
-    else
-      link.html("Follow")
+    unless signed(link)
+      link.toggleClass("following")
+      if link.html() == "Follow"
+        link.html("Following")
+      else
+        link.html("Follow")
+
+  signed = (link) ->
+    link.next("a.sign-btn").hasClass("signed")
 
   follow_links.on "mouseenter", () ->
     $(this).removeAttr("data-changed")
