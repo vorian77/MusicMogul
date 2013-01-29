@@ -30,6 +30,12 @@ class EntriesController < ApplicationController
 
   def show
     @evaluation = current_user.evaluations.where(entry_id: @entry.id).first || @entry.evaluations.new
+    @previous_entry = if @evaluation.new_record?
+                        current_user.evaluations.order("created_at").last.try(:entry)
+                      else
+                        current_user.evaluations.order("created_at").where("created_at < ?", @evaluation.created_at).last.try(:entry)
+    end
+    @next_entry = Entry.unevaluated_by(current_user).where("entries.id != ?", @entry.id).order("random()").first
   end
 
   def leaderboard

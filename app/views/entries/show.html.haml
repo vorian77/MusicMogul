@@ -28,12 +28,15 @@
   .main
     .main-t
     .main-c
-      .contestant-songs.flexslider
-        %ul.slides
+      .contestant-songs
+        %ul
+          - if @previous_entry
+            %li= link_to "prev", @previous_entry
           %li
             %h3 #{@entry.title}
-            .slide
-              %iframe{:allowfullscreen => "", :frameborder => "0", :height => "363", :src => "http://www.youtube.com/embed/#{@entry.youtube_id}", :width => "640"}
+            %iframe{:allowfullscreen => "", :frameborder => "0", :height => "363", :src => "http://www.youtube.com/embed/#{@entry.youtube_id}", :width => "640"}
+          - if @next_entry.present?
+            %li= link_to "next", @next_entry
     .main-b.main-b-edit
   - if current_user.fan?
     - if current_user.has_evaluated?(@entry)
