@@ -1,4 +1,4 @@
 - if current_user.signed?(entry)
   = link_to "", "#", class: "sign-btn signed"
 - else
-  = link_to "", entry_contracts_path(entry), method: :post, remote: true, class: "sign-btn"
+  = link_to "", "#", method: :post, remote: true, id: "sign_entry_#{entry.id}", class: "sign-btn", "data-contract-confirm-attributes" => contract_confirm_attributes(entry)

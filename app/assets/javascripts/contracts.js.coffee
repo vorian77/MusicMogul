@@ -1,21 +1,30 @@
 $ ->
-  contract_links = $("a.sign-btn:not(.signed)").filter -> $(this).attr("href") != "#"
+  contract_links = $("a.sign-btn:not(.signed)").filter -> !$(this).attr("disabled")
   contract_links.on "click", () ->
-    link = $(this)
-    return false if link.attr("disabled") == "disabled"
-    link.attr("disabled", "disabled").attr("data-changed", "true")
+    showConfirm($(this).data("contract-confirm-attributes"))
+    return false
 
-  toggleLink = (link) ->
-    link.toggleClass("signed")
+  showConfirm = (attributes) ->
+    $.colorbox
+      html: ich.sign_confirm(attributes)
+      scrolling: false
+      maxWidth: '75%'
+      maxHeight: '75%'
+      opacity: 0.3
+      onComplete: ->
+        $.colorbox.resize()
 
   contract_links.on "mouseenter", () ->
     $(this).addClass("signed")
 
   contract_links.on "mouseleave", () ->
-    unless $(this).attr("data-changed")
-      $(this).removeClass("signed")
+    $(this).removeClass("signed")
 
-  contract_links.on "ajax:success", () ->
-    link = $(this)
-    link.attr("href", "#")
-    link.addClass("signed")
+  $(".sign-buttons a.confirm").live "click", () ->
+    id = $(this).closest("[data-entry-id]").data("entry-id")
+    $("a#sign_entry_" + id).addClass("signed")
+    $.colorbox.close()
+
+  $(".sign-buttons a.btn-grey").live "click", () ->
+    $.colorbox.close()
+    return false

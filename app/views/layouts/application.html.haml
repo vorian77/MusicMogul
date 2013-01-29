@@ -7,6 +7,8 @@
     = stylesheet_link_tag "application", :media => "all", :rel => "stylesheet", :type => "text/css"
     = javascript_include_tag "application"
   %body
+    - if user_signed_in?
+      = render "contracts/confirm"
     = render "layouts/flash"
     / page wrapper
     .wrapper

@@ -13,7 +13,7 @@
               %a.follow-btn.following.btn{href: "#", disabled: "disabled"} Following
             - else
               %a.follow-btn.btn{href: "#", disabled: "disabled"} Follow
-            %a.sign-btn{href: "#", class: "#{'signed' if evaluation.user.signed?(evaluation.entry)}"}
+            %a.sign-btn{href: "#", class: "#{'signed' if evaluation.user.signed?(evaluation.entry)}", disabled: "disabled"}
             .contestant-info-inner.clearfix
               .left-info
                 %h3

@@ -25,11 +25,11 @@ module ApplicationHelper
 
   def evaluation_datetime(created_at)
     date = if created_at.to_date == Date.today
-      "Today"
+             "Today"
            elsif created_at.to_date == Date.yesterday
-      "Yesterday"
+             "Yesterday"
            else
-      created_at.strftime("%b %d, %Y")
+             created_at.strftime("%b %d, %Y")
            end
     time = created_at.strftime("%I:%M%p")
     [date, time].join(", ")
@@ -37,5 +37,17 @@ module ApplicationHelper
 
   def signee_width_percentage
     %w(0% 18% 39% 59% 80% 100%)[current_user.contracts.count]
+  end
+
+  def contract_confirm_attributes(entry)
+    {id: entry.id,
+     create_contract_path: entry_contracts_path(entry),
+     contracts_remaining: User::CONTRACT_LIMIT - current_user.contracts.count,
+     photo_url: entry.profile_photo.url(:medium),
+     stage_name: entry.stage_name,
+     genre: entry.genre,
+     hometown: entry.hometown,
+     evaluation: number_with_precision(current_user.evaluation_for(entry).try(:overall_score), precision: 1)
+    }.to_json
   end
 end

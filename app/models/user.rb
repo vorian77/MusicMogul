@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  CONTRACT_LIMIT = 5
   MUSICIAN_INVITATION_LIMIT = 25
   FAN_INVITATION_LIMIT = 5
 
