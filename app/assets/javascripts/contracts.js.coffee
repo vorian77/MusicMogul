@@ -5,6 +5,7 @@ $ ->
     return false
 
   showConfirm = (attributes) ->
+    attributes.contracts_remaining = contractsRemaining()
     $.colorbox
       html: ich.sign_confirm(attributes)
       scrolling: false
@@ -14,13 +15,26 @@ $ ->
       onComplete: ->
         $.colorbox.resize()
 
+  contractsRemaining = () ->
+    $("[data-contract-limit]").data("contract-limit") - $("[data-used-contract-count]").data("used-contract-count") - 1
+
   contract_links.on "mouseenter", () ->
     $(this).addClass("signed")
 
   contract_links.on "mouseleave", () ->
     $(this).removeClass("signed")
 
+  updateScorecard = () ->
+    scorecard = $("[data-scorecard-path]")
+    $.ajax
+      url: scorecard.data("scorecard-path")
+      success: (data) ->
+        open = scorecard.find("div.hidden-row").css("display") == "block"
+        scorecard.replaceWith(data.scorecard)
+        $("a.list-handle").click() if open
+
   $(".sign-buttons a.confirm").live "click", () ->
+    updateScorecard()
     id = $(this).closest("[data-entry-id]").data("entry-id")
     link = $("a#sign_entry_" + id)
     link.prev("a.follow-btn:not(.following)").click()

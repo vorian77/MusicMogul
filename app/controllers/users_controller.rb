@@ -31,4 +31,8 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def scorecard
+    render json: {scorecard: render_to_string(partial: "users/score")}
+  end
 end

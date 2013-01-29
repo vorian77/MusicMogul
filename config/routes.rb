@@ -11,7 +11,11 @@ Mvp2::Application.routes.draw do
   match "/users/verify_email" => "users#verify_email", as: :verify_email
   match "/users/finish" => "entries#finish", as: :finish_entry
 
-  resources :users, only: [:edit, :update]
+  resources :users, only: [:edit, :update] do
+    member do
+      get :scorecard
+    end
+  end
   resources :friends, only: [:index]
 
   resources :entries, only: [:show] do

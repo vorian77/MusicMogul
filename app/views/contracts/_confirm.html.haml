@@ -15,7 +15,7 @@
         %span {{evaluation}}
     .warning-msg
       %h3
-        Are you sure you want to {{stage_name}}
+        Are you sure you want to sign {{stage_name}}?
       %p You will have {{contracts_remaining}} contracts remaining to sign other artists.
     .sign-buttons.clearfix
       = link_to "Confirm", "{{create_contract_path}}", method: :post, remote: true, class: "btn confirm"

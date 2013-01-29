@@ -1,5 +1,5 @@
 - if current_user.fan?
-  .mogul-info-box
+  .mogul-info-box{"data-scorecard-path" => scorecard_user_path(current_user)}
     .info-row.clearfix
       %ul.head-row.clearfix
         %li.title
@@ -16,7 +16,7 @@
       %h3 Signees
       %ul.small-list.rating-list.clearfix
         %li.rating-cell
-          %p.rating
+          %p.rating{"data-contract-limit" => User::CONTRACT_LIMIT, "data-used-contract-count" => current_user.contracts.count}
             %span{:style => "width: #{signee_width_percentage};"}
         %li
           Points
