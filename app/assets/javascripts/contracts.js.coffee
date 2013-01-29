@@ -34,7 +34,6 @@ $ ->
         $("a.list-handle").click() if open
 
   $(".sign-buttons a.confirm").live "click", () ->
-    updateScorecard()
     id = $(this).closest("[data-entry-id]").data("entry-id")
     link = $("a#sign_entry_" + id)
     link.prev("a.follow-btn:not(.following)").click()
@@ -44,3 +43,6 @@ $ ->
   $(".sign-buttons a.btn-grey").live "click", () ->
     $.colorbox.close()
     return false
+
+  $(".sign-buttons a.confirm").live "ajax:success", () ->
+    updateScorecard()
