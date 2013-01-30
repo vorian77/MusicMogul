@@ -1,7 +1,7 @@
 $ ->
   contract_links = $("a.sign-btn:not(.signed)").filter -> !$(this).attr("disabled")
   contract_links.on "click", () ->
-    showConfirm($(this).data("contract-confirm-attributes"))
+    showConfirm($(this).data("contract-confirm-attributes")) unless $(this).hasClass("signed")
     return false
 
   showConfirm = (attributes) ->
