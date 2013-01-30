@@ -1,5 +1,18 @@
 .shell.interior
   .main
+    .eval-title.clearfix
+      %h2
+        - if current_user.has_evaluated?(@entry)
+          Review Contestant Audition
+        - else
+          Audition Contestant
+      - if @previous_entry.present? || @next_entry.present?
+        .contestant-pagination
+          - if @previous_entry.present?
+            %a.prev-page{:href => "#{entry_path(@previous_entry)}"}
+          %p Contestant
+          - if @next_entry.present?
+            %a.next-page{:href => "#{entry_path(@next_entry)}"}
     .main-t
     .main-c
       .contestant-info[@entry]
@@ -28,15 +41,12 @@
   .main
     .main-t
     .main-c
-      .contestant-songs
-        %ul
-          - if @previous_entry
-            %li= link_to "prev", @previous_entry
+      .contestant-songs.flexslider
+        %ul.slides
           %li
             %h3 #{@entry.title}
-            %iframe{:allowfullscreen => "", :frameborder => "0", :height => "363", :src => "http://www.youtube.com/embed/#{@entry.youtube_id}", :width => "640"}
-          - if @next_entry.present?
-            %li= link_to "next", @next_entry
+            .slide
+              %iframe{:allowfullscreen => "", :frameborder => "0", :height => "363", :src => "http://www.youtube.com/embed/#{@entry.youtube_id}", :width => "640"}
     .main-b.main-b-edit
   - if current_user.fan?
     - if current_user.has_evaluated?(@entry)

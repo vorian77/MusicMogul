@@ -23,7 +23,7 @@ class Evaluation < ActiveRecord::Base
   private
 
   def calculate_overall_score
-    return unless presentation_score.present?
+    return unless entry.present? && presentation_score.present?
     self.overall_score = ((music_score || 0) + (vocals_score || 0) + presentation_score) / entry.component_count.to_f
   end
 

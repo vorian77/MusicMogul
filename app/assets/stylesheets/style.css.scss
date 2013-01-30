@@ -573,3 +573,17 @@ a.consider-btn:active { background-position: -81px -72px; }
 .sign-confirm .sign-buttons { text-align: center; }
 .sign-confirm .sign-buttons a.btn { line-height: 36px; width: 76px; height: 36px; display: inline-block; margin: 0 5px; background-image: image_url("btn2.png"); }
 .sign-confirm .sign-buttons a.btn-grey { background-image:image_url("btnFollow.png"); }
+
+.eval-title { padding-bottom: 13px; }
+.eval-title h2 { font-size: 24px; line-height: 30px; color: #dd0000; float: left; display: inline; padding-top: 9px; }
+
+.contestant-pagination { font-size: 16px; line-height: 22px; color: #000; float: right; display: inline; background: #e1e1e1; border: 1px solid #d3d3d3; border-radius: 6px; -moz-border-radius: 6px; -webkit-border-radius: 6px; -o-border-radius: 6px; padding: 5px 8px; }
+.contestant-pagination p { padding: 7px 17px; float: left; display: inline; }
+.contestant-pagination a.prev-page,
+.contestant-pagination a.next-page { width: 46px; height: 36px; float: left; display: inline; font-size: 0; line-height: 0; text-indent: -4000px; background-image: image_url("arrs.png"); background-repeat: no-repeat; }
+.contestant-pagination a.prev-page { background-position: 0 0; }
+.contestant-pagination a.prev-page:hover { background-position: 0 -38px; }
+.contestant-pagination a.prev-page:active { background-position: 0 -76px; }
+.contestant-pagination a.next-page { background-position: -47px 0; float: right; }
+.contestant-pagination a.next-page:hover { background-position: -47px -38px; }
+.contestant-pagination a.next-page:active { background-position: -47px -76px; }
