@@ -180,7 +180,7 @@ $(function () {
 
     // evaluation sliders
     $('.jq-slider').each(function () {
-        var valueNumber = $(this).data("value") || 5;
+        var valueNumber = $(this).data("value") || 0;
         var disabled = $(this).data("disabled");
         $(this).slider({
             value:valueNumber,

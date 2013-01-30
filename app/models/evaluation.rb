@@ -10,10 +10,10 @@ class Evaluation < ActiveRecord::Base
   validates :entry, presence: true
   validates :user, presence: true
 
-  validates :music_score, numericality: {greater_than: 0, less_than: 11, allow_nil: true}
-  validates :vocals_score, numericality: {greater_than: 0, less_than: 11, allow_nil: true}
-  validates :presentation_score, numericality: {greater_than: 0, less_than: 11}
-  validates :overall_score, numericality: {greater_than: 0, less_than: 11}
+  validates :music_score, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 10, allow_nil: true}
+  validates :vocals_score, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 10, allow_nil: true}
+  validates :presentation_score, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 10}
+  validates :overall_score, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 10}
   #validate :ensure_invited_user
   validate :ensure_fan
 
@@ -23,7 +23,7 @@ class Evaluation < ActiveRecord::Base
   private
 
   def calculate_overall_score
-    return unless presentation_score?
+    return unless presentation_score.present?
     self.overall_score = ((music_score || 0) + (vocals_score || 0) + presentation_score) / entry.component_count.to_f
   end
 
