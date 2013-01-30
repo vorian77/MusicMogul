@@ -1,7 +1,7 @@
 $ ->
   contract_links = $("a.sign-btn:not(.signed)").filter -> !$(this).attr("disabled")
   contract_links.on "click", () ->
-    showConfirm($(this).data("contract-confirm-attributes")) unless $(this).hasClass("signed")
+    showConfirm($(this).data("contract-confirm-attributes")) unless $(this).attr("disabled")
     return false
 
   showConfirm = (attributes) ->
@@ -22,7 +22,7 @@ $ ->
     $(this).addClass("signed")
 
   contract_links.on "mouseleave", () ->
-    $(this).removeClass("signed")
+    $(this).removeClass("signed") unless $(this).attr("disabled")
 
   removeSignButtons = () ->
     $("a.sign-btn:not(.signed)").remove()
@@ -41,7 +41,7 @@ $ ->
     id = $(this).closest("[data-entry-id]").data("entry-id")
     link = $("a#sign_entry_" + id)
     link.prev("a.follow-btn:not(.following)").click()
-    link.addClass("signed")
+    link.addClass("signed").attr("disabled", "disabled")
     $.colorbox.close()
 
   $(".sign-buttons a.btn-grey").live "click", () ->
