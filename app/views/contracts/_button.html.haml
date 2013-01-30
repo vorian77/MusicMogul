@@ -1,4 +1,4 @@
 - if current_user.signed?(entry)
   = link_to "", "#", class: "sign-btn signed"
-- else
+- elsif User::CONTRACT_LIMIT - current_user.contracts.count > 0
   = link_to "", "#", method: :post, remote: true, id: "sign_entry_#{entry.id}", class: "sign-btn", "data-contract-confirm-attributes" => contract_confirm_attributes(entry)
