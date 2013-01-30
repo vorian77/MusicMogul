@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :contract do
+    user
+    entry
   end
 end
