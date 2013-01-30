@@ -1,5 +1,6 @@
 class Evaluation < ActiveRecord::Base
   POINT_VALUE = 1000
+  COMMENT_PROMPT = "Write something encouraging or constructive to the contestant..."
 
   belongs_to :entry
   belongs_to :user, include: :evaluations
@@ -16,7 +17,7 @@ class Evaluation < ActiveRecord::Base
   #validate :ensure_invited_user
   validate :ensure_fan
 
-  before_validation :calculate_overall_score
+  before_validation :calculate_overall_score, :nullify_blank_comments
   after_save :calculate_entry_points
 
   private
@@ -38,5 +39,9 @@ class Evaluation < ActiveRecord::Base
   def ensure_invited_user
     return unless user.present?
     errors.add(:user, "must be invited") if user.uninvited?
+  end
+
+  def nullify_blank_comments
+    self.comment = nil if comment == COMMENT_PROMPT
   end
 end
