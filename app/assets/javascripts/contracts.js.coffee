@@ -5,7 +5,7 @@ $ ->
     return false
 
   showConfirm = (attributes) ->
-    attributes.contracts_remaining = contractsRemaining()
+    attributes.contracts_remaining = contractsRemaining() if contractsRemaining()
     $.colorbox
       html: ich.sign_confirm(attributes)
       scrolling: false

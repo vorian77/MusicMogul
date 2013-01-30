@@ -42,6 +42,7 @@ module ApplicationHelper
   def contract_confirm_attributes(entry)
     {id: entry.id,
      create_contract_path: entry_contracts_path(entry),
+     contracts_remaining: User::CONTRACT_LIMIT - current_user.contracts.count - 1,
      photo_url: entry.profile_photo.url(:medium),
      stage_name: entry.stage_name,
      genre: entry.genre,
