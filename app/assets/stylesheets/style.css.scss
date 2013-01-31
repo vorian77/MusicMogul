@@ -422,6 +422,8 @@ a.consider-btn:active { background-position: -81px -72px; }
 .social-icos a.yt-ico { background-position: -113px 0; }
 .social-icos a.li-ico { background-position: -151px 0; }
 .social-icos a.vi-ico { background-position: -189px 0; }
+.social-icos a.pin-ico { background: image_url("arrs.png") no-repeat 0 -113px; }
+.social-icos a.web-ico { background: image_url("arrs.png") no-repeat -38px -113px; }
 
 .mogul-entry { width: 221px; float: left; display: inline; padding: 0 0 37px 209px; min-height: 190px; height:100%; position: relative; }
 .mogul-entry.last { float: right; }

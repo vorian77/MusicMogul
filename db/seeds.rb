@@ -86,7 +86,9 @@ Entry.create!(user: aretha,
               bio: %Q{Aretha Louise Franklin (born March 25, 1942) is an American musician, singer, songwriter, and pianist. In a recording career that has spanned over half a century, Franklin's repertoire has included gospel, jazz, blues, R&B, pop, rock and funk.},
               facebook: "http://www.facebook.com/arethafranklin",
               twitter: "http://www.twitter.com/ArethaFranklin",
-              youtube: "http://www.youtube.com/ArethaFranklinVEVO")
+              youtube: "http://www.youtube.com/ArethaFranklinVEVO",
+              pinterest: "http://www.pinterest.com/legacyrecording/aretha-franklin/",
+              website: "http://www.arethafranklin.net")
 
 Entry.create!(user: azealia,
               stage_name: "Azealia Banks",

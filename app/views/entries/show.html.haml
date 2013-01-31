@@ -36,6 +36,10 @@
                   %a.ico.tw-ico{href: "#{@entry.twitter}", target: "_blank"}
                 - if @entry.youtube != Entry.columns_hash["youtube"].default
                   %a.ico.yt-ico{href: "#{@entry.youtube}", target: "_blank"}
+                - if @entry.pinterest != Entry.columns_hash["pinterest"].default
+                  %a.ico.pin-ico{href: "#{@entry.pinterest}", target: "_blank"}
+                - if @entry.website != Entry.columns_hash["website"].default
+                  %a.ico.web-ico{href: "#{@entry.website}", target: "_blank"}
             %p #{@entry.bio}
     .main-b.main-b-edit
   .main
