@@ -27,3 +27,6 @@
 p span.grade { color: #dd0000; }
 .stats-top.mogul ul li { width: 214px; }
 h1#logo a { margin-top: 4px; }
+.contestants > div { overflow: hidden; }
+.contestants h3 { float: left; margin-left: 10px; }
+.contestants h4 { float: right; margin-right: 10px; color: #9e9e9e; }
