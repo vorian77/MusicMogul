@@ -73,7 +73,7 @@
                   %th Picture
                   %th Username
                   %th Evaluations Given Or Recieved
-                - current_user.entries.first.users.each_with_index do |user, index|
+                - current_user.entries.first.followers.each_with_index do |user, index|
                   %tr
                     %td= index + 1
                     %td= user.created_at.strftime("%m/%d/%y")
