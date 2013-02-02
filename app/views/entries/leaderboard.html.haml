@@ -17,7 +17,6 @@
               %a{:href => "#{entry_path(entry)}"}
                 %img{:alt => "", :src => "#{entry.profile_photo.url(:medium)}"}/
               - if current_user.fan?
-                = render "follows/button", entry: entry
                 = render "contracts/button", entry: entry
               %h3
                 %a{:href => "#{entry_path(entry)}"}= entry.stage_name
