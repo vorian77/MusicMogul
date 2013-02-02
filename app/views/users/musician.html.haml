@@ -76,5 +76,9 @@
               = entry_fields.input :twitter, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field", "data-default-prefix" => Entry.columns_hash["twitter"].default }
               = entry_fields.input :youtube, label: "YouTube", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field", "data-default-prefix" => Entry.columns_hash["youtube"].default }
               = entry_fields.input :website, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field", "data-default-prefix" => Entry.columns_hash["website"].default }
+            .inner-form-section
+              %h3 Change Your Password
+              = f.input :password, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+              = f.input :password_confirmation, label: "Confirm password", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
           %input.btn{:type => "submit", :value => "Save Profile"}/
   .main-b
