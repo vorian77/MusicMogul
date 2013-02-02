@@ -9,19 +9,19 @@
         %div
           %h3 Contestants
           %h4 Click a picture to evaluate the contestant
-          #largeImage.largeContainer
-          #foo
-            %ul#tiles
-              - @entries.each do |entry|
-                %li{"data-large" => entry.profile_photo.url(:large), "data-entry-id" => entry.id}
-                  .front
-                    = image_tag entry.profile_photo.url(:masonry), width: entry.masonry_width, height: entry.masonry_height
-                    %p= entry.stage_name
-                  .back
-                    %h4= entry.stage_name
-                    %p= entry.genre
-                    %p= entry.hometown
-                    %p= entry.bio
+        #largeImage.largeContainer
+        #foo
+          %ul#tiles
+            - @entries.each do |entry|
+              %li{"data-large" => entry.profile_photo.url(:large), "data-entry-id" => entry.id}
+                .front
+                  = image_tag entry.profile_photo.url(:masonry), width: entry.masonry_width, height: entry.masonry_height
+                  %p= entry.stage_name
+                .back
+                  %h4= entry.stage_name
+                  %p= entry.genre
+                  %p= entry.hometown
+                  %p= entry.bio
       - else
         %div.empty
           %h3 Congratulations, you've evaluated all the contestants!
