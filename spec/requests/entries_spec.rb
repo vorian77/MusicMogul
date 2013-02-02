@@ -13,7 +13,7 @@ feature "entries" do
     login_as user, scope: :user
 
     visit root_path
-    click_link "Contestant Profile"
+    click_link "My Profile"
     current_path.should == edit_user_path(user)
 
     new_stage_name = Faker::HipsterIpsum.words.join(" ")

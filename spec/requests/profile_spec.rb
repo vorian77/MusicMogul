@@ -6,7 +6,7 @@ feature "profile" do
     login_as user, scope: :user
 
     visit root_path
-    click_link "Mogul Profile"
+    click_link "My Profile"
     current_path.should == edit_user_path(user)
 
     within "form.edit_user" do
