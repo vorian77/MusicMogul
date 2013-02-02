@@ -47,7 +47,7 @@
                     %span
                     Has Explicit Content
             .inner-form-section.clearfix
-              %h3 Performer photo
+              %h3 Performer Photo
               - if entry_fields.object.profile_photo?
                 = image_tag(entry_fields.object.profile_photo.url(:medium), class: "cover-image")
               - else
