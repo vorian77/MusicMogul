@@ -30,7 +30,7 @@
                 %span
                 Show videos with explicit content
           .inner-form-section.clearfix
-            %h3 Profile photo
+            %h3 Profile Photo
             - if current_user.photo.present?
               = image_tag(current_user.photo.url(:medium), class: "cover-image")
             - else
@@ -53,7 +53,7 @@
                       %br/
                     you do not own or represent the copyright for.)
           .inner-form-section
-            %h3 Change your password
+            %h3 Change Your Password
             = f.input :password, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
             = f.input :password_confirmation, label: "Confirm password", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
           %input.btn{:type => "submit", :value => "Save Profile"}/
