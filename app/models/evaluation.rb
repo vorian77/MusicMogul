@@ -19,6 +19,7 @@ class Evaluation < ActiveRecord::Base
 
   before_validation :calculate_overall_score, :nullify_blank_comments
   after_save :calculate_entry_points
+  after_destroy :calculate_entry_points
 
   private
 
