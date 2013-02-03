@@ -4,28 +4,13 @@
   .main
     .main-t
     .main-c
-      .moguls-list.clearfix
-        - if @evaluations.present?
-          - @evaluations.each do |evaluation|
-            .mogul-entry[evaluation]
-              %a{:href => "#{entry_path(evaluation.entry)}"}
-                %img{:alt => "", :src => "#{evaluation.entry.profile_photo.url(:medium)}"}/
-              %h3
-                %a{:href => "#{entry_path(evaluation.entry)}"}= evaluation.entry.stage_name
-              %p
-                %span.style> #{evaluation.entry.genre}
-                #{evaluation.entry.hometown}
-                %br>/
-                My Evaluation
-                %span.grade #{number_with_precision(evaluation.overall_score, precision: 1)}
-              .eval-buttons.clearfix
-                = render "follows/button", entry: evaluation.entry
-                = render "contracts/button", entry: evaluation.entry
-        - else
-          %div.empty
-            %h3 You haven't evaluated any contestants yet.
-            %h3= link_to "Start evaluating!", root_path
+      - if @evaluations.present?
+        = render "evaluations/moguls", evaluations: @evaluations
+      - else
+        %div.empty
+          %h3 You haven't evaluated any contestants yet.
+          %h3= link_to "Start evaluating!", root_path
     .main-b.main-b-edit
 / end main content area
--#.loading-more
--#  %p Loading More Contestants...
+.loading-more
+  %p Loading More Contestants...

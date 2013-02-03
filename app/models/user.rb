@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   end
 
   def contract_points
-    signed_entries.sum(:points)
+    signed_entries.sum(:points).round
   end
 
   def evaluation_for(entry)

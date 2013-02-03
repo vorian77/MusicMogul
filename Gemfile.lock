@@ -352,6 +352,7 @@ DEPENDENCIES
   heroku_san
   jquery-fileupload-rails
   jquery-rails
+  kaminari
   mime-types
   mini_magick
   pg
