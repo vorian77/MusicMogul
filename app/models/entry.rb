@@ -15,7 +15,7 @@ class Entry < ActiveRecord::Base
   validates :profile_photo, presence: {on: :update}
   validates :title, presence: {on: :update}
   validates :youtube_url, presence: {on: :update, message: "YouTube URL is required"}
-  validates :points, numericality: {only_integer: true, greater_than_or_equal_to: 0}
+  validates :points, numericality: {greater_than_or_equal_to: 0}
   validates :facebook, format: {with: /^#{Entry.columns_hash["facebook"].default}/}
   validates :twitter, format: {with: /^#{Entry.columns_hash["twitter"].default}/}
   validates :youtube, format: {with: /^#{Entry.columns_hash["youtube"].default}/}

@@ -107,7 +107,7 @@ class User < ActiveRecord::Base
       evaluation_points + contract_points + invitation_points
     else
       entries.first.points + invitation_points
-    end
+    end.round
   end
 
   def rank

@@ -57,11 +57,11 @@
         %li
           %h3 Rank
           %strong
-            #{entry.rank}
-            %small /#{Entry.count}
+            #{current_user.rank}
+            %small /#{User.musician.count}
         %li
           %h3 Points
-          %strong #{entry.points + entry.user.invitation_points}
+          %strong #{current_user.points}
     .info-row.clearfix.hidden-row
       %h3 Auditions
       %ul.small-list.auduitions-list.clearfix

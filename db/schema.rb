@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130128010950) do
+ActiveRecord::Schema.define(:version => 20130203164942) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20130128010950) do
     t.string   "hometown"
     t.text     "bio"
     t.string   "profile_photo"
-    t.integer  "points",               :default => 0
+    t.float    "points",               :default => 0.0
     t.string   "facebook",             :default => "http://www.facebook.com/"
     t.string   "twitter",              :default => "http://www.twitter.com/"
     t.string   "youtube",              :default => "http://www.youtube.com/"

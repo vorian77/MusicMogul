@@ -18,7 +18,7 @@ describe Entry do
     #it { should validate_presence_of(:genre).with_message("Genre is required") }
     #it { should validate_presence_of(:hometown).with_message("Hometown is required") }
     #it { should validate_presence_of(:profile_photo).with_message("Profile photo is required") }
-    it { should validate_numericality_of(:points).only_integer }
+    it { should validate_numericality_of(:points) }
     #it { should ensure_inclusion_of(:genre).in_array(Entry::GENRES) }
     it { should have_valid(:youtube_url).when("http://youtu.be/sGE4HMvDe-Q") }
     it { should have_valid(:youtube_url).when("http://www.youtube.com/watch?v=sGE4HMvDe-Q&feature=relmfu") }
