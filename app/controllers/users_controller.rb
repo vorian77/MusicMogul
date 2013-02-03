@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, except: [:verify_email]
+  before_filter :ensure_contest_running!, only: [:leaderboard]
   load_and_authorize_resource except: [:verify_email]
 
   def edit
