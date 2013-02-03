@@ -4,8 +4,7 @@ class EvaluationsController < ApplicationController
 
   def index
     if current_user.musician?
-      @entry = current_user.entries.first
-      @evaluations = @entry.evaluations.includes(:user).order("created_at desc")
+      @evaluations = current_user.entries.first.evaluations.includes(:user, :entry).order("created_at desc")
       render "musician"
     else
       @evaluations = current_user.evaluations.includes(:entry).order("created_at desc")
