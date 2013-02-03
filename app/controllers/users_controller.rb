@@ -32,6 +32,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def leaderboard
+    @musicians = User.musician.sort_by(&:points).reverse
+    @fans = User.fan.sort_by(&:points).reverse
+  end
+
   def scorecard
     render json: {scorecard: render_to_string(partial: "users/score")}
   end

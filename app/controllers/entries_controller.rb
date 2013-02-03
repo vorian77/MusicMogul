@@ -37,9 +37,4 @@ class EntriesController < ApplicationController
     end
     @next_entry = Entry.unevaluated_by(current_user).where("entries.id != ?", @entry.id).order("random()").first
   end
-
-  def leaderboard
-    @entries = Entry.where("points > 0").includes(:user).order("points desc")
-    @users = User.fan.sort_by(&:points).reverse
-  end
 end

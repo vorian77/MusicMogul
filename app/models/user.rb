@@ -103,11 +103,19 @@ class User < ActiveRecord::Base
   end
 
   def points
-    evaluation_points + contract_points + invitation_points
+    if fan?
+      evaluation_points + contract_points + invitation_points
+    else
+      entries.first.points + invitation_points
+    end
   end
 
   def rank
-    self.class.fan.map(&:points).uniq.sort.reverse.index(self.points) + 1
+    if fan?
+      self.class.fan.map(&:points).uniq.sort.reverse.index(self.points) + 1
+    else
+      self.class.musician.map(&:points).uniq.sort.reverse.index(self.points) + 1
+    end
   end
 
   def referral_link

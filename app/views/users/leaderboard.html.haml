@@ -11,7 +11,8 @@
           %span.overlay
     .main-c.tabs
       .tab
-        - @entries.each do |entry|
+        - @musicians.each do |user|
+          - entry = user.entries.first
           .contestant-info.clearfix[entry]
             .contestant-info-inner.left
               %a{:href => "#{entry_path(entry)}"}
@@ -30,10 +31,10 @@
                 %ul.clearfix
                   %li
                     Rank
-                    %strong.rank= entry.rank
+                    %strong.rank= user.rank
                   %li
                     Points
-                    %strong.points= entry.points
+                    %strong.points= user.points
               .stats-bottom.clearfix
                 %ul
                   %li
@@ -53,7 +54,7 @@
                     Invitees
                     %span= entry.user.invited_users.count
       .tab.leader-board
-        - @users.each do |user|
+        - @fans.each do |user|
           .contestant-info.clearfix
             .contestant-info-inner.left
               %a{:href => "#"}
