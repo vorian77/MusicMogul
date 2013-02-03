@@ -13,15 +13,12 @@ feature "leaderboard" do
     current_path.should == leaderboard_path
 
     Entry.count.should > 0
-    Entry.find_each do |entry|
-      if entry.user.points > 0
-        within "div#entry_#{entry.id}" do
-          page.should have_content entry.stage_name if user.has_evaluated? entry
-          within("strong.rank") { page.should have_content "#{entry.rank}" }
-          within("strong.points") { page.should have_content "#{entry.points}" }
-        end
-      else
-        page.should have_no_css "div#entry_#{entry.id}"
+    User.musician.find_each do |user|
+      entry = user.entries.first
+      within "div#entry_#{entry.id}" do
+        page.should have_content entry.stage_name if user.has_evaluated? entry
+        within("strong.rank") { page.should have_content "#{entry.rank}" }
+        within("strong.points") { page.should have_content "#{entry.points.round}" }
       end
     end
   end
