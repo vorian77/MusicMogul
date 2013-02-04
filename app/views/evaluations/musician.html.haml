@@ -4,44 +4,9 @@
   .main
     .main-t
     .main-c
-      .moguls-list.clearfix
-        - @evaluations.each do |evaluation|
-          .contestant-info
-            %a{:href => "#"}
-              %img{:alt => "", :src => "#{evaluation.user.profile_photo.url(:medium)}"}/
-            - if evaluation.user.follows?(evaluation.entry)
-              %a.follow-btn.following.btn{href: "#", disabled: "disabled"} Following
-            - else
-              %a.follow-btn.btn{href: "#", disabled: "disabled"} Follow
-            %a.sign-btn{href: "#", class: "#{'signed' if evaluation.user.signed?(evaluation.entry)}", disabled: "disabled"}
-            .contestant-info-inner.clearfix
-              .left-info
-                %h3
-                  %a{:href => "#"}= evaluation.user.username
-                %p
-                  #{evaluation.user.hometown}
-                  %br>/
-                  Evaluations
-                  %span #{evaluation.user.evaluations.count}
-                  = succeed "Avg." do
-                    %br/
-                  Score
-                  %span #{number_with_precision(evaluation.user.average_evaluation_score, precision: 1)}
-              .right-info
-                .stats
-                  %p
-                    Score
-                    = succeed "Music" do
-                      %span #{number_with_precision(evaluation.overall_score, precision: 1)}
-                    = succeed "Vocals" do
-                      %span #{number_with_precision(evaluation.music_score, precision: 1)}
-                    = succeed "Presentation" do
-                      %span #{number_with_precision(evaluation.vocals_score, precision: 1)}
-                    %span #{number_with_precision(evaluation.presentation_score, precision: 1)}
-                    %strong.date #{evaluation_datetime(evaluation.created_at)}
-                - if evaluation.comment?
-                  %p= evaluation.comment
+      - if @evaluations.present?
+        = render "evaluations/musicians", evaluations: @evaluations
     .main-b.main-b-edit
 / end main content area
--#.loading-more
--#  %p Loading More Contestants...
+.loading-more
+  %p Loading More Contestants...
