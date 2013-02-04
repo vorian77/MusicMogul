@@ -34,8 +34,18 @@ class UsersController < ApplicationController
   end
 
   def leaderboard
-    @musicians = User.musician.order("cached_points desc")
-    @fans = User.fan.order("cached_points desc")
+    respond_to do |format|
+      format.html do
+        @musicians = User.musician.order("cached_points desc").page(params[:page]).per(10)
+        @fans = User.fan.order("cached_points desc")
+      end
+      format.js do
+        if params[:musician_page].present?
+          @musicians = User.musician.order("cached_points desc").page(params[:musician_page]).per(10)
+          render json: {musicians: render_to_string(partial: "users/leaderboard/musicians", locals: {musicians: @musicians})}
+        end
+      end
+    end
   end
 
   def scorecard

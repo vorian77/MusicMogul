@@ -20,7 +20,10 @@ $ ->
       success: (data) ->
         $(".loading-more").hide()
         $("nav.pagination.show_more").remove()
-        $("div.main-c").append($(data.index))
+        if data.musicians
+          $("div.main-c.tabs > div.tab").append($(data.musicians))
+        else
+          $("div.main-c").append($(data.index))
         $(document).trigger("live:follows")
         $(document).trigger("live:contracts")
         loading = false

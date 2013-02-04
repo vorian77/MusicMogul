@@ -11,48 +11,7 @@
           %span.overlay
     .main-c.tabs
       .tab
-        - @musicians.each do |user|
-          - entry = user.entries.first
-          .contestant-info.clearfix[entry]
-            .contestant-info-inner.left
-              %a{:href => "#{entry_path(entry)}"}
-                %img{:alt => "", :src => "#{entry.profile_photo.url(:medium)}"}/
-              %h3
-                %a{:href => "#{entry_path(entry)}"}= entry.stage_name
-              %p
-                %span.genre> #{entry.genre}
-                #{entry.hometown}
-                %br>/
-                - if evaluation = current_user.evaluation_for(entry)
-                  My Evaluation
-                  %span= number_with_precision evaluation.overall_score, precision: 1
-            .contestant-info-stats.right
-              .stats-top
-                %ul.clearfix
-                  %li
-                    Rank
-                    %strong.rank= user.rank
-                  %li
-                    Points
-                    %strong.points= user.cached_points
-              .stats-bottom.clearfix
-                %ul
-                  %li
-                    Evaluations
-                    %span= entry.evaluations.count
-                  %li
-                    Avg. Eval
-                    %span= number_with_precision entry.overall_score, precision: 1
-                %ul
-                  %li
-                    Followers
-                    %span= entry.follows.count
-                  %li
-                    Contracts
-                    %span= entry.contracts.count
-                  %li
-                    Invitees
-                    %span= entry.user.invited_users.count
+        = render "users/leaderboard/musicians", musicians: @musicians
       .tab.leader-board
         - @fans.each do |user|
           .contestant-info.clearfix
