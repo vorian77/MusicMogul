@@ -17,8 +17,8 @@ feature "leaderboard" do
       entry = user.entries.first
       within "div#entry_#{entry.id}" do
         page.should have_content entry.stage_name if user.has_evaluated? entry
-        within("strong.rank") { page.should have_content "#{entry.rank}" }
-        within("strong.points") { page.should have_content "#{entry.points.round}" }
+        within("strong.rank") { page.should have_content "#{user.rank}" }
+        within("strong.points") { page.should have_content "#{user.cached_points}" }
       end
     end
   end

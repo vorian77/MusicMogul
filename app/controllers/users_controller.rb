@@ -34,8 +34,8 @@ class UsersController < ApplicationController
   end
 
   def leaderboard
-    @musicians = User.musician.sort_by(&:points).reverse
-    @fans = User.fan.sort_by(&:points).reverse
+    @musicians = User.musician.order("cached_points desc")
+    @fans = User.fan.order("cached_points desc")
   end
 
   def scorecard

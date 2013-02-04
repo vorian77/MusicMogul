@@ -29,6 +29,8 @@ class Entry < ActiveRecord::Base
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
+  after_save :cache_user_points, if: :points_changed?
+  after_destroy :cache_user_points
   before_save :cache_masonry_width_and_height
 
   scope :finished, where("stage_name <> '' and genre <> '' and hometown <> '' and profile_photo <> '' and title <> '' and youtube_url <> ''")
@@ -37,6 +39,10 @@ class Entry < ActiveRecord::Base
     joins("LEFT OUTER JOIN evaluations on entries.id = evaluations.entry_id AND evaluations.user_id = #{user.id}").
         where("evaluations.entry_id IS NULL", user.id)
   }
+
+  def cache_points!
+    update_attribute(:points, evaluations.sum(:overall_score))
+  end
 
   def component_count
     (has_music? ? 1 : 0) + (has_vocals? ? 1 : 0) + 1
@@ -86,6 +92,10 @@ class Entry < ActiveRecord::Base
       self.masonry_width = profile_photo.masonry.width
       self.masonry_height = profile_photo.masonry.height
     end
+  end
+
+  def cache_user_points
+    self.user.cache_points!
   end
 
   def ensure_youtube_url_is_valid

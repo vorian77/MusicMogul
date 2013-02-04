@@ -34,7 +34,7 @@
                     %strong.rank= user.rank
                   %li
                     Points
-                    %strong.points= user.points
+                    %strong.points= user.cached_points
               .stats-bottom.clearfix
                 %ul
                   %li
@@ -80,7 +80,7 @@
                     %strong= user.rank
                   %li
                     Points
-                    %strong= user.points
+                    %strong= user.cached_points
               .stats-bottom.clearfix
                 .contestant-images.clearfix
                   - user.evaluations.order("created_at desc").includes(:entry).each do |evaluation|

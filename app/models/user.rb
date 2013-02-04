@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
   before_validation :set_referral_token, :shorten_referral_link
   before_create :set_inviter
   after_create :create_first_entry, if: :musician?
+  after_create :cache_inviter_points
 
   scope :invited, where("inviter_id is not null")
   scope :complete, where("username is not null and profile_photo is not null and hometown is not null")
@@ -54,6 +55,10 @@ class User < ActiveRecord::Base
       return 0 unless evaluations.where("#{type}_score is not null").present?
       evaluations.sum("#{type}_score") / evaluations.where("#{type}_score is not null").count.to_f
     end
+  end
+
+  def cache_points!
+    update_attribute(:cached_points, points)
   end
 
   def contract_points
@@ -112,9 +117,9 @@ class User < ActiveRecord::Base
 
   def rank
     if fan?
-      self.class.fan.map(&:points).uniq.sort.reverse.index(self.points) + 1
+      self.class.fan.order("cached_points desc").uniq.pluck(:cached_points).index(self.cached_points) + 1
     else
-      self.class.musician.map(&:points).uniq.sort.reverse.index(self.points) + 1
+      self.class.musician.order("cached_points desc").uniq.pluck(:cached_points).index(self.cached_points) + 1
     end
   end
 
@@ -131,6 +136,10 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def cache_inviter_points
+    self.inviter.cache_points! if inviter.present?
+  end
 
   def create_first_entry
     entries.create

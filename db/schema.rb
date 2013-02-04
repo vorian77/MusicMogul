@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130203164942) do
+ActiveRecord::Schema.define(:version => 20130204214918) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(:version => 20130203164942) do
     t.boolean  "musician",                :default => false
     t.boolean  "tos"
     t.string   "time_zone",               :default => "Eastern Time (US & Canada)"
+    t.integer  "cached_points",           :default => 0
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

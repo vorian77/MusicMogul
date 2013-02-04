@@ -9,7 +9,14 @@ class Contract < ActiveRecord::Base
 
   attr_accessible :entry_id
 
+  after_save :cache_user_points
+  after_destroy :cache_user_points
+
   private
+
+  def cache_user_points
+    self.user.cache_points! if user.present?
+  end
 
   def ensure_user_has_contracts_remaining
     return unless user.present?

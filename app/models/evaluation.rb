@@ -18,8 +18,8 @@ class Evaluation < ActiveRecord::Base
   validate :ensure_fan
 
   before_validation :calculate_overall_score, :nullify_blank_comments
-  after_save :calculate_entry_points
-  after_destroy :calculate_entry_points
+  after_save :cache_points
+  after_destroy :cache_points
 
   private
 
@@ -28,8 +28,9 @@ class Evaluation < ActiveRecord::Base
     self.overall_score = ((music_score || 0) + (vocals_score || 0) + presentation_score) / entry.component_count.to_f
   end
 
-  def calculate_entry_points
-    self.entry.update_attribute(:points, entry.evaluations.sum(:overall_score))
+  def cache_points
+    self.entry.cache_points!
+    self.user.cache_points!
   end
 
   def ensure_fan
