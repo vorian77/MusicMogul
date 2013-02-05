@@ -1,5 +1,5 @@
 - @fans.each do |user|
-  .contestant-info.clearfix
+  .contestant-info.clearfix[user]
     .contestant-info-inner.left
       %a{:href => "#"}
         %img{:alt => "", :src => "#{user.profile_photo.url(:medium)}"}/

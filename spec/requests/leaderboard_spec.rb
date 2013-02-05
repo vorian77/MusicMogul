@@ -21,5 +21,11 @@ feature "leaderboard" do
         within("strong.points") { page.should have_content "#{user.cached_points}" }
       end
     end
+
+    User.fan.find_each do |user|
+      within "div#user_#{user.id}" do
+        page.should have_content user.username
+      end
+    end
   end
 end
