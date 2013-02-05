@@ -1,6 +1,6 @@
 .moguls-list.clearfix
   - evaluations.each do |evaluation|
-    .contestant-info
+    .contestant-info[evaluation]
       %a{:href => "#"}
         %img{:alt => "", :src => "#{evaluation.user.profile_photo.url(:medium)}"}/
       - if evaluation.user.follows?(evaluation.entry)

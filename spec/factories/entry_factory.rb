@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :entry do
-    user { FactoryGirl.build(:confirmed_user, musician: true ) }
+    user { FactoryGirl.build(:confirmed_user, musician: true) }
     stage_name { Faker::HipsterIpsum.words.join(" ").titleize }
     title { Faker::HipsterIpsum.words.join(" ").titleize }
     youtube_url { "http://youtu.be/sGE4HMvDe-Q" }

@@ -6,6 +6,9 @@
     .main-c
       - if @evaluations.present?
         = render "evaluations/musicians", evaluations: @evaluations
+      - else
+        %div.empty
+          %h3 You don't have any evaluations yet.
     .main-b.main-b-edit
 / end main content area
 .loading-more

@@ -17,17 +17,7 @@ feature "evaluations" do
     current_path.should == entry_path(entry)
 
     page.should have_no_css "form#new_evaluation"
-
-    #within("span.number#rank") { page.should have_content entry.reload.rank }
-    #within("span.number#points") { page.should have_content entry.reload.points }
-    #within("div.stats div.right-part table") do
-    #  page.should have_content "1"
-    #end
-    #
-    #within("div.bottom-list > ul") do
-    #  page.should have_content user.name
-      page.should have_content comment.first(150)
-    #end
+    page.should have_content comment.first(150)
   end
 
   scenario "uninvited user cannot create an evaluation" do
@@ -44,7 +34,7 @@ feature "evaluations" do
     page.should have_css "span.number#points"
   end
 
-  scenario "user views their evaluations" do
+  scenario "fan views their evaluations" do
     user = users(:confirmed_user)
     login_as user, scope: :user
 
@@ -56,6 +46,24 @@ feature "evaluations" do
 
     within("div.evaluation") do
       page.should have_content evaluation.entry.stage_name
+    end
+  end
+
+  scenario "contestant views their evaluations" do
+    user = User.musician.first
+    login_as user, scope: :user
+
+    entry = user.entries.first
+    FactoryGirl.create(:evaluation, entry: entry)
+
+    visit root_path
+    click_link "My Evaluations"
+    current_path.should == evaluations_path
+
+    entry.evaluations.each do |evaluation|
+      within("div#evaluation_#{evaluation.id}") do
+        page.should have_content evaluation.user.username
+      end
     end
   end
 end

@@ -7,7 +7,11 @@ FixtureBuilder.configure do |config|
 
   config.factory do
     config.name :confirmed_user, FactoryGirl.create(:confirmed_user, inviter: FactoryGirl.build(:user))
-    FactoryGirl.create_list(:entry, 3)
+    3.times { FactoryGirl.create(:confirmed_user, musician: true) }
+    Entry.find_each do |entry|
+      entry.attributes = FactoryGirl.attributes_for(:entry).except(:user)
+      entry.save
+    end
     FactoryGirl.create(:evaluation, user: User.invited.first, entry: Entry.all.sample)
     FactoryGirl.create(:contest, start_date: Date.yesterday, end_date: Date.yesterday + 2.weeks)
   end
