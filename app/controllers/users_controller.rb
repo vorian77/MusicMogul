@@ -36,13 +36,16 @@ class UsersController < ApplicationController
   def leaderboard
     respond_to do |format|
       format.html do
-        @musicians = User.musician.order("cached_points desc").page(params[:page]).per(10)
-        @fans = User.fan.order("cached_points desc")
+        @musicians = User.musician.order("cached_points desc, id").page(params[:musician_page]).per(10)
+        @fans = User.fan.order("cached_points desc, id").page(params[:fan_page]).per(10)
       end
       format.js do
         if params[:musician_page].present?
-          @musicians = User.musician.order("cached_points desc").page(params[:musician_page]).per(10)
+          @musicians = User.musician.order("cached_points desc, id").page(params[:musician_page]).per(10)
           render json: {musicians: render_to_string(partial: "users/leaderboard/musicians", locals: {musicians: @musicians})}
+        elsif params[:fan_page].present?
+          @fans = User.fan.order("cached_points desc, id").page(params[:fan_page]).per(10)
+          render json: {fans: render_to_string(partial: "users/leaderboard/fans", locals: {fans: @fans})}
         end
       end
     end

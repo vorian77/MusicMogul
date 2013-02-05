@@ -19,9 +19,15 @@ $ ->
       dataType: 'json',
       success: (data) ->
         $(".loading-more").hide()
-        $("nav.pagination.show_more").remove()
+        if $(".tab").length
+          $(".tab:visible nav.pagination.show_more").remove()
+        else
+          $("nav.pagination.show_more").remove()
+
         if data.musicians
-          $("div.main-c.tabs > div.tab").append($(data.musicians))
+          $("div.main-c.tabs > div.tab.musicians").append($(data.musicians))
+        else if data.fans
+          $("div.main-c.tabs > div.tab.fans").append($(data.fans))
         else
           $("div.main-c").append($(data.index))
         $(document).trigger("live:follows")
@@ -31,4 +37,7 @@ $ ->
   if $("nav.pagination.show_more").length
     $(window).scroll ->
       if nearBottomOfPage()
-        $("nav.pagination.show_more a.next").click()
+        if $(".tab").length
+          $(".tab:visible nav.pagination.show_more a.next").click()
+        else
+          $("nav.pagination.show_more a.next").click()

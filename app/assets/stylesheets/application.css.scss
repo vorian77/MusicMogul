@@ -28,8 +28,8 @@ p span.grade { color: #dd0000; }
 .stats-top.mogul ul li { width: 214px; }
 h1#logo a { margin-top: 4px; }
 .contestants > div { overflow: hidden; }
-.contestants h3 { float: left; margin-left: 10px; }
-.contestants h4 { float: right; margin-right: 10px; color: #9e9e9e; }
+.contestants > div > h3 { float: left; margin-left: 10px; }
+.contestants > div > h4 { float: right; margin-right: 10px; color: #9e9e9e; }
 .contestants div.empty {
   h3, h4 { text-align: center; float: none; }
 }

@@ -10,41 +10,9 @@
           %a{:href => "#"} Moguls
           %span.overlay
     .main-c.tabs
-      .tab
+      .tab.musicians
         = render "users/leaderboard/musicians", musicians: @musicians
-      .tab.leader-board
-        - @fans.each do |user|
-          .contestant-info.clearfix
-            .contestant-info-inner.left
-              %a{:href => "#"}
-                %img{:alt => "", :src => "#{user.profile_photo.url(:medium)}"}/
-              %h3
-                %a{:href => "#"}= user.username
-              %p
-                #{user.hometown}
-                %br>/
-                Evaluations
-                %span= user.evaluations.count
-                = succeed "Following" do
-                  %br/
-                %span= user.follows.count
-                = succeed "Invitees" do
-                  %br/
-                %span= user.invited_users.count
-            .contestant-info-stats.right
-              .stats-top.mogul
-                %ul.clearfix
-                  %li
-                    Rank
-                    %strong= user.rank
-                  %li
-                    Points
-                    %strong= user.cached_points
-              .stats-bottom.clearfix
-                .contestant-images.clearfix
-                  - user.evaluations.order("created_at desc").includes(:entry).each do |evaluation|
-                    %a{:href => "#{entry_path(evaluation.entry)}"}
-                      %img{:alt => "", :src => "#{evaluation.entry.profile_photo.url(:medium)}"}/
-                      #{evaluation.entry.stage_name}
+      .tab.fans.leader-board
+        = render "users/leaderboard/fans", fans: @fans
     .main-b.main-b-edit
 / end main content area
