@@ -111,7 +111,7 @@ class User < ActiveRecord::Base
     if fan?
       evaluation_points + contract_points + invitation_points
     else
-      entries.first.points + invitation_points
+      (entries.first.try(:points) || 0) + invitation_points
     end.round
   end
 
