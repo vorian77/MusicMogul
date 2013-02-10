@@ -27,8 +27,8 @@
             %strong= user.cached_points
       .stats-bottom.clearfix
         .contestant-images.clearfix
-          - user.evaluations.order("created_at desc").includes(:entry).each do |evaluation|
-            %a{:href => "#{entry_path(evaluation.entry)}"}
-              %img{:alt => "", :src => "#{evaluation.entry.profile_photo.url(:medium)}"}/
-              #{evaluation.entry.stage_name}
+          - user.signed_entries.order("created_at desc").each do |entry|
+            %a{:href => "#{entry_path(entry)}"}
+              %img{:alt => "", :src => "#{entry.profile_photo.url(:medium)}"}/
+              #{entry.stage_name}
 = paginate fans, remote: true, theme: "show_more", param_name: "fan_page"
