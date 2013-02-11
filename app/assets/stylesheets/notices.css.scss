@@ -20,4 +20,12 @@ div.main-c.terms, div.main-c.privacy {
       color: #4C4C4C;
     }
   }
+
+  table {
+    border-collapse: collapse;
+    td {
+      border: 1px solid black;
+      padding: 5px;
+    }
+  }
 }
