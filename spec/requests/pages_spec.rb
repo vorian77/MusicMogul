@@ -35,7 +35,7 @@ feature "pages" do
   scenario "user visits privacy" do
     visit root_path
     within("div.footer") { click_link "Privacy" }
-    page.should have_content "This privacy policy sets out"
+    page.should have_content "Privacy"
     current_path.should == privacy_path
   end
 
