@@ -16,7 +16,7 @@ $ ->
         $("div.cover-image").html(progress + "%")
     done: (e, data) ->
       $("div.fake-upload > p").html("Change File")
-      profile_photo = if data.result.entries.length
+      profile_photo = if data.result.entries && data.result.entries.length
         data.result.entries[0].profile_photo
       else
         data.result.profile_photo
