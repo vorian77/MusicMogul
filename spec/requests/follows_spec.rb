@@ -1,7 +1,7 @@
 require "spec_helper"
 
 feature "follows" do
-  scenario "user follows and unfollows from My Evaluations", js: true, driver: :selenium do
+  scenario "user follows and unfollows from My Evaluations", js: true do
     user = users(:confirmed_user)
     login_as user, scope: :user
 
