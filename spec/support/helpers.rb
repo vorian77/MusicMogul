@@ -26,4 +26,4 @@ module HelperMethods
   end
 end
 
-RSpec.configuration.include HelperMethods, type: :request
+RSpec.configuration.include HelperMethods, type: :feature
