@@ -6,6 +6,7 @@ class HomeController < ApplicationController
     else
       @entries = Entry.finished.order("random()")
       @inviter = User.find_by_referral_token(session[:referral_token]) if session[:referral_token].present?
+      render layout: "landing"
     end
   end
 end

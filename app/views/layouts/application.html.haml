@@ -51,19 +51,17 @@
       .footer-top.clearfix
         #navigation.left
           %ul.main-nav.clearfix
-            %li
-              = link_to "About Us", about_us_path
-            %li
-              = link_to "Contest Rules", contest_rules_path
-            %li
-              = link_to "Contact Us", contact_us_path
+            %li= link_to "About", about_path
+            %li= link_to "Contest Rules", contest_rules_path
             %li
               %a{:href => "http://suggestions.musicmogul.com", target: "_blank"} Suggestions
+            %li= link_to "Contact Us", contact_us_path
+            %li= link_to "Team", team_path
           %ul.sub-nav.clearfix
             %li
-              = link_to "Privacy", privacy_path
-            %li
               = link_to "Terms", terms_path
+            %li
+              = link_to "Privacy", privacy_path
         .socials.right
           %a.ico.fb-ico{:href => "http://www.facebook.com/MyMusicMogul", target: "_blank"}
           %a.ico.tw-ico{:href => "http://www.twitter.com/MyMusicMogul", target: "_blank"}

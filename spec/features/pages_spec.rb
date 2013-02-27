@@ -1,10 +1,10 @@
 require "spec_helper"
 
 feature "pages" do
-  scenario "user visits about us" do
+  scenario "user visits team" do
     visit root_path
-    within("div.footer") { click_link "About Us" }
-    current_path.should == about_us_path
+    within("div.footer") { click_link "Team" }
+    current_path.should == team_path
     page.should have_content "Our mission is to help unheralded singers and bands to advance their career in professional music."
   end
 
@@ -37,13 +37,6 @@ feature "pages" do
     within("div.footer") { click_link "Privacy" }
     page.should have_content "Privacy"
     current_path.should == privacy_path
-  end
-
-  scenario "user visis learn more" do
-    visit root_path
-    visit learn_more_path
-    current_path.should == learn_more_path
-    page.should have_content "Learn More"
   end
 
   scenario "user visis contest rules" do

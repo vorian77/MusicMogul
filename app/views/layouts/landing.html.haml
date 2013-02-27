@@ -1,0 +1,92 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "UTF-8"}/
+    %title Music Mogul
+    %link{:href => image_path("favicon.ico"), :rel => "shortcut icon"}/
+    = stylesheet_link_tag "landing/landing"
+    = javascript_include_tag "application"
+  %body
+    #top-bar
+      .inner
+        #logo
+        #sign-up
+          %a.btn{:href => "#{new_user_session_path}"} Sign In
+    #hero
+      #slider
+        .pictures
+          %ul
+            %li#0.active{:style => ""}
+              .bg{:style => ""}
+                = image_tag "landing/pic-2.jpg"
+              .info
+                %h3.txsh Contestant
+                %h4.txsh
+                  %a{:href => "http://loveinstockholm.com/", target: "_blank"} LIVE IN STOCKHOLM
+                %h5.txsh
+                  %span Pop
+                  \• Boston, MA
+            %li#1.active{:style => "display:none;"}
+              .bg{:style => ""}
+                = image_tag "landing/pic-1.jpg"
+              .info
+                %h3.txsh Contestant
+                %h4.txsh
+                  %a{:href => "https://www.facebook.com/drey.skonie", target: "_blank"} DREY SKONIE
+                %h5.txsh
+                  %span R&B
+                  \• Detroit, MI
+            %li#2{:style => "display:none"}
+              .bg{:style => ""}
+                = image_tag "landing/pic-3.jpg"
+              .info
+                %h3.txsh Contestant
+                %h4.txsh
+                  %a{:href => "http://davecoresh.com/", target: "_blank"} Dave Coresh
+                %h5.txsh
+                  %span Rap
+                  \• Chicago, IL
+          .grad
+        .ctrl
+          #nav-0.nav.act
+          #nav-1.nav
+          #nav-2.nav
+      #call-to-action
+        %h1.txsh
+          Have what it takes to
+          = succeed "?" do
+            %span discover great talent
+        %h3.txsh Music Mogul is the new fantasy music game where your play determines tomorrow's star singers, bands, and beat makers.
+        #join.join-area
+          %a#join-button.btn{:href => "#{new_user_path}"} Join Now For Free
+          %a.more.txsh{:href => "#{about_path}"} Learn More
+    #footer
+      .f-menu
+        %ul
+          %li
+            %a{:href => "#{about_path}"} About
+          %li
+            %a{:href => "#{contest_rules_path}"} Contest Rules
+          %li
+            %a{:href => "http://suggestions.musicmogul.com", target: "_blank"} Suggestions
+          %li
+            %a{:href => "#{contact_us_path}"} Contact Us
+          %li
+            %a{:href => "#{team_path}"} Team
+          %li
+            %a{:href => "#{terms_path}"} Terms
+          %li
+            %a{:href => "#{privacy_path}"} Privacy
+      .copy © 2013 Bright Lights Music Group, LLC
+    #dim{:style => "display:none;"}
+    #modal{:style => "display:none;"}
+      %h1 Register now as a :
+      .buttons
+        %a.btn{:href => "#mogul"} Mogul
+        %a.btn.artist{:href => "#artist"} Artist
+        .subtitle
+          Start judging and building your label.
+        .subtitle.artist
+          Upload your videos and show your friends.
+      .cancel
+        %a#cancel-button{:href => "#"} close window
