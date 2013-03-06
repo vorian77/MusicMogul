@@ -3,14 +3,14 @@ require "spec_helper"
 feature "pages" do
   scenario "user visits team" do
     visit root_path
-    within("div.footer") { click_link "Team" }
+    click_link "Team"
     current_path.should == team_path
     page.should have_content "Our mission is to help unheralded singers and bands to advance their career in professional music."
   end
 
   scenario "user visits contact us" do
     visit root_path
-    within("div.footer") { click_link "Contact Us" }
+    click_link "Contact Us"
 
     current_path.should == contact_us_path
     page.should have_content "Have a question? Send us a note!"
@@ -27,14 +27,14 @@ feature "pages" do
 
   scenario "user visits terms" do
     visit root_path
-    within("div.footer") { click_link "Terms" }
+    click_link "Terms"
     page.should have_content "Agreement between user and MusicMogul.com"
     current_path.should == terms_path
   end
 
   scenario "user visits privacy" do
     visit root_path
-    within("div.footer") { click_link "Privacy" }
+    click_link "Privacy"
     page.should have_content "Privacy"
     current_path.should == privacy_path
   end
