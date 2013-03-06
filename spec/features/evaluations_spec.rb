@@ -38,14 +38,16 @@ feature "evaluations" do
     user = users(:confirmed_user)
     login_as user, scope: :user
 
-    evaluation = FactoryGirl.create(:evaluation, user: user)
+    FactoryGirl.create(:evaluation, user: user)
 
     visit root_path
     click_link "My Evaluations"
     current_path.should == evaluations_path
 
-    within("div.evaluation") do
-      page.should have_content evaluation.entry.stage_name
+    user.evaluations.each do |evaluation|
+      within("div#evaluation_#{evaluation.id}") do
+        page.should have_content evaluation.entry.stage_name
+      end
     end
   end
 
