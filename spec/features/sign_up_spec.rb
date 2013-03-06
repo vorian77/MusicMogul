@@ -6,9 +6,10 @@ feature "sign up" do
   scenario "musician signs up" do
     inviter = User.first
     visit root_path(referral_token: inviter.referral_token)
-    page.should have_content "Invited by ( #{inviter.username} )"
+    #page.should have_content "Invited by ( #{inviter.username} )"
 
-    within("div.sign-up-options") { click_link "Musician" }
+    click_link "Join Now For Free"
+    within("div.sign-up-options") { click_link "Artists" }
     current_path.should == new_user_registration_path
     page.should have_content "Reserve Your Place As A Contestant"
 
@@ -63,9 +64,10 @@ feature "sign up" do
   scenario "fan signs up" do
     inviter = User.first
     visit root_path(referral_token: inviter.referral_token)
-    page.should have_content "Invited by ( #{inviter.username} )"
+    #page.should have_content "Invited by ( #{inviter.username} )"
 
-    within("div.sign-up-options") { click_link "Fan" }
+    click_link "Join Now For Free"
+    within("div.sign-up-options") { click_link "Fans" }
     current_path.should == new_user_registration_path
     page.should have_content "Reserve Your Place As A Contest Judge"
 
