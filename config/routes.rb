@@ -26,6 +26,7 @@ Mvp2::Application.routes.draw do
 
   resources :evaluations, only: [:index]
   resources :contacts, only: [:create]
+  resources :prospects, only: [:create]
 
   match "leaderboard" => "users#leaderboard", as: :leaderboard
   match "team" => "home#team"

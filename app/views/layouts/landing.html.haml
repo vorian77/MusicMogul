@@ -11,7 +11,8 @@
       .inner
         #logo
         #sign-up
-          %a.btn{:href => "#{new_user_session_path}"} Sign In
+          - if false
+            %a.btn{:href => "#{new_user_session_path}"} Sign In
     #hero
       #slider
         .pictures
@@ -73,14 +74,32 @@
           #nav-2.nav
           #nav-3.nav
           #nav-4.nav
-      #call-to-action
-        %h1.txsh
-          Know great music<br/>when
-          = succeed "?" do
-            %span you hear it
-        %h3.txsh Music Mogul is the new fantasy music game where your play determines tomorrow's star singers, bands, and beat makers.
-        #join.join-area
-          %a#join-button.btn{:href => "#{new_user_path}"} Join Now For Free
+      - if false
+        #call-to-action
+          %h1.txsh
+            Know great music<br/>when
+            = succeed "?" do
+              %span you hear it
+          %h3.txsh Music Mogul is the new fantasy music game where your play determines tomorrow's star singers, bands, and beat makers.
+          #join.join-area
+            %a#join-button.btn{:href => "#{new_user_path}"} Join Now For Free
+      - else
+        #call-to-action
+          %h1.txsh
+            Know great talent
+            %br>/
+            when
+            = succeed "?" do
+              %span you hear it
+          %h3.txsh
+            Music Mogul is the new fantasy music game where you
+            %br/
+            play to discover tomorrow's star singers, bands, and beat makers.
+          #join.join-area
+            .label-wrap
+              %input#user-email{:name => "user-email", :onblur => "if( this.value == '' ) { this.value = 'Email Address'; }", :onfocus => "if( this.value == 'Email Address' ) { this.value = ''; }", :type => "text", :value => "Email Address"}/
+            %a#join-button.btn{:href => "#"} I'm Interested
+          #result-message{:style => "display:none;"}
     #footer
       .f-menu
         %ul
@@ -111,3 +130,27 @@
           Upload your videos and show your friends.
       .cancel
         %a#cancel-button{:href => "#"} close window
+
+:javascript
+  $(document).ready(function(){
+      $('#join-button').click(function(){
+          var obj = {},
+          EMAIL_COLLECT_URL = 'email-collect.html',
+          email_val = $('#user-email').val();
+          obj.email = email_val;
+          if( email_val != '' && email_val != 'Email Address' ) {
+              $.ajax({
+                  url     : "prospects",
+                  data    : obj,
+                  type    : 'POST',
+                  success : function( response ) {
+                      $('#join').hide();
+                      $('#result-message').html(response);
+                      $('#result-message').show();
+                  }
+              });
+          } else {
+              alert('You must enter an email address!' );
+          }
+      });
+  });
