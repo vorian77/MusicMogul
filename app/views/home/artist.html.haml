@@ -1,0 +1,875 @@
+/ START CONTEXT AREA
+#context-area
+  / START SECONDARY
+  .secondary.bxs
+    .prize-pool
+      .text
+        Prize Pool
+        .down-left
+      .prize-amount.bxcs
+        .text.txsh $1,000
+        .second
+          .place 1st Place
+          .prize $500
+        .second
+          .place 2nd Place
+          .prize $250
+        .second
+          .place 3rd Place
+          .prize $100
+        .second
+          .place 4th Place
+          .prize $50
+        .second
+          .place 5th Place
+          .prize $50
+        .second
+          .place 6th Place
+          .prize $50
+    .judging
+      .text Judging Begins
+      .judge-date.hlv March 17, 2013 12PM EST
+      .timer-num
+        .days.txsh 00
+        .hours.txsh 00
+        .mins.txsh 00
+        .secs.txsh 00
+      .timer-label
+        .days.hlv days
+        .hours.hlv hours
+        .mins.hlv mins
+        .secs.hlv secs
+  / END SECONDARY
+  / START PRIMARY
+  .primary.bxs
+    .artist-avatar
+      = image_tag current_user.entries.first.profile_photo.url(:medium)
+    .primary-data
+      %h4 Welcome, #{current_user.username}
+      %h2 #{current_user.entries.first.stage_name}
+      .hint.hlv The top-10 scoring artists will win the prize pool. Here's how to maximize your points:
+      .actions
+        %a#comp-profile.reg-button.bxsh{:href => "#"}
+        .top Complete Profile
+        .bottom 40% Complete
+        %a#invite-fans.reg-button.bxsh{:href => "#"}
+        .top Invite Fans
+        .bottom 3 Invites Left
+        %a#review-audit.reg-button.red.bxsh{:href => "#"}
+        .top Review Auditions
+        .bottom 5 New!
+  / END PRIMARY
+/ END CONTEXT AREA
+/ START SCOREBOARD
+#scoreboard
+  %h2 Scoreboard
+  .tri-fold
+    .friends.bxcs
+      %h3.hlv Friends/Points
+      .data
+        .friend-number.txsh.bxcs= current_user.invited_users.count
+        .point-number= current_user.invitation_points
+    .audit-points.bxcs
+      %h3.hlv Auditions/Points/Avg Score
+      .data
+        .audit-number.txsh= current_user.entries.first.evaluations.count
+        .point-number= (current_user.entries.first.try(:points) || 0).round
+        .avg-number.txsh= number_with_precision current_user.entries.first.overall_score, precision: 1
+    .main-score.bxcs
+      %h3.hlv Rank/TotalPoints
+      .rank-wrap
+        .rank-rank
+          %span.text.txsh #{current_user.rank}
+          %span.ordinal
+        .hint.hlv of #{User.musician.count} contestants
+      .points
+        #{current_user.points}
+/ END SCOREBOARD
+/ START INVITED FANS
+#invited-fans.grid-contain.collapsed.bxcs
+  %h3#show-invited-fan-details
+    Invited Fans (
+    %span#num-invited-fans> #{current_user.invited_users.count}
+    )
+    %span.control +
+  .expanded-data
+    / START DATA TABLE
+    .header
+      .hlv.date Date
+      .hlv.mogul Mogul
+      .hlv.hometown Hometown
+      .hlv.audit Auditions
+      .hlv.avg-rating Avg Rating
+      .hlv.total-points Total Points
+      .hlv.my-score My Score
+      .hlv.agrees Agree's
+    .data-table
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+    / END DATA TABLE
+  / END EXPANDED
+/ END INVITED FANS
+/ START SIGNED BY
+#signed-by.grid-contain.collapsed.bxcs
+  %h3#show-signed-by-details
+    Signed By (
+    %span#num-signed-by> 8
+    )
+    %span.control +
+  / START EXPANDED
+  .expanded-data
+    / START DATA TABLE
+    .header
+      .hlv.date Date
+      .hlv.mogul Mogul
+      .hlv.hometown Hometown
+      .hlv.audit Auditions
+      .hlv.avg-rating Avg Rating
+      .hlv.total-points Total Points
+      .hlv.my-score My Score
+      .hlv.agrees Agree's
+    .data-table
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+    / END DATA TABLE
+  / END EXPANDED
+/ END SIGNED BY
+/ START LIKED BY
+#liked-by.grid-contain.collapsed.bxcs
+  %h3#show-liked-by-details
+    Liked By (
+    %span#num-signed-by> 19
+    )
+    %span.control +
+  / START EXPANDED
+  .expanded-data
+    / START DATA TABLE
+    .header
+      .hlv.date Date
+      .hlv.mogul Mogul
+      .hlv.hometown Hometown
+      .hlv.audit Auditions
+      .hlv.avg-rating Avg Rating
+      .hlv.total-points Total Points
+      .hlv.my-score My Score
+      .hlv.agrees Agree's
+    .data-table
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+    / END DATA TABLE
+  / END EXPANDED
+/ END LIKED BY
+/ START AUDITIONS
+#auditions.grid-contain.collapsed.bxcs
+  %h3#show-auditions-details
+    Auditions (
+    %span#num-signed-by> 56
+    )
+    %span.control +
+  / START EXPANDED
+  .expanded-data
+    / START DATA TABLE
+    .header
+      .hlv.date Date
+      .hlv.mogul Mogul
+      .hlv.hometown Hometown
+      .hlv.audit Auditions
+      .hlv.avg-rating Avg Rating
+      .hlv.total-points Total Points
+      .hlv.my-score My Score
+      .hlv.agrees Agree's
+    .data-table
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.comment
+        .title Comment
+        .message Message thing goes here, "I loved this band!!!"
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.comment
+        .title Comment
+        .message Message thing goes here, "I loved this band!!!"
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.comment
+        .title Comment
+        .message Message thing goes here, "I loved this band!!!"
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.comment
+        .title Comment
+        .message Message thing goes here, "I loved this band!!!"
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.comment
+        .title Comment
+        .message Message thing goes here, "I loved this band!!!"
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.comment
+        .title Comment
+        .message Message thing goes here, "I loved this band!!!"
+      .data-row
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.comment
+        .title Comment
+        .message Message thing goes here, "I loved this band!!!"
+      .data-row.grey
+        .date.hlv 4/12/13
+        .mogul.hlv
+          .img-wrap
+            %img{:src => "img/signer-avatar.png"}/
+          .hlv fan that signs
+        .hlv.hometown Austin, TX
+        .hlv.audit 50
+        .hlv.avg-rating 7.8
+        .hlv.total-points 29484
+        .hlv.my-score 9.6
+        .hlv.agrees 12
+      .data-row.comment
+        .title Comment
+        .message Message thing goes here, "I loved this band!!!"
+    / END DATA TABLE
+  / END EXPANDED
+/ END AUDITIONS
+/ START FOUNDER AREA

@@ -1,0 +1,76 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "UTF-8"}/
+    %title MusicMogul | Artist Dashboard
+    = stylesheet_link_tag "dashboard/dashboard"
+    = javascript_include_tag "application"
+  %body
+    / START TOP BAR
+    #top-bar
+      .inner
+        #logo
+        #admin-menu
+          %ul
+            %li.dashboard.active
+              %a{:href => "#"}
+                %span.icon
+                %span.text Dashboard
+            %li.auditions
+              %a{:href => "#"}
+                %span.icon
+                %span.text Auditions
+            %li.my-evals
+              %a{:href => "#"}
+                %span.icon
+                %span.text My Evals
+            %li.leader-board
+              %a{:href => "#"}
+                %span.icon
+                %span.text Leader Board
+        .account-area
+          .account-avatar
+            = image_tag current_user.profile_photo.url(:thumb), style: "width: 26px; height: 26px;"
+          .account-name
+            %a.name-text{:href => "#"} willdodesigns
+            %span.tri/
+    / END TOP BAR
+    / START MAIN AREA
+    #main-area
+      = yield
+      #founder
+        .img-wrap
+          %img{:src => "img/founder.png"}/
+        .founder-title Phyllip Hall, Founder
+        .founder-body
+          Thanks for playing Music Mogul. We want to make Music Mogul the best place in the world for singers, bands, beat makers, and fans to meet and build friendships. If anything about the site fails to meet your expectations, or could be better, make a suggestion [
+          %a{:href => "#"}> suggestion link
+          ] (that everyone can vote on), message me on  Twitter [
+          %a{:href => "http://twitter.com/phyllphall"}> @PhyllipHall
+          ], email me at [
+          %a{:href => "mailto:phyl.hall@musicmogul.com"}> phyl.hall@MusicMogul.com
+          ], or call my cell at (313) 757-0735.
+      / END FOUNDER AREA
+      #footer
+        .f-menu
+          %ul
+            %li
+              %a{:href => "#"} About
+            %li
+              %a{:href => "#"} Contest Rules
+            %li
+              %a{:href => "#"} Suggestions
+            %li
+              %a{:href => "#"} Contact Us
+            %li
+              %a{:href => "#"} Team
+            %li
+              %a{:href => "#"} Terms
+            %li
+              %a{:href => "#"} Privacy
+        .footer-social
+          %a.footer-facebook{:href => "http://facebook.com/musicmogul"} t
+          %a.footer-twitter{:href => "http://twitter.com/musicmogul"} f
+        .copy © 2013 Bright Lights Music Group, LLC
+    / END MAIN AREA
+    %script{:src => "./js/artist-dashboard.js", :type => "text/javascript"}
