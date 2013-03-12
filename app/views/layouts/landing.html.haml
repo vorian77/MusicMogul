@@ -17,47 +17,7 @@
       #slider
         .pictures
           %ul
-            %li#0.active{:style => ""}
-              .bg{:style => ""}
-                = image_tag "landing/pic-2.jpg"
-              .info
-                %h3.txsh Contestant
-                %h4.txsh
-                  %a{:href => "http://loveinstockholm.com/", target: "_blank"} LIVE IN STOCKHOLM
-                %h5.txsh
-                  %span Pop
-                  \• Boston, MA
-            %li#1.active{:style => "display:none;"}
-              .bg{:style => ""}
-                = image_tag "landing/pic-1.jpg"
-              .info
-                %h3.txsh Contestant
-                %h4.txsh
-                  %a{:href => "https://www.facebook.com/drey.skonie", target: "_blank"} DREY SKONIE
-                %h5.txsh
-                  %span R&B
-                  \• Detroit, MI
-            %li#2{:style => "display:none"}
-              .bg{:style => ""}
-                = image_tag "landing/pic-3.jpg"
-              .info
-                %h3.txsh Contestant
-                %h4.txsh
-                  %a{:href => "http://davecoresh.com/", target: "_blank"} Dave Coresh
-                %h5.txsh
-                  %span Rap
-                  \• Chicago, IL
-            %li#3{:style => "display:none"}
-              .bg{:style => ""}
-                = image_tag "landing/wings-of-apollo.jpg"
-              .info
-                %h3.txsh Contestant
-                %h4.txsh
-                  %a{:href => "http://www.wingsofapollo.com/", target: "_blank"} Wings of Apollo
-                %h5.txsh
-                  %span Rock
-                  \• Nashville, TN
-            %li#4{:style => "display:none"}
+            %li.active#0
               .bg{:style => ""}
                 = image_tag "landing/emily-earle.jpg"
               .info
@@ -67,6 +27,46 @@
                 %h5.txsh
                   %span Country
                   \• Colorado Springs, CO
+            %li#1{:style => "display:none;"}
+              .bg{:style => ""}
+                = image_tag "landing/pic-2.jpg"
+              .info
+                %h3.txsh Contestant
+                %h4.txsh
+                  %a{:href => "http://loveinstockholm.com/", target: "_blank"} LIVE IN STOCKHOLM
+                %h5.txsh
+                  %span Pop
+                  \• Boston, MA
+            %li#2{:style => "display:none;"}
+              .bg{:style => ""}
+                = image_tag "landing/pic-1.jpg"
+              .info
+                %h3.txsh Contestant
+                %h4.txsh
+                  %a{:href => "https://www.facebook.com/drey.skonie", target: "_blank"} DREY SKONIE
+                %h5.txsh
+                  %span R&B
+                  \• Detroit, MI
+            %li#3{:style => "display:none"}
+              .bg{:style => ""}
+                = image_tag "landing/pic-3.jpg"
+              .info
+                %h3.txsh Contestant
+                %h4.txsh
+                  %a{:href => "http://davecoresh.com/", target: "_blank"} Dave Coresh
+                %h5.txsh
+                  %span Rap
+                  \• Chicago, IL
+            %li#4{:style => "display:none"}
+              .bg{:style => ""}
+                = image_tag "landing/wings-of-apollo.jpg"
+              .info
+                %h3.txsh Contestant
+                %h4.txsh
+                  %a{:href => "http://www.wingsofapollo.com/", target: "_blank"} Wings of Apollo
+                %h5.txsh
+                  %span Rock
+                  \• Nashville, TN
           .grad
         .ctrl
           #nav-0.nav.act
