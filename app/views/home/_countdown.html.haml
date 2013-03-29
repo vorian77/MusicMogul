@@ -40,11 +40,11 @@
               %input.field{type: "text", value: current_user.shortened_referral_link.presence || current_user.referral_link, disabled: "disabled"}/
               %a.btn.copy{href: "#"} Copy referral link to clipboard
               %p
-                Invites Accepted/Available
+                Fan Invites Accepted/Available
                 %span #{current_user.invited_users.count}/#{current_user.invitation_limit}
               %p
-                Invitee Points
-                %span #{current_user.points}
+                Fan Sign Up Points
+                %span #{current_user.invitation_points}
         - else
           .referal-link.clearfix
             %h3 Make the contest better!
@@ -55,11 +55,11 @@
               %input.field{type: "text", value: current_user.shortened_referral_link.presence || current_user.referral_link, disabled: "disabled"}/
               %a.btn.copy{href: "#"} Copy referral link to clipboard
               %p
-                Invites Accepted/Available
+                Friend Invites Accepted/Available
                 %span #{current_user.invited_users.count}/#{current_user.invitation_limit}
               %p
-                Invitee Points
-                %span #{current_user.points}
+                Friend Sign Up Points
+                %span #{current_user.invitation_points}
       - else
         %p
           Beta open to <span>15 artists</span> and <span>500 fans</span>.
