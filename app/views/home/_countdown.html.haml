@@ -49,7 +49,7 @@
           .referal-link.clearfix
             %h3 Make the contest better!
             .referal-info
-              %p Use your referral link to invite 5 friends to judge the contest.
+              %p Use your referral link to invite 10 friends to judge the contest.
               %a.learn-more{href: "#{contest_rules_path}"} Learn More >>
             .referal-link-holder
               %input.field{type: "text", value: current_user.shortened_referral_link.presence || current_user.referral_link, disabled: "disabled"}/
