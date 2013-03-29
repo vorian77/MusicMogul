@@ -1,7 +1,7 @@
 .countdown{"data-end-date" => Contest.count > 0 ? Contest.first.start_date.to_i : "0", "data-now" => Time.now.to_i, "data-seconds" => Time.now.strftime("%S")}
   .countdown-t
   .countdown-c
-    %h2 Contest Starts #{Contest.count > 0 ? Contest.first.start_date.strftime("%m/%d/%y") : "---"}
+    %h2 Judging Starts #{Contest.count > 0 ? Contest.first.start_date.strftime("%m/%d/%y at %l%p %Z") : "---"}
     .clock.clearfix
       .clock_days.clock_box
         .bgLayer
