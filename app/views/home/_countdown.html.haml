@@ -34,7 +34,7 @@
           .referal-link.clearfix
             %h3 Increase your chance of winning the $150 first prize!
             .referal-info
-              %p Use your referral link to invite your followers. The first 25 to register can judge the contest.
+              %p Use your referral link to invite your followers. The first #{User::MUSICIAN_INVITATION_LIMIT} to register can judge the contest.
               %a.learn-more{href: "#{contest_rules_path}"} Learn More >>
             .referal-link-holder
               %input.field{type: "text", value: current_user.shortened_referral_link.presence || current_user.referral_link, disabled: "disabled"}/
@@ -49,7 +49,7 @@
           .referal-link.clearfix
             %h3 Make the contest better!
             .referal-info
-              %p Use your referral link to invite 10 friends to judge the contest.
+              %p Use your referral link to invite #{User::FAN_INVITATION_LIMIT} friends to judge the contest.
               %a.learn-more{href: "#{contest_rules_path}"} Learn More >>
             .referal-link-holder
               %input.field{type: "text", value: current_user.shortened_referral_link.presence || current_user.referral_link, disabled: "disabled"}/
