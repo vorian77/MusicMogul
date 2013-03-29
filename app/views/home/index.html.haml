@@ -8,7 +8,7 @@
       - if @entries.present?
         %div
           %h3 Contestants
-          - if user_signed_in?
+          - if user_signed_in? && contest_running? && current_user.fan?
             %h4 Click a picture to audition the contestant
         #largeImage.largeContainer
         #foo
