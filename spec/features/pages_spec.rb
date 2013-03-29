@@ -1,13 +1,6 @@
 require "spec_helper"
 
 feature "pages" do
-  scenario "user visits about us" do
-    visit root_path
-    within("div.footer") { click_link "About Us" }
-    current_path.should == about_us_path
-    page.should have_content "Our mission is to help unheralded singers and bands to advance their career in professional music."
-  end
-
   scenario "user visits contact us" do
     visit root_path
     within("div.footer") { click_link "Contact Us" }
