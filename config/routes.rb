@@ -33,7 +33,6 @@ Mvp2::Application.routes.draw do
   match "contest_rules" => "home#contest_rules"
   match "terms" => "home#terms"
   match "privacy" => "home#privacy"
-  match "learn_more" => "home#learn_more"
 
   root :to => 'home#index'
   match "*a", :to => "application#routing_error"

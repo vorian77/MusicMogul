@@ -35,7 +35,7 @@
             %h3 Increase your chance of winning the $500 first prize!
             .referal-info
               %p Use your referral link to invite your followers. The first 25 to register can judge the contest.
-              %a.learn-more{href: "#{learn_more_path}"} Learn More >>
+              %a.learn-more{href: "#{contest_rules_path}"} Learn More >>
             .referal-link-holder
               %input.field{type: "text", value: current_user.shortened_referral_link.presence || current_user.referral_link, disabled: "disabled"}/
               %a.btn.copy{href: "#"} Copy referral link to clipboard
@@ -50,7 +50,7 @@
             %h3 Make the contest better!
             .referal-info
               %p Use your referral link to invite 5 friends to judge the contest.
-              %a.learn-more{href: "#{learn_more_path}"} Learn More >>
+              %a.learn-more{href: "#{contest_rules_path}"} Learn More >>
             .referal-link-holder
               %input.field{type: "text", value: current_user.shortened_referral_link.presence || current_user.referral_link, disabled: "disabled"}/
               %a.btn.copy{href: "#"} Copy referral link to clipboard
@@ -63,7 +63,7 @@
       - else
         %p
           Open to <span>1250 judges</span> and <span>50 contestants</span>.
-          = link_to "Learn more &gt;&gt;".html_safe, learn_more_path
+          = link_to "Learn more &gt;&gt;".html_safe, contest_rules_path
         - if @inviter
           %h3 Invited by <span>( #{@inviter.username} )</span>
         .sign-up-options.clearfix

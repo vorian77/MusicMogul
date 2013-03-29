@@ -39,13 +39,6 @@ feature "pages" do
     current_path.should == privacy_path
   end
 
-  scenario "user visis learn more" do
-    visit root_path
-    visit learn_more_path
-    current_path.should == learn_more_path
-    page.should have_content "Learn More"
-  end
-
   scenario "user visis contest rules" do
     visit root_path
     click_link "Contest Rules"
