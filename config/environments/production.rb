@@ -10,4 +10,9 @@ Mvp2::Application.configure do
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
   config.action_mailer.default_url_options = { :host => 'www.musicmogul.com' }
+  config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
+    r301 %r{.*}, 'http://www.musicmogul.com$&', :if => Proc.new { |rack_env|
+      !["www.musicmogul.com"].include?(rack_env['SERVER_NAME'])
+    }
+  end
 end
