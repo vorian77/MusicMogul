@@ -16,7 +16,7 @@ describe ContactMailer do
     its(:subject) { should == "Contact Us: #{subj}" }
     its(:body) { should include(name) }
     its(:body) { should include(from) }
-    its(:body) { should include(subject) }
+    its(:body) { should include(subj) }
     its(:body) { should include(message) }
 
     context "when the user wants a copy" do
