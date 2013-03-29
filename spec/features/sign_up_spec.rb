@@ -91,6 +91,6 @@ feature "sign up" do
     current_path.should == root_path
     user_should_be_logged_in user
     page.should have_content "Make the contest better!"
-    page.should have_content "0/5"
+    page.should have_content "0/10"
   end
 end
