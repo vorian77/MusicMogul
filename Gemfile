@@ -16,7 +16,7 @@ gem 'haml-rails'
 gem 'mime-types', require: 'mime/types'
 gem 'mini_magick'
 gem 'pg'
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.13'
 gem 'simple_form'
 gem 'thin-rails'
 
