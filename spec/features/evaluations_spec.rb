@@ -44,7 +44,7 @@ feature "evaluations" do
     click_link "My Evaluations"
     current_path.should == evaluations_path
 
-    within("div.evaluation") do
+    within("div#evaluation_#{evaluation.id}") do
       page.should have_content evaluation.entry.stage_name
     end
   end
