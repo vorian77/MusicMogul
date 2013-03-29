@@ -8,7 +8,7 @@ feature "sign up" do
     visit root_path(referral_token: inviter.referral_token)
     page.should have_content "Invited by ( #{inviter.username} )"
 
-    within("div.sign-up-options") { click_link "Musician" }
+    within("div.sign-up-options") { click_link "Artist" }
     current_path.should == new_user_registration_path
     page.should have_content "Reserve Your Place As A Contestant"
 
