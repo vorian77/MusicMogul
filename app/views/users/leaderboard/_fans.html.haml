@@ -2,7 +2,7 @@
   .contestant-info.clearfix[user]
     .contestant-info-inner.left
       %a{:href => "#"}
-        %img{:alt => "", :src => "#{user.profile_photo.url(:medium)}"}/
+        %img{:alt => "", :src => "#{user.profile_photo.medium.url}"}/
       %h3
         %a{:href => "#"}= user.username
       %p
@@ -29,6 +29,6 @@
         .contestant-images.clearfix
           - user.signed_entries.order("created_at desc").each do |entry|
             %a{:href => "#{entry_path(entry)}"}
-              %img{:alt => "", :src => "#{entry.profile_photo.url(:medium)}"}/
+              %img{:alt => "", :src => "#{entry.profile_photo.medium.url}"}/
               #{entry.stage_name}
 = paginate fans, remote: true, theme: "show_more", param_name: "fan_page"

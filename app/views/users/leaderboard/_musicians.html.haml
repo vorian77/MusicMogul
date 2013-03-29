@@ -3,7 +3,7 @@
   .contestant-info.clearfix[entry]
     .contestant-info-inner.left
       %a{:href => "#{entry_path(entry)}"}
-        %img{:alt => "", :src => "#{entry.profile_photo.url(:medium)}"}/
+        %img{:alt => "", :src => "#{entry.profile_photo.medium.url}"}/
       %h3
         %a{:href => "#{entry_path(entry)}"}= entry.stage_name
       %p

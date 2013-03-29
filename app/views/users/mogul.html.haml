@@ -32,7 +32,7 @@
           .inner-form-section.clearfix
             %h3 Profile Photo
             - if current_user.photo.present?
-              = image_tag(current_user.photo.url(:medium), class: "cover-image")
+              = image_tag(current_user.photo.medium.url, class: "cover-image")
             - else
               .cover-image
             .custom-upload

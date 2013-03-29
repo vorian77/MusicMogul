@@ -49,7 +49,7 @@
             .inner-form-section.clearfix
               %h3 Performer Photo
               - if entry_fields.object.profile_photo?
-                = image_tag(entry_fields.object.profile_photo.url(:medium), class: "cover-image")
+                = image_tag(entry_fields.object.profile_photo.medium.url, class: "cover-image")
               - else
                 .cover-image
               .custom-upload

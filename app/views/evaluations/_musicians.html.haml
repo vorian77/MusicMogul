@@ -2,7 +2,7 @@
   - evaluations.each do |evaluation|
     .contestant-info[evaluation]
       %a{:href => "#"}
-        %img{:alt => "", :src => "#{evaluation.user.profile_photo.url(:medium)}"}/
+        %img{:alt => "", :src => "#{evaluation.user.profile_photo.medium.url}"}/
       - if evaluation.user.follows?(evaluation.entry)
         %a.follow-btn.following.btn{href: "#", disabled: "disabled"} Following
       - else

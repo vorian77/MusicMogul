@@ -52,7 +52,7 @@
                 %tr
                   %td= index + 1
                   %td= user.created_at.strftime("%m/%d/%y")
-                  %td= image_tag(user.photo.url(:thumb))
+                  %td= image_tag(user.photo.thumb.url)
                   %td= user.username
                   %td= user.entries.present? ? user.entries.first.stage_name : ""
                   %td= user.musician? ? "Contestant" : "Judge"
@@ -77,7 +77,7 @@
                   %tr
                     %td= index + 1
                     %td= user.created_at.strftime("%m/%d/%y")
-                    %td= image_tag(user.photo.url(:thumb))
+                    %td= image_tag(user.photo.thumb.url)
                     %td= user.username
                     %td= user.musician? ? user.entries.first.evaluations.count + user.evaluations.count : user.evaluations.count
   .main-b

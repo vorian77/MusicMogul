@@ -17,7 +17,7 @@
     .main-c
       .contestant-info[@entry]
         %a{:href => "#"}
-          %img{:alt => "", :src => "#{@entry.profile_photo.url(:medium)}"}/
+          %img{:alt => "", :src => "#{@entry.profile_photo.medium.url}"}/
         %h3
           %a{:href => "#"} #{@entry.stage_name}
         - unless @evaluation.new_record?

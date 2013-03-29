@@ -53,7 +53,7 @@
           .inner-form-section.clearfix
             %h3 Album cover photo
             - if @entry.profile_photo?
-              = image_tag(@entry.profile_photo.url(:medium), class: "cover-image")
+              = image_tag(@entry.profile_photo.medium.url, class: "cover-image")
             - else
               .cover-image
             .custom-upload
