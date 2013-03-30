@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130204214918) do
+ActiveRecord::Schema.define(:version => 20130330170435) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20130204214918) do
     t.boolean  "has_explicit_content", :default => false
     t.integer  "masonry_width"
     t.integer  "masonry_height"
+    t.string   "free_download_link"
   end
 
   add_index "entries", ["user_id"], :name => "index_entries_on_user_id"
@@ -95,6 +96,12 @@ ActiveRecord::Schema.define(:version => 20130204214918) do
 
   add_index "follows", ["entry_id"], :name => "index_follows_on_entry_id"
   add_index "follows", ["user_id"], :name => "index_follows_on_user_id"
+
+  create_table "prospects", :force => true do |t|
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"
