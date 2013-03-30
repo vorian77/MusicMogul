@@ -1,30 +1,31 @@
 - if contest_pending?
   = render "home/countdown"
 
-.main.shell
-  .main-t
-  .main-c.contestants
-    .contestants
-      - if @entries.present?
-        %div
-          %h3 Contestants
-          - if user_signed_in? && contest_running? && current_user.fan?
-            %h4 Click a picture to audition the contestant
-        #largeImage.largeContainer
-        #foo
-          %ul#tiles
-            - @entries.each do |entry|
-              %li{"data-large" => entry.profile_photo.large.url, "data-entry-id" => entry.id}
-                .front
-                  = image_tag entry.profile_photo.masonry.url, width: entry.masonry_width, height: entry.masonry_height
-                  %p= entry.stage_name
-                .back
-                  %h4= entry.stage_name
-                  %p= entry.genre
-                  %p= entry.hometown
-                  %p= entry.bio
-      - else
-        %div.empty
-          %h3 Congratulations, you've evaluated all the contestants!
-          %h4 Check back soon for more contestants and contest results.
-  .main-b
+- if contest_running? || Contest.order("created_at").last.try(:show_contestants?)
+  .main.shell
+    .main-t
+    .main-c.contestants
+      .contestants
+        - if @entries.present?
+          %div
+            %h3 Contestants
+            - if user_signed_in? && contest_running? && current_user.fan?
+              %h4 Click a picture to audition the contestant
+          #largeImage.largeContainer
+          #foo
+            %ul#tiles
+              - @entries.each do |entry|
+                %li{"data-large" => entry.profile_photo.large.url, "data-entry-id" => entry.id}
+                  .front
+                    = image_tag entry.profile_photo.masonry.url, width: entry.masonry_width, height: entry.masonry_height
+                    %p= entry.stage_name
+                  .back
+                    %h4= entry.stage_name
+                    %p= entry.genre
+                    %p= entry.hometown
+                    %p= entry.bio
+        - else
+          %div.empty
+            %h3 Congratulations, you've evaluated all the contestants!
+            %h4 Check back soon for more contestants and contest results.
+    .main-b

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130330170435) do
+ActiveRecord::Schema.define(:version => 20130330230941) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -31,8 +31,9 @@ ActiveRecord::Schema.define(:version => 20130330170435) do
   create_table "contests", :force => true do |t|
     t.datetime "start_date"
     t.datetime "end_date"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.boolean  "show_contestants", :default => false
   end
 
   create_table "contracts", :force => true do |t|
@@ -96,12 +97,6 @@ ActiveRecord::Schema.define(:version => 20130330170435) do
 
   add_index "follows", ["entry_id"], :name => "index_follows_on_entry_id"
   add_index "follows", ["user_id"], :name => "index_follows_on_user_id"
-
-  create_table "prospects", :force => true do |t|
-    t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

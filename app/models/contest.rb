@@ -1,7 +1,7 @@
 class Contest < ActiveRecord::Base
   FIRST_START_DATE = "2/3/13 12:00PM"
 
-  attr_accessible :start_date, :end_date
+  attr_accessible :start_date, :end_date, :show_contestants
 
   validates :start_date, presence: true
   validates :end_date, presence: true
