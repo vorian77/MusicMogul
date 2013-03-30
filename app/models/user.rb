@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   FAN_INVITATION_LIMIT = 10
 
   MUSICIAN_INVITED_USER_POINT_VALUE = 30
-  FAN_INVITED_USER_POINT_VALUE = 350
+  FAN_INVITED_USER_POINT_VALUE = 500
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :confirmable

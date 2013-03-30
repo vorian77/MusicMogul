@@ -1,5 +1,5 @@
 class Evaluation < ActiveRecord::Base
-  POINT_VALUE = 1000
+  POINT_VALUE = 250
   COMMENT_PROMPT = "Write something encouraging or constructive to the contestant..."
 
   belongs_to :entry
