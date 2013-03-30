@@ -25,7 +25,7 @@ class Entry < ActiveRecord::Base
 
   attr_accessible :genre, :stage_name, :title, :youtube_url, :hometown, :bio,
                   :facebook, :youtube, :twitter, :pinterest, :website,
-                  :has_music, :has_vocals, :has_explicit_content, :user, :profile_photo
+                  :has_music, :has_vocals, :has_explicit_content, :user, :profile_photo, :free_download_link
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
