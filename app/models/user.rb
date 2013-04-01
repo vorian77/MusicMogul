@@ -61,6 +61,11 @@ class User < ActiveRecord::Base
     update_attribute(:cached_points, points)
   end
 
+  def confirm!
+    super
+    WelcomeMailer.new_fan(self).deliver if self.fan?
+  end
+
   def contract_points
     signed_entries.sum(:points).round
   end

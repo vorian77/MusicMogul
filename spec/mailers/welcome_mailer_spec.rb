@@ -12,4 +12,16 @@ describe WelcomeMailer do
     its(:subject) { should == "Welcome to Music Mogul!" }
     its(:body) { should include(%{Hi #{user.username}}) }
   end
+
+  describe "#new_fan" do
+    let(:user) { User.fan.first }
+    let(:email) { WelcomeMailer.new_fan(user).deliver }
+
+    subject { email }
+
+    its(:to) { should == [user.email] }
+    its(:from) { should == ["musicmogul-noreply@musicmogul.com"] }
+    its(:subject) { should == "Welcome to Music Mogul!" }
+    its(:body) { should include(%{Hi #{user.username}}) }
+  end
 end
