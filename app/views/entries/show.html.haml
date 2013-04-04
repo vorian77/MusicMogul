@@ -28,7 +28,7 @@
             %p.genre #{@entry.genre}
             %p.city #{@entry.hometown}
           .right-info
-            - unless @evaluation.new_record?
+            - if @evaluation.persisted? || current_user.try(:musician?)
               .social-icos
                 - if @entry.facebook != Entry.columns_hash["facebook"].default
                   %a.ico.fb-ico{href: "#{@entry.facebook}", target: "_blank"}
