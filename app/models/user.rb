@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
 
   def confirm!
     super
-    WelcomeMailer.new_fan(self).deliver if self.fan?
+    #WelcomeMailer.new_fan(self).deliver if self.fan?
   end
 
   def contract_points

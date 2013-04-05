@@ -10,7 +10,7 @@ class EntriesController < ApplicationController
         format.html do
           if @entry.update_attributes(params[:entry])
             if @entry.finished?
-              WelcomeMailer.new_artist(current_user).deliver
+              #WelcomeMailer.new_artist(current_user).deliver
               redirect_to root_path
             else
               render "entries/finish"
