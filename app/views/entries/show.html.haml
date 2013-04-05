@@ -52,7 +52,7 @@
           %li
             %h3 #{@entry.title}
             .slide
-              %iframe{:allowfullscreen => "", :frameborder => "0", :height => "363", :src => "http://www.youtube.com/embed/#{@entry.youtube_id}", :width => "640"}
+              %iframe#ytPlayer{:allowfullscreen => "", :frameborder => "0", :height => "363", :src => "http://www.youtube.com/embed/#{@entry.youtube_id}?enablejsapi=1", :width => "640"}
     .main-b.main-b-edit
   - if current_user.fan?
     - if current_user.has_evaluated?(@entry)
@@ -90,3 +90,28 @@
                 = f.input :share_email, label: "Add my email to this artist's newsletter subscription list"
                 %input.submit.btn{:type => "submit", :value => "Submit"}/
         .main-b.main-b-edit
+
+:javascript
+  var played = false;
+
+  function onYouTubeIframeAPIReady() {
+    var player = new YT.Player('ytPlayer', {
+      events: {
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+  function onPlayerStateChange(event) {
+    if (event.data == 1 && !played) {
+      played = true;
+      $.ajax({
+        type: "POST",
+        url: "/clicks.json",
+        data: {
+          entry_id: $("[data-entry-id]").data("entry-id"),
+          object: "Video"
+        }
+      });
+    }
+  }

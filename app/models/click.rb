@@ -4,7 +4,7 @@ class Click < ActiveRecord::Base
   belongs_to :user
   belongs_to :entry
 
-  OBJECTS = %w(Entry Facebook Twitter Youtube Pinterest Website Track)
+  OBJECTS = %w(Entry Facebook Twitter Youtube Pinterest Website Track Video)
 
   validates :user, presence: true
   validates :entry, presence: true
