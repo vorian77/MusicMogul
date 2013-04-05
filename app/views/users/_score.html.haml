@@ -8,7 +8,7 @@
           %h3 Rank
           %strong
             \#{current_user.rank}
-            %small /#{User.fan.count}
+            %small /#{User.non_admin.fan.count}
         %li
           %h3 Points
           %strong #{current_user.points}
@@ -58,7 +58,7 @@
           %h3 Rank
           %strong
             #{current_user.rank}
-            %small /#{User.musician.count}
+            %small /#{User.non_admin.musician.count}
         %li
           %h3 Points
           %strong #{current_user.points}

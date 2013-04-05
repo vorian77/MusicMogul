@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
 
   scope :invited, where("inviter_id is not null")
   scope :complete, where("username is not null and profile_photo is not null and hometown is not null")
+  scope :non_admin, where("admin = ?", false)
   scope :fan, where("musician = ?", false)
   scope :musician, where("musician = ?", true)
 
@@ -123,9 +124,9 @@ class User < ActiveRecord::Base
 
   def rank
     if fan?
-      self.class.fan.order("cached_points desc").uniq.pluck(:cached_points).index(self.cached_points) + 1
+      self.class.non_admin.fan.order("cached_points desc").uniq.pluck(:cached_points).index(self.cached_points) + 1
     else
-      self.class.musician.order("cached_points desc").uniq.pluck(:cached_points).index(self.cached_points) + 1
+      self.class.non_admin.musician.order("cached_points desc").uniq.pluck(:cached_points).index(self.cached_points) + 1
     end
   end
 
