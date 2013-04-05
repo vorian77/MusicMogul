@@ -15,7 +15,7 @@
             %a.next-page{:href => "#{entry_path(@next_entry)}"}
     .main-t
     .main-c
-      .contestant-info[@entry]
+      .contestant-info[@entry]{"data-entry-id" => @entry.id}
         %a{:href => "#"}
           %img{:alt => "", :src => "#{@entry.profile_photo.medium.url}"}/
         %h3
@@ -29,7 +29,7 @@
             %p.city #{@entry.hometown}
           .right-info
             - if @evaluation.persisted? || current_user.try(:musician?)
-              .social-icos{"data-entry-id" => @entry.id}
+              .social-icos
                 - if @entry.facebook != Entry.columns_hash["facebook"].default
                   %a.ico.fb-ico{href: "#{@entry.facebook}", target: "_blank", "data-click-object" => "Facebook" }
                 - if @entry.twitter != Entry.columns_hash["twitter"].default
