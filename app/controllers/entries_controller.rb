@@ -37,6 +37,6 @@ class EntriesController < ApplicationController
                       else
                         current_user.evaluations.order("created_at").where("created_at < ?", @evaluation.created_at).last.try(:entry)
     end
-    @next_entry = Entry.unevaluated_by(current_user).where("entries.id != ?", @entry.id).order("random()").first
+    @next_entry = Entry.finished.unevaluated_by(current_user).where("entries.id != ?", @entry.id).order("random()").first
   end
 end
