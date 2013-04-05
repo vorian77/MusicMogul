@@ -35,4 +35,10 @@ class EvaluationsController < ApplicationController
       render "entries/show"
     end
   end
+
+  def update
+    @evaluation = current_user.evaluations.find(params[:id])
+    @evaluation.update_attributes(params[:evaluation])
+    render nothing: true
+  end
 end

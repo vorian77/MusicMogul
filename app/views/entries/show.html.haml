@@ -70,6 +70,8 @@
             .evaluation-comment
               %label{:for => "eval-comment-field"} Comment
               %p= @evaluation.comment
+              = simple_form_for [@entry, @evaluation], html: { class: 'edit_evaluation form-horizontal' }, remote: true do |f|
+                = f.input :share_email, label: "Add my email to this artist's newsletter subscription list"
         .main-b.main-b-edit
     - else
       .main
@@ -115,3 +117,9 @@
       });
     }
   }
+
+  $(document).ready(function() {
+    $("form.edit_evaluation input.boolean").change(function() {
+      $(this).closest("form.edit_evaluation").submit();
+    });
+  });
