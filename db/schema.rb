@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130330230941) do
+ActiveRecord::Schema.define(:version => 20130405034210) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(:version => 20130330230941) do
   add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
+
+  create_table "clicks", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "entry_id"
+    t.string   "object"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "clicks", ["entry_id"], :name => "index_clicks_on_entry_id"
+  add_index "clicks", ["user_id"], :name => "index_clicks_on_user_id"
 
   create_table "contests", :force => true do |t|
     t.datetime "start_date"
@@ -97,6 +108,12 @@ ActiveRecord::Schema.define(:version => 20130330230941) do
 
   add_index "follows", ["entry_id"], :name => "index_follows_on_entry_id"
   add_index "follows", ["user_id"], :name => "index_follows_on_user_id"
+
+  create_table "prospects", :force => true do |t|
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

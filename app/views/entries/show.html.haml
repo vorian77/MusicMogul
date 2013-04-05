@@ -29,17 +29,17 @@
             %p.city #{@entry.hometown}
           .right-info
             - if @evaluation.persisted? || current_user.try(:musician?)
-              .social-icos
+              .social-icos{"data-entry-id" => @entry.id}
                 - if @entry.facebook != Entry.columns_hash["facebook"].default
-                  %a.ico.fb-ico{href: "#{@entry.facebook}", target: "_blank"}
+                  %a.ico.fb-ico{href: "#{@entry.facebook}", target: "_blank", "data-click-object" => "Facebook" }
                 - if @entry.twitter != Entry.columns_hash["twitter"].default
-                  %a.ico.tw-ico{href: "#{@entry.twitter}", target: "_blank"}
+                  %a.ico.tw-ico{href: "#{@entry.twitter}", target: "_blank", "data-click-object" => "Twitter"}
                 - if @entry.youtube != Entry.columns_hash["youtube"].default
-                  %a.ico.yt-ico{href: "#{@entry.youtube}", target: "_blank"}
+                  %a.ico.yt-ico{href: "#{@entry.youtube}", target: "_blank", "data-click-object" => "Youtube"}
                 - if @entry.pinterest != Entry.columns_hash["pinterest"].default
-                  %a.ico.pin-ico{href: "#{@entry.pinterest}", target: "_blank"}
+                  %a.ico.pin-ico{href: "#{@entry.pinterest}", target: "_blank", "data-click-object" => "Pinterest"}
                 - if @entry.website != Entry.columns_hash["website"].default
-                  %a.ico.web-ico{href: "#{@entry.website}", target: "_blank"}
+                  %a.ico.web-ico{href: "#{@entry.website}", target: "_blank", "data-click-object" => "Website"}
             %p #{@entry.bio}
     .main-b.main-b-edit
   .main

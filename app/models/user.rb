@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   attr_accessor :invitation_token
 
   belongs_to :inviter, class_name: "User"
+  has_many :clicks, dependent: :destroy
   has_many :contracts, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_many :follows, dependent: :destroy

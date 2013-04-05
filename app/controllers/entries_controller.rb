@@ -30,6 +30,7 @@ class EntriesController < ApplicationController
   end
 
   def show
+    current_user.clicks.create(entry_id: @entry.id, object: "Entry")
     @evaluation = current_user.evaluations.where(entry_id: @entry.id).first || @entry.evaluations.new
     @previous_entry = if @evaluation.new_record?
                         current_user.evaluations.order("created_at").last.try(:entry)
