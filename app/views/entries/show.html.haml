@@ -76,7 +76,7 @@
         .main-t
         .main-c
           .evaluations
-            = simple_form_for [@entry, @evaluation] do |f|
+            = simple_form_for [@entry, @evaluation], html: { class: 'form-horizontal' } do |f|
               %h3 Watch the video and make your evaluations
               .evaluation-sliders.clearfix
                 - if @entry.has_vocals?
@@ -87,5 +87,6 @@
               .evaluation-comment
                 %label{:for => "eval-comment-field"} Comment
                 %textarea#eval-comment-field.field{:name => "evaluation[comment]", :title => Evaluation::COMMENT_PROMPT}= Evaluation::COMMENT_PROMPT
+                = f.input :share_email, label: "Add my email to this artist's newsletter subscription list"
                 %input.submit.btn{:type => "submit", :value => "Submit"}/
         .main-b.main-b-edit

@@ -5,7 +5,7 @@ class Evaluation < ActiveRecord::Base
   belongs_to :entry
   belongs_to :user, include: :evaluations
 
-  attr_accessible :music_score, :vocals_score, :presentation_score, :comment, :entry_id
+  attr_accessible :music_score, :vocals_score, :presentation_score, :comment, :entry_id, :share_email
 
   validates :entry, presence: true
   validates :user, presence: true
