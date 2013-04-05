@@ -123,6 +123,7 @@ class User < ActiveRecord::Base
   end
 
   def rank
+    return if self.admin?
     if fan?
       self.class.non_admin.fan.order("cached_points desc").uniq.pluck(:cached_points).index(self.cached_points) + 1
     else
