@@ -42,7 +42,7 @@
                   %a.ico.web-ico{href: "#{@entry.website}", target: "_blank", "data-click-object" => "Website"}
               - if @entry.free_download_link?
                 = link_to "Free download track", @entry.free_download_link, target: "_blank", "data-click-object" => "Track", class: "free-download-track"
-            %p #{@entry.bio}
+            %p.bio #{@entry.bio}
     .main-b.main-b-edit
   .main
     .main-t
