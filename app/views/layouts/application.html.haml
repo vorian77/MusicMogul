@@ -32,7 +32,7 @@
                     %a{href: "#{evaluations_path}"}
                       My Evaluations
                       %span.ico
-                  %li.leader-board{class: "#{'active' if current_page?(leaderboard_path)}"}
+                  %li.leader-board{class: "#{'active' if current_page?(leaderboard_path)}", style: "#{'visibility: hidden' unless Contest.order("created_at").last.try(:show_leaderboard?)}"}
                     %a{href: "#{leaderboard_path}"}
                       Leader Board
                       %span.ico
