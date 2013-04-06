@@ -2,14 +2,20 @@ class WelcomeMailer < ActionMailer::Base
   default from: "musicmogul-noreply@musicmogul.com"
 
   def new_artist(user)
-    @user = user
-    mail(to: user.email,
-         subject: "Welcome to Music Mogul!")
+    if email = SiteConfiguration.musician_welcome_email
+      @user = user
+      @body = email.body
+      mail(to: user.email,
+           subject: email.subject)
+    end
   end
 
   def new_fan(user)
-    @user = user
-    mail(to: user.email,
-         subject: "Welcome to Music Mogul!")
+    if email = SiteConfiguration.fan_welcome_email
+      @user = user
+      @body = email.body
+      mail(to: user.email,
+           subject: email.subject)
+    end
   end
 end

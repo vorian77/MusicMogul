@@ -14,5 +14,6 @@ FixtureBuilder.configure do |config|
     end
     FactoryGirl.create(:evaluation, user: User.invited.first, entry: Entry.all.sample)
     FactoryGirl.create(:contest, start_date: Date.yesterday, end_date: Date.yesterday + 2.weeks)
+    FactoryGirl.create(:site_configuration)
   end
 end
