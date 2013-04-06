@@ -7,7 +7,8 @@
         .sign-up-option
           %a.btn{:href => "#{new_user_registration_path(type: "fan")}"} Fans
           %p Sign up to judge
-        .sign-up-option
-          %a.btn{:href => "#{new_user_registration_path(type: "musician")}"} Artists
-          %p Sign up to compete
+        - if SiteConfiguration.allow_artist_signup?
+          .sign-up-option
+            %a.btn{:href => "#{new_user_registration_path(type: "musician")}"} Artists
+            %p Sign up to compete
   .main-b

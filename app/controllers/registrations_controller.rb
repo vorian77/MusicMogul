@@ -1,7 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
   def new
     resource = build_resource({})
-    resource.musician = session[:musician] = params[:type] == "musician"
+    if SiteConfiguration.allow_artist_signup?
+      resource.musician = session[:musician] = params[:type] == "musician"
+    end
     respond_with resource
   end
 

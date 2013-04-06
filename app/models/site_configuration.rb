@@ -1,5 +1,5 @@
 class SiteConfiguration < ActiveRecord::Base
-  attr_accessible :fan_welcome_email_id, :musician_welcome_email_id
+  attr_accessible :fan_welcome_email_id, :musician_welcome_email_id, :allow_artist_signup
 
   belongs_to :fan_welcome_email, class_name: "Email"
   belongs_to :musician_welcome_email, class_name: "Email"
@@ -7,6 +7,10 @@ class SiteConfiguration < ActiveRecord::Base
   validate :ensure_only_one_record
 
   class << self
+    def allow_artist_signup?
+      first.try(:allow_artist_signup)
+    end
+
     def fan_welcome_email
       first.try(:fan_welcome_email)
     end
