@@ -1,7 +1,7 @@
-.countdown{"data-end-date" => Contest.count > 0 ? Contest.first.start_date.to_i : "0", "data-now" => Time.now.to_i, "data-seconds" => Time.now.strftime("%S")}
+.countdown{contest_timer_attributes}
   .countdown-t
   .countdown-c
-    %h2 Judging Starts #{Contest.count > 0 ? Contest.first.start_date.strftime("%m/%d/%y at %l%p %Z") : "---"}
+    %h2= contest_date_text
     .clock.clearfix
       .clock_days.clock_box
         .bgLayer
@@ -62,7 +62,8 @@
                 %span #{current_user.invitation_points}
       - else
         %p
-          Beta open to <span>15 artists</span> and <span>500 fans</span>.
+          - if contest_pending?
+            Beta open to <span>15 artists</span> and <span>500 fans</span>.
           = link_to "Learn more &gt;&gt;".html_safe, contest_rules_path
         - if @inviter
           %h3 Invited by <span>( #{@inviter.username} )</span>

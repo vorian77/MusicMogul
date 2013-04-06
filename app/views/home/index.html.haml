@@ -1,5 +1,5 @@
-- if contest_pending?
-  = render "home/countdown"
+
+= render "home/countdown"
 
 - if contest_running? || Contest.order("created_at").last.try(:show_contestants?)
   .main.shell

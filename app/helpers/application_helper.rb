@@ -50,4 +50,16 @@ module ApplicationHelper
      evaluation: number_with_precision(current_user.evaluation_for(entry).try(:overall_score), precision: 1)
     }.to_json
   end
+
+  def contest_timer_attributes
+    {"data-end-date" => Contest.count > 0 ? (contest_pending? ? Contest.first.start_date.to_i : Contest.first.end_date.to_i) : "0", "data-now" => Time.now.to_i, "data-seconds" => Time.now.strftime("%S")}
+  end
+
+  def contest_date_text
+    if contest_pending?
+      "Judging Starts #{Contest.count > 0 ? Contest.first.start_date.strftime("%m/%d/%y at %l%p %Z") : "---"}"
+    else
+      "Judging Ends #{Contest.count > 0 ? Contest.first.end_date.strftime("%m/%d/%y at %l%p %Z") : "---"}"
+    end
+  end
 end
