@@ -58,7 +58,7 @@
           %h3 Rank
           %strong
             #{current_user.rank}
-            %small /#{User.non_admin.musician.count}
+            %small /#{Entry.finished.count}
         %li
           %h3 Points
           %strong #{current_user.points}

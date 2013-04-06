@@ -34,14 +34,15 @@ class UsersController < ApplicationController
   end
 
   def leaderboard
+    musician_ids = Entry.finished.pluck(:user_id)
     respond_to do |format|
       format.html do
-        @musicians = User.non_admin.musician.order("cached_points desc, id").page(params[:musician_page]).per(10)
+        @musicians = User.non_admin.where("id in (?)", musician_ids).order("cached_points desc, id").page(params[:musician_page]).per(10)
         @fans = User.non_admin.fan.order("cached_points desc, id").page(params[:fan_page]).per(10)
       end
       format.js do
         if params[:musician_page].present?
-          @musicians = User.non_admin.musician.order("cached_points desc, id").page(params[:musician_page]).per(10)
+          @musicians = User.non_admin.where("id in (?)", musician_ids).order("cached_points desc, id").page(params[:musician_page]).per(10)
           render json: {musicians: render_to_string(partial: "users/leaderboard/musicians", locals: {musicians: @musicians})}
         elsif params[:fan_page].present?
           @fans = User.non_admin.fan.order("cached_points desc, id").page(params[:fan_page]).per(10)

@@ -123,12 +123,14 @@ class User < ActiveRecord::Base
   end
 
   def rank
-    return if self.admin?
+    return "---" if self.admin?
     if fan?
       self.class.non_admin.fan.order("cached_points desc").uniq.pluck(:cached_points).index(self.cached_points) + 1
     else
-      self.class.non_admin.musician.order("cached_points desc").uniq.pluck(:cached_points).index(self.cached_points) + 1
+      self.class.non_admin.where("id in (?)", Entry.finished.pluck(:user_id)).order("cached_points desc").uniq.pluck(:cached_points).index(self.cached_points) + 1
     end
+  rescue
+    "---"
   end
 
   def referral_link
