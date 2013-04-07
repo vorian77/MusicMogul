@@ -64,7 +64,7 @@
         %p
           - if contest_pending?
             Beta open to <span>15 artists</span> and <span>500 fans</span>.
-          = link_to "Learn more &gt;&gt;".html_safe, contest_rules_path
+          = link_to "Learn more about the contest and prizes &gt;&gt;".html_safe, contest_rules_path
         - if @inviter
           %h3 Invited by <span>( #{@inviter.username} )</span>
         .sign-up-options.clearfix
