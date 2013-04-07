@@ -71,8 +71,7 @@
           .sign-up-option
             = link_to "Fans", new_user_registration_path(type: "fan"), class: "btn"
             %p Sign up to judge
-          - if SiteConfiguration.allow_artist_signup?
-            .sign-up-option
-              = link_to "Artists", new_user_registration_path(type: "musician"), class: "btn"
-              %p Sign up to compete
+          .sign-up-option
+            = link_to "Artists", new_user_registration_path(type: "musician"), class: "btn"
+            %p Sign up to compete
   .countdown-b

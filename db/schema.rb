@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130406215945) do
+ActiveRecord::Schema.define(:version => 20130406195409) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -128,9 +128,8 @@ ActiveRecord::Schema.define(:version => 20130406215945) do
   create_table "site_configurations", :force => true do |t|
     t.integer  "musician_welcome_email_id"
     t.integer  "fan_welcome_email_id"
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
-    t.boolean  "allow_artist_signup",       :default => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "users", :force => true do |t|
