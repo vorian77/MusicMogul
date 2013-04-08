@@ -52,7 +52,7 @@
           %li
             %h3 #{@entry.title}
             .slide
-              %iframe#ytPlayer{:allowfullscreen => "", :frameborder => "0", :height => "363", :src => "http://www.youtube.com/embed/#{@entry.youtube_id}?enablejsapi=1", :width => "640"}
+              %iframe#ytPlayer{allowfullscreen: "", frameborder: "0", height: "363", src: "http://www.youtube.com/embed/#{@entry.youtube_id}?enablejsapi=1&rel=0", width: "640"}
     .main-b.main-b-edit
   - if current_user.fan?
     - if current_user.has_evaluated?(@entry)
