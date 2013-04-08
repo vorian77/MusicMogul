@@ -28,23 +28,23 @@
               = entry_fields.input :free_download_link, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
             .inner-form-section
               %h3 Performance Video
-              = entry_fields.input :title, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
-              = entry_fields.input :youtube_url, label: "YouTube URL", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field" }
+              = entry_fields.input :title, wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field", disabled: entry_fields.object.contest_started? }
+              = entry_fields.input :youtube_url, label: "YouTube URL", wrapper_html: { class: "form-row clearfix" }, input_html: { class: "field", disabled: entry_fields.object.contest_started? }
               .form-row.clearfix
                 .labels
                   %label.check
                     %input{name: "user[entries_attributes][0][has_music]", type: "hidden", value: "0"}
-                    %input{type: "checkbox", value: "1", checked: entry_fields.object.has_music?, name: "user[entries_attributes][0][has_music]"}/
+                    %input{type: "checkbox", value: "1", checked: entry_fields.object.has_music?, name: "user[entries_attributes][0][has_music]", "data-disabled" => (entry_fields.object.contest_started? ? "true": "false")}/
                     %span
                     Has Music
                   %label.check
                     %input{name: "user[entries_attributes][0][has_vocals]", type: "hidden", value: "0"}
-                    %input{type: "checkbox", value: "1", checked: entry_fields.object.has_vocals?, name: "user[entries_attributes][0][has_vocals]"}/
+                    %input{type: "checkbox", value: "1", checked: entry_fields.object.has_vocals?, name: "user[entries_attributes][0][has_vocals]", "data-disabled" => (entry_fields.object.contest_started? ? "true": "false")}/
                     %span
                     Has Vocals
                   %label.check
                     %input{name: "user[entries_attributes][0][has_explicit_content]", type: "hidden", value: "0"}
-                    %input{type: "checkbox", value: "1", checked: entry_fields.object.has_explicit_content?, name: "user[entries_attributes][0][has_explicit_content]"}/
+                    %input{type: "checkbox", value: "1", checked: entry_fields.object.has_explicit_content?, name: "user[entries_attributes][0][has_explicit_content]", "data-disabled" => (entry_fields.object.contest_started? ? "true": "false")}/
                     %span
                     Has Explicit Content
             .inner-form-section.clearfix

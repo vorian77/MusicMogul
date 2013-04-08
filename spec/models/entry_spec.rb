@@ -2,6 +2,7 @@ require "spec_helper"
 
 describe Entry do
   describe "associations" do
+    it { should belong_to :contest }
     it { should belong_to :user }
     it { should have_many(:evaluations).dependent(:destroy) }
     it { should have_many(:follows).dependent(:destroy) }
@@ -29,6 +30,63 @@ describe Entry do
     it { should have_valid(:facebook).when("http://www.facebook.com/") }
     it { should have_valid(:facebook).when("http://www.facebook.com/zuck") }
     it { should_not have_valid(:facebook).when("http://www.acebook.com/zuck") }
+
+    context "when the contest has started" do
+      let(:contest) { Contest.first }
+      let(:entry) { FactoryGirl.create(:entry, contest: contest) }
+
+      before { contest.should be_started }
+
+      it "should not allow update of title" do
+        entry.title = "New Title"
+        entry.save
+        entry.should have(1).error_on(:title)
+      end
+
+      it "should not allow update of youtube url" do
+        entry.youtube_url = "http://www.youtube.com/v/sGE4HMvDe-Q?version=3&autohide=1"
+        entry.save
+        entry.should have(1).error_on(:youtube_url)
+      end
+
+      [:has_vocals, :has_music, :has_explicit_content].each do |attr|
+        it "should not allow update of #{attr}" do
+          entry.toggle(attr)
+          entry.save
+          entry.should have(1).error_on(attr)
+        end
+      end
+    end
+
+    context "when the contest has not started" do
+      let(:contest) { Contest.first }
+      let(:entry) { FactoryGirl.create(:entry, contest: contest) }
+
+      before do
+        contest.update_attribute(:start_date, Date.tomorrow)
+        contest.should_not be_started
+      end
+
+      it "should allow update of title" do
+        entry.title = "New Title"
+        entry.save
+        entry.should be_valid
+      end
+
+      it "should not allow update of youtube url" do
+        entry.youtube_url = "http://www.youtube.com/v/sGE4HMvDe-Q?version=3&autohide=1"
+        entry.save
+        entry.should be_valid
+      end
+
+      [:has_vocals, :has_music, :has_explicit_content].each do |attr|
+        it "should allow update of #{attr}" do
+          entry.toggle(attr)
+          entry.save
+          entry.should be_valid
+        end
+      end
+    end
   end
 
   describe "scopes" do

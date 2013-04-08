@@ -16,15 +16,16 @@ $(function () {
     // custom checkboxes
     $('label.check input:checked').closest('label').addClass('checked');
     $(document).on('click', 'label.check', function () {
-        if ($(this).find('input').is(':checked')) {
-            $(this).find('input').attr('checked', false);
-            $(this).removeClass('checked');
-        } else {
-            $(this).find('input').attr('checked', true);
-            $(this).addClass('checked');
+        if (!($(this).find("input:checkbox").data("disabled"))) {
+            if ($(this).find('input').is(':checked')) {
+                $(this).find('input').attr('checked', false);
+                $(this).removeClass('checked');
+            } else {
+                $(this).find('input').attr('checked', true);
+                $(this).addClass('checked');
+            }
+            $(this).find('input').trigger('change');
         }
-
-        $(this).find('input').trigger('change');
         if (!$(this).text().match(/terms of service/)) {
             return false;
         }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130408165836) do
+ActiveRecord::Schema.define(:version => 20130408192720) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -89,8 +89,10 @@ ActiveRecord::Schema.define(:version => 20130408165836) do
     t.integer  "masonry_width"
     t.integer  "masonry_height"
     t.string   "free_download_link"
+    t.integer  "contest_id"
   end
 
+  add_index "entries", ["contest_id"], :name => "index_entries_on_contest_id"
   add_index "entries", ["user_id"], :name => "index_entries_on_user_id"
 
   create_table "evaluations", :force => true do |t|

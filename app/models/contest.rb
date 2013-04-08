@@ -27,6 +27,10 @@ class Contest < ActiveRecord::Base
     %w(Anonymous Full).include? self.leaderboard_display
   end
 
+  def started?
+    start_date <= Time.now
+  end
+
   private
 
   def ensure_end_date_is_after_start_date

@@ -4,6 +4,7 @@ feature "entries" do
   scenario "user edits an entry" do
     user = FactoryGirl.create(:confirmed_user, musician: true)
     entry = user.entries.first
+    entry.contest.update_attribute(:start_date, Date.tomorrow)
     entry.update_attributes(stage_name: Faker::HipsterIpsum.words.join(" "),
                             hometown: Faker::Address.city,
                             title: Faker::HipsterIpsum.words.join(" "),

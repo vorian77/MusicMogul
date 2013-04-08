@@ -1,7 +1,9 @@
 class Entry < ActiveRecord::Base
   #GENRES = ['Alternative', 'Country', 'Electronic', 'Gospel', 'Hip Hop', 'Pop', 'R&B', 'Rock', 'Other']
   GENRES = ['Hip Hop']
+  FROZEN_FIELDS = [:title, :youtube_url, :has_music, :has_vocals, :has_explicit_content]
 
+  belongs_to :contest
   belongs_to :user
   has_many :evaluations, dependent: :destroy
   has_many :follows, dependent: :destroy
@@ -23,6 +25,7 @@ class Entry < ActiveRecord::Base
   validates :pinterest, format: {with: /^#{Entry.columns_hash["pinterest"].default}/}
   validates :website, format: {with: URI::regexp(%w(http https))}
   validate :ensure_youtube_url_is_valid
+  validate :ensure_unstarted_contest, on: :update
 
   attr_accessible :genre, :stage_name, :title, :youtube_url, :hometown, :bio,
                   :facebook, :youtube, :twitter, :pinterest, :website,
@@ -32,6 +35,7 @@ class Entry < ActiveRecord::Base
 
   after_save :cache_user_points, if: :points_changed?
   after_destroy :cache_user_points
+  before_create :set_contest
   before_save :cache_masonry_width_and_height
 
   scope :finished, where("stage_name <> '' and genre <> '' and hometown <> '' and profile_photo <> '' and title <> '' and youtube_url <> ''")
@@ -47,6 +51,10 @@ class Entry < ActiveRecord::Base
 
   def component_count
     (has_music? ? 1 : 0) + (has_vocals? ? 1 : 0) + 1
+  end
+
+  def contest_started?
+    contest.present? && contest.started?
   end
 
   def finished?
@@ -99,8 +107,24 @@ class Entry < ActiveRecord::Base
     self.user.cache_points!
   end
 
+  def ensure_unstarted_contest
+    if contest_started?
+      FROZEN_FIELDS.each do |attr|
+        if send("#{attr}_changed?")
+          errors.add(attr, "cannot change after judging begins")
+        end
+      end
+    end
+  end
+
   def ensure_youtube_url_is_valid
     return unless youtube_url?
     errors.add(:youtube_url, "is not a valid YouTube URL") unless youtube_id.present?
+  end
+
+  def set_contest
+    unless contest.present?
+      self.contest = Contest.active || Contest.next
+    end
   end
 end
