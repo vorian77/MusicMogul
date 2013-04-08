@@ -34,6 +34,7 @@ class UsersController < ApplicationController
   end
 
   def leaderboard
+    redirect_to root_path unless Contest.active.try(:show_leaderboard_nav?)
     musician_ids = Entry.finished.pluck(:user_id)
     respond_to do |format|
       format.html do

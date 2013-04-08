@@ -1,10 +1,16 @@
 - @fans.each do |user|
   .contestant-info.clearfix[user]
     .contestant-info-inner.left
-      %a{:href => "#"}
-        %img{:alt => "", :src => "#{user.profile_photo.medium.url}"}/
-      %h3
-        %a{:href => "#"}= user.username
+      - if Contest.active.try(:show_full_leaderboard?) || user == current_user
+        %a{:href => "#"}
+          %img{:alt => "", :src => "#{user.profile_photo.medium.url}"}/
+        %h3
+          %a{:href => "#"}= user.username
+      - else
+        %a{:href => "#"}
+          %img{:alt => "", :src => "#{user.profile_photo.medium.default_url}"}/
+        %h3
+          %a{:href => "#"}
       %p
         #{user.hometown}
         %br>/
@@ -27,8 +33,12 @@
             %strong= user.cached_points
       .stats-bottom.clearfix
         .contestant-images.clearfix
-          - user.signed_entries.order("created_at desc").each do |entry|
-            %a{:href => "#{entry_path(entry)}"}
-              %img{:alt => "", :src => "#{entry.profile_photo.medium.url}"}/
-              #{entry.stage_name}
+          - user.signed_entries.order("created_at desc").includes(:user).each do |entry|
+            - if Contest.active.try(:show_full_leaderboard?) || entry.user == current_user
+              %a{:href => "#{entry_path(entry)}"}
+                %img{:alt => "", :src => "#{entry.profile_photo.medium.url}"}/
+                #{entry.stage_name}
+            - else
+              %a{:href => "#"}
+                %img{:alt => "", :src => "#{entry.profile_photo.medium.default_url}"}/
 = paginate fans, remote: true, theme: "show_more", param_name: "fan_page"

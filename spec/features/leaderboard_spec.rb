@@ -2,6 +2,7 @@ require "spec_helper"
 
 feature "leaderboard" do
   scenario "user views leaderboard" do
+    Contest.active.update_attribute(:leaderboard_display, "Full")
     user = users(:confirmed_user)
     login_as user, scope: :user
 

@@ -1,10 +1,11 @@
 class Contest < ActiveRecord::Base
-  FIRST_START_DATE = "2/3/13 12:00PM"
+  LEADERBOARD_DISPLAY_OPTIONS = %w(Hide Anonymous Full)
 
-  attr_accessible :start_date, :end_date, :show_contestants, :show_leaderboard
+  attr_accessible :start_date, :end_date, :show_contestants, :leaderboard_display
 
   validates :start_date, presence: true
   validates :end_date, presence: true
+  validates :leaderboard_display, inclusion: { in: LEADERBOARD_DISPLAY_OPTIONS, allow_blank: true }
   validate :ensure_end_date_is_after_start_date
   #validate :ensure_contests_are_not_overlapping
 
@@ -16,6 +17,14 @@ class Contest < ActiveRecord::Base
     def next
       where("start_date >= ?", Time.now).order("start_date").first
     end
+  end
+
+  def show_full_leaderboard?
+    self.leaderboard_display == "Full"
+  end
+
+  def show_leaderboard_nav?
+    %w(Anonymous Full).include? self.leaderboard_display
   end
 
   private

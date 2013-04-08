@@ -2,17 +2,29 @@
   - entry = user.entries.first
   .contestant-info.clearfix[entry]
     .contestant-info-inner.left
-      %a{:href => "#{entry_path(entry)}"}
-        %img{:alt => "", :src => "#{entry.profile_photo.medium.url}"}/
-      %h3
-        %a{:href => "#{entry_path(entry)}"}= entry.stage_name
-      %p
-        %span.genre> #{entry.genre}
-        #{entry.hometown}
-        %br>/
-        - if evaluation = current_user.evaluation_for(entry)
-          My Evaluation
-          %span= number_with_precision evaluation.overall_score, precision: 1
+      - if Contest.active.try(:show_full_leaderboard?) || user == current_user
+        %a{:href => "#{entry_path(entry)}"}
+          %img{:alt => "", :src => "#{entry.profile_photo.medium.url}"}/
+        %h3
+          %a{:href => "#{entry_path(entry)}"}= entry.stage_name
+        %p
+          %span.genre> #{entry.genre}
+          #{entry.hometown}
+          %br>/
+          - if evaluation = current_user.evaluation_for(entry)
+            My Evaluation
+            %span= number_with_precision evaluation.overall_score, precision: 1
+      - else
+        %a{:href => "#"}
+          %img{:alt => "", :src => "#{entry.profile_photo.medium.default_url}"}/
+        %h3
+          %a{:href => "#"}
+        %p
+          %span.genre>
+          %br>/
+          - if evaluation = current_user.evaluation_for(entry)
+            My Evaluation
+            %span= number_with_precision evaluation.overall_score, precision: 1
     .contestant-info-stats.right
       .stats-top
         %ul.clearfix
