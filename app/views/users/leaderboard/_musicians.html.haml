@@ -22,9 +22,6 @@
         %p
           %span.genre>
           %br>/
-          - if evaluation = current_user.evaluation_for(entry)
-            My Evaluation
-            %span= number_with_precision evaluation.overall_score, precision: 1
     .contestant-info-stats.right
       .stats-top
         %ul.clearfix
