@@ -19,6 +19,10 @@ class Contest < ActiveRecord::Base
     end
   end
 
+  def show_anonymous_leaderboard?
+    self.leaderboard_display == "Anonymous"
+  end
+
   def show_full_leaderboard?
     self.leaderboard_display == "Full"
   end

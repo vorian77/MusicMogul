@@ -9,6 +9,9 @@
         %li
           %a{:href => "#"} Moguls
           %span.overlay
+        - if Contest.active.try(:show_anonymous_leaderboard?)
+          %li.anonymous
+            Anonymous mode until judging ends (#{Contest.active.end_date.strftime("%m/%d/%y")})
     .main-c.tabs
       .tab.musicians
         = render "users/leaderboard/musicians", musicians: @musicians
