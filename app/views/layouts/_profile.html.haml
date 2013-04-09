@@ -11,7 +11,7 @@
         %a{:href => "#{edit_user_path(current_user)}"} My Profile
       %li
         %a{:href => "#{friends_path}"} My Friends
-      - if current_user.musician?
+      - if current_user.entries.finished.present? && !Rails.env.prod?
         %li
           = link_to "My Data", my_data_path
       - if current_user.admin?
