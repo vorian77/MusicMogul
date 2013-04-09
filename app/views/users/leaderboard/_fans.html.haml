@@ -1,16 +1,10 @@
 - @fans.each do |user|
   .contestant-info.clearfix[user]
     .contestant-info-inner.left
-      - if Contest.active.try(:show_full_leaderboard?) || user == current_user
-        %a{:href => "#"}
-          %img{:alt => "", :src => "#{user.profile_photo.medium.url}"}/
-        %h3
-          %a{:href => "#"}= user.username
-      - else
-        %a{:href => "#"}
-          %img{:alt => "", :src => "#{user.profile_photo.medium.default_url}"}/
-        %h3
-          %a{:href => "#"}
+      %a{:href => "#"}
+        %img{:alt => "", :src => "#{user.profile_photo.medium.url}"}/
+      %h3
+        %a{:href => "#"}= user.username
       %p
         #{user.hometown}
         %br>/
