@@ -30,6 +30,7 @@ Mvp2::Application.routes.draw do
 
   match "leaderboard" => "users#leaderboard", as: :leaderboard
   match "my_data" => "users#my_data"
+  match "my_data/fan_email_list.csv" => "users#fan_email_list", as: :fan_email_list
   match "contact_us" => "home#contact_us"
   match "contest_rules" => "home#contest_rules"
   match "terms" => "home#terms"

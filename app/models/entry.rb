@@ -7,6 +7,7 @@ class Entry < ActiveRecord::Base
   belongs_to :user
   has_many :clicks, dependent: :destroy
   has_many :evaluations, dependent: :destroy
+  has_many :shared_email_users, through: :evaluations, source: :user, conditions: ["evaluations.share_email = ?", true]
   has_many :follows, dependent: :destroy
   has_many :followers, through: :follows, source: :user
   has_many :contracts, dependent: :destroy

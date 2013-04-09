@@ -111,4 +111,6 @@
             %td= @entry.clicks.video.count
           %td= @entry.clicks.video.count
           %td= number_with_precision(Click.video.count / Entry.finished.count.to_f, precision: 1)
+    - if @entry.shared_email_users.present?
+      = link_to "Download fan email list", fan_email_list_path
   .main-b

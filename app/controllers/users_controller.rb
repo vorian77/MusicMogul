@@ -58,6 +58,18 @@ class UsersController < ApplicationController
     @entry = @user.entries.first
   end
 
+  def fan_email_list
+    @user = current_user
+    @entry = @user.entries.first
+    csv = CSV.generate({}) do |csv|
+      csv << %w(username email)
+      @entry.shared_email_users.each do |user|
+        csv << [user.username, user.email]
+      end
+    end
+    send_data csv, filename: "Music Mogul Fan List for #{@entry.stage_name} - #{Date.today.strftime("%y%m%d")}.csv"
+  end
+
   def scorecard
     render json: {scorecard: render_to_string(partial: "users/score")}
   end
