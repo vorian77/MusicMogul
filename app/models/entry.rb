@@ -5,6 +5,7 @@ class Entry < ActiveRecord::Base
 
   belongs_to :contest
   belongs_to :user
+  has_many :clicks, dependent: :destroy
   has_many :evaluations, dependent: :destroy
   has_many :follows, dependent: :destroy
   has_many :followers, through: :follows, source: :user
@@ -63,20 +64,24 @@ class Entry < ActiveRecord::Base
     end
   end
 
-  def overall_score
-    evaluations.count > 0 ? evaluations.sum(:overall_score) / evaluations.count.to_f : 0
+  def overall_score(user_ids = nil)
+    selected_evaluations = user_ids.present? ? evaluations.where("user_id in (?)", user_ids) : evaluations
+    selected_evaluations.count > 0 ? selected_evaluations.sum(:overall_score) / selected_evaluations.count.to_f : 0
   end
 
-  def overall_music_score
-    evaluations.count > 0 ? evaluations.sum(:music_score) / evaluations.count.to_f : 0
+  def overall_music_score(user_ids = nil)
+    selected_evaluations = user_ids.present? ? evaluations.where("user_id in (?)", user_ids) : evaluations
+    selected_evaluations.count > 0 ? selected_evaluations.sum(:music_score) / selected_evaluations.count.to_f : 0
   end
 
-  def overall_vocals_score
-    evaluations.count > 0 ? evaluations.sum(:vocals_score) / evaluations.count.to_f : 0
+  def overall_vocals_score(user_ids = nil)
+    selected_evaluations = user_ids.present? ? evaluations.where("user_id in (?)", user_ids) : evaluations
+    selected_evaluations.count > 0 ? selected_evaluations.sum(:vocals_score) / selected_evaluations.count.to_f : 0
   end
 
-  def overall_presentation_score
-    evaluations.count > 0 ? evaluations.sum(:presentation_score) / evaluations.count.to_f : 0
+  def overall_presentation_score(user_ids = nil)
+    selected_evaluations = user_ids.present? ? evaluations.where("user_id in (?)", user_ids) : evaluations
+    selected_evaluations.count > 0 ? selected_evaluations.sum(:presentation_score) / selected_evaluations.count.to_f : 0
   end
 
   def rank

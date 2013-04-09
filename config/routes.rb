@@ -29,6 +29,7 @@ Mvp2::Application.routes.draw do
   resources :contacts, only: [:create]
 
   match "leaderboard" => "users#leaderboard", as: :leaderboard
+  match "my_data" => "users#my_data"
   match "contact_us" => "home#contact_us"
   match "contest_rules" => "home#contest_rules"
   match "terms" => "home#terms"

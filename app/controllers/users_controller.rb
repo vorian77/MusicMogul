@@ -53,6 +53,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def my_data
+    @user = current_user
+    @entry = @user.entries.first
+  end
+
   def scorecard
     render json: {scorecard: render_to_string(partial: "users/score")}
   end

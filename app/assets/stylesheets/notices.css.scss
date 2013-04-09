@@ -1,4 +1,4 @@
-div.main-c.terms, div.main-c.privacy {
+div.main-c.terms, div.main-c.privacy, div.main-c.data {
   h1 {
     margin-bottom: 20px;
   }
@@ -27,6 +27,39 @@ div.main-c.terms, div.main-c.privacy {
     td {
       border: 1px solid black;
       padding: 5px;
+    }
+  }
+}
+
+div.main-c.data {
+  h2 {
+    font-size: 23px;
+    line-height: 23px;
+    margin-bottom: 8px;
+    color: black;
+
+    &.last {
+      margin-bottom: 20px;
+    }
+  }
+
+  table {
+    thead {
+      th {
+        text-align: left;
+        padding: 10px;
+      }
+    }
+
+    tbody {
+      td {
+        &:first-of-type {
+          text-align: left;
+        }
+        padding: 10px;
+
+        text-align: center;
+      }
     }
   }
 }

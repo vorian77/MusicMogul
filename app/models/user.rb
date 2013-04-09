@@ -145,6 +145,10 @@ class User < ActiveRecord::Base
     !inviter.present?
   end
 
+  def uninvited_user_ids
+    User.pluck(:id) - invited_user_ids
+  end
+
   private
 
   def cache_inviter_points

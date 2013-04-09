@@ -4,6 +4,7 @@ describe Entry do
   describe "associations" do
     it { should belong_to :contest }
     it { should belong_to :user }
+    it { should have_many(:clicks).dependent(:destroy) }
     it { should have_many(:evaluations).dependent(:destroy) }
     it { should have_many(:follows).dependent(:destroy) }
     it { should have_many(:followers).through(:follows) }

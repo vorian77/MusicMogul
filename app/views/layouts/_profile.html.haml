@@ -11,6 +11,9 @@
         %a{:href => "#{edit_user_path(current_user)}"} My Profile
       %li
         %a{:href => "#{friends_path}"} My Friends
+      - if current_user.musician?
+        %li
+          = link_to "My Data", my_data_path
       - if current_user.admin?
         %li
           %a{:href => "#{admin_root_path}"} Administration

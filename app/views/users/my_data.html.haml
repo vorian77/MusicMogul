@@ -1,0 +1,107 @@
+.main.shell
+  .main-t
+  .main-c.data
+    %h1 My Data
+    %h2= @entry.stage_name
+    %h2 #{@entry.genre}/#{@entry.hometown}
+    %h2.last= @entry.title
+    %table
+      %thead
+        %tr
+          %th Metric
+          %th My Invitees
+          %th Other Evaluators
+          %th All Evaluators
+          %th Contest Average
+      %tbody
+        %tr
+          %td Moguls
+          %td
+          %td
+          %td
+          %td
+        %tr
+          %td Follows
+          %td= @entry.follows.where("user_id in (?)", @user.invited_user_ids).count
+          %td= @entry.follows.where("user_id not in (?)", @user.invited_user_ids).count
+          %td= @entry.follows.count
+          %td= number_with_precision(Follow.count / Entry.finished.count.to_f, precision: 1)
+        %tr
+          %td Signs
+          %td= @entry.contracts.where("user_id in (?)", @user.invited_user_ids).count
+          %td= @entry.contracts.where("user_id not in (?)", @user.invited_user_ids).count
+          %td= @entry.contracts.count
+          %td= number_with_precision(Contract.count / Entry.finished.count.to_f, precision: 1)
+        %tr
+          %td Evaluations
+          %td= @entry.evaluations.where("user_id in (?)", @user.invited_user_ids).count
+          %td= @entry.evaluations.where("user_id not in (?)", @user.invited_user_ids).count
+          %td= @entry.evaluations.count
+          %td= number_with_precision(Evaluation.count / Entry.finished.count.to_f, precision: 1)
+        %tr
+          %td Average overall evaluation
+          %td= number_with_precision @entry.overall_score(@user.invited_user_ids), precision: 1
+          %td= number_with_precision @entry.overall_score(@user.uninvited_user_ids), precision: 1
+          %td= number_with_precision @entry.overall_score, precision: 1
+          %td= number_with_precision(Entry.finished.sum(&:overall_score) / Entry.finished.count.to_f, precision: 1)
+        %tr
+          %td Average music evaluation
+          %td= number_with_precision @entry.overall_music_score(@user.invited_user_ids), precision: 1
+          %td= number_with_precision @entry.overall_music_score(@user.uninvited_user_ids), precision: 1
+          %td= number_with_precision @entry.overall_music_score, precision: 1
+          %td= number_with_precision(Entry.finished.sum(&:overall_music_score) / Entry.finished.count.to_f, precision: 1)
+        %tr
+          %td Average vocals evaluation
+          %td= number_with_precision @entry.overall_vocals_score(@user.invited_user_ids), precision: 1
+          %td= number_with_precision @entry.overall_vocals_score(@user.uninvited_user_ids), precision: 1
+          %td= number_with_precision @entry.overall_vocals_score, precision: 1
+          %td= number_with_precision(Entry.finished.sum(&:overall_vocals_score) / Entry.finished.count.to_f, precision: 1)
+        %tr
+          %td Average presentation evaluation
+          %td= number_with_precision @entry.overall_presentation_score(@user.invited_user_ids), precision: 1
+          %td= number_with_precision @entry.overall_presentation_score(@user.uninvited_user_ids), precision: 1
+          %td= number_with_precision @entry.overall_presentation_score, precision: 1
+          %td= number_with_precision(Entry.finished.sum(&:overall_presentation_score) / Entry.finished.count.to_f, precision: 1)
+        %tr
+          %td Clicks on Facebook link
+          %td= @entry.clicks.facebook.where("user_id in (?)", @user.invited_user_ids).count
+          %td= @entry.clicks.facebook.where("user_id not in (?)", @user.invited_user_ids).count
+          %td= @entry.clicks.facebook.count
+          %td= number_with_precision(Click.facebook.count / Entry.finished.count.to_f, precision: 1)
+        %tr
+          %td Clicks on Pinterest link
+          %td= @entry.clicks.pinterest.where("user_id in (?)", @user.invited_user_ids).count
+          %td= @entry.clicks.pinterest.where("user_id not in (?)", @user.invited_user_ids).count
+          %td= @entry.clicks.pinterest.count
+          %td= number_with_precision(Click.pinterest.count / Entry.finished.count.to_f, precision: 1)
+        %tr
+          %td Clicks on Twitter link
+          %td= @entry.clicks.twitter.where("user_id in (?)", @user.invited_user_ids).count
+          %td= @entry.clicks.twitter.where("user_id not in (?)", @user.invited_user_ids).count
+          %td= @entry.clicks.twitter.count
+          %td= number_with_precision(Click.twitter.count / Entry.finished.count.to_f, precision: 1)
+        %tr
+          %td Clicks on YouTube link
+          %td= @entry.clicks.youtube.where("user_id in (?)", @user.invited_user_ids).count
+          %td= @entry.clicks.youtube.where("user_id not in (?)", @user.invited_user_ids).count
+          %td= @entry.clicks.youtube.count
+          %td= number_with_precision(Click.youtube.count / Entry.finished.count.to_f, precision: 1)
+        %tr
+          %td Clicks on website link
+          %td= @entry.clicks.website.where("user_id in (?)", @user.invited_user_ids).count
+          %td= @entry.clicks.website.where("user_id not in (?)", @user.invited_user_ids).count
+          %td= @entry.clicks.website.count
+          %td= number_with_precision(Click.website.count / Entry.finished.count.to_f, precision: 1)
+        %tr
+          %td Clicks on free download link
+          %td= @entry.clicks.track.where("user_id in (?)", @user.invited_user_ids).count
+          %td= @entry.clicks.track.where("user_id not in (?)", @user.invited_user_ids).count
+          %td= @entry.clicks.track.count
+          %td= number_with_precision(Click.track.count / Entry.finished.count.to_f, precision: 1)
+        %tr
+          %td Video plays
+          %td= @entry.clicks.video.where("user_id in (?)", @user.invited_user_ids).count
+          %td= @entry.clicks.video.where("user_id not in (?)", @user.invited_user_ids).count
+          %td= @entry.clicks.video.count
+          %td= number_with_precision(Click.video.count / Entry.finished.count.to_f, precision: 1)
+  .main-b
