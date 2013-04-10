@@ -69,6 +69,7 @@ class Entry < ActiveRecord::Base
   def open_for_judging?
     contest.present? && contest.running?
   end
+  alias_method :open_for_signing?, :open_for_judging?
 
   def overall_score(user_ids = nil)
     selected_evaluations = user_ids.present? ? evaluations.where("user_id in (?)", user_ids) : evaluations
