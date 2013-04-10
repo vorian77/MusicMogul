@@ -66,6 +66,10 @@ class Entry < ActiveRecord::Base
     end
   end
 
+  def open_for_judging?
+    contest.present? && contest.running?
+  end
+
   def overall_score(user_ids = nil)
     selected_evaluations = user_ids.present? ? evaluations.where("user_id in (?)", user_ids) : evaluations
     selected_evaluations.count > 0 ? selected_evaluations.sum(:overall_score) / selected_evaluations.count.to_f : 0

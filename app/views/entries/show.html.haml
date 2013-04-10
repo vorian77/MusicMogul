@@ -73,7 +73,7 @@
               = simple_form_for [@entry, @evaluation], html: { class: 'edit_evaluation form-horizontal' }, remote: true do |f|
                 = f.input :share_email, label: "Add my email to this artist's newsletter subscription list"
         .main-b.main-b-edit
-    - else
+    - elsif @entry.open_for_judging?
       .main
         .main-t
         .main-c

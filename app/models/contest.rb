@@ -5,7 +5,7 @@ class Contest < ActiveRecord::Base
 
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validates :leaderboard_display, inclusion: { in: LEADERBOARD_DISPLAY_OPTIONS, allow_blank: true }
+  validates :leaderboard_display, inclusion: {in: LEADERBOARD_DISPLAY_OPTIONS, allow_blank: true}
   validate :ensure_end_date_is_after_start_date
   #validate :ensure_contests_are_not_overlapping
 
@@ -32,6 +32,10 @@ class Contest < ActiveRecord::Base
 
   def show_leaderboard_nav?
     %w(Anonymous Full).include? self.leaderboard_display
+  end
+
+  def running?
+    start_date <= Time.now and end_date >= Time.now
   end
 
   def started?

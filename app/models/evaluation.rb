@@ -14,8 +14,8 @@ class Evaluation < ActiveRecord::Base
   validates :vocals_score, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 10, allow_nil: true}
   validates :presentation_score, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 10}
   validates :overall_score, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 10}
-  #validate :ensure_invited_user
   validate :ensure_fan
+  validate :ensure_entry_open_for_judging
 
   before_validation :calculate_overall_score, :nullify_blank_comments
   after_save :cache_points
@@ -38,9 +38,9 @@ class Evaluation < ActiveRecord::Base
     errors.add(:user, "cannot be a contestant") if user.musician?
   end
 
-  def ensure_invited_user
-    return unless user.present?
-    errors.add(:user, "must be invited") if user.uninvited?
+  def ensure_entry_open_for_judging
+    return unless entry.present?
+    errors.add(:entry, "is not open for judging") unless entry.open_for_judging?
   end
 
   def nullify_blank_comments
