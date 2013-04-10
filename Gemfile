@@ -35,6 +35,7 @@ group :development, :test do
   gem 'bullet'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'debugger'
   gem 'factory_girl_rails'
   gem 'ffaker'
   gem 'fixture_builder'
