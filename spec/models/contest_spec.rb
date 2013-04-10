@@ -22,6 +22,25 @@ describe Contest do
     end
   end
 
+  describe ".open" do
+    subject { Contest.open }
+    before { Contest.destroy_all }
+
+    context "when there are no contests" do
+      it { should == [] }
+    end
+
+    context "when there is no open contest" do
+      before { FactoryGirl.create(:contest, artist_sign_up_end_date: Date.yesterday) }
+      it { should == [] }
+    end
+
+    context "when there is an open contest" do
+      let(:contest) { FactoryGirl.create(:contest, artist_sign_up_end_date: Date.tomorrow) }
+      it { should == [contest] }
+    end
+  end
+
   describe ".active" do
     subject { Contest.active }
     before { Contest.destroy_all }

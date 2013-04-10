@@ -9,9 +9,12 @@ class Contest < ActiveRecord::Base
   validate :ensure_end_date_is_after_start_date
   #validate :ensure_contests_are_not_overlapping
 
+  scope :open, lambda { where("artist_sign_up_end_date >= ?", Time.now) }
+  scope :running, lambda { where("start_date <= :now and end_date >= :now", now: Time.now) }
+
   class << self
     def active
-      where("start_date <= :now and end_date >= :now", now: Time.now).first
+      running.first
     end
 
     def next

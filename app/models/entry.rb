@@ -40,6 +40,7 @@ class Entry < ActiveRecord::Base
   before_create :set_contest
   before_save :cache_masonry_width_and_height
 
+  scope :with_contest, where("contest_id is not null")
   scope :finished, where("stage_name <> '' and genre <> '' and hometown <> '' and profile_photo <> '' and title <> '' and youtube_url <> ''")
   scope :unexplicit, where(has_explicit_content: false)
   scope :unevaluated_by, lambda { |user|
@@ -130,7 +131,7 @@ class Entry < ActiveRecord::Base
 
   def set_contest
     unless contest.present?
-      self.contest = Contest.active || Contest.next
+      self.contest = Contest.open.order("start_date").first
     end
   end
 end

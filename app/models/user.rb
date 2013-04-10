@@ -127,7 +127,7 @@ class User < ActiveRecord::Base
     if fan?
       self.class.non_admin.fan.order("cached_points desc").uniq.pluck(:cached_points).index(self.cached_points) + 1
     else
-      self.class.non_admin.where("id in (?)", Entry.finished.pluck(:user_id)).order("cached_points desc").uniq.pluck(:cached_points).index(self.cached_points) + 1
+      self.class.non_admin.where("id in (?)", Entry.with_contest.finished.pluck(:user_id)).order("cached_points desc").uniq.pluck(:cached_points).index(self.cached_points) + 1
     end
   rescue
     "---"

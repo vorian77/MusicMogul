@@ -29,7 +29,7 @@
             %td 0
             %td= @entry.follows.count
           %td= @entry.follows.count
-          %td= number_with_precision(Follow.count / Entry.finished.count.to_f, precision: 1)
+          %td= number_with_precision(Follow.count / Entry.with_contest.finished.count.to_f, precision: 1)
         %tr
           %td Signs
           - if @user.invited_users.present?
@@ -39,7 +39,7 @@
             %td 0
             %td= @entry.contracts.count
           %td= @entry.contracts.count
-          %td= number_with_precision(Contract.count / Entry.finished.count.to_f, precision: 1)
+          %td= number_with_precision(Contract.count / Entry.with_contest.finished.count.to_f, precision: 1)
         %tr
           %td Evaluations
           - if @user.invited_users.present?
@@ -49,7 +49,7 @@
             %td 0
             %td= @entry.evaluations.count
           %td= @entry.evaluations.count
-          %td= number_with_precision(Evaluation.count / Entry.finished.count.to_f, precision: 1)
+          %td= number_with_precision(Evaluation.count / Entry.with_contest.finished.count.to_f, precision: 1)
         %tr
           %td Average overall evaluation
           - if @user.invited_users.present?
@@ -59,7 +59,7 @@
             %td 0
             %td= number_with_precision @entry.overall_score, precision: 1
           %td= number_with_precision @entry.overall_score, precision: 1
-          %td= number_with_precision(Entry.finished.sum(&:overall_score) / Entry.finished.count.to_f, precision: 1)
+          %td= number_with_precision(Entry.with_contest.finished.sum(&:overall_score) / Entry.with_contest.finished.count.to_f, precision: 1)
         %tr
           %td Average music evaluation
           - if @user.invited_users.present?
@@ -69,7 +69,7 @@
             %td 0
             %td= number_with_precision @entry.overall_music_score, precision: 1
           %td= number_with_precision @entry.overall_music_score, precision: 1
-          %td= number_with_precision(Entry.finished.sum(&:overall_music_score) / Entry.finished.count.to_f, precision: 1)
+          %td= number_with_precision(Entry.with_contest.finished.sum(&:overall_music_score) / Entry.with_contest.finished.count.to_f, precision: 1)
         %tr
           %td Average vocals evaluation
           - if @user.invited_users.present?
@@ -79,7 +79,7 @@
             %td 0
             %td= number_with_precision @entry.overall_vocals_score, precision: 1
           %td= number_with_precision @entry.overall_vocals_score, precision: 1
-          %td= number_with_precision(Entry.finished.sum(&:overall_vocals_score) / Entry.finished.count.to_f, precision: 1)
+          %td= number_with_precision(Entry.with_contest.finished.sum(&:overall_vocals_score) / Entry.with_contest.finished.count.to_f, precision: 1)
         %tr
           %td Average presentation evaluation
           - if @user.invited_users.present?
@@ -89,7 +89,7 @@
             %td 0
             %td= number_with_precision @entry.overall_presentation_score, precision: 1
           %td= number_with_precision @entry.overall_presentation_score, precision: 1
-          %td= number_with_precision(Entry.finished.sum(&:overall_presentation_score) / Entry.finished.count.to_f, precision: 1)
+          %td= number_with_precision(Entry.with_contest.finished.sum(&:overall_presentation_score) / Entry.with_contest.finished.count.to_f, precision: 1)
         - [:facebook, :pinterest, :twitter, :youtube, :website, :track].each do |object|
           %tr
             %td Clicks on #{object.to_s.titleize} link
@@ -100,7 +100,7 @@
               %td 0
               %td= @entry.clicks.send(object).count
             %td= @entry.clicks.send(object).count
-            %td= number_with_precision(Click.send(object).count / Entry.finished.count.to_f, precision: 1)
+            %td= number_with_precision(Click.send(object).count / Entry.with_contest.finished.count.to_f, precision: 1)
         %tr
           %td Video plays
           - if @user.invited_users.present?
@@ -110,7 +110,7 @@
             %td 0
             %td= @entry.clicks.video.count
           %td= @entry.clicks.video.count
-          %td= number_with_precision(Click.video.count / Entry.finished.count.to_f, precision: 1)
+          %td= number_with_precision(Click.video.count / Entry.with_contest.finished.count.to_f, precision: 1)
     - if @entry.shared_email_users.present?
       = link_to "Download fan email list", fan_email_list_path
   .main-b

@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
   def leaderboard
     redirect_to root_path unless Contest.active.try(:show_leaderboard_nav?)
-    musician_ids = Entry.finished.pluck(:user_id)
+    musician_ids = Entry.with_contest.finished.pluck(:user_id)
     respond_to do |format|
       format.html do
         @musicians = User.non_admin.where("id in (?)", musician_ids).order("cached_points desc, id").page(params[:musician_page]).per(10)
