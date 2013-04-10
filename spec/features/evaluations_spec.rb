@@ -20,20 +20,6 @@ feature "evaluations" do
     page.should have_content comment.first(150)
   end
 
-  scenario "uninvited user cannot create an evaluation" do
-    pending "contest start flow"
-    user = FactoryGirl.create(:confirmed_user, inviter: nil)
-    sign_in_as user
-
-    entry = Entry.first
-    click_link entry.stage_name
-    current_path.should == entry_path(entry)
-
-    page.should have_no_css "form#new_evaluation"
-    page.should have_css "span.number#rank"
-    page.should have_css "span.number#points"
-  end
-
   scenario "fan views their evaluations" do
     user = users(:confirmed_user)
     login_as user, scope: :user
