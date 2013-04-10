@@ -17,7 +17,7 @@ class Entry < ActiveRecord::Base
   validates :stage_name, presence: {on: :update}
   validates :genre, presence: {on: :update}, inclusion: {in: Entry::GENRES, on: :update}
   validates :hometown, presence: {on: :update}
-  validates :profile_photo, presence: {on: :update}
+  validates :profile_photo, presence: {on: :update, message: "Album cover photo is required"}
   validates :title, presence: {on: :update}
   validates :youtube_url, presence: {on: :update, message: "YouTube URL is required"}
   validates :points, numericality: {greater_than_or_equal_to: 0}
