@@ -1,5 +1,5 @@
 class SiteConfiguration < ActiveRecord::Base
-  attr_accessible :fan_welcome_email_id, :musician_welcome_email_id, :contest_rules
+  attr_accessible :fan_welcome_email_id, :musician_welcome_email_id, :contest_rules, :next_contest_start_date
 
   belongs_to :fan_welcome_email, class_name: "Email"
   belongs_to :musician_welcome_email, class_name: "Email"
