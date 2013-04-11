@@ -1,7 +1,7 @@
 class Contest < ActiveRecord::Base
   LEADERBOARD_DISPLAY_OPTIONS = %w(Hide Anonymous Full)
 
-  attr_accessible :start_date, :end_date, :show_contestants, :leaderboard_display
+  attr_accessible :start_date, :end_date, :show_contestants, :leaderboard_display, :artist_sign_up_end_date
 
   validates :start_date, presence: true
   validates :end_date, presence: true
