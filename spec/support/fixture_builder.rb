@@ -12,9 +12,9 @@ FixtureBuilder.configure do |config|
       entry.attributes = FactoryGirl.attributes_for(:entry).except(:user)
       entry.save
     end
-    FactoryGirl.create(:evaluation, user: User.invited.first, entry: Entry.all.sample)
     FactoryGirl.create(:contest, start_date: Date.yesterday, end_date: Date.yesterday + 2.weeks)
     FactoryGirl.create(:site_configuration)
     Entry.update_all(contest_id: Contest.first.id)
+    FactoryGirl.create(:evaluation, user: User.invited.first, entry: Entry.all.sample)
   end
 end
