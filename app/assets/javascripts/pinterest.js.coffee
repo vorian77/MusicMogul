@@ -1,7 +1,7 @@
 $ ->
   $('#tiles').pinterestGallery
     largeContainerID: 'largeImage'
-    animateStyle: 'twirl'
+    animateStyle: 'fade'
     gridOptions:
       autoResize: true
       container: $('#foo')
