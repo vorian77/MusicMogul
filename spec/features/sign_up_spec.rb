@@ -1,8 +1,6 @@
 require "spec_helper"
 
 feature "sign up" do
-  before { Contest.destroy_all }
-
   scenario "musician signs up" do
     inviter = User.first
     visit root_path(referral_token: inviter.referral_token)

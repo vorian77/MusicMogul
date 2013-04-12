@@ -8,7 +8,7 @@ class EntriesController < ApplicationController
     if request.request_method == "PUT"
       respond_to do |format|
         format.html do
-          if @entry.update_attributes(params[:entry])
+          if @entry.update_attributes(params[:entry].merge(finishing: true))
             if @entry.finished?
               WelcomeMailer.new_artist(current_user).deliver
               redirect_to root_path

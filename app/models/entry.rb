@@ -30,8 +30,9 @@ class Entry < ActiveRecord::Base
 
   attr_accessible :genre, :stage_name, :title, :youtube_url, :hometown, :bio,
                   :facebook, :youtube, :twitter, :pinterest, :website,
-                  :has_music, :has_vocals, :has_explicit_content, :user, :profile_photo, :free_download_link
+                  :has_music, :has_vocals, :has_explicit_content, :user, :profile_photo, :free_download_link, :finishing
 
+  attr_accessor :finishing
   mount_uploader :profile_photo, ProfilePhotoUploader
 
   after_save :cache_user_points, if: :points_changed?
@@ -119,7 +120,7 @@ class Entry < ActiveRecord::Base
   end
 
   def ensure_unstarted_contest
-    if contest_started?
+    if contest_started? && !finishing
       FROZEN_FIELDS.each do |attr|
         if send("#{attr}_changed?")
           errors.add(attr, "cannot change after judging begins")
