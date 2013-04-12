@@ -1,12 +1,16 @@
 $ ->
   $('input.upload-field').fileupload
     dataType: 'json'
+    acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
     add: (e, data) ->
-      if $("img.cover-image").length
-        $("img.cover-image").before("<div class='cover-image'></div>")
-        $("img.cover-image").remove()
-      $("div.cover-image").html("0%")
-      data.submit()
+      if /(\.|\/)(gif|jpe?g|png)$/i.test data.files[0].name
+        if $("img.cover-image").length
+          $("img.cover-image").before("<div class='cover-image'></div>")
+          $("img.cover-image").remove()
+        $("div.cover-image").html("0%")
+        data.submit()
+      else
+        alert "You must upload a JPG, PNG, or GIF file."
     progressall: (e, data) ->
       progress = parseInt(data.loaded / data.total * 100, 10)
       if progress == 100
