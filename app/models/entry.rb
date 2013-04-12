@@ -1,6 +1,5 @@
 class Entry < ActiveRecord::Base
-  #GENRES = ['Alternative', 'Country', 'Electronic', 'Gospel', 'Hip Hop', 'Pop', 'R&B', 'Rock', 'Other']
-  GENRES = ['Hip Hop']
+  GENRES = ['Alternative', 'Country', 'Electronic', 'Gospel', 'Hip Hop', 'Pop', 'R&B', 'Rock', 'Other']
   FROZEN_FIELDS = [:title, :youtube_url, :has_music, :has_vocals, :has_explicit_content]
 
   belongs_to :contest
