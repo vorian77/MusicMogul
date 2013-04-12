@@ -46,4 +46,8 @@ module ApplicationHelper
       "Judging Ends #{Contest.count > 0 ? Contest.first.end_date.strftime("%m/%d/%y at %l%p %Z") : "---"}"
     end
   end
+
+  def show_my_evaluations_tab?(user)
+    user && (user.fan? || user.entries.with_contest.present?)
+  end
 end

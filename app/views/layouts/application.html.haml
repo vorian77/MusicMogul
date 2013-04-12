@@ -28,11 +28,11 @@
                     %a{href: "#{root_path}"}
                       Auditions
                       %span.ico
-                  %li.evaluations{class: "#{'active' if current_page?(evaluations_path)}"}
+                  %li.evaluations{class: "#{'active' if current_page?(evaluations_path)}", style: "#{'display: none' unless show_my_evaluations_tab?(current_user)}"}
                     %a{href: "#{evaluations_path}"}
                       My Evaluations
                       %span.ico
-                  %li.leader-board{class: "#{'active' if current_page?(leaderboard_path)}", style: "#{'visibility: hidden' unless Contest.active.try(:show_leaderboard_nav?)}"}
+                  %li.leader-board{class: "#{'active' if current_page?(leaderboard_path)}", style: "#{'display: none' unless Contest.active.try(:show_leaderboard_nav?)}"}
                     %a{href: "#{leaderboard_path}"}
                       Leader Board
                       %span.ico
