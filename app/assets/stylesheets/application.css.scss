@@ -13,35 +13,168 @@
  *= require_self
  */
 
-.signin-support a.sign-up-link { text-decoration: none; }
-.signin-support a.sign-up-link:hover { text-decoration: underline; }
-.main-c.contestants { padding: 10px; }
-.contestants h3 { font-size: 23px; color: #f21e1b; text-align: center; margin-bottom: 12px; }
-.form-section textarea { width: 313px; height: 140px; background: #f8f8f8; border: 1px solid #e6e7e7; border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px; -o-border-radius: 1px; padding: 5px 10px; float: left; display: inline; margin-right: 21px; resize:none; }
-.form-section span.error { font-size: 12px; line-height: 24px; color: #000; background: #ff9c00 image_url("tooltip-l.png") no-repeat 0 0; padding: 0 15px 0 20px; float: left; margin-top: 7px; }
-.form-row.tos span.error { float: right; margin-right: 44px; }
-.contact-form span.error { display: none; }
-.acc-dd { z-index: 2000; }
-.stats span { padding-right: 12px; }
-.contestant-info.entry a.follow-btn { top: 152px; }
-.contestant-info.entry a.sign-btn { top: 152px; }
-p span.grade { color: #dd0000; }
-.stats-top.mogul ul li { width: 214px; }
-h1#logo a { margin-top: 4px; }
-.contestants > div { overflow: hidden; }
-.contestants > div > h3 { float: left; margin-left: 10px; }
-.contestants > div > h4 { float: right; margin-right: 10px; color: #9e9e9e; }
-div.empty {
-  > h3 { font-size: 23px; color: #f21e1b; text-align: center; margin-bottom: 12px; }
-  > h4 { color: #9e9e9e; }
-  > h3, > h4 { text-align: center; float: none; }
+.signin-support a.sign-up-link {
+  text-decoration: none;
 }
-.main-c div.empty h3 { text-align: center; color: #000; }
-.loading-more { display: none; }
-nav.pagination.show_more { display: none; }
-a.free-download-track { position: absolute; top: -45px; right: 0px; }
-div.evaluation-comment label.boolean {  margin-bottom: 20px; }
-div.evaluation-comment label input.boolean { margin-right: 5px; }
-.right-info p.bio { max-height: 130px; overflow-y: scroll; padding-right: 10px; }
-.tabs-nav ul li.anonymous { float: right; padding-top: 20px; color: #9e9e9e; }
-div.file span.error { position: absolute; right: -228px; }
+
+.signin-support a.sign-up-link:hover {
+  text-decoration: underline;
+}
+
+.main-c.contestants {
+  padding: 10px;
+}
+
+.contestants h3 {
+  font-size: 23px;
+  color: #f21e1b;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.form-section textarea {
+  width: 313px;
+  height: 140px;
+  background: #f8f8f8;
+  border: 1px solid #e6e7e7;
+  border-radius: 1px;
+  -moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -o-border-radius: 1px;
+  padding: 5px 10px;
+  float: left;
+  display: inline;
+  margin-right: 21px;
+  resize: none;
+}
+
+.form-section span.error {
+  font-size: 12px;
+  line-height: 24px;
+  color: #000;
+  background: #ff9c00 image_url("tooltip-l.png") no-repeat 0 0;
+  padding: 0 15px 0 20px;
+  float: left;
+  margin-top: 7px;
+}
+
+.form-row.tos span.error {
+  float: right;
+  margin-right: 44px;
+}
+
+.contact-form span.error {
+  display: none;
+}
+
+.acc-dd {
+  z-index: 2000;
+}
+
+.stats span {
+  padding-right: 12px;
+}
+
+.contestant-info.entry a.follow-btn {
+  top: 152px;
+}
+
+.contestant-info.entry a.sign-btn {
+  top: 152px;
+}
+
+p span.grade {
+  color: #dd0000;
+}
+
+.stats-top.mogul ul li {
+  width: 214px;
+}
+
+h1#logo a {
+  margin-top: 4px;
+}
+
+.contestants > div {
+  overflow: hidden;
+}
+
+.contestants > div > h3 {
+  float: left;
+  margin-left: 10px;
+}
+
+.contestants > div > h4 {
+  float: right;
+  margin-right: 10px;
+  color: #9e9e9e;
+}
+
+div.empty {
+  > h3 {
+    font-size: 23px;
+    color: #f21e1b;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  > h4 {
+    color: #9e9e9e;
+  }
+  > h3, > h4 {
+    text-align: center;
+    float: none;
+  }
+}
+
+.main-c div.empty h3 {
+  text-align: center;
+  color: #000;
+}
+
+.loading-more {
+  display: none;
+}
+
+nav.pagination.show_more {
+  display: none;
+}
+
+a.free-download-track {
+  position: absolute;
+  top: -45px;
+  right: 0px;
+}
+
+div.evaluation-comment label.boolean {
+  margin-bottom: 20px;
+}
+
+div.evaluation-comment label input.boolean {
+  margin-right: 5px;
+}
+
+.right-info p.bio {
+  max-height: 130px;
+  overflow-y: scroll;
+  padding-right: 10px;
+}
+
+.tabs-nav ul li.anonymous {
+  float: right;
+  padding-top: 20px;
+  color: #9e9e9e;
+}
+
+div.file span.error {
+  position: absolute;
+  right: -228px;
+}
+
+div.fade.back {
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
