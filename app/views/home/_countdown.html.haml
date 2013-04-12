@@ -31,20 +31,21 @@
     .info
       - if user_signed_in?
         - if current_user.musician?
-          .referal-link.clearfix
-            %h3 Increase your chance of winning the $150 first prize!
-            .referal-info
-              %p Use your referral link to invite your followers. The first #{User::MUSICIAN_INVITATION_LIMIT} to register can judge the contest.
-              %a.learn-more{href: "#{contest_rules_path}"} Learn More >>
-            .referal-link-holder
-              %input.field{type: "text", value: current_user.shortened_referral_link.presence || current_user.referral_link, disabled: "disabled"}/
-              %a.btn.copy{href: "#"} Copy referral link to clipboard
-              %p
-                Fan Invites Accepted/Available
-                %span #{current_user.invited_users.count}/#{current_user.invitation_limit}
-              %p
-                Fan Sign Up Points
-                %span #{current_user.invitation_points}
+          - if current_user.entries.with_contest.present?
+            .referal-link.clearfix
+              %h3 Increase your chance of winning the $150 first prize!
+              .referal-info
+                %p Use your referral link to invite your followers. The first #{User::MUSICIAN_INVITATION_LIMIT} to register can judge the contest.
+                %a.learn-more{href: "#{contest_rules_path}"} Learn More >>
+              .referal-link-holder
+                %input.field{type: "text", value: current_user.shortened_referral_link.presence || current_user.referral_link, disabled: "disabled"}/
+                %a.btn.copy{href: "#"} Copy referral link to clipboard
+                %p
+                  Fan Invites Accepted/Available
+                  %span #{current_user.invited_users.count}/#{current_user.invitation_limit}
+                %p
+                  Fan Sign Up Points
+                  %span #{current_user.invitation_points}
         - else
           .referal-link.clearfix
             %h3 Make the contest better!
