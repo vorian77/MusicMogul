@@ -18,6 +18,10 @@ class SiteConfiguration < ActiveRecord::Base
     def musician_welcome_email
       first.try(:musician_welcome_email)
     end
+
+    def next_contest_start_date
+      first.try(:next_contest_start_date)
+    end
   end
 
   private

@@ -1,10 +1,10 @@
 module ApplicationHelper
   def contest_pending?
-    !contest_running?
+    Contest.pending.present? && Contest.running.empty?
   end
 
   def contest_running?
-    Contest.active.present?
+    Contest.running.present?
   end
 
   def evaluation_datetime(created_at)
@@ -36,14 +36,23 @@ module ApplicationHelper
   end
 
   def contest_timer_attributes
-    {"data-end-date" => Contest.count > 0 ? (contest_pending? ? Contest.first.start_date.to_i : Contest.first.end_date.to_i) : "0", "data-now" => Time.now.to_i, "data-seconds" => Time.now.strftime("%S")}
+    data_end_date = if contest_pending?
+                      Contest.pending.first.try(:start_date)
+                    elsif contest_running?
+                      Contest.running.first.try(:end_date)
+                    else
+                      SiteConfiguration.next_contest_start_date
+                    end
+    {"data-end-date" => data_end_date.try(:to_i) || "0", "data-now" => Time.now.to_i, "data-seconds" => Time.now.strftime("%S")}
   end
 
   def contest_date_text
     if contest_pending?
       "Judging Starts #{Contest.count > 0 ? Contest.first.start_date.strftime("%m/%d/%y at %l%p %Z") : "---"}"
-    else
+    elsif contest_running?
       "Judging Ends #{Contest.count > 0 ? Contest.first.end_date.strftime("%m/%d/%y at %l%p %Z") : "---"}"
+    else
+      "Next Contest Begins #{SiteConfiguration.next_contest_start_date.present? ? SiteConfiguration.next_contest_start_date.strftime("%m/%d/%y at %l%p %Z") : "---"}"
     end
   end
 

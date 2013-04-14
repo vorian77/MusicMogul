@@ -24,4 +24,13 @@ feature "homepage" do
 
     page.should have_no_css "form.follow"
   end
+
+  scenario "timer shows next contest when there is no contest pending or running" do
+    Contest.running.destroy_all
+    Contest.pending.destroy_all
+    SiteConfiguration.first.update_attribute(:next_contest_start_date, 1.week.from_now)
+    visit root_path
+    current_path.should == root_path
+    page.should have_content "Next Contest Begins #{1.week.from_now.strftime("%m/%d/%y at %l%p %Z")}"
+  end
 end
