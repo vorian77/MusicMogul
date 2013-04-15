@@ -21,21 +21,20 @@
               Tomorrow's music stars<br/>discovered by today's music fans
           - if user_signed_in?
             = render "layouts/profile"
-            - if contest_running?
-              #header-nav
-                %ul
-                  %li.auditions{class: "#{'active' if current_page?(root_path)}"}
-                    %a{href: "#{root_path}"}
-                      Auditions
-                      %span.ico
-                  %li.evaluations{class: "#{'active' if current_page?(evaluations_path)}", style: "#{'display: none' unless show_my_evaluations_tab?(current_user)}"}
-                    %a{href: "#{evaluations_path}"}
-                      My Evaluations
-                      %span.ico
-                  %li.leader-board{class: "#{'active' if current_page?(leaderboard_path)}", style: "#{'display: none' unless Contest.active.try(:show_leaderboard_nav?)}"}
-                    %a{href: "#{leaderboard_path}"}
-                      Leader Board
-                      %span.ico
+            #header-nav
+              %ul
+                %li.auditions{class: "#{'active' if current_page?(root_path)}"}
+                  %a{href: "#{root_path}"}
+                    Auditions
+                    %span.ico
+                %li.evaluations{class: "#{'active' if current_page?(evaluations_path)}", style: "#{'display: none' unless show_my_evaluations_tab?(current_user)}"}
+                  %a{href: "#{evaluations_path}"}
+                    My Evaluations
+                    %span.ico
+                %li.leader-board{class: "#{'active' if current_page?(leaderboard_path)}", style: "#{'display: none' unless Contest.first.try(:show_leaderboard_nav?)}"}
+                  %a{href: "#{leaderboard_path}"}
+                    Leader Board
+                    %span.ico
           - else
             %a.btn.right{:href => "#{new_user_path}"} Sign Up
             %a.btn.right{:href => "#{new_user_session_path}"} Sign In
