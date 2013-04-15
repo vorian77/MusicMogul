@@ -28,7 +28,7 @@
       .stats-bottom.clearfix
         .contestant-images.clearfix
           - user.signed_entries.order("created_at desc").each do |entry|
-            - if Contest.active.try(:show_full_leaderboard?) || user == current_user
+            - if Contest.first.try(:show_full_leaderboard?) || user == current_user
               %a{:href => "#{entry_path(entry)}"}
                 %img{:alt => "", :src => "#{entry.profile_photo.medium.url}"}/
                 #{entry.stage_name}

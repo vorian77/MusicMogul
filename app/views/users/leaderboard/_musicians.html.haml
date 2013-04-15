@@ -2,7 +2,7 @@
   - entry = user.entries.first
   .contestant-info.clearfix[entry]
     .contestant-info-inner.left
-      - if Contest.active.try(:show_full_leaderboard?) || user == current_user
+      - if Contest.first.try(:show_full_leaderboard?) || user == current_user
         %a{:href => "#{entry_path(entry)}"}
           %img{:alt => "", :src => "#{entry.profile_photo.medium.url}"}/
         %h3
