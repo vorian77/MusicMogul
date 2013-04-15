@@ -80,4 +80,6 @@
                     %td= image_tag(user.photo.thumb.url)
                     %td= user.username
                     %td= user.musician? ? user.entries.first.evaluations.count + user.evaluations.count : user.evaluations.count
+      - if @entry && @entry.shared_email_users.present?
+        = link_to "Download fan email list (#{@entry.shared_email_users.count})", fan_email_list_path
   .main-b
