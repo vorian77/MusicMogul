@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, except: [:new, :verify_email]
-  before_filter :ensure_contest_running!, only: [:leaderboard]
   load_and_authorize_resource except: [:new, :verify_email]
 
   def edit
@@ -34,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def leaderboard
-    redirect_to root_path unless Contest.active.try(:show_leaderboard_nav?)
+    redirect_to root_path unless Contest.first.try(:show_leaderboard_nav?)
     musician_ids = Entry.with_contest.finished.pluck(:user_id)
     respond_to do |format|
       format.html do
