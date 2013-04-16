@@ -11,7 +11,7 @@
           %span.genre> #{entry.genre}
           #{entry.hometown}
           %br>/
-          - if evaluation = current_user.evaluation_for(entry)
+          - if evaluation = current_user.try(:evaluation_for, entry)
             My Evaluation
             %span= number_with_precision evaluation.overall_score, precision: 1
       - else

@@ -36,6 +36,13 @@
                     Leader Board
                     %span.ico
           - else
+            - unless contest_pending? || contest_running?
+              #header-nav
+                %ul
+                  %li.leader-board{class: "#{'active' if current_page?(leaderboard_path)}"}
+                    %a{href: "#{leaderboard_path}"}
+                      Leader Board
+                      %span.ico
             %a.btn.right{:href => "#{new_user_path}"} Sign Up
             %a.btn.right{:href => "#{new_user_session_path}"} Sign In
         .header-shadow

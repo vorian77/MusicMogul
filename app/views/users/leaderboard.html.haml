@@ -1,4 +1,5 @@
-= render "users/score"
+- if user_signed_in?
+  = render "users/score"
 .shell.interior
   .main.tabs-section
     .main-t.tabs-nav

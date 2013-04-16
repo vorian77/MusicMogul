@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, except: [:new, :verify_email]
-  load_and_authorize_resource except: [:new, :verify_email]
+  before_filter :authenticate_user!, except: [:new, :verify_email, :leaderboard]
+  load_and_authorize_resource except: [:new, :verify_email, :leaderboard]
 
   def edit
     render current_user.fan? ? "mogul" : "musician"
