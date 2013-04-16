@@ -3,6 +3,9 @@ ActiveAdmin.register User do
     column :id
     column :username
     column :email
+    column "Inviter Id" do |user|
+      link_to user.inviter_id, user.inviter if user.inviter.present?
+    end
     column "Inviter" do |user|
       link_to user.inviter.username, user.inviter if user.inviter.present?
     end
@@ -20,6 +23,9 @@ ActiveAdmin.register User do
     column :id
     column :username
     column :email
+    column "Inviter Id" do |user|
+      user.inviter_id if user.inviter.present?
+    end
     column :inviter do |user|
       user.inviter.username if user.inviter.present?
     end
