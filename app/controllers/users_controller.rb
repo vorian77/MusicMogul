@@ -35,19 +35,20 @@ class UsersController < ApplicationController
   def leaderboard
     redirect_to root_path unless Contest.first.try(:show_leaderboard_nav?)
     musician_ids = Entry.with_contest.finished.pluck(:user_id)
-    respond_to do |format|
-      format.html do
-        @musicians = User.non_admin.where("id in (?)", musician_ids).order("cached_points desc, id").page(params[:musician_page]).per(10)
-        @fans = User.non_admin.fan.order("cached_points desc, id").page(params[:fan_page]).per(10)
+    @musicians = User.non_admin.where("id in (?)", musician_ids).order("cached_points desc, id")
+    @fans = User.non_admin.fan.order("cached_points desc, id")
+    if SiteConfiguration.leaderboard_max_contestant_rank != 0
+      @musicians = @musicians.select do |user|
+        show_leaderboard_row?(user.rank,
+                              SiteConfiguration.leaderboard_max_contestant_rank,
+                              current_user.try(:musician?) && current_user.try(:rank))
       end
-      format.js do
-        if params[:musician_page].present?
-          @musicians = User.non_admin.where("id in (?)", musician_ids).order("cached_points desc, id").page(params[:musician_page]).per(10)
-          render json: {musicians: render_to_string(partial: "users/leaderboard/musicians", locals: {musicians: @musicians})}
-        elsif params[:fan_page].present?
-          @fans = User.non_admin.fan.order("cached_points desc, id").page(params[:fan_page]).per(10)
-          render json: {fans: render_to_string(partial: "users/leaderboard/fans", locals: {fans: @fans})}
-        end
+    end
+    if SiteConfiguration.leaderboard_max_mogul_rank != 0
+      @fans = @fans.select do |user|
+        show_leaderboard_row?(user.rank,
+                              SiteConfiguration.leaderboard_max_mogul_rank,
+                              current_user.try(:fan?) && current_user.try(:rank))
       end
     end
   end
@@ -71,5 +72,11 @@ class UsersController < ApplicationController
 
   def scorecard
     render json: {scorecard: render_to_string(partial: "users/score")}
+  end
+
+  private
+
+  def show_leaderboard_row?(rank, max_rank, user_rank)
+    (rank <= max_rank) || (user_rank && !user_rank.is_a?(String) && (rank - user_rank).abs <= 2)
   end
 end

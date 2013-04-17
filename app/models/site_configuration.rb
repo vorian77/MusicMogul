@@ -1,5 +1,6 @@
 class SiteConfiguration < ActiveRecord::Base
-  attr_accessible :fan_welcome_email_id, :musician_welcome_email_id, :contest_rules, :next_contest_start_date
+  attr_accessible :fan_welcome_email_id, :musician_welcome_email_id, :contest_rules, :next_contest_start_date,
+                  :leaderboard_max_contestant_rank, :leaderboard_max_mogul_rank
 
   belongs_to :fan_welcome_email, class_name: "Email"
   belongs_to :musician_welcome_email, class_name: "Email"
@@ -7,20 +8,15 @@ class SiteConfiguration < ActiveRecord::Base
   validate :ensure_only_one_record
 
   class << self
-    def contest_rules
-      first.try(:contest_rules)
-    end
-
-    def fan_welcome_email
-      first.try(:fan_welcome_email)
-    end
-
-    def musician_welcome_email
-      first.try(:musician_welcome_email)
-    end
-
-    def next_contest_start_date
-      first.try(:next_contest_start_date)
+    [:contest_rules,
+     :fan_welcome_email,
+     :musician_welcome_email,
+     :next_contest_start_date,
+     :leaderboard_max_contestant_rank,
+     :leaderboard_max_mogul_rank].each do |method|
+      define_method method do
+        first.try(method)
+      end
     end
   end
 
