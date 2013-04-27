@@ -1,0 +1,114 @@
+= simple_form_for :entry do |f|
+  = f.input :id, label: "Stage name", collection: Entry.with_contest.finished.order("lower(stage_name)"), label_method: :stage_name
+  = f.submit "Retrieve"
+
+- if @entry.present?
+  %h2= @entry.stage_name
+  %h2 #{@entry.genre}/#{@entry.hometown}
+  %h2.last= @entry.title
+  %table
+    %thead
+      %tr
+        %th Metric
+        %th My Invitees
+        %th Other Evaluators
+        %th All Evaluators
+        %th Contest Average
+    %tbody
+      %tr
+        %td Moguls
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td Follows
+        - if @user.invited_users.present?
+          %td= @entry.follows.where("user_id in (?)", @user.invited_user_ids).count
+          %td= @entry.follows.where("user_id not in (?)", @user.invited_user_ids).count
+        - else
+          %td 0
+          %td= @entry.follows.count
+        %td= @entry.follows.count
+        %td= number_with_precision(Follow.count / Entry.with_contest.finished.count.to_f, precision: 1)
+      %tr
+        %td Signs
+        - if @user.invited_users.present?
+          %td= @entry.contracts.where("user_id in (?)", @user.invited_user_ids).count
+          %td= @entry.contracts.where("user_id not in (?)", @user.invited_user_ids).count
+        - else
+          %td 0
+          %td= @entry.contracts.count
+        %td= @entry.contracts.count
+        %td= number_with_precision(Contract.count / Entry.with_contest.finished.count.to_f, precision: 1)
+      %tr
+        %td Evaluations
+        - if @user.invited_users.present?
+          %td= @entry.evaluations.where("user_id in (?)", @user.invited_user_ids).count
+          %td= @entry.evaluations.where("user_id not in (?)", @user.invited_user_ids).count
+        - else
+          %td 0
+          %td= @entry.evaluations.count
+        %td= @entry.evaluations.count
+        %td= number_with_precision(Evaluation.count / Entry.with_contest.finished.count.to_f, precision: 1)
+      %tr
+        %td Average overall evaluation
+        - if @user.invited_users.present?
+          %td= number_with_precision @entry.overall_score(@user.invited_user_ids), precision: 1
+          %td= number_with_precision @entry.overall_score(@user.uninvited_user_ids), precision: 1
+        - else
+          %td 0
+          %td= number_with_precision @entry.overall_score, precision: 1
+        %td= number_with_precision @entry.overall_score, precision: 1
+        %td= number_with_precision(Entry.with_contest.finished.sum(&:overall_score) / Entry.with_contest.finished.count.to_f, precision: 1)
+      %tr
+        %td Average music evaluation
+        - if @user.invited_users.present?
+          %td= number_with_precision @entry.overall_music_score(@user.invited_user_ids), precision: 1
+          %td= number_with_precision @entry.overall_music_score(@user.uninvited_user_ids), precision: 1
+        - else
+          %td 0
+          %td= number_with_precision @entry.overall_music_score, precision: 1
+        %td= number_with_precision @entry.overall_music_score, precision: 1
+        %td= number_with_precision(Entry.with_contest.finished.sum(&:overall_music_score) / Entry.with_contest.finished.count.to_f, precision: 1)
+      %tr
+        %td Average vocals evaluation
+        - if @user.invited_users.present?
+          %td= number_with_precision @entry.overall_vocals_score(@user.invited_user_ids), precision: 1
+          %td= number_with_precision @entry.overall_vocals_score(@user.uninvited_user_ids), precision: 1
+        - else
+          %td 0
+          %td= number_with_precision @entry.overall_vocals_score, precision: 1
+        %td= number_with_precision @entry.overall_vocals_score, precision: 1
+        %td= number_with_precision(Entry.with_contest.finished.sum(&:overall_vocals_score) / Entry.with_contest.finished.count.to_f, precision: 1)
+      %tr
+        %td Average presentation evaluation
+        - if @user.invited_users.present?
+          %td= number_with_precision @entry.overall_presentation_score(@user.invited_user_ids), precision: 1
+          %td= number_with_precision @entry.overall_presentation_score(@user.uninvited_user_ids), precision: 1
+        - else
+          %td 0
+          %td= number_with_precision @entry.overall_presentation_score, precision: 1
+        %td= number_with_precision @entry.overall_presentation_score, precision: 1
+        %td= number_with_precision(Entry.with_contest.finished.sum(&:overall_presentation_score) / Entry.with_contest.finished.count.to_f, precision: 1)
+      - [:facebook, :pinterest, :twitter, :youtube, :website, :track].each do |object|
+        %tr
+          %td Clicks on #{object.to_s.titleize} link
+          - if @user.invited_users.present?
+            %td= @entry.clicks.send(object).where("user_id in (?)", @user.invited_user_ids).count
+            %td= @entry.clicks.send(object).where("user_id not in (?)", @user.invited_user_ids).count
+          - else
+            %td 0
+            %td= @entry.clicks.send(object).count
+          %td= @entry.clicks.send(object).count
+          %td= number_with_precision(Click.send(object).count / Entry.with_contest.finished.count.to_f, precision: 1)
+      %tr
+        %td Video plays
+        - if @user.invited_users.present?
+          %td= @entry.clicks.video.where("user_id in (?)", @user.invited_user_ids).count
+          %td= @entry.clicks.video.where("user_id not in (?)", @user.invited_user_ids).count
+        - else
+          %td 0
+          %td= @entry.clicks.video.count
+        %td= @entry.clicks.video.count
+        %td= number_with_precision(Click.video.count / Entry.with_contest.finished.count.to_f, precision: 1)
