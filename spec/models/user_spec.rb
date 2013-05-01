@@ -3,6 +3,7 @@ require "spec_helper"
 describe User do
   describe "associations" do
     it { should belong_to(:inviter).class_name("User") }
+    it { should belong_to(:campaign_link) }
     it { should have_many(:contracts).dependent(:destroy) }
     it { should have_many(:entries).dependent(:destroy) }
     it { should have_many(:follows).dependent(:destroy) }

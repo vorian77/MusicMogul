@@ -15,9 +15,10 @@ class User < ActiveRecord::Base
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
-  attr_accessor :invitation_token
+  attr_accessor :campaign_token, :invitation_token
 
   belongs_to :inviter, class_name: "User"
+  belongs_to :campaign_link
   has_many :clicks, dependent: :destroy
   has_many :contracts, dependent: :destroy
   has_many :entries, dependent: :destroy
@@ -37,7 +38,7 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password, message: "Passwords do not match"
 
   before_validation :set_referral_token, :shorten_referral_link
-  before_create :set_inviter
+  before_create :set_inviter_and_campaign_link
   after_create :create_first_entry, if: :musician?
   after_create :cache_inviter_points
 
@@ -159,8 +160,9 @@ class User < ActiveRecord::Base
     entries.create
   end
 
-  def set_inviter
+  def set_inviter_and_campaign_link
     self.inviter = User.find_by_referral_token(invitation_token) if invitation_token.present?
+    self.campaign_link = CampaignLink.find_by_campaign_token(campaign_token) if campaign_token.present?
   end
 
   def set_referral_token

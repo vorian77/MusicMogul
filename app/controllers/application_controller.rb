@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :set_referral_token
+  before_filter :set_tokens
   before_filter :redirect_entryless_musicians
   before_filter :perform_basic_authentication if Rails.env.staging?
 
@@ -39,8 +39,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_referral_token
+  def set_tokens
     session[:referral_token] = params[:referral_token] if params[:referral_token].present?
+    session[:campaign_token] = params[:campaign_token] if params[:campaign_token].present?
   end
 
   def redirect_entryless_musicians

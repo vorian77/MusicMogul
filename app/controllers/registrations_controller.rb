@@ -8,6 +8,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     build_resource
     resource.invitation_token = session[:referral_token] if session[:referral_token].present?
+    resource.campaign_token = session[:campaign_token] if session[:campaign_token].present?
     if resource.save
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
