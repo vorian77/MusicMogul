@@ -1,5 +1,6 @@
 ActiveAdmin.register Evaluation do
   index do
+    selectable_column
     column :id
     column :user_id
     column "Username" do |evaluation|
@@ -14,6 +15,7 @@ ActiveAdmin.register Evaluation do
     column :vocals_score
     column :overall_score
     column :share_email
+    default_actions
   end
 
   csv do

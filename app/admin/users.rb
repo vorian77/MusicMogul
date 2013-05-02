@@ -1,5 +1,6 @@
 ActiveAdmin.register User do
   index do
+    selectable_column
     column :id
     column :username
     column :email
@@ -17,6 +18,7 @@ ActiveAdmin.register User do
     column :cached_points
     column :created_at
     column :updated_at
+    default_actions
   end
 
   csv do
